@@ -2,6 +2,8 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
+  protect_from_forgery
+  layout 'application'
   include Ior::Security::AuthenticationSystem
   # Vill du installera ExceptionNotifier? Gör inte det. /spatrik
 
