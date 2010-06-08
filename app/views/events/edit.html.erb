@@ -1,0 +1,15 @@
+<h2>Redigera event '<%= @event.title %>'</h2>
+
+<% ior_form_for(@event) do |form| %>
+  <%= render :partial => 'form', :object => form %>
+  
+  <%= form.submit "Spara ändringar" %>
+<% end -%>
+
+<% if @event.news %>
+  <h3>Arkivera nyhet</h3>
+  <%= button_to 'Arkivera', archive_event_path(@event), :method => :put, :confirm => 'Är du säker att du vill arkivera nyheten?' %>
+  <p>
+    Du kan alltid ångra en arkivering genom att ändra utgångsdatumet till någon gång i framtiden.
+  </p>
+<% end %>  

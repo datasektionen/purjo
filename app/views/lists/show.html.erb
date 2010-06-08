@@ -1,0 +1,13 @@
+<% list_for(@list.list_entries) do |list| -%>
+  <%= list.column :person %>
+  
+  <% for column in @list.list_fields.for_list.map(&:name) -%>
+    <% list.column column.to_sym do |entry| -%>
+      <%= entry.send(column).value %>
+    <% end -%>
+  <% end -%>
+  
+  <% list.actions do |entry| %>
+    <%= link_to "Show", list_entry_path(entry) %>
+  <% end -%>
+<% end -%>

@@ -1,0 +1,15 @@
+<h1>Listing blogs</h1>
+
+<% list_for @blogs do |list| %>
+  <%= list.column :name %>
+  <%= list.column :perma_name %>
+  <%= list.column :content %>
+
+  <% list.actions do |blog| %>
+    <%= link_to 'Show', blog %>
+    <%= link_to 'Edit', edit_blog_path(blog) %>
+    <%= link_to 'Destroy', blog, :confirm => 'Are you sure?', :method => :delete %>
+  <% end %>
+<% end %>
+
+<%= link_to 'New blog', new_blog_path %>

@@ -1,0 +1,197 @@
+@import "960.scss";
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6, p, pre, blockquote, label, ul, ol, dl, fieldset, address {
+  margin: 10px 0px;
+}
+
+a img {
+  border: none;
+}
+
+body {
+  background-image: url("/images/solo/background.jpeg");
+  font-family: helvetica, sans-serif;
+}
+
+nav.main {
+  background-color: #fff;
+  
+  div {
+    background-color: #fff;
+  }
+  
+  ul {
+    margin: 0px;
+    padding: 13px 0px 28px 0px;
+
+    li {
+      font-family: 'Helvetica';
+      font-size: 15px;
+      
+      list-style-type: none;
+      margin-right: 40px;
+      float: left;
+      
+      a {
+        text-decoration: none;
+        color: black;
+      }
+    }
+  }
+}
+
+nav.sub {
+  .shield {
+    margin: 10px 0px;
+    float: right;
+  }
+
+  ul {
+    li {
+      font-family: 'Helvetica';
+      font-size: 15px;
+      text-align: right;
+      list-style-type: none;
+      color: #222;
+      margin-bottom: 5px;
+    }
+  }
+}
+
+.logo {
+  float: left;
+  height: 150px;
+  width: 150px;
+  margin-top: 20px;
+  margin-left: 240px;
+  background-image: url(/images/solo/shield-small-shadow.png);
+}
+
+.content {
+  h2 {
+    font-family: 'Yanone Kaffeesatz', arial, serif;
+    font-size: 32px;
+    text-shadow: 2px 2px 2px white;
+  }
+  
+  h3 {
+    font-family: 'Yanone Kaffeesatz', arial, serif;
+    font-size: 28px;
+    font-weight: 300;
+    color: #222;
+  }
+  
+  h4 {
+    font-family: 'Yanone Kaffeesatz', arial, serif;
+    font-weight: 300;
+    font-size: 20px
+  }
+  
+  p {
+    font-family: 'Crimson Text' ,Georgia, sans-serif;
+    font-size: 16px;
+    color: #222;
+    line-height: 1.5em;
+    -webkit-border-radius: 7px;
+  }
+
+  ol {
+    margin-left: 25px;
+  }
+  li {
+    font-family: 'Crimson Text' ,Georgia, sans-serif;
+    font-size: 16px;
+
+    color: #222;
+    line-height: 1.5em;
+    -webkit-border-radius: 7px;
+  }
+  
+  .publicated {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-family: 'Crimson Text' ,Georgia, sans-serif;
+    font-size: 16px;
+    font-style: italic;
+    color: #222;
+  }
+}
+
+span.dim {
+  color: #c6c6c6;
+}
+
+.events {
+  h2 {
+    color: #c6c6c6;
+  }
+  .event {
+    .icon {
+      width: 24px;
+      height: 24px;
+      float: left;
+      margin-top: 0px;
+      margin-right: 5px;
+      margin-bottom: 5px;
+      background-repeat: no-repeat;
+    }
+    
+    .icon.esc {
+      background-image: url(/images/solo/home.png);
+    }
+    
+    .icon.inspiration {
+      background-image: url(/images/solo/lightbulb.png);
+    }
+    
+    .description {
+      margin-bottom: 0px;
+    }
+    
+    .time {
+      font-style: italic;
+      margin-left: 29px;
+      margin-top: 0px;
+      margin-bottom: 0px;
+    }
+  }
+}
+
+.tags {
+  .tag {
+    margin-right: 10px;
+    float: left;
+
+    .marker {
+      float: left;
+      width: 7px;
+      height: 20px;
+      -webkit-border-top-left-radius: 5px;
+      -webkit-border-bottom-left-radius: 5px;
+    }
+    
+    .marker.ior {
+      background-color: #79d2e8
+    }
+    
+    .marker.dkm {
+      background-color: #000
+    }
+    
+    .content {
+      float: left;
+      padding: 0px 7px 0px 5px;
+      height: 20px;
+      background-color: white;
+      font-family: 'Helvetica';
+      font-size: 15px;
+      -webkit-border-top-right-radius: 5px;
+      -webkit-border-bottom-right-radius: 5px;
+    }
+  }
+}

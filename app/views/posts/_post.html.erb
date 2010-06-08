@@ -1,0 +1,32 @@
+<% if post.sticky %>
+<div class="sticky">
+<% else %>
+<div>
+<% end %>
+  <h3><%= link_to post, post %></h3>
+  <p><%= post.content %></p>
+  
+  <% if Person.current.editor? %>
+  <ul class="horizontal author left">
+    <li><%= link_to 'Redigera', edit_post_path(post) %></li>
+    <li class="last"><%= link_to 'Ta bort', post, :method => :delete, :confirm => 'Är du säker på att du vill ta bort den här nyheten?' %></li>
+  </ul>
+  <% end %>
+  
+  <ul class="horizontal author right">
+    <% if post.has_comments? %>
+    	<% if post.comment_count == 1 %>
+        <li><%= link_to post.comment_count.to_s + " kommentar", post  %> </li>
+      <% else %>
+        <li><%= link_to post.comment_count.to_s + " kommentarer", post  %> </li>
+      <% end %>
+    <% else %>
+            <li><%= link_to "Kommentera", post  %> </li>
+    <% end %> 
+    <li><%= link_to post.created_by, person_path(post.created_by) %></li>
+    <li>Skapad <%= post.created_at.strftime "%d %b" %></li>
+    <li>Förfaller <%= post.expires_at.strftime "%d %b"%></li>
+    <li class="last"><%= link_tags post.categories %></li>
+  </ul>
+</div>
+<div class="separator">&nbsp;</div>

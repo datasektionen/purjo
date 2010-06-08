@@ -1,0 +1,73 @@
+<% stylesheet "nyheter" -%>
+
+<div id="news">
+  <h2>
+    Nyheter(<%= @tags.nil? ? 'Alla' : @tags.to_sentence(:connector => 'och') %>)
+    <%= link_to image_tag('feed.png'), posts_path(:format => :rss, :tags => @tags) %>
+  </h2>
+  
+  <%= include_node("/start") %>
+  
+  <h4>Kategorier</h4>
+  <%= link_tags Tag.all %>
+  
+  <%= render :partial => 'posts/post', :collection => @news_posts %>
+  
+  <p>
+    <% if @archive -%>
+      <%= link_to "Visa endast aktuella nyheter", posts_path(:tags => @tags) %>
+    <% else -%>
+      <%= link_to "Visa arkiverade nyheter", posts_path(:archive => true, :tags => @tags) %>
+    <% end -%>
+  </p>
+</div>
+
+<div id="calendars">
+  
+  <% if Person.current.has_feature?(:my_leek) && Person.current.has_my_settings? %>
+    <h2>Mitt d.kth.se</h2>
+    
+    <% if Person.current.my_settings.has_schedule_link? %>
+      <a href="<%= Person.current.my_settings.schedule_link %>">Mitt schema</a>
+    <% end -%>
+    
+    <h3>Mina kurser</h3>
+    
+    <table>
+      <% Person.current.my_settings.courses.each do |course| %>
+      <tr>
+        <td>
+          <% if course.course_home_page.present? %>
+            <a href="<%= course.course_home_page %>"><%= truncate(course.name, 20) %></a>
+          <% else %>
+            <%= truncate(course.name, 20) %>
+          <% end -%>
+        </td>
+        <td><a href="<%= course.handbook_url %>">Studiehandboken</td>
+      </tr>
+      <% end %>
+    </table>
+  <% end %>
+  
+  <h2>Agenda</h2>
+  <p>Datasektionens agenda, vill du veta mer se <%= link_to 'kalendern', calendar_path(:year => Time.now.year, :month => Time.now.month) %>.</p>
+  
+  <table>
+    <% APP_CONFIG['show_n_days_in_calendar'].times do |i| %>
+      <% posts_this_day = @calendar_posts.find_all{|p| p.starts_at >= (@now + i.days).beginning_of_day && p.ends_at <= (@now + i.days).end_of_day} %>
+
+      <% unless posts_this_day.empty? %>
+        <tr>
+          <td class="nobr"><%= posts_this_day.first.starts_at.to_s(:cal) %></td>
+          <td>
+            <% posts_this_day.each do |post_this_day| %>
+              <div>
+                <%= link_to post_this_day, post_this_day %>
+              </div>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+  </table>
+</div>

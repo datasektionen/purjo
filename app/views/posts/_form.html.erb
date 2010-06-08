@@ -1,0 +1,60 @@
+<style type="text/css" media="screen">
+  .selection {
+    margin-top: 20px;
+  }
+  
+  .selection p {
+    margin: 0px;
+    margin-top: 10px;
+  }
+</style>
+
+<%= form.error_messages %>
+
+<%= form.text_field :name %>
+<%= form.text_area :content, :cols => 80, :rows => 25 %>
+
+<li>
+  <label>Kategorier</label>
+  <div class="fields">
+    <% Tag.all.each do |tag| %>
+      <p><%= check_box_tag "post[categories_attributes][#{tag}]", true, @post.categories.include?(tag) %>&nbsp;<%= tag %></p>
+    <% end %>
+  </div>
+</li>
+
+<li>
+  <label>Nyhet</label>
+  <div class="fields">
+    <%= check_box_tag 'post[news_post]', true, @post.news_post, :onclick => '$("news_post").toggle()' %>
+    
+    <div id="news_post" class="selection" style="display: <%= @post.news_post ? 'block' : 'none' %>">
+      <p>Visas till</p>
+      <%= datetime_select :post, :expires_at %>
+    </div>
+  </div>
+</li>
+
+<li>
+  <label>Kalender</label>
+  <div class="fields">
+    <%= check_box_tag 'post[calendar_post]', true, @post.calendar_post, :onclick => '$("calendar_post").toggle()' %>
+    
+    <div id="calendar_post" class="selection" style="display: <%= @post.calendar_post ? 'block' : 'none' %>">
+      <p>Aktivitet startar</p>
+      <%= datetime_select :post, :starts_at %>
+      
+      <p>Aktivitet slutar</p>
+      <%= datetime_select :post, :ends_at %>
+      
+      <p>Heldagsaktivitet</p>
+      <%= check_box_tag 'post[all_day]', true, @post.all_day %>
+      <%= hidden_field_tag 'post[all_day]', '0' %>
+    </div>
+  </div>
+</li>
+
+<li><label>Bump</label><%= check_box "bumping", "do_bump" %><span class="suffix">Bumpa posten till l&auml;ngst upp p&aring; framsidan.</span></li>
+
+<%= form.check_box "sticky", :suffix => "L&aring;s posten l&auml;ngst upp p&aring; framsidan." %>
+

@@ -1,0 +1,15 @@
+<div class="article">
+  <h3><%= link_to article.title, [article.blog, article] %></h3>
+  <p class="content">
+    <%= article.content %>
+  </p>
+  <% if Person.current.has_role?(:editor) %>
+    <%= link_to 'Redigera', edit_blog_article_path(@blog, article) %> |
+    <%= link_to 'Ta bort', [@blog, article], :method => :delete, :confirm => "Är du säker?" %>
+  <% end %>
+
+  <ul class="horizontal author right">
+    <li class="author"><%= link_to article.author, article.author %></li>
+    <li class="last">Skapad <%= article.created_at.strftime "%d %b" %></li>
+  </ul>
+</div>

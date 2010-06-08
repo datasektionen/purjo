@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="sv" lang="sv">
+<head>
+  <title>DKM - Datas Klubbmästeri</title>
+  <%= stylesheet_link_tag 'dkm', 'form', 'dkm_forms' %>
+  <script src="/javascripts/prototype.js" type="text/javascript"></script>
+  <script src="/javascripts/application.js" type="text/javascript"></script>
+  <script src="/javascripts/scriptaculous.js" type="text/javascript"></script>
+</head>
+<body>
+
+<h1><%= image_tag('dkm/logo.png', :alt => 'DKM Datas Klubbmästeri') %></h1>
+
+<div id="container">
+  <div id="menu">
+    <ul>
+      <% list_children(@node.children.length > 0 ? @node : @node.parent) do |node| %>
+        <li><a href="<%= node.url %>"><%= node.name.upcase %></a></li>
+      <% end %>
+    </ul>
+    <ul>
+      <li><a href="<%= url_for('/sessions/new') %>">Logga in</a></li>
+    </ul>
+    
+  </div>
+  
+  <div id="content">
+    <% if flash[:notice] -%>
+      <div id="flash_notice"><%= flash[:notice] %></div>
+    <% end -%>
+    
+    <%= yield %>
+    
+    <%#= render :partial => 'admin' %>
+  </div>
+  
+</div>
+
+<%= render :partial => 'shared/analytics' %>
+</body>
+</html>

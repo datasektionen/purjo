@@ -1,0 +1,15 @@
+<h2>Alla listor</h2>
+<p>Här kommer en bra förklarande text om en stund</p>
+<% list_for @lists do |list| %>
+  <%= list.column :title %>
+  <%= list.column :creator %>
+  <%= list.column :description %>
+  <%= list.column :identifier %>
+  <% list.actions do |l| %>
+    <%= link_to 'Visa', l %>
+    <%= link_to 'Redigera', edit_list_path(l) %>
+    <%= link_to 'Ta bort', l, :confirm => 'Are you sure?', :method => :delete %>
+  <% end %>
+<% end %>
+
+<%= link_to 'Ny lista', new_list_path %>

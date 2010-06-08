@@ -1,0 +1,20 @@
+<h1>Editing kth_account</h1>
+
+<% form_for(@kth_account) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :ugid %><br />
+    <%= f.text_field :ugid %>
+  </p>
+  <p>
+    <%= f.label :person_id %><br />
+    <%= f.text_field :person_id %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @kth_account %> |
+<%= link_to 'Back', kth_accounts_path %>

@@ -1,0 +1,48 @@
+<h2>Sektionsfunktionärer</h2>
+
+<p>
+  Alla sektionsfunktionärer är valda på Datasektionens Sektionsmöten.
+  Mandatperioderna är ett år långa och börjar antingen 1 januari eller 1 juli,
+  förutom Spexdirecteuren, vars mandatperiod
+  “<a href="/sektionen/formalia/stadgar/#paragraf7.4.33">löper tills arbetet med uppsättningen i fråga avslutas</a>".
+</p>
+
+<table>
+  <tr>
+    <th>Post</th>
+    <th>&nbsp;</th>
+    <th>Person</th>
+    <th>E-post</th>
+    <th>Aktiv fram till</th>
+  </tr>
+
+<% for functionary in @functionaries %>
+  <% if functionary.postponed %>
+    <tr class="bordlagd">
+  <% else %>
+    <tr>
+  <% end %>
+    <td><%= link_to functionary.chapter_post.name, functionary.chapter_post %></td>
+    <td>
+      <% if functionary.chapter_post.description != "" %>
+        <a href="#" onclick="Effect.toggle('descr_<%= functionary.id %>', 'blind', { duration: 0 }); return false;">?</a>
+      <% end %>
+    </td>
+    <td>
+      <% if functionary.postponed %>
+        <em>Bordlagd</em>
+      <% elsif functionary.person %>
+          <%= link_to functionary.person.name, functionary.person %>
+      <% end %>
+    </td>
+    <td><%=h functionary.chapter_post.email %></td>
+    <td><acronym title="<%=h functionary.active_from %> till <%=h functionary.active_to %>"><%=h functionary.active_to %></acronym></td>
+    <td><%= link_to 'Redigera', edit_functionary_path(functionary) %></td>
+  </tr>
+  <% if functionary.chapter_post.description != "" %>
+    <tr id="descr_<%= functionary.id %>" style="display: none">
+      <td colspan="4"><%=h functionary.chapter_post.description %></td>
+    </tr>
+  <% end %>
+<% end %>
+</table>

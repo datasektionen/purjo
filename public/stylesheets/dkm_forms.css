@@ -1,0 +1,11 @@
+fieldset ul li label {
+  color: white;
+}
+
+fieldset ul li {
+  border-top: none;
+}
+
+fieldset ul .submit_li {
+  border-top: none;
+}

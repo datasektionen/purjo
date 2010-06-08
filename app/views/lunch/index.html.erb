@@ -1,0 +1,16 @@
+<h2>Dagens lunch (<%= @date.to_s %>)</h2>
+<p>
+  <a href="/lunch/<%= @date+1 %>">Morgondagens lunch</a>
+</p>
+
+<% @restaurants.each do |restaurant| %>
+  <h3><%= restaurant[:name] %></h3>
+  <table>
+    <% restaurant[:meals].each do |meal| %>
+      <tr>
+        <td><%= meal[:name] %></td>
+        <td><%= meal[:description] %></td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>

@@ -1,0 +1,10 @@
+development:
+  ldap_host: localhost
+  show_n_days_in_calendar: 60
+
+test:
+  ldap_host: localhost
+
+production:
+  ldap_host: 130.237.32.174
+  show_n_days_in_calendar: 60

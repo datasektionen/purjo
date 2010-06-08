@@ -1,0 +1,9 @@
+<h2>Ny sida</h2>
+
+<p>Du håller på att skapa en ny undersida till "<%=@parent.url%>".</p>
+
+<% ior_form_for @child, :url => text_node_children_path(@parent) do |form| -%>
+  <%= render :partial => 'text_nodes/form', :object => form %>
+<% end -%>
+
+<%= render :partial => "text_nodes/textile_help", :layout => false %>

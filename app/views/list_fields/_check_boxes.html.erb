@@ -1,0 +1,11 @@
+<li>
+  <label for="list_entry[list_field_entry_params][<%= check_boxes.id %>][]"><%= check_boxes.description %></label>
+  <table>
+  <% check_boxes.value.split('|').each do |checkbox| %>
+    <tr>
+      <td><input type="checkbox" name="list_entry[list_field_entry_params][<%= check_boxes.id %>][]" value="<%= checkbox %>"></td>
+      <td><%= checkbox %></td>
+    </tr>
+  <% end %>
+  </table>
+</li>

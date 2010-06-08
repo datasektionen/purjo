@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="sv" lang="sv">
+    <head>
+        <title>Konglig Datasektionen</title>
+		
+		<script src="/javascripts/prototype.js" type="text/javascript"></script>
+        <script src="/javascripts/application.js" type="text/javascript"></script>
+        <script src="/javascripts/scriptaculous.js" type="text/javascript"></script>
+		
+        <style type="text/css">
+			body {
+				font-family: Arial, sans-serif;
+				font-size: 8pt;
+			}
+			
+			h2 {
+				margin: 0px;
+				padding: 0px;
+				padding-bottom: 20px;
+				
+				font-size: 12pt;
+				
+				clear: both;
+			}
+			
+			hr {
+				border: none; 
+				clear: both;
+			}
+			
+			div.week {
+				clear: both;
+				page-break-after: always;
+			}
+			
+			div.day {
+				width: 13.5%;
+				float: left;
+				margin-right: 4px;
+				
+				position: relative;
+			}
+			
+			div.event_container {
+				clear: both;
+				overflow-y: hidden;
+			}
+			
+			div.event {
+				background-color: #f7f7f7;
+				border: 1px solid #bbbbbb;
+				
+				height: 100%;
+				
+				margin: 0px 1px 1px 0px;				
+			}
+			
+			div.event div.course_name, div.event div.location, div.event div.time, div.event div.type {
+				font-size: 7pt;
+			}
+			
+			div.event div.course_name {
+				font-size: 11px;
+			}
+			
+			#info {
+				border: 1px solid #eeeeee;
+				background-color: #f7f7f7;
+				padding: 6px;
+				
+				font-size: 9pt;
+			}
+        </style>
+		
+		<script type="text/javascript">
+			function checkEvents() {
+				date = new Date();
+				
+				document.getElementsByClassName("event").each(function(element) {
+					element.getElementsByClassName("time").each(function(time) {
+						
+						if (date.getHours() >= parseFloat(time.innerHTML.substring(0,2)) 
+							&& date.getHours() <= parseFloat(time.innerHTML.substring(3,5)))
+						{
+							element.style.backgroundColor = 'red';
+						}
+					});
+				});
+			}
+		</script>
+    </head>
+    <body>
+    	<div id="info">
+    		<p><strong>Välkommen till datasektionens nya schemagenerator!</strong></p>
+    	</div>
+        <% @dates.keys.sort.each do |week| %>
+            <div class="week">
+                <a name="<%= week %>" />
+                <h1><%= week %></h1>
+				<% @dates[week].each do |date| %>
+                	<%= render :partial => 'day', :locals => {:date => date, :events => (@events[date] || [])} %>
+                <% end %>
+				<hr />
+            </div>
+        <% end %>
+    </body>
+</html>

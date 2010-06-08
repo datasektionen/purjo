@@ -1,0 +1,36 @@
+<%= form.text_field :title %>
+<%= form.text_area :description, :title => 'Beskrivning', :cols => 35, :rows => 5 %>
+
+<%= form.text_field :people, :caption => 'Lägg till rättigheter' %>
+
+<li>
+  <label>Rättigheter</label>
+  <table>
+    <tr>
+      <th>Ta bort</th>
+      <th>Användare</th>
+    </tr>
+    <% @list.permissions.each do |perm| -%>
+      <tr>
+        <td>
+          <%= check_box_tag "list[permissions_to_remove][]", perm.id %>
+        </td>
+        <td>
+          <%= perm.person %>
+        </td>
+      </tr>
+    <% end -%>
+  </table>
+</li>
+<h2>Fält</h2>
+<% if @list.has_entries? -%>
+  <p>
+    Eftersom denna lista har svar går det ej att ändra på fälten i den
+  </p>
+<% end -%>
+
+<ul id="fields">
+  <% @list.list_fields.each do |list_field| %>
+    <%= render :partial => "list_fields/disabled_#{list_field.kind}.html.erb", :object => list_field %>
+  <% end %>
+</ul>

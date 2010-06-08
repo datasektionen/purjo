@@ -1,0 +1,29 @@
+<h2>Redigera funktionärsposter</h2>
+
+<p>
+  Här kan du redigera alla funktionärsposter.
+</p>
+
+<table>
+  <tr>
+    <th>Post</th>
+    <th>E-post</th>
+    <th>Beskrivning av posten</th>
+    <th>Sittande</th>
+  </tr>
+
+<% for chapter_post in @chapter_posts %>
+  <tr>
+    <td><%= link_to chapter_post.name, chapter_post %></td>
+    <td><%= chapter_post.email %></td>
+    <td><%=h chapter_post.description %></td>
+    <td>
+      <% cf = chapter_post.functionary %>
+      <% if cf and cf.person %>
+        <%= link_to cf.person.name, cf.person %>
+      <% end %>
+    </td>
+    <td><%= link_to 'Redigera', edit_chapter_post_path(chapter_post) %></td>
+  </tr>
+<% end %>
+</table>

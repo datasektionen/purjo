@@ -1,0 +1,13 @@
+<% form_tag(list_list_entries_path(list)) do -%>
+  <fieldset>
+    <ul>
+      <% for field in list.list_fields -%>
+        <%= render :partial => "list_fields/#{field.kind}", :object => field %>
+      <% end -%>
+      
+      <li class="submit_li">
+        <%= submit_tag "Skicka" %>
+      </li>
+    </ul>
+  </fieldset>
+<% end -%>

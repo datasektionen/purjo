@@ -1,0 +1,13 @@
+<li>
+  <label for="list_entry[list_field_entry_params][<%= radio_buttons.id %>]"><%= radio_buttons.description %></label>
+  <table>
+  <% radio_buttons.value.split('|').each_with_index do |radio_button, index| %>
+    <tr>
+      <td>
+        <input type="radio" value="<%= radio_button %>" name="list_entry[list_field_entry_params][<%= radio_buttons.id %>]" <%= %Q{checked="checked"} if index == 0 %>>
+      </td>
+      <td><%= radio_button %></td>
+    </tr>
+  <% end %>
+  </table>
+</li>

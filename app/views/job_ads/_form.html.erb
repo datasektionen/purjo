@@ -1,0 +1,9 @@
+<%= form.text_field :title, :caption => 'Rubrik' %>
+<%= form.text_field :company, :caption => 'Företag' %>
+<%= form.text_area :description, :caption => 'Beskrivning', :size => '50x15' %>
+<%= form.date_select :start_date , :caption => 'Startdatum' %>
+<%= form.date_select :end_date, :caption => 'Slutdatum' %>
+<%= form.check_box :part_time, :caption => 'Deltid' %>
+<%= form.check_box :full_time, :caption => 'Heltid' %>
+<%= form.check_box :thesis, :caption => 'Exjobb' %>
+<%= form.datetime_select :expires_at, :caption => 'Visa till' %>

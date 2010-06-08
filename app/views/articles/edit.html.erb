@@ -1,0 +1,12 @@
+<h1>Editing article</h1>
+
+<% ior_form_for([@blog, @article]) do |f| %>
+  <%= f.error_messages %>
+
+  <%= render :partial => "form", :object => f %>
+
+  <%= f.submit "Update" %>
+<% end %>
+
+<%= link_to 'Show', blog_article_path(@blog, @article) %> |
+<%= link_to 'Back', blog_articles_path(@blog) %>

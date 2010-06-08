@@ -1,0 +1,24 @@
+<fieldset>
+  <ul>
+    <% form_tag exception_path(url) do %>
+      <li>
+        <%= label_tag "name", "Ditt namn" %>
+        <%= text_field_tag "name" %>
+      </li>
+      
+      <li>
+        <%= label_tag "email", "Din epost-adress" %>
+        <%= text_field_tag "email" %>
+      </li>
+      
+      <li>
+        <%= label_tag "description", "Felbeskrivning" %>
+        <%= text_area_tag "description", nil, :size => "60x15" %>
+      </li>
+      
+      <li class="submit_li">
+        <%= submit_tag "Skicka" %>
+      </li>
+    <% end -%>
+  </ul>
+</fieldset>

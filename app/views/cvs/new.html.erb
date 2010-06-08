@@ -1,0 +1,11 @@
+<h2>Nytt CV</h2>
+
+<% form_for(@cv, :html => {:multipart => true}) do |f| %>
+  <%= f.error_messages %>
+
+  <%= render :partial => 'form', :locals => {:f => f} %>
+ 
+  <p>
+    <%= f.submit "Skapa CV", :disable_with => 'Skapar CV...' %>
+  </p>
+<% end %>

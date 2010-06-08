@@ -1,0 +1,15 @@
+<h2>Version <%= @version.version %> av <%= @version.url %>
+
+<h3>Diff mellan version <%= @oldver.version %> och <%= @version.version %></h3>
+Version <%= @version.version %> - skapad: <%= @version.created_at %><br />
+Version <%= @oldver.version %> - skapad: <%= @oldver.created_at %>
+
+<div class="versions">
+  <%= diff(@version.contents, @oldver.contents) %>
+</div>
+
+<h3>Fulltext - version <%= @version.version %></h3>
+<div class="versions">
+  <%= simple_format h @version.contents %>
+  <%= button_to "Återställ sidan till version #{@version.version}", revert_text_node_version_path(@node, @version), :method => :put %>
+</div>

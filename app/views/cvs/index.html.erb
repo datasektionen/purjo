@@ -1,0 +1,33 @@
+<h2>Studs <%= @year.year %> CV-databas</h2>
+
+<% form_tag({}, :method => :get) do %>
+  <%= text_field_tag :search, (params[:search].present? ? params[:search] : "") %>
+  <%= submit_tag "Sök" %>
+<% end %>
+
+<div>
+  <%= cv_language_links %>
+</div>
+
+<% @cvs.each do |cv| %>
+  <div class="cv<%= ' red' if !cv.done && can_edit_cv? %><%= ' green' if cv.done && can_edit_cv? %>">
+    <div class="content">
+      <h3><%= link_to cv.name, cv_path(@year.year, cv, :language => cv.language) %></h3>
+      <p><%= cv.orientation %></p>
+      <p><%= link_to cv.mail, "mailto:#{cv.mail}" %></p>
+    </div>
+    
+    <% if cv.photo.exists? %>
+      <%= link_to image_tag(cv.photo.url(:thumb)), cv_url(@year.year, cv, :language => cv.language) %>
+    <% end %>
+    
+    <div class="separator">&nbsp;</div>
+  </div>
+<% end %>
+
+<p>
+  <% if can_edit_cv? %>
+    <%= link_to 'Skapa nytt cv', new_cv_path %>
+  <% end %>
+  <%= link_to t("studs.cv.logout"), logout_cvs_path(:language => I18n.locale) %>
+</p>

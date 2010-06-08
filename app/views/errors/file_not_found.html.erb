@@ -1,0 +1,17 @@
+<% stylesheet "500" %>
+
+<div id="error_box">
+  <h2>Nu har du gått vilse</h2>
+  
+  <span class="small">(404 File Not Found)</span>
+  
+  <p>Adressen <%= request.url %> kunde inte hittas på Datasektionens hemsida.</p>
+  
+  <p>Om du skrev in adressen själv, kontrollera stavningen</p>
+  
+  <p>Om du följde en länk någonstans på hemsidan, <a href="https://www.d.kth.se/trac/ior/newticket?summary=Trasig%20l%C3%A4nk%20p%C3%A5%20<%= request.referrer %>&amp;description=l%C3%A4nk%20till%20<%= request.url %>%20fungerar%20inte&amp;keywords=broken%20link">skapa gärna en ticket</a> i vårt bugghanteringgsystem</p>
+  
+  <p><em><a href="/sektionen/namnder/ior/kontakta">Ior</a></em></p>
+  
+</div>
+  

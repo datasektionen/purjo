@@ -1,0 +1,6 @@
+<h2>Ny nyhet/kalenderpost</h2>
+
+<% ior_form_for(@event) do |form| -%>
+  <%= render :partial => 'form', :object => form %>
+  <%= form.submit 'Skapa' %>
+<% end -%>

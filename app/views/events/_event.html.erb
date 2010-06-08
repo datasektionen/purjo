@@ -1,0 +1,14 @@
+  <div class="news">
+    <h3><%= link_to event.title, event_path(event) %></h3>
+    
+    <%= event.text %><br />
+    
+    <ul class="horizontal author">
+      <li class="last">Förfaller <%= event.expires_at.strftime "%d %b %H:%M"%></li>
+      <li>Skapad <%= event.created_at.strftime "%d %b"%></li>
+      <% if event.category %>
+        <li><%= link_to event.category, "/aktuellt/nyheter?category=" + event.category %></li>
+      <% end %>
+      <li><%= link_to "Kommentarer (#{event.comments.count})", event_path(event, :anchor => 'comments') -%></li>
+    </ul>
+  </div>

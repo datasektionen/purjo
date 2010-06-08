@@ -1,0 +1,7 @@
+<h2>Ny fil</h2>
+
+<% ior_form_for(@node, :url => text_node_files_path(@parent), :html => {:multipart => true}) do |form| -%>
+  <%= form.file_field :uploaded_data %>
+  
+  <%= form.submit "Spara fil" %>
+<% end -%>

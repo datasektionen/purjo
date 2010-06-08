@@ -1,0 +1,11 @@
+<h2>Redigera CV</h2>
+
+<% form_for(@cv, :url => cv_path(@year.year, @cv), :html => {:multipart => true}) do |f| %>
+  <%= f.error_messages %>
+
+  <%= render :partial => 'form', :locals => {:f => f} %>
+
+  <p>
+    <%= f.submit "Spara ändringar", :disable_with => 'Sparar ändringar...' %>
+  </p>
+<% end %>

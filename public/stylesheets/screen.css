@@ -1,0 +1,447 @@
+/*
+	Variable Grid System.
+	Learn more ~ http://www.spry-soft.com/grids/
+	Based on 960 Grid System - http://960.gs/
+
+	Licensed under GPL and MIT.
+*/
+/* Containers
+----------------------------------------------------------------------------------------------------*/
+.container_16 {
+  margin-left: auto;
+  margin-right: auto;
+  width: 960px; }
+
+/* Grid >> Global
+----------------------------------------------------------------------------------------------------*/
+.grid_1,
+.grid_2,
+.grid_3,
+.grid_4,
+.grid_5,
+.grid_6,
+.grid_7,
+.grid_8,
+.grid_9,
+.grid_10,
+.grid_11,
+.grid_12,
+.grid_13,
+.grid_14,
+.grid_15,
+.grid_16 {
+  display: inline;
+  float: left;
+  position: relative;
+  margin-left: 10px;
+  margin-right: 10px; }
+
+/* Grid >> Children (Alpha ~ First, Omega ~ Last)
+----------------------------------------------------------------------------------------------------*/
+.alpha {
+  margin-left: 0; }
+
+.omega {
+  margin-right: 0; }
+
+/* Grid >> 16 Columns
+----------------------------------------------------------------------------------------------------*/
+.container_16 .grid_1 {
+  width: 40px; }
+
+.container_16 .grid_2 {
+  width: 100px; }
+
+.container_16 .grid_3 {
+  width: 160px; }
+
+.container_16 .grid_4 {
+  width: 220px; }
+
+.container_16 .grid_5 {
+  width: 280px; }
+
+.container_16 .grid_6 {
+  width: 340px; }
+
+.container_16 .grid_7 {
+  width: 400px; }
+
+.container_16 .grid_8 {
+  width: 460px; }
+
+.container_16 .grid_9 {
+  width: 520px; }
+
+.container_16 .grid_10 {
+  width: 580px; }
+
+.container_16 .grid_11 {
+  width: 640px; }
+
+.container_16 .grid_12 {
+  width: 700px; }
+
+.container_16 .grid_13 {
+  width: 760px; }
+
+.container_16 .grid_14 {
+  width: 820px; }
+
+.container_16 .grid_15 {
+  width: 880px; }
+
+.container_16 .grid_16 {
+  width: 940px; }
+
+/* Prefix Extra Space >> 16 Columns
+----------------------------------------------------------------------------------------------------*/
+.container_16 .prefix_1 {
+  padding-left: 60px; }
+
+.container_16 .prefix_2 {
+  padding-left: 120px; }
+
+.container_16 .prefix_3 {
+  padding-left: 180px; }
+
+.container_16 .prefix_4 {
+  padding-left: 240px; }
+
+.container_16 .prefix_5 {
+  padding-left: 300px; }
+
+.container_16 .prefix_6 {
+  padding-left: 360px; }
+
+.container_16 .prefix_7 {
+  padding-left: 420px; }
+
+.container_16 .prefix_8 {
+  padding-left: 480px; }
+
+.container_16 .prefix_9 {
+  padding-left: 540px; }
+
+.container_16 .prefix_10 {
+  padding-left: 600px; }
+
+.container_16 .prefix_11 {
+  padding-left: 660px; }
+
+.container_16 .prefix_12 {
+  padding-left: 720px; }
+
+.container_16 .prefix_13 {
+  padding-left: 780px; }
+
+.container_16 .prefix_14 {
+  padding-left: 840px; }
+
+.container_16 .prefix_15 {
+  padding-left: 900px; }
+
+/* Suffix Extra Space >> 16 Columns
+----------------------------------------------------------------------------------------------------*/
+.container_16 .suffix_1 {
+  padding-right: 60px; }
+
+.container_16 .suffix_2 {
+  padding-right: 120px; }
+
+.container_16 .suffix_3 {
+  padding-right: 180px; }
+
+.container_16 .suffix_4 {
+  padding-right: 240px; }
+
+.container_16 .suffix_5 {
+  padding-right: 300px; }
+
+.container_16 .suffix_6 {
+  padding-right: 360px; }
+
+.container_16 .suffix_7 {
+  padding-right: 420px; }
+
+.container_16 .suffix_8 {
+  padding-right: 480px; }
+
+.container_16 .suffix_9 {
+  padding-right: 540px; }
+
+.container_16 .suffix_10 {
+  padding-right: 600px; }
+
+.container_16 .suffix_11 {
+  padding-right: 660px; }
+
+.container_16 .suffix_12 {
+  padding-right: 720px; }
+
+.container_16 .suffix_13 {
+  padding-right: 780px; }
+
+.container_16 .suffix_14 {
+  padding-right: 840px; }
+
+.container_16 .suffix_15 {
+  padding-right: 900px; }
+
+/* Push Space >> 16 Columns
+----------------------------------------------------------------------------------------------------*/
+.container_16 .push_1 {
+  left: 60px; }
+
+.container_16 .push_2 {
+  left: 120px; }
+
+.container_16 .push_3 {
+  left: 180px; }
+
+.container_16 .push_4 {
+  left: 240px; }
+
+.container_16 .push_5 {
+  left: 300px; }
+
+.container_16 .push_6 {
+  left: 360px; }
+
+.container_16 .push_7 {
+  left: 420px; }
+
+.container_16 .push_8 {
+  left: 480px; }
+
+.container_16 .push_9 {
+  left: 540px; }
+
+.container_16 .push_10 {
+  left: 600px; }
+
+.container_16 .push_11 {
+  left: 660px; }
+
+.container_16 .push_12 {
+  left: 720px; }
+
+.container_16 .push_13 {
+  left: 780px; }
+
+.container_16 .push_14 {
+  left: 840px; }
+
+.container_16 .push_15 {
+  left: 900px; }
+
+/* Pull Space >> 16 Columns
+----------------------------------------------------------------------------------------------------*/
+.container_16 .pull_1 {
+  left: -60px; }
+
+.container_16 .pull_2 {
+  left: -120px; }
+
+.container_16 .pull_3 {
+  left: -180px; }
+
+.container_16 .pull_4 {
+  left: -240px; }
+
+.container_16 .pull_5 {
+  left: -300px; }
+
+.container_16 .pull_6 {
+  left: -360px; }
+
+.container_16 .pull_7 {
+  left: -420px; }
+
+.container_16 .pull_8 {
+  left: -480px; }
+
+.container_16 .pull_9 {
+  left: -540px; }
+
+.container_16 .pull_10 {
+  left: -600px; }
+
+.container_16 .pull_11 {
+  left: -660px; }
+
+.container_16 .pull_12 {
+  left: -720px; }
+
+.container_16 .pull_13 {
+  left: -780px; }
+
+.container_16 .pull_14 {
+  left: -840px; }
+
+.container_16 .pull_15 {
+  left: -900px; }
+
+/* Clear Floated Elements
+----------------------------------------------------------------------------------------------------*/
+/* http://sonspring.com/journal/clearing-floats */
+.clear {
+  clear: both;
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0; }
+
+/* http://perishablepress.com/press/2008/02/05/lessons-learned-concerning-the-clearfix-css-hack */
+.clearfix:after {
+  clear: both;
+  content: ' ';
+  display: block;
+  font-size: 0;
+  line-height: 0;
+  visibility: hidden;
+  width: 0;
+  height: 0; }
+
+.clearfix {
+  display: inline-block; }
+
+* html .clearfix {
+  height: 1%; }
+
+.clearfix {
+  display: block; }
+
+* {
+  padding: 0;
+  margin: 0; }
+
+h1, h2, h3, h4, h5, h6, p, pre, blockquote, label, ul, ol, dl, fieldset, address {
+  margin: 10px 0px; }
+
+a img {
+  border: none; }
+
+body {
+  background-image: url("/images/solo/background.jpeg");
+  font-family: helvetica, sans-serif; }
+
+nav.main {
+  background-color: #fff; }
+  nav.main div {
+    background-color: #fff; }
+  nav.main ul {
+    margin: 0px;
+    padding: 13px 0px 28px 0px; }
+    nav.main ul li {
+      font-family: 'Helvetica';
+      font-size: 15px;
+      list-style-type: none;
+      margin-right: 40px;
+      float: left; }
+      nav.main ul li a {
+        text-decoration: none;
+        color: black; }
+
+nav.sub .shield {
+  margin: 10px 0px;
+  float: right; }
+nav.sub ul li {
+  font-family: 'Helvetica';
+  font-size: 15px;
+  text-align: right;
+  list-style-type: none;
+  color: #222;
+  margin-bottom: 5px; }
+
+.logo {
+  float: left;
+  height: 150px;
+  width: 150px;
+  margin-top: 20px;
+  margin-left: 240px;
+  background-image: url(/images/solo/shield-small-shadow.png); }
+
+.content h2 {
+  font-family: 'Yanone Kaffeesatz', arial, serif;
+  font-size: 32px;
+  text-shadow: 2px 2px 2px white; }
+.content h3 {
+  font-family: 'Yanone Kaffeesatz', arial, serif;
+  font-size: 28px;
+  font-weight: 300;
+  color: #222; }
+.content h4 {
+  font-family: 'Yanone Kaffeesatz', arial, serif;
+  font-weight: 300;
+  font-size: 20px; }
+.content p {
+  font-family: 'Crimson Text' ,Georgia, sans-serif;
+  font-size: 16px;
+  color: #222;
+  line-height: 1.5em;
+  -webkit-border-radius: 7px; }
+.content ol {
+  margin-left: 25px; }
+.content li {
+  font-family: 'Crimson Text' ,Georgia, sans-serif;
+  font-size: 16px;
+  color: #222;
+  line-height: 1.5em;
+  -webkit-border-radius: 7px; }
+.content .publicated {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-family: 'Crimson Text' ,Georgia, sans-serif;
+  font-size: 16px;
+  font-style: italic;
+  color: #222; }
+
+span.dim {
+  color: #c6c6c6; }
+
+.events h2 {
+  color: #c6c6c6; }
+.events .event .icon {
+  width: 24px;
+  height: 24px;
+  float: left;
+  margin-top: 0px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  background-repeat: no-repeat; }
+.events .event .icon.esc {
+  background-image: url(/images/solo/home.png); }
+.events .event .icon.inspiration {
+  background-image: url(/images/solo/lightbulb.png); }
+.events .event .description {
+  margin-bottom: 0px; }
+.events .event .time {
+  font-style: italic;
+  margin-left: 29px;
+  margin-top: 0px;
+  margin-bottom: 0px; }
+
+.tags .tag {
+  margin-right: 10px;
+  float: left; }
+  .tags .tag .marker {
+    float: left;
+    width: 7px;
+    height: 20px;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px; }
+  .tags .tag .marker.ior {
+    background-color: #79d2e8; }
+  .tags .tag .marker.dkm {
+    background-color: #000; }
+  .tags .tag .content {
+    float: left;
+    padding: 0px 7px 0px 5px;
+    height: 20px;
+    background-color: white;
+    font-family: 'Helvetica';
+    font-size: 15px;
+    -webkit-border-top-right-radius: 5px;
+    -webkit-border-bottom-right-radius: 5px; }

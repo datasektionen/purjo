@@ -1,0 +1,23 @@
+<% stylesheet "500" %>
+
+<div id="error_box">
+  <h2>Hoppsan!</h2>
+  
+  <span class="small">Liquid::SyntaxError</span>
+  
+  <p>
+    Där blev nånting i templaten fel. Liquid säger: 
+  </p>
+  
+  <blockquote>
+    <%= @exception.message %>
+  </blockquote>
+  
+  <p>  
+    <%= link_to "Gå tillbaka", edit_text_node_path(@node) %> och försök
+    rätta till problemet. Om du inte lyckas lösa problemet själv, kontakta 
+    <a href="/sektionen/namnder/ior/kontakta">Ior</a>
+  </p>
+  
+  <p><em><a href="/sektionen/namnder/ior/kontakta">Ior</a></em></p>
+</div>

@@ -1,0 +1,12 @@
+<h1 class="blog_title">
+  <%= @blog.name %>
+  <%= link_to image_tag('feed.png'), formatted_blog_articles_url(@blog, :rss) %>
+</h1>
+
+<p><%= @blog.description %></p>
+
+<% if Person.current.has_role?(:editor) %>
+  <%= link_to "Nytt blogginlägg", new_blog_article_path(@blog) %>
+<% end %>
+
+<%= render :partial => "article", :collection => @articles %>

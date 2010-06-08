@@ -1,0 +1,20 @@
+<h1>Listing list_field_entries</h1>
+
+<table>
+  <tr>
+    <th>Value</th>
+  </tr>
+
+<% for list_field_entry in @list_field_entries %>
+  <tr>
+    <td><%=h list_field_entry.value %></td>
+    <td><%= link_to 'Show', list_field_entry %></td>
+    <td><%= link_to 'Edit', edit_list_field_entry_path(list_field_entry) %></td>
+    <td><%= link_to 'Destroy', list_field_entry, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New list_field_entry', new_list_field_entry_path %>

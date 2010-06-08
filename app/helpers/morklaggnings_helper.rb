@@ -1,0 +1,2 @@
+module MorklaggningsHelper
+end

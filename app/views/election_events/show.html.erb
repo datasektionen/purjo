@@ -1,0 +1,13 @@
+<p>
+  <b>Name:</b>
+  <%=h @election_event.name %>
+</p>
+
+<p>
+  <b>Date:</b>
+  <%=h @election_event.date %>
+</p>
+
+
+<%= link_to 'Edit', edit_election_event_path(@election_event) %> |
+<%= link_to 'Back', election_events_path %>

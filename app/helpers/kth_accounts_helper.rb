@@ -1,0 +1,2 @@
+module KthAccountsHelper
+end

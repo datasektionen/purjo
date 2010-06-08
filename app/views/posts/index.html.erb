@@ -1,0 +1,21 @@
+<% stylesheet "nyheter" -%>
+
+<h2>
+  Nyheter(<%= @tags.nil? ? 'Alla' : @tags.to_sentence(:connector => 'och') %>)
+  <%= link_to image_tag('feed.png'), formatted_posts_path(:rss, :tags => @tags) %>
+</h2>
+
+<%= include_node("/start") %>
+
+<h4>Kategorier</h4>
+<%= link_tags Tag.all %>
+
+<%= render :partial => 'post', :collection => @news_posts %>
+
+<p>
+  <% if @archive -%>
+    <%= link_to "Visa endast aktuella nyheter", posts_path(:tags => @tags) %>
+  <% else -%>
+    <%= link_to "Visa arkiverade nyheter", posts_path(:archive => true, :tags => @tags) %>
+  <% end -%>
+</p>

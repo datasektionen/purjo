@@ -1,0 +1,17 @@
+<p>
+  <%= f.label :person_id %><br />
+  (<em><small>Du kan söka på namn.</small></em>)<br />
+  <%= text_field_with_auto_complete :nominee, :person_id, {}, {:tokens => ';', :method => :get} %>
+</p>
+<p>
+  <%= f.label "Valtillfälle" %><br />
+  <%= collection_select(:nominee, :election_event_id, ElectionEvent.find(:all, :conditions => ["date >= ?", DateTime.now]), :id, :formated) %>
+</p>
+<p>
+  <%= f.label "Post" %><br />
+  <%= collection_select(:nominee, :chapter_post_id, ChapterPost.all, :id, :name) %>
+</p>
+<p>
+  <%= f.label "Svar" %><br />
+  <%= select_tag "nominee[status]", options_for_select({ "Ej svarat" => 0, "Tackat ja" => 1, "Tackat nej" => 2}, 0) %>
+</p>

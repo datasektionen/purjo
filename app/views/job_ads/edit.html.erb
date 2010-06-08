@@ -1,0 +1,11 @@
+<h1>Redigera jobbannons</h1>
+
+<% ior_form_for(@job_ad) do |f| %>
+  <%= render :partial => "form", :object => f %>
+
+  <p>
+    <%= f.submit "Spara" %>
+  </p>
+<% end %>
+
+<%= link_to 'Tillbaka', job_ads_path %>

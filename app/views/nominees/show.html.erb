@@ -1,0 +1,23 @@
+<p>
+  <b>Person:</b>
+  <%=h @nominee.person_id %>
+</p>
+
+<p>
+  <b>Election event:</b>
+  <%=h @nominee.election_event_id %>
+</p>
+
+<p>
+  <b>Chapter post:</b>
+  <%=h @nominee.chapter_post_id %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%=h @nominee.status %>
+</p>
+
+
+<%= link_to 'Edit', edit_nominee_path(@nominee) %> |
+<%= link_to 'Back', nominees_path %>

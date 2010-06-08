@@ -1,0 +1,14 @@
+<h2>Redigera "<%= @chapter_post.name %>" </h2>
+
+<% form_for(@chapter_post) do |f| %>
+  <%= f.error_messages %>
+
+  <%=  render :partial => 'form', :locals => { :f => f } %>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @chapter_post %> |
+<%= link_to 'Back', chapter_posts_path %>

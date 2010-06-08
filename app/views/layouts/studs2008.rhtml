@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="sv" lang="sv">
+<head>
+  <title>
+    Konglig Datasektionen - Studs
+        <% if (not @node.nil?) and @node.has_read_permission? Security::User.current %>
+            - <%= @node.name.capitalize %>
+        <% end %>
+  </title>
+  <%= stylesheet_link_tag 'studs' %>
+  <script src="/javascripts/prototype.js" type="text/javascript"></script>
+  <script src="/javascripts/application.js" type="text/javascript"></script>
+  <script src="/javascripts/scriptaculous.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div id="container">
+  <div id="menu">
+    <ul>
+      <%
+        node = @node
+
+        while not node.has_read_permission? Security::User.current do
+          node = node.parent
+        end
+
+        condition = lambda { |x| x.show_in_menu? }
+
+        while (children = node.children.select(&condition)).empty? do
+          node = node.parent
+        end
+      %>
+      <% children.each do |child_node| %>
+        <li><a href="<%= '/' + child_node.url %>"><%= child_node.name.capitalize %></a></li>
+      <% end %>
+    </ul>
+    <ul>
+        <% if Security::User.current.is_authenticated? %>
+            <li><a href="/portal/admin" title="Administrera webbplatsen (Alt + a)" accesskey="A"><span class="accesskey">A</span>dministration</a></li>
+                <% if Security::User.current.is_a? Security::LegacyUser %>
+                    <li><a href="/logout" title="Logga ut från d.kth.se (Alt + l)" accesskey="l">
+                <% else %>
+                    <li><a href="<%= url_for :controller => 'security/login', :action => 'logout' %>" title="Logga ut fr�n d.kth.se (Alt + l)" accesskey="l">
+                <% end%>
+            <span class="accesskey">L</span>ogga ut <%= Security::User.current.display_name %></a></li>
+        <% else %>
+            <li><a href="/login" title="Logga in på d.kth.se (Alt + l)" accesskey="l">
+            <span class="accesskey">L</span>ogga in</a></li>
+        <% end %>
+    </ul>
+  </div>
+  
+  <div id="content">
+      <% if flash[:notice] -%>
+    <div id="flash_notice"><%= flash[:notice] %></div>
+    <% end -%>
+  
+    <%
+      studs_root = Content::Node.find :first, :conditions => "url = 'sektionen/studs'"
+      node = @node
+      nodes = []
+  
+      while node != studs_root
+        node = node.parent
+        nodes.push node
+      end
+  
+      nodes.reverse!
+    %>
+    
+    <div id="path">
+      <ul>
+        <% nodes.each do |node| %>
+          <li><a href="<%= '/' + node.url %>"><%= node.name.capitalize %></a></li>
+        <% end %>
+        <li><%= @node.name.capitalize %></li>
+      </ul>
+    </div>
+      
+      <%= yield %>
+    
+  </div>
+
+        <% if @node and @node.has_any_permission_of? Security::User.current, :write, :create, :admin %>
+        
+      <div id="admin_box">
+           <a href="#" onclick="Element.toggle('admin_links'); this.innerHTML = ($('admin_links').style.display == 'none')?'&raquo;':'&laquo;'">&laquo;</a>
+
+         <div id="admin_links">
+         <% if @node.has_create_permission? Security::User.current %>
+             | <%= link_to image_tag("page_add.png", :alt => "Ny undersida"), :controller => 'node', :action => 'new', :id => @node %>
+             | <%= link_to image_tag("page_attach.png", :alt => "Ny fil"), :controller => 'node', :action => 'new_file', :id => @node %>
+           <% end %>
+           
+           <% if @node.has_write_permission? Security::User.current %>
+             | <%= link_to image_tag("page_edit.png", :alt => "Redigera sida"), :controller => 'node', :action => 'edit', :id => @node %>
+             | <%= link_to "Lista subnoder", :controller => 'node', :action => 'list', :id => @node %>
+             | <%= link_to "Historia", :controller => 'node', :action => 'history', :id => @node %>
+           <% end %>
+           
+           <% if @node.has_admin_permission? Security::User.current %>
+                | <%= link_to "Rättigheter", :controller => 'node', :action => 'manage_permissions', :id => @node %>
+           <% end %>
+           </div>
+<!--           <a href="#" onclick="Effect.toggle('admin_links', 'appear', {duration:'0.15'}); return false;">&laquo;</a> -->
+
+           </div>
+      </div>
+      <% end %>
+</div>
+
+</body>
+</html>
+

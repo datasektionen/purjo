@@ -1,0 +1,10 @@
+<h1>Nytt blogginlägg i <%= @blog %></h1>
+
+<% ior_form_for([@blog, @article]) do |f| %>
+
+  <%= render :partial => "form", :object => f %>
+
+  <%= f.submit "Create" %>
+<% end %>
+
+<%= link_to 'Back', blog_articles_path(@blog) %>

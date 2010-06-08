@@ -1,0 +1,174 @@
+html {
+	padding-bottom: 2em;
+}
+
+body {
+	padding-top: 200px;
+}
+
+body {
+	background: url(../images/studs/logo_small.png) white no-repeat 20px 0px;
+	
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	font-size: 10pt;
+}
+
+p {
+	margin-top: 2px;
+	margin-bottom: 12px;
+}
+
+a {
+	color: #333333;
+}
+
+a img {
+	border: none;
+}
+
+div#container {
+	width: 70em;
+}
+
+/* Path */
+
+div#path ul {
+	padding-left: 0;
+}
+
+div#path ul li {
+	display: inline;
+	font-size: 1.5em;
+	font-weight: bold;
+}
+
+div#path ul li a {
+	text-decoration: underline;
+	background: transparent url(/images/studs/arrow-right-big.png) no-repeat scroll 100% 0.4em;
+	
+	margin-right: 2px;
+	padding-right: 20px;
+}
+
+/* Menu */
+div#container div#menu {
+	float: left;
+	padding-top: 1.5em;
+}
+
+div#container div#menu ul {
+	font-size: 9pt;
+	font-weight: bold;
+
+	margin-top: 0.5em;
+	margin-bottom: 0;
+	width: 15em;
+	
+	list-style-image: url(../images/studs/arrow.gif);
+}
+
+div#container div#menu ul:first-child {
+	margin-top: 0;
+}
+
+div#container div#menu ul li a {
+	color: black;
+	text-decoration: none;
+}
+
+/* Content */
+div#container div#content {
+	float: right;
+	width: 50em;
+	border-left: 3px solid #E2007F;
+	padding-left: 2em;
+	padding-bottom: 1.5em;
+}
+
+div#container div#content div:first-child {
+	margin-top: 1.5em;
+}
+
+/* Admin box */
+div#container div#admin_box {
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+
+	margin-top: 20px;
+	padding: 4px;
+
+    background: #F2F2F2;
+    border: 1px solid #DBDBDB;
+	
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 8pt;
+	line-height: 14pt;
+}
+
+div#container div#admin_box a {
+	text-decoration: none;
+}
+
+div#container div#admin_box a img {
+	border: none;
+	vertical-align: middle;
+}
+
+div#admin_box div {
+    display: inline;
+}
+
+/* When showing info from flash[:notice] */
+div#flash_notice {
+    padding: 0.3em;
+    border: 1px solid #DBDBDB;
+    background: #F2F2F2;
+    margin-bottom: 1em;
+    font-weight: bold;
+}
+
+/* Parse errors in Nodes */
+span.parseerror {
+	padding: 2px;
+	background-color: #ffb6b1;
+}
+
+div#preview {
+  background: url('/images/node_draft_background.gif');
+}
+
+/* Tables */
+ table {
+        border-collapse: collapse;
+        margin: 0.5em 0.5em;
+}
+
+table td, table th {
+        border: 1px solid #DBDBDB;
+        padding: 2px 6px;
+        text-align: left;
+        vertical-align: top;
+}
+
+table th {
+        background: #DBDBDB;
+}
+
+table tr.odd td {
+        background: #F2F2F2;
+}
+
+table .right {
+        text-align: right;
+}
+
+table .left {
+        text-align: left;
+}
+
+table.basic td, table.basic th {
+        border: none;
+        text-align: left;
+        vertical-align: top;
+}

@@ -1,0 +1,18 @@
+<p>
+  <b>Name:</b>
+  <%=h @blog.name %>
+</p>
+
+<p>
+  <b>Perma name:</b>
+  <%=h @blog.perma_name %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%=h @blog.content %>
+</p>
+
+
+<%= link_to 'Edit', edit_blog_path(@blog) %> |
+<%= link_to 'Back', blogs_path %>

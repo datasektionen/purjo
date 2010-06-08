@@ -1,0 +1,72 @@
+sv:
+  date:
+    formats:
+      default: "%Y-%m-%d"
+      short: "%e. %b"
+      long: "%e. %B %Y"
+      
+    day_names: [Söndag, Måndag, Tisdag, Onsdag, Torsdag, Fredag, Lördag]
+    abbr_day_names: [Sön, Mon, Tis, Ons, Tor, Fre, Lör]
+    month_names: [~, Januari, Februari, Mars, April, Maj, Juni, Juli, Augusti, September, Oktober, November, December]
+    abbr_month_names: [~, Jan, Feb, Mar, Apr, Maj, Jun, Jul, Aug, Sep, Okt, Nov, Dec]
+    order: [:day, :month, :year]
+  
+  time:
+    formats:
+      default: "%A, %e. %B %Y, %H:%M Uhr"
+      time: "%H:%M Uhr"
+      short: "%e.%m., %H:%M Uhr"
+      long: "%A, %e. %B %Y, %H:%M Uhr"
+      cal: "%a %b %d"
+    
+    am: ""
+    pm: ""
+
+  activerecord:
+      errors:
+        template:
+          header:
+            one: "1 error prohibited this {{model}} from being saved"
+            other: "{{count}} errors prohibited this {{model}} from being saved"
+          body: "there were problems with the following fields:"
+        messages:
+          accepted: "must be accepted"
+          blank: "can't be blank"
+          confirmation: "doesn't match confirmation"
+          empty: "can't be empty"
+          equal_to: "must be equal to {{count}}"
+          even: "must be even"
+          exclusion: "is reserved"
+          greater_than: "must be greater than {{count}}"
+          greater_than_or_equal_to: "must be greater than or equal to {{count}}"
+          inclusion: "is not included in the list"
+          invalid: "is invalid"
+          less_than: "must be less than {{count}}"
+          less_than_or_equal_to: "must be less than or equal to {{count}}"
+          not_a_number: "is not a number"
+          odd: "must be odd"
+          taken: "is already taken"
+          too_long: "is too long (maximum is {{count}} characters)"
+          too_short: "is too short (minimum is {{count}} characters)"
+          wrong_length: "is the wrong length (should be {{count}} characters)"
+  studs:
+    cv:
+      phone: "Telefonnummer"
+      birth_year: "Födelseår"
+      study_start: "Studiestart"
+      planned_exam: "Planerad examen"
+      personal: "Personlig text"
+      ambitions: "Ambitioner"
+      employment: "Tidigare anställningar"
+      education: "Utbildning"
+      other_commitments: "Andra erfarenheter"
+      language_skills: "Språkkunskaper"
+      it_skills: "IT-kunskaper"
+      other: "Övrigt"
+      back: "Tillbaka"
+      logout: "Logga ut"
+      flash:
+        logout: "Du har nu loggats ut ur CV-databasen, välkommen åter!"
+        welcome: "Välkommen till Studs CV-databas!"
+        unknown_user_or_pass: "Ogiltigt användarnamn eller lösenord"
+        no_access: "Du har inte tillgång till Studs"

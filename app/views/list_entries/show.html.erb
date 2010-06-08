@@ -1,0 +1,27 @@
+<table>
+<tr>
+  <th>Person</th>
+  <td>
+    <% if @list_entry.person -%>
+      <%= @list_entry.person.name %>
+    <% else -%>
+      <%= @list_entry.person %>
+    <% end -%>
+  </td>
+</tr>
+
+<tr>
+  <th>Comment:</th>
+  <td><%=h @list_entry.comment %></td>
+</tr>
+
+<% for field in @list_entry.list.list_fields -%>
+  <tr>
+    <th><%= field.description %>:</th>
+    <td><%= @list_entry.send(field.name).try(:value) -%></td>
+  </tr>
+<% end -%>
+</table>
+
+<%= link_to 'Edit', edit_list_entry_path(@list_entry) %> (ej klar) |
+<%= link_to 'Back', list_path(@list_entry.list) %>

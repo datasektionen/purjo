@@ -1,0 +1,146 @@
+<style type="text/css" media="screen">
+  fieldset {
+    margin-left: 0px;
+    border: none;
+    padding: 0;
+    margin-bottom: 10px;
+  }
+
+  fieldset ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  fieldset ul li {
+    clear: both;
+    float: left;
+    width: 100%;
+    padding: 8px 0;
+    border-top: 1px solid #eeeeee;
+  }
+  
+  fieldset ul li label {
+    float: left;
+    width: 35%;
+    padding: 0.3em;
+    margin-right: 2%;
+    line-height: 1em;
+    color: #333333;
+    font-weight:bold;
+  }
+  
+  fieldset ul li table {
+    float: left;
+  }
+  
+  fieldset ul li .controls {
+    float: right;
+  }
+  
+  #fields li:hover {
+    background-color: #fdffd2;
+  }
+
+  li.submit_li {
+    border-top: 1px solid #eeeeee;
+  }
+
+  li.submit_li * {
+    margin-right: 7px;
+    margin-top: 7px;
+  }
+  
+  #new_field div {
+    margin-top: 5px;
+    margin-top: 5px;
+  }
+  
+  #fields_container {
+    width: 600px;
+    float: left;
+  }
+  
+  #list_settings {
+    float:right;
+    right: 0px;
+    width: 300px;
+    background-color: #fdffd2;
+  }
+  
+</style>
+
+<script type="text/javascript" charset="utf-8">
+  function make_fields_sortable() {
+    Sortable.create('fields');
+  }
+  
+  function remove_field(element, id) {
+    /*
+     * Lägg till ett delete_fields-hidden-fält i <form>-taggen som visar vilka fält
+     * som ska tas bort.
+     */
+    element.up().up().insert(new Element('input', {'type':'hidden', 'name': 'list[delete_fields][]', 'value' : id}))
+    Element.remove(element);
+  }
+  
+  Event.observe(window, 'load', function() {
+    make_fields_sortable();
+  });
+  
+</script>
+
+
+<div id="fields_container">
+  <h2>Redigerar '<%= @list.title %>'</h2>
+  
+  <% ior_form_for @list do |form| %>
+    <%= render :partial => form %>
+    
+    <%= form.submit "Uppdatera '#{@list.title}'", :disable_with => 'Uppdaterar...' %> eller <%= link_to 'avbryt', lists_url %></ul>
+  <% end %>
+</div>
+
+<div id="list_settings">
+  <h3>Nytt fält</h3>
+  <% if @list.has_entries? -%>
+    <p>
+      Eftersom denna lista har svar går det ej att ändra på fälten i den
+    </p>
+  <% else -%>
+    <fieldset>
+    <ul>
+      <li id="new_field">
+        <% remote_form_for(@list_field, :url => new_list_field_path, :method => :get, :complete => 'make_fields_sortable()') do |ff| %>
+          <div>
+            <label>Namn</label><%= ff.text_field :name, :size => 20 %>
+          </div>
+          
+          <div>
+            <label>Hjälptext</label><%= ff.text_field :description, :size => 20 %>
+          </div>
+          
+          <div>
+            <label>Frågetyp</label><%= ff.select :kind, ListField.avaliable_kinds %>
+          </div>
+          
+          <div>
+            <label>Värde</label><%= ff.text_field :value, :size => 20 %>
+          </div>
+          
+          <div>
+            <label>Visa i listan</label><%= ff.check_box :show_in_list %>
+          </div>
+          
+          <div>
+            <%= ff.submit 'Lägg till fält' %>
+          </div>
+        <% end %>
+      </li>
+    </ul>
+    </fieldset>
+  <% end -%>
+  
+  <h3>Hjälp</h3>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+</div>

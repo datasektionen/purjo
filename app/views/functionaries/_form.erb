@@ -1,0 +1,22 @@
+  <p>
+    <%= f.label 'Användarnamn' %><br />
+    (<em><small>Du kan söka på namn. Lämna tom om posten är bordlagd</small></em>)<br />
+    <%= text_field_with_auto_complete :functionary, :person_id, {}, {:tokens => ';', :method => :get} %>
+  </p>
+
+  <p>
+    <%= f.label 'Post' %><br />
+    <%= collection_select(:functionary, :chapter_post_id, ChapterPost.all, :id, :name) %>
+  </p>
+  <p>
+    <%= f.label 'Stiger på' %><br />
+    <%= f.date_select :active_from %>
+  </p>
+  <p>
+    <%= f.label 'Stiger av' %><br />
+    <%= f.date_select :active_to %>
+  </p>
+  <p>
+    <%= f.label 'Posten är bordlagd' %><br />
+    <%= f.check_box :postponed %>
+  </p>

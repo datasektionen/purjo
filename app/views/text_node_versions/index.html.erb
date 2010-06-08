@@ -1,0 +1,10 @@
+<h2>Historia</h2>
+
+<% list_for(@versions) do |list| -%>
+  <%= list.column :version %>
+  <%= list.column :created_at %>
+    
+  <% list.actions do |version| %>
+    <%= link_to "Visa", text_node_version_path(@node, version) %>
+  <% end %>
+<% end -%>

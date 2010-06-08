@@ -1,0 +1,99 @@
+/* Common calendar styles */
+
+.calendar #navbar li {line-height: 1em;}
+.displayblock {display: block;}
+
+/* Viewing single event */
+.calendar p.time {font-style: normal;}
+.calendar #singleevent ul.author li {float: right; line-height: 1em;}
+
+
+/* Styles used in the editing page */
+
+select.calendar_start_year, select.calendar_end_year {width: 4.5em;}
+select.calendar_start_month, select.calendar_start_day, select.calendar_start_hour, select.calendar_start_minute, select.calendar_end_month, select.calendar_end_day, select.calendar_end_hour, select.calendar_end_minute {width: 3em;}
+p.calendar_error {font-weight: bold;}
+
+/* Month view */
+
+.calendar table {border-collapse: collapse; font-size: 100%;}
+
+.calendar th, td {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 1.1em;
+  width: 9em;
+  height: 7em;
+  overflow: show;
+  border-bottom: 1px solid #dbdbdb;
+  border-right: 1px solid #dbdbdb;
+  vertical-align: top;
+} /* squares in the calendar */
+
+.calendar th {
+  background-color: #e2007f;
+  font-size: 1em;
+  color: #fff;
+  height: 1.1em !important;
+} /* headline squares (days) */
+
+.calendar td {
+  background-color: #ffffff;
+} /* calendar days */
+
+.calendar td p.daynumber {
+  font-weight: normal;
+  font-size: 0.9em;
+  margin-bottom: 0.1em;
+}
+
+.calendar td.today p.daynumber {
+  font-weight: bold;
+  font-size: 0.9em;
+  color: #e2007f;
+}
+
+.calendar td.otherMonth {
+  background-color: #f2f2f2 !important;
+  color: #d7d7d7;
+} /* days that do not belong to the month */
+
+.calendar td.week, .calendar th.week  {width: 1.2em;} /* left column */
+.calendar td.week {                    
+  font-size: 0.8em;
+  background-color: #d7d7d7;
+  color: #333333;
+} /* weeknumber */
+
+
+.calendar td.today {
+  /*border-color: #000;*/
+  border: 1px solid black;
+  border-left: 1px solid black;
+} /* current day */
+
+.calendar td.today a {  
+  font-weight: bold;
+  color: rgb(226, 0, 127);
+}
+
+.calendar td a {
+  /*font-family: Tahoma, Arial, Helvetica, sans-serif;*/
+  font-family: Arial, Helvetica, sans-serif;
+  display: block;
+  padding: 0.1em;
+  text-decoration: none;
+  font-size: 0.9em;
+  color: #000;
+} /* links within each day */
+
+.calendar td.otherMonth a {
+  color: #d7d7d7;
+} /* links within darkened days (days not in the current month) */
+  
+.calendar td a:hover {
+  color: #e2007f;
+} /* links on mouse over */
+
+/* Vet ej vad detta är */
+.calendar .calendar_link {font-size: 1.1em; font-weight: bold;}
+

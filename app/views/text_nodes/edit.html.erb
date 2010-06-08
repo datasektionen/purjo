@@ -1,0 +1,7 @@
+<h2>Ändrar sidan "<%= @node.url %>"</h2>
+
+<% ior_form_for @node do |form| -%>
+  <%= render :partial => 'form', :object => form %>
+<% end -%>
+
+<%= render :partial => 'textile_help', :layout => false %>
