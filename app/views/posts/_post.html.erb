@@ -4,7 +4,7 @@
 <div>
 <% end %>
   <h3><%= link_to post, post %></h3>
-  <p><%= post.content %></p>
+  <p><%= textilize(post.content).html_safe %></p>
   
   <% if Person.current.editor? %>
   <ul class="horizontal author left">

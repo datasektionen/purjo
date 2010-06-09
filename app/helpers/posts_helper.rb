@@ -1,6 +1,6 @@
 module PostsHelper
   def link_tags(tags)
-    tags.collect{|c| link_to c, posts_path(:tags => c.name)} * ' '
+    tags.collect{|c| link_to c, posts_path(:tags => c.name)}.join(' ').html_safe
   end
   
   def calendar_post_date_format(post)

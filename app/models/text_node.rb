@@ -1,6 +1,5 @@
 class TextNode < ActiveRecord::Base
-  acts_as_versioned
-  #acts_as_textiled :contents
+  #acts_as_versioned
   acts_as_tree
   
   has_many :file_nodes, :foreign_key => 'parent_id'

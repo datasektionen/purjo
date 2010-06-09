@@ -9,7 +9,7 @@
   <%= include_node("/start") %>
   
   <h4>Kategorier</h4>
-  <%= link_tags Tag.all %>
+  <%= link_tags ActsAsTaggableOn::Tag.all %>
   
   <%= render :partial => 'posts/post', :collection => @news_posts %>
   

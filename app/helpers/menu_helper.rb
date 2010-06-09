@@ -79,7 +79,7 @@ module MenuHelper
     
     html = html.join "\n"
     
-    concat(html)
+    concat(html.html_safe)
     
   end
   

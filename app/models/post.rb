@@ -19,7 +19,7 @@ class Post < ActiveRecord::Base
   end
   
   
-  acts_as_textiled :content
+  #acts_as_textiled :content
   
   acts_as_taggable_on :categories
   
