@@ -16,6 +16,8 @@ class Post < ActiveRecord::Base
       
       {:conditions => [ 'NOT (ends_at < :start_date OR starts_at > :end_date)', {:start_date => date.beginning_of_day, :end_date => date.end_of_day}]}
     }
+    
+    scope :newer_than, lambda { |time| where(['starts_at > ?', Time.now - time]) }
   end
   
   
@@ -23,7 +25,7 @@ class Post < ActiveRecord::Base
   
   belongs_to :created_by, :class_name => 'Person'
   has_many :noises
-  
+  validates_presence_of :starts_at, :ends_at, :if => lambda { |post| post.calendar_post? }
   validate :must_have_either_news_post_or_calendar_post
   validate :start_date_before_end_date
 
@@ -54,6 +56,7 @@ class Post < ActiveRecord::Base
   
   def start_date_before_end_date
     return true unless self.calendar_post
+    return unless starts_at.present? && ends_at.present?
     
     if self.starts_at > self.ends_at
       errors.add_to_base "Aktiviteten måste börja innan den slutar, doh!"

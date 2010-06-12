@@ -8,15 +8,10 @@ class CalendarsController < ApplicationController
       end
       
       format.ics do
-        posts = Post.calendar_posts.find(:all, :conditions => ["starts_at > ?", Time.now - 60.days])
+        posts = Post.calendar_posts.newer_than(60.days)
         renderer = Ior::Calendar::IcsRenderer.new(posts)
         render :text => renderer.render
       end
     end
-  end
-  
-  private
-  def vevent(start, stop, content)
-    
   end
 end
