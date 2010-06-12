@@ -9,3 +9,4 @@ config/configuration.yml
 doc/api
 tmp
 rerun.txt
+.bundle
