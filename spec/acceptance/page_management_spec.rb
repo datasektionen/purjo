@@ -67,8 +67,6 @@ feature "page management" do
     visit "/om_datasektionen"
     click_admin_link "Ta bort sida"
     
-    save_and_open_page
-    
     # TODO  it should have
     #page.should have_success_message
     
