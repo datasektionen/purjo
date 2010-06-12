@@ -43,3 +43,12 @@ end
 Factory.define(:editor_role, :class => 'Role') do |r|
   r.name "editor"
 end
+
+Factory.define(:tentapub_calendar_post, :class => 'Post') do |f|
+  f.name "Tentapub"
+  f.content "DKM anordnar tentapub"
+  f.calendar_post true
+  f.starts_at 10.days.from_now.at_midnight + 18.hours
+  f.ends_at 11.days.from_now.at_midnight + 3.hours
+end
+
