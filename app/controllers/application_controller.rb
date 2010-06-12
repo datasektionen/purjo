@@ -1,39 +1,25 @@
-# Filters added to this controller apply to all controllers in the application.
-# Likewise, all the methods added will be available for all controllers.
-
 class ApplicationController < ActionController::Base
   protect_from_forgery
   layout 'application'
   include Ior::Security::AuthenticationSystem
-  # Vill du installera ExceptionNotifier? Gör inte det. /spatrik
-
+  include RoleRequirementSystem
+  before_filter :authenticate
   before_filter :set_locale
+  before_filter :save_return_to_url
 
   def set_locale
     I18n.locale = :sv
   end
 
-  # Borrowed some code from the RoleRequirement gem
-  include RoleRequirementSystem
-  
-  before_filter :save_return_to_url
-  
   def save_return_to_url
     session[:return_to] = request.env['HTTP_REFERER']
   end
   
   def redirect_back_or_default(default)
-    puts "return_to = #{session[:return_to]}"
     redirect_to(session[:return_to] || default)
     session[:return_to] = nil
   end
-  
-  
-  helper :all # include all helpers, all the time
-  before_filter :authenticate
 
-  protect_from_forgery # :secret => '70750404a8baf26d530949457f3fdfb3'
-  
   protected
   def rescue_action_in_public(exception)
     @exception = exception
