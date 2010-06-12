@@ -1,4 +1,11 @@
-.bundle
+mkmf.log
+.DS_Store
+log/*
+db/*.sql
 db/*.sqlite3
-log/*.log
-tmp/**/*
+db/schema.rb
+config/database.yml
+config/configuration.yml
+doc/api
+tmp
+rerun.txt
