@@ -26,7 +26,7 @@ end
 
 Factory.define(:admin_user, :parent => :person) do |f|
   f.kth_ugid 'u1something'
-  f.kth_username 'mradmin'
+  f.kth_username 'admin'
   f.first_name "Admin"
   f.last_name "Bofh"
   f.email "bofh@example.com"
@@ -52,3 +52,18 @@ Factory.define(:tentapub_calendar_post, :class => 'Post') do |f|
   f.ends_at 11.days.from_now.at_midnight + 3.hours
 end
 
+Factory.define(:nlg_news_post, :class => 'Post') do |f|
+  f.name "Näringslivsgruppsnyhet"
+  f.news_post true
+  f.expires_at 10.days.from_now
+  f.after_create do |post|
+    post.created_by = Person.find_by_kth_username("admin") || Factory(:admin_user)
+    nlg_tag = ActsAsTaggableOn::Tag.find_by_name('Näringslivsgruppen') || Factory(:naringslivsgruppen_tag)
+    post.taggings.create!(:context => 'categories', :tag => nlg_tag)
+    post.save!
+  end
+end
+
+Factory.define(:naringslivsgruppen_tag, :class => 'ActsAsTaggableOn::Tag') do |f|
+  f.name "Näringslivsgruppen"
+end

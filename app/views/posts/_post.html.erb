@@ -1,7 +1,7 @@
 <% if post.sticky %>
-<div class="sticky">
+<div class="sticky" id="news_post_<%= post.id %>">
 <% else %>
-<div>
+<div id="news_post_<%= post.id %>">
 <% end %>
   <h3><%= link_to post, post %></h3>
   <p><%= textilize(post.content).html_safe %></p>
@@ -26,7 +26,7 @@
     <li><%= link_to post.created_by, person_path(post.created_by) %></li>
     <li>Skapad <%= post.created_at.strftime "%d %b" %></li>
     <li>Förfaller <%= post.expires_at.strftime "%d %b"%></li>
-    <li class="last"><%= link_tags post.categories %></li>
+    <li class="last categories"><%= link_tags post.categories %></li>
   </ul>
 </div>
 <div class="separator">&nbsp;</div>
