@@ -24,4 +24,5 @@ group :test do
   gem 'factory_girl_rails', :git => 'git://github.com/thoughtbot/factory_girl_rails.git'
   gem 'factory_girl', :git => 'git://github.com/thoughtbot/factory_girl.git'
   gem 'capybara'
+  gem 'timecop'
 end
