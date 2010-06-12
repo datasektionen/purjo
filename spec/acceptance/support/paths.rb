@@ -5,6 +5,10 @@ module NavigationHelpers
     "/"
   end
   
+  def all_nodes_path
+    text_node_children_path(Node.find_by_url("/"))
+  end
+  
   def current_path
     URI.parse(current_url).select(:path, :query).compact.join('?')
   end

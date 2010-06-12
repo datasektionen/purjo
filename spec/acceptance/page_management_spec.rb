@@ -50,9 +50,7 @@ feature "page management" do
         
     visit "/om_datasektionen"
     
-    within "div#admin_links" do
-      click "Redigera sida"
-    end
+    click_admin_link "Redigera sida"
     
     fill_in "Contents", :with => 'Uppdaterad information om datasektionen'
     
@@ -63,8 +61,40 @@ feature "page management" do
     page.should have_content("Uppdaterad information om datasektionen")
   end
   
-  def all_nodes_path
-    text_node_children_path(Node.find_by_url("/"))
+  scenario "removing a page" do
+    login_as(:admin_user)
+    Factory(:about_page)
+    visit "/om_datasektionen"
+    click_admin_link "Ta bort sida"
+    
+    save_and_open_page
+    
+    # TODO  it should have
+    #page.should have_success_message
+    
+    visit all_nodes_path
+    
+    page.should_not have_content("Om datasektionen")
   end
   
+  RSpec::Matchers.define :have_success_message do
+    match do |page|
+      page.should have_css("div#flash_notice")
+    end
+    
+    failure_message_for_should do |actual|
+      "expected that the page should contain a success message, but it didn't"
+    end
+
+    failure_message_for_should_not do |actual|
+      "expected that the page should not contain a sucess message, but it did"
+    end
+  end
+  
+  
+  def click_admin_link(text)
+    within "div#admin_links" do
+      click text
+    end
+  end
 end
