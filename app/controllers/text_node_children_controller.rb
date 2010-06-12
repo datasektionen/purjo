@@ -7,7 +7,7 @@ class TextNodeChildrenController < ApplicationController
   
   def new
     @parent = TextNode.find(params[:node_id])
-    @child = @parent.children.new
+    @node = @parent.children.new
   end
   
   def create 

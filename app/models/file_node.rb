@@ -1,5 +1,5 @@
 class FileNode < ActiveRecord::Base
-  has_attachment :storage => :file_system
+  #has_attachment :storage => :file_system
   
   belongs_to :parent, :class_name => 'TextNode', :foreign_key => 'parent_id'
   

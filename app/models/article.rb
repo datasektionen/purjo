@@ -2,8 +2,6 @@ class Article < ActiveRecord::Base
   belongs_to :blog
   belongs_to :author, :class_name => "Person", :foreign_key => "author_id"
   
-  acts_as_textiled :content
-  
   def to_param
     "#{id}-#{perma_name}"
   end

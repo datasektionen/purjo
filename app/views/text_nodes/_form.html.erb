@@ -1,6 +1,8 @@
-<%= form.text_field :name %>
-<%= form.text_field :custom_layout %>
 
-<%= form.text_area :contents, :cols => 80, :rows => 25 %>
-
-<%= form.submit "Spara" %>
+<%= simple_form_for @node, :url => @parent.present? ? text_node_children_path(@parent) : text_node_path(@node) do |form| %>
+  <%= form.input :name %>
+  <%= form.input :custom_layout %>
+  <%= form.input :contents %>
+  <%= form.submit %>
+  
+<% end %>

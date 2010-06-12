@@ -10,6 +10,7 @@ module ApplicationHelper
     end
     output += link_to(text, url, options) 
     output += "</div>"
+    output.html_safe
   end
   
   def javascript(*scripts)
@@ -25,7 +26,7 @@ module ApplicationHelper
   end
 
   def current_url
-    "http://" + request.env['HTTP_HOST'] + request.request_uri
+    "http://" + request.raw_host_with_port + request.fullpath
   end
   
 end

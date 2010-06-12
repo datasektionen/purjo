@@ -2,7 +2,6 @@ class Blog < ActiveRecord::Base
   before_validation :set_perma_name
   validates_uniqueness_of :perma_name, :message => "must be unique. Choose another perma name."
   has_many :articles, :order => "created_at desc"
-  acts_as_textiled :description
   
   def to_s
     name

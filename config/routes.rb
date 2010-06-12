@@ -1,4 +1,4 @@
-ActionController::Routing::Routes.draw do |map|
+Rails.application.routes.draw do |map|
   map.protocols '/protocols', :controller => 'protocols', :action => 'index'
   
   map.protocol "/protocols/:filename", :controller => 'protocols', :action => 'show'

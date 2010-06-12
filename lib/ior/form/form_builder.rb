@@ -2,8 +2,6 @@ module Ior
   module Form
     class FormBuilder < ActionView::Helpers::FormBuilder
       
-      include TextileEditorHelper
-      
       def text_field(method, options = {})
         options[:size] ||= nil
         row(method, options) do
