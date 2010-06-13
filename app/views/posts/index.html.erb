@@ -1,14 +1,14 @@
 <% stylesheet "nyheter" -%>
 
 <h2>
-  Nyheter(<%= @tags.nil? ? 'Alla' : @tags.to_sentence(:connector => 'och') %>)
-  <%= link_to image_tag('feed.png'), formatted_posts_path(:rss, :tags => @tags) %>
+  Nyheter(<%= @tags.nil? ? 'Alla' : @tags.to_sentence %>)
+  <%= link_to image_tag('feed.png'), posts_path(:format => :rss, :tags => @tags) %>
 </h2>
 
 <%= include_node("/start") %>
 
 <h4>Kategorier</h4>
-<%= link_tags Tag.all %>
+<%= link_tags ActsAsTaggableOn::Tag.all %>
 
 <%= render :partial => 'post', :collection => @news_posts %>
 

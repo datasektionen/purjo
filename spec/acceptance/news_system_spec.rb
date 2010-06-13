@@ -26,7 +26,7 @@ feature "the news system" do
     page.should have_content("Näringslivsgruppsnyhet")
     
     within("div#news_post_#{nlg_news.id} .categories") do
-      page.should have_content("Näringslivsgruppen")
+      page.should have_content("NLG")
     end
   end
   
@@ -41,10 +41,19 @@ feature "the news system" do
     
     fill_in "Name", :with => "Todays News"
     fill_in "Content", :with => "Todays news contents"
-    check "Näringslivsgruppen"
+    check "NLG"
     check "Nyhet"
     fill_in "Visas till", :with => 1.day.ago.to_s
     
     click "Create Post"
+  end
+  
+  scenario "viewing news with tag" do
+    Factory(:root_page)
+    Factory(:naringslivsgruppen_tag)
+    Factory(:nlg_news_post)
+    visit "/nyheter?tags=NLG"
+    
+    page.should have_content("Näringslivsgruppsnyhet")
   end
 end

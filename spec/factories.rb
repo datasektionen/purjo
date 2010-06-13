@@ -58,12 +58,12 @@ Factory.define(:nlg_news_post, :class => 'Post') do |f|
   f.expires_at 10.days.from_now
   f.after_create do |post|
     post.created_by = Person.find_by_kth_username("admin") || Factory(:admin_user)
-    nlg_tag = ActsAsTaggableOn::Tag.find_by_name('Näringslivsgruppen') || Factory(:naringslivsgruppen_tag)
+    nlg_tag = ActsAsTaggableOn::Tag.find_by_name('NLG') || Factory(:naringslivsgruppen_tag)
     post.taggings.create!(:context => 'categories', :tag => nlg_tag)
     post.save!
   end
 end
 
 Factory.define(:naringslivsgruppen_tag, :class => 'ActsAsTaggableOn::Tag') do |f|
-  f.name "Näringslivsgruppen"
+  f.name "NLG"
 end
