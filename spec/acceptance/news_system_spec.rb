@@ -48,6 +48,26 @@ feature "the news system" do
     click "Create Post"
   end
   
+  scenario "editing news post" do
+    login_as(:admin_user)
+    Factory(:root_page)
+    Factory(:naringslivsgruppen_tag)
+    news_post = Factory(:nlg_news_post)
+    
+    visit "/"
+    within "div#news_post_#{news_post.id}" do
+      click_link "Redigera"
+    end
+    
+    fill_in "Name", :with => "Updated news"
+    click "Update Post"
+    
+    current_path.should == "/nyheter"
+    
+    # TODO page.should have_success_message
+    page.should have_content("Updated news")
+  end
+  
   scenario "viewing news with tag" do
     Factory(:root_page)
     Factory(:naringslivsgruppen_tag)
