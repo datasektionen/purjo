@@ -1,0 +1,32 @@
+%h2 Filer
+
+%p 
+  Listar filer uppladdade under noden 
+  %tt= @parent.url
+
+- if @files.empty?
+  %em Inga filer uppladdade
+- else
+  %table
+    %tr
+      %th URL
+      %th Storlek
+      %th Content-type
+      %th Skapad
+      
+    - @files.each do |file|
+      %tr
+        %td= file.url
+        %td= number_to_human_size(file.resource_file_size)
+        %td= file.resource_content_type
+        %td= file.created_at
+
+
+%h3 Notera
+
+%p 
+  Filerna är inte versionshanterade.
+  För att lägga till en bild skriv
+  %code !/nod/nod/bild.png!
+  Är det en fil, t.ex. en pdf, gör en vanlig länk: 
+  %code "Fin PDF":/nod/nod/fil.pdf

@@ -1,16 +1,12 @@
 class FileNode < ActiveRecord::Base
-  #has_attachment :storage => :file_system
+  has_attached_file :resource
   
   belongs_to :parent, :class_name => 'TextNode', :foreign_key => 'parent_id'
   
   before_validation :update_url
   
   def name
-    filename
-  end
-  
-  def name=(value)
-    filename = value
+    resource_file_name
   end
   
   protected

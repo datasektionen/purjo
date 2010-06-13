@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100524093853) do
+ActiveRecord::Schema.define(:version => 20100613151744) do
 
   create_table "articles", :force => true do |t|
     t.integer  "blog_id"
@@ -116,11 +116,13 @@ ActiveRecord::Schema.define(:version => 20100524093853) do
   create_table "file_nodes", :force => true do |t|
     t.integer  "parent_id"
     t.integer  "size"
-    t.string   "content_type"
-    t.string   "filename"
+    t.string   "resource_content_type"
+    t.string   "resource_file_name"
     t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "resource_file_size"
+    t.datetime "resource_updated_at"
   end
 
   create_table "functionaries", :force => true do |t|

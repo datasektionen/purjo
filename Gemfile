@@ -11,6 +11,7 @@ gem 'RedCloth'
 gem 'mysql'
 gem 'haml'
 gem 'simple_form'
+gem 'paperclip'
 
 group :development do
   gem 'ruby-debug'
