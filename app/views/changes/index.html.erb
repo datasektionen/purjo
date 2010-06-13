@@ -1,8 +1,0 @@
-<% list_for @changes do |list| -%>
-  <%= list.column :created_at %>
-  <%= list.column :action %>
-  <% list.column :changed_object do |change| %>
-    <%= link_to change.changed_object.url, change.changed_object.url %>
-  <% end -%>
-  <%= list.column :changed_by %>
-<% end -%>

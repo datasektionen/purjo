@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100613151744) do
+ActiveRecord::Schema.define(:version => 20100613181825) do
 
   create_table "articles", :force => true do |t|
     t.integer  "blog_id"
@@ -25,15 +25,6 @@ ActiveRecord::Schema.define(:version => 20100613151744) do
     t.string   "perma_name"
     t.string   "layout"
     t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "changes", :force => true do |t|
-    t.string   "action"
-    t.integer  "changed_object_id"
-    t.string   "changed_object_type"
-    t.integer  "changed_by_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -343,18 +334,6 @@ ActiveRecord::Schema.define(:version => 20100613151744) do
 
   create_table "tags", :force => true do |t|
     t.string "name"
-  end
-
-  create_table "text_node_versions", :force => true do |t|
-    t.integer  "text_node_id"
-    t.integer  "version"
-    t.integer  "parent_id"
-    t.string   "name"
-    t.string   "url"
-    t.text     "contents"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "custom_layout"
   end
 
   create_table "text_nodes", :force => true do |t|
