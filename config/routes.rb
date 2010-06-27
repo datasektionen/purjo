@@ -1,4 +1,5 @@
 Rails.application.routes.draw do |map|
+  resources :newsletters
   map.protocols '/protocols', :controller => 'protocols', :action => 'index'
   
   map.protocol "/protocols/:filename", :controller => 'protocols', :action => 'show'

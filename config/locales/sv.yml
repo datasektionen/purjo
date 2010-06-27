@@ -152,6 +152,9 @@
       # For example,
       #   user: "Dude"
       # will translate User model name to "Dude"
+    attributes:
+      newsletter:
+        name: Namn
 
     # Translate model attribute names. Used in Model.human_attribute_name(attribute).
     #attributes:
@@ -219,3 +222,7 @@
         welcome: "Välkommen till Studs CV-databas!"
         unknown_user_or_pass: "Ogiltigt användarnamn eller lösenord"
         no_access: "Du har inte tillgång till Studs"
+  newsletters:
+    index:
+      new: Nytt nyhetsbrev
+  

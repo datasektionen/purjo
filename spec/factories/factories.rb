@@ -67,3 +67,11 @@ end
 Factory.define(:naringslivsgruppen_tag, :class => 'ActsAsTaggableOn::Tag') do |f|
   f.name "NLG"
 end
+
+Factory.define(:newsletter) do |f|
+  f.name "Nyhetsbrevet"
+end
+
+Factory.define(:newsletter_march_2010, :parent => :newsletter) do |f|
+  f.name "Mars 2010"
+end

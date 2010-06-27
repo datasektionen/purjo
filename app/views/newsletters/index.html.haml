@@ -1,0 +1,19 @@
+%h2 Nyhetsbrev
+
+%table
+  %thead
+    %tr
+      %th
+        Namn
+      %th
+  %tbody
+    - @newsletters.each do |newsletter|
+      %tr
+        %td= newsletter.name
+        %td
+          Ta bort
+
+%p.actions
+  = link_to t('.new'), new_newsletter_path
+        
+  
