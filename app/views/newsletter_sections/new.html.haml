@@ -1,0 +1,7 @@
+%h2= title
+
+= simple_form_for([@newsletter, @newsletter_section]) do |form|
+  = form.input :title
+  = form.input :body
+  
+  = form.submit

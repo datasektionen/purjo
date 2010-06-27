@@ -45,7 +45,7 @@ feature "the news system" do
     check "Nyhet"
     fill_in "Visas till", :with => 1.day.ago.to_s
     
-    click "Create Post"
+    click "Skapa Post"
   end
   
   scenario "editing news post" do
@@ -60,7 +60,7 @@ feature "the news system" do
     end
     
     fill_in "Name", :with => "Updated news"
-    click "Update Post"
+    click "Spara Post"
     
     current_path.should == "/nyheter"
     

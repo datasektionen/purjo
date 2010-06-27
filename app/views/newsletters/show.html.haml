@@ -1,0 +1,9 @@
+%h2 Nyhetsbrev #{@newsletter.name}
+
+- @newsletter.newsletter_sections.each do |section|
+  %h3= section.title
+  
+  %p= section.body
+
+%p.actions
+  = link_to t('.add_section'), new_newsletter_newsletter_section_path(@newsletter)

@@ -36,7 +36,7 @@ feature "page management" do
     
     fill_in "Name", :with => "Page title"
     fill_in "Contents", :with => "Random text"
-    click "Create Text node"
+    click "Skapa Text node"
     
     current_path.should == '/page_title'
     
@@ -54,7 +54,7 @@ feature "page management" do
     
     fill_in "Contents", :with => 'Uppdaterad information om datasektionen'
     
-    click "Update Text node"
+    click "Spara Text node"
     
     visit "/om_datasektionen"
     

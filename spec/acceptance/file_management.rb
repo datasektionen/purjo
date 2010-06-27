@@ -38,7 +38,7 @@ feature "page management" do
     
     attach_file("Fil", Rails.root + "spec/fixtures/protokoll.pdf")
     
-    click "Create File node"
+    click "Skapa File node"
     
     #page.should have_success_message
     

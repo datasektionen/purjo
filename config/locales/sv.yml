@@ -152,9 +152,14 @@
       # For example,
       #   user: "Dude"
       # will translate User model name to "Dude"
+    models:
+      newsletter_section: Nyhetsbrevssektion
     attributes:
       newsletter:
         name: Namn
+      newsletter_section:
+        title: Rubrik
+        body: Innehåll
 
     # Translate model attribute names. Used in Model.human_attribute_name(attribute).
     #attributes:
@@ -225,4 +230,13 @@
   newsletters:
     index:
       new: Nytt nyhetsbrev
+    show:
+      add_section: Ny sektion
+  newsletter_sections:
+    new: Ny sektion
+  new: Ny %{resource}
   
+  helpers:
+    submit:
+      create: "Skapa %{model}"
+      update: "Spara %{model}"

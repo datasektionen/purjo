@@ -9,7 +9,7 @@
   %tbody
     - @newsletters.each do |newsletter|
       %tr
-        %td= newsletter.name
+        %td= link_to newsletter.name, newsletter
         %td
           Ta bort
 

@@ -8,7 +8,7 @@ feature "newsletter system" do
     visit newsletters_path
     click "Nytt nyhetsbrev"
     fill_in 'Namn', :with => 'Nyhetsbrevet'
-    click "Create Newsletter"
+    click "Skapa Newsletter"
     
     #page.should have_success_message
     current_path.should == newsletters_path
@@ -18,7 +18,7 @@ feature "newsletter system" do
   scenario "Adding a section to a news letter" do
     newsletter = Factory(:newsletter_march_2010)
     
-    visit newsletter_path(newsletter)
+    visit newsletters_path
     
     click "Mars 2010"
     
@@ -27,11 +27,11 @@ feature "newsletter system" do
     fill_in 'Rubrik', :with => 'Sektionsrubriken'
     fill_in 'Innehåll', :with => 'Den nya sektionen'
     
-    click "Create Newsletter section"
+    click "Skapa Nyhetsbrevssektion"
     
     #page.should have_success_message
     current_path.should == newsletter_path(newsletter)
-    page.should have_tag("h3", :text => "Sektionsrubriken")
+    page.should have_css("h3", :text => "Sektionsrubriken")
     page.should have_content("Den nya sektionen")
   end
   scenario "removing a section from a news letter"
