@@ -53,7 +53,7 @@
   <p>Datasektionens agenda, vill du veta mer se <%= link_to 'kalendern', calendar_path(:year => Time.now.year, :month => Time.now.month) %>.</p>
   
   <table>
-    <% APP_CONFIG['show_n_days_in_calendar'].times do |i| %>
+    <% Purjo2::Application.settings['show_n_days_in_calendar'].times do |i| %>
       <% posts_this_day = @calendar_posts.find_all{|p| p.starts_at >= (@now + i.days).beginning_of_day && p.ends_at <= (@now + i.days).end_of_day} %>
 
       <% unless posts_this_day.empty? %>

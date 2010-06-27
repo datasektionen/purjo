@@ -16,9 +16,9 @@ class ProtocolsController < ApplicationController
     if filename !~ Protocol::VALID_FILENAME
       raise Ior::Security::AccessDenied
     elsif filename.ends_with?('.html')
-      send_file(APP_CONFIG['protocol_path'] + filename, :type => 'text/html', :disposition => "inline")
+      send_file(Purjo2::Application.settings['protocol_path'] + filename, :type => 'text/html', :disposition => "inline")
     else
-      send_file(APP_CONFIG['protocol_path'] + filename)
+      send_file(Purjo2::Application.settings['protocol_path'] + filename)
     end
   end
 end

@@ -7,7 +7,7 @@ module Ior
         def find(kthid)
           filter = Net::LDAP::Filter.eq('ugKthid', kthid)
           
-          ldap = Net::LDAP.new(:host => APP_CONFIG['ldap_host'], :base => 'ou=Addressbook,dc=kth,dc=se')
+          ldap = Net::LDAP.new(:host => Purjo2::Application.settings['ldap_host'], :base => 'ou=Addressbook,dc=kth,dc=se')
           ldap.search(:filter => filter) do |entry|
             user = User.new
             user.first_name = entry.givenname.first

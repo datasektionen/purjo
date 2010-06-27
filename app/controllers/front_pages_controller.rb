@@ -7,6 +7,6 @@ class FrontPagesController < ApplicationController
     @now = Time.now
 
     @calendar_posts = Post.calendar_posts.find(:all, 
-      :conditions => ["starts_at > ? AND ends_at < ?", @now, @now + APP_CONFIG['show_n_days_in_calendar'].days])
+      :conditions => ["starts_at > ? AND ends_at < ?", @now, @now + Purjo2::Application.settings['show_n_days_in_calendar'].days])
   end
 end

@@ -13,7 +13,7 @@ class Protocol
   end
   
   def self.all
-    protocols = Dir.entries(APP_CONFIG['protocol_path'])
+    protocols = Dir.entries(Purjo2::Application.settings['protocol_path'])
     protocols.delete_if {|p| !(p =~ VALID_FILENAME)}
     protocols.map! { |p| new(p) }
     protocols.reverse!
