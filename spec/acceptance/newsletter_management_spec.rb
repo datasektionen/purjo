@@ -68,6 +68,8 @@ feature "newsletter system" do
     
     click "Skicka testutskick"
     
+    page.should_not have_content("Ett fel uppstod vid testutskick!")
+    
     current_path.should == newsletter_path(newsletter)
   end
   

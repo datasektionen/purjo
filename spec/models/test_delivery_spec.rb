@@ -46,7 +46,7 @@ describe TestDelivery do
     end
     
     it "does the test sending" do
-      @hominid.should_receive(:send_test).with("deadbeef", "patrik@example.com")
+      @hominid.should_receive(:send_test).with("deadbeef", ["patrik@example.com"])
       
       @delivery.perform
     end
