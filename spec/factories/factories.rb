@@ -69,9 +69,9 @@ Factory.define(:naringslivsgruppen_tag, :class => 'ActsAsTaggableOn::Tag') do |f
 end
 
 Factory.define(:newsletter) do |f|
-  f.name "Nyhetsbrevet"
+  f.subject "Nyhetsbrevet"
 end
 
 Factory.define(:newsletter_march_2010, :parent => :newsletter) do |f|
-  f.name "Mars 2010"
+  f.subject "Mars 2010"
 end

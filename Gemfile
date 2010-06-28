@@ -13,6 +13,7 @@ gem 'haml'
 gem 'simple_form'
 gem 'paperclip'
 gem 'inherited_resources'
+gem 'hominid'
 
 group :development do
   gem 'ruby-debug'
@@ -26,4 +27,5 @@ group :test do
   gem 'factory_girl_rails'
   gem 'capybara'
   gem 'timecop'
+  gem 'webmock'
 end

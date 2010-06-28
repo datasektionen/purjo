@@ -1,4 +1,4 @@
-%h2 Nyhetsbrev #{@newsletter.name}
+%h2 Nyhetsbrev #{@newsletter.subject}
 
 - @newsletter.newsletter_sections.each do |section|
   %h3= section.title

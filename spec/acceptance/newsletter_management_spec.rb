@@ -4,10 +4,15 @@ feature "newsletter system" do
   include Authentication
   include Rails.application.routes.url_helpers
   
+  background do
+    hominid = mock_hominid
+    Hominid::Base.stub(:new).and_return(hominid)
+  end
+  
   scenario "creating a new news letter" do
     visit newsletters_path
     click "Nytt nyhetsbrev"
-    fill_in 'Namn', :with => 'Nyhetsbrevet'
+    fill_in 'Ämne', :with => 'Nyhetsbrevet'
     click "Skapa Newsletter"
     
     #page.should have_success_message
@@ -34,7 +39,37 @@ feature "newsletter system" do
     page.should have_css("h3", :text => "Sektionsrubriken")
     page.should have_content("Den nya sektionen")
   end
+  
   scenario "removing a section from a news letter"
   scenario "editing a news letter section"
+  
+  scenario "test sending a newsletter" do
+    
+    #ListName = "Datasektionen Allmänt"
+    #ListId = "deadbeef"
+    #TemplateName = "Datasektionen Template"
+    #TemplateId = 4711
+    #SubscriberCount = 110
+    #ApiKey = "abc123"
+    
+    newsletter = Factory(:newsletter_march_2010)
+    
+    visit newsletters_path
+    within("tr#newsletter_#{newsletter.id}") do
+      click "Testutskick"
+    end
+    
+    page.should have_content("Datasektionen Template")
+    page.should have_content("Datasektionen Allmänt (110 prenumeranter)")
+    
+    within "div#test_send" do
+      fill_in 'Email', :with => 'kalle@example.com'
+    end
+    
+    click "Skicka testutskick"
+    
+    current_path.should == newsletter_path(newsletter)
+  end
+  
   scenario "sending a news letter"
 end

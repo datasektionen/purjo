@@ -1,5 +1,6 @@
 Rails.application.routes.draw do |map|
   resources :newsletters do
+    resource :test_delivery
     resources :newsletter_sections
   end
   

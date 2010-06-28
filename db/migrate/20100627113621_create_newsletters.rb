@@ -1,7 +1,7 @@
 class CreateNewsletters < ActiveRecord::Migration
   def self.up
     create_table :newsletters do |t|
-      t.string :name
+      t.string :subject
 
       t.timestamps
     end

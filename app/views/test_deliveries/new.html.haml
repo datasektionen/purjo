@@ -1,0 +1,14 @@
+%h2 Skicka nyhetsbrev
+
+%table
+  %tr
+    %th Mall
+    %td= @test_delivery.template_name
+  %tr
+    %th Lista
+    %td= "#{@test_delivery.list_name} (#{@test_delivery.subscriber_count} prenumeranter)"
+
+%div#test_send
+  - simple_form_for([@newsletter, @test_delivery], :url => newsletter_test_delivery_path) do |form|
+    = form.input :email
+    = form.submit
