@@ -69,6 +69,10 @@ module HominidHelpers
     hominid.stub(:create_campaign).and_return("deadbeef")
   end
   
+  def mock_hominid_update(hominid)
+    hominid.stub(:update).and_return(true)
+  end
+  
   def mock_hominid_send_test(hominid)
     hominid.stub(:send_test).and_return(true)
   end

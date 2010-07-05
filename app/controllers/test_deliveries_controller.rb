@@ -19,7 +19,7 @@ class TestDeliveriesController < ApplicationController
       render "error"
       return
     end
-    redirect_to newsletter_path(@newsletter)
+    redirect_to newsletters_path
   end
   
   private

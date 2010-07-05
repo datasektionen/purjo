@@ -70,7 +70,7 @@ feature "newsletter system" do
     
     page.should_not have_content("Ett fel uppstod vid testutskick!")
     
-    current_path.should == newsletter_path(newsletter)
+    current_path.should == newsletters_path
   end
   
   scenario "sending a news letter"
