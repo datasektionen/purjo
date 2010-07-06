@@ -11,7 +11,7 @@ set :deploy_via, :remote_cache
 ssh_options[:forward_agent] = true
 
 set :repository, "git@turtle-soup.ben-and-jerrys.stacken.kth.se:purjo.git"
-set :deploy_to, "/srv/rails/#{application}" # Will be updated for each stage with stage specific path.
+set :deploy_to, "/var/rails/#{application}" # Will be updated for each stage with stage specific path.
 set :user, "capistrano"
 set :use_sudo, false
 
