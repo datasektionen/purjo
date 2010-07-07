@@ -7,6 +7,8 @@
     
     <%= @post.content %>
   </p>
+
+  <iframe class="fb-like" src="http://www.facebook.com/plugins/like.php?href=<%=post_url(@post)%>&amp;layout=standard&amp;show_faces=false&amp;width=400&amp;action=like&amp;colorscheme=light&amp;height=30" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:400px; height:30px;" allowTransparency="true"></iframe>
   
   <% if Person.current.editor? %>
   <ul class="horizontal author left">
