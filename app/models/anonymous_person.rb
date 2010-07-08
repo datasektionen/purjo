@@ -6,6 +6,10 @@ class AnonymousPerson
   def last_name
     "Användare"
   end
+
+  def name
+    first_name
+  end
   
   def to_s
     "Anonym"
