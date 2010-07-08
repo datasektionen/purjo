@@ -19,7 +19,8 @@ class NewUserSettings
   def save!
     @person.has_chosen_settings = true
     if @settings[:newsletter]
-      @person.newsletter_subscriptions.create!
+      subscription = @person.newsletter_subscriptions.create!
+      subscription.send_later(:process)
     end
     @person.save!
   end
