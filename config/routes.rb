@@ -1,71 +1,59 @@
 Rails.application.routes.draw do |map|
+  
+  resources :blogs do
+    resources :articles
+  end
+  
+  resources :file_nodes
+  resources :front_page
+  
+  resources :job_ads, :except => [:show]
+  
+  resources :kth_accounts
+  
+  resources :morklaggnings, :as => 'morklaggning'
+  
   resources :newsletters do
     resource :test_delivery
     resources :newsletter_sections
   end
   
+  resources :noises
   
-  map.protocols '/protocols', :controller => 'protocols', :action => 'index'
-  
-  map.protocol "/protocols/:filename", :controller => 'protocols', :action => 'show'
-  map.protocol "/protocols/:filename.:format", :controller => 'protocols', :action => 'show'
-
-  map.resources :noises
-
-  map.resources :morklaggnings, :as => 'morklaggning'
-
-
-#  # Måste ligga ovanför alla resurser som använder auto_complete:
-#  map.auto_complete ':controller/:action',
-#    :requirements => { :action => /auto_complete_for_\S+/ },
-#    :conditions => { :method => :get }
-#
-#  map.resources :nominees, :as => "sektionen/val"
-#
-#  map.resources :election_events
-#
-#  map.resources :chapter_posts
-#
-#  map.resources :functionaries, :as => "sektionen/funktionarer"
-
-  map.resources :blogs do |blogs|
-    blogs.resources :articles
+  resources :people do
+    controller 'my_settings' do
+      resource :settings
+    end
   end
+  
+  resources 'nyheter', :as => 'posts', :controller => 'posts'
+  
+  resource :sessions
+  resources 'sektionen/sok', :as => 'students', :controller => 'students' do
+    member do
+      get :xfinger
+    end
+  end
+  
+  resources :text_nodes do
+    resources :children, :controller => 'TextNodeChildren', :path_prefix => 'text_nodes/:node_id'
+    resources :files, :controller => 'FileNodeChildren', :path_prefix => 'text_nodes/:node_id'
+    resources :versions, :controller => 'TextNodeVersions' do
+      member do
+        put :revert
+      end
+    end
+  end
+  
+  match "/protocols/:filename", :to => "protocols#show", :as => 'protocol'
+  match "/protocols", :to => "protocols#index", :as => 'protocols'
 
-  map.resources :students
-
-  map.resource :front_page
-
+  # Studs-relaterat
+  map.resources :travel_years
   map.resources :cvs, :path_prefix => 'sektionen/studs/:year', :collection => {:logout => :get, :login => :any}
   map.connect "sektionen/studs/:year/internt/*url", :controller => 'studs_nodes', :action => 'show'
-  
-  map.resources :travel_years
 
-  map.resources :changes
-
-  map.resources :job_ads, :except => [:show]
-
-  map.resource :sessions
-
-  map.resources :kth_accounts
-
-  map.resources :people do |people|
-    people.resource :settings, :controller => 'my_settings'
-  end
-
-  map.resources :students, :member => {:xfinger => :get}, :as => 'sektionen/sok'
-
-  map.resources :menu_tests
-
-  map.resources :text_nodes do |text_nodes|
-    text_nodes.resources :children, :controller => 'TextNodeChildren', :path_prefix => 'text_nodes/:node_id'
-    text_nodes.resources :files, :controller => 'FileNodeChildren', :path_prefix => 'text_nodes/:node_id'
-    text_nodes.resources :versions, :controller => 'TextNodeVersions', :member => {:revert => :put}
-  end
-
-  map.resources :file_nodes
-
-  map.resources :posts, :as => 'nyheter'
+  # URL-mappning
 
   map.calendar '/kalender/:year/:month', :controller => 'calendars', :action => 'show', :month => nil, :year => nil
   map.calendar_ics '/kalender.ics', :controller => 'calendars', :action => 'show', :format => 'ics'
@@ -81,4 +69,18 @@ Rails.application.routes.draw do |map|
 
   map.connect "*url", :controller => 'nodes', :action => 'show'
 end
+
+# Illaluktande kommentarer
+#  # Måste ligga ovanför alla resurser som använder auto_complete:
+#  map.auto_complete ':controller/:action',
+#    :requirements => { :action => /auto_complete_for_\S+/ },
+#    :conditions => { :method => :get }
+#
+#  map.resources :nominees, :as => "sektionen/val"
+#
+#  map.resources :election_events
+#
+#  map.resources :chapter_posts
+#
+#  map.resources :functionaries, :as => "sektionen/funktionarer"
 
