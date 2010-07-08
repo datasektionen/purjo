@@ -1,8 +1,0 @@
-<li>
-  <%= render :partial => 'list_fields/disabled_common_field', :locals => {:field => disabled_text} %>
-
-  <input type="text" value="<%= disabled_text.value %>" disabled="disabled"/>
-  <% if disabled_text.list.nil? || (disabled_text.list && disabled_text.list.list_entries.empty?) %>
-    <div class="controls"><%= link_to_function 'Ta bort', "remove_field(this.up().up(), #{disabled_text.id})"%></div>
-  <% end -%>
-</li>

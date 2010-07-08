@@ -1,9 +1,0 @@
-<label><%= field.description %></label>
-
-<% unless field.new_record? %>
-  <%= hidden_field_tag 'list[list_fields_params][][id]', field.id %>
-<% end %>
-
-<% [:name, :kind, :description, :value].each do |e| %>
-  <%= hidden_field_tag "list[list_fields_params][][#{e.to_s}]", field.send(e) %>
-<% end %>
