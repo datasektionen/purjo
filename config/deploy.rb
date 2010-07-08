@@ -55,8 +55,8 @@ namespace :deploy do
 
   desc "Set permissions for public/{stylesheets,javascripts}"
   task :set_permissions do
-    run "setfacl -m u:www-data:rwx #{release_path}/public/{stylesheets,javascripts}"
-    run "setfacl -d -m u:www-data:rwx #{release_path}/public/{stylesheets,javascripts}"
+    #run "setfacl -m user:www-data:rwx #{release_path}/public/{stylesheets,javascripts}"
+    #run "setfacl -d -m user:www-data:rwx #{release_path}/public/{stylesheets,javascripts}"
   end
 
   desc "Restarting mod_rails with restart.txt"
