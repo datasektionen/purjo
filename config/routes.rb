@@ -29,6 +29,8 @@ Rails.application.routes.draw do |map|
     controller 'my_settings' do
       resource :settings
     end
+    resources :new_user_settings
+    
   end
   
   resources 'nyheter', :as => 'posts', :controller => 'posts'

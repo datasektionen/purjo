@@ -160,6 +160,8 @@
       newsletter_section:
         title: Rubrik
         body: Innehåll
+      new_user_settings:
+        newsletter: Nyhetsbrev
 
     # Translate model attribute names. Used in Model.human_attribute_name(attribute).
     #attributes:

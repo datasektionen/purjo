@@ -3,6 +3,9 @@ class Person < ActiveRecord::Base
   
   has_many :memberships
   has_many :roles, :through => :memberships
+  has_many :newsletter_subscriptions
+  
+  accepts_nested_attributes_for :newsletter_subscriptions
   
   validates_presence_of :first_name, :last_name, :email
   

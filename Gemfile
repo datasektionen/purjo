@@ -14,6 +14,8 @@ gem 'simple_form'
 gem 'paperclip'
 gem 'inherited_resources'
 gem 'hominid'
+gem 'delayed_job'
+gem 'state_machine'
 
 group :development do
   gem 'ruby-debug'

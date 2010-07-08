@@ -2,22 +2,8 @@ require File.dirname(__FILE__) + '/acceptance_helper'
 
 feature "the news system" do
   include Authentication
-  before do
-    Factory(:admin_role)
-    Factory(:editor_role)
-    
-    [AnonymousPerson, Person].each do |auth_class| 
-      auth_class.class_eval do
-        Role.all.each do |role|
-          define_method "#{role.to_s}?" do 
-            has_role?(role.to_s)
-          end
-        end
-      end
-    end
-    
-  end
   scenario "viewing the news page" do
+    mock_roles
     Factory(:naringslivsgruppen_tag)
     nlg_news = Factory(:nlg_news_post)
     

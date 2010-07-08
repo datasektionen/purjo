@@ -14,6 +14,12 @@ Factory.define(:start_page, :parent => :text_node) do |f|
   f.parent { TextNode.find_by_url("/") || Factory(:root_page) }
 end
 
+Factory.define(:welcome_page, :parent => :text_node) do |f|
+  f.name 'Welcome'
+  f.contents "This is the Welcome node"
+  f.parent { TextNode.find_by_url("/") || Factory(:root_page) }
+end
+
 Factory.define(:about_page, :parent => :text_node) do |f|
   f.name "Om datasektionen"
   f.contents "Den här sidan handlar om datasektionen"
@@ -34,6 +40,14 @@ Factory.define(:admin_user, :parent => :person) do |f|
     p.roles << (Role.find_by_name("admin") || Factory(:admin_role))
     p.save!
   end
+end
+
+Factory.define(:norbert_nollan, :parent => :person) do |f|
+  f.kth_ugid 'u1n0rb3rt'
+  f.kth_username 'norbert'
+  f.first_name "Norbert"
+  f.last_name "nØllan"
+  f.email "norbert@example.com"
 end
 
 Factory.define(:admin_role, :class => 'Role') do |r|

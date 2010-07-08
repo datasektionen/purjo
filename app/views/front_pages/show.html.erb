@@ -6,6 +6,17 @@
     <%= link_to image_tag('feed.png'), posts_path(:format => :rss, :tags => @tags) %>
   </h2>
   
+  <% if !Person.current.anonymous? && !Person.current.has_chosen_settings? %>
+    <div id="first_time_welcome">
+      <%= include_node("/first_time_welcome") %>
+    
+      <%= simple_form_for([Person.current, @new_user_settings]) do |f| %>
+        <%= f.input :newsletter, :as => :boolean, :label => 'Nyhetsbrev' %>
+        <%= f.submit :value => 'Spara inställningar' %>
+      <% end -%>
+    </div>
+  <% end -%>
+  
   <%= include_node("/start") %>
   
   <h4>Kategorier</h4>

@@ -97,6 +97,15 @@ ActiveRecord::Schema.define(:version => 20100708120723) do
     t.datetime "updated_at"
   end
 
+  add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
+
+  create_table "election_events", :force => true do |t|
+    t.string   "name"
+    t.date     "date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "file_nodes", :force => true do |t|
     t.integer  "parent_id"
     t.integer  "size"
@@ -178,6 +187,12 @@ ActiveRecord::Schema.define(:version => 20100708120723) do
     t.string   "state"
     t.datetime "subscribed_at"
     t.datetime "cancelled_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "newsletters", :force => true do |t|
+    t.string   "subject"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

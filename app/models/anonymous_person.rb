@@ -1,4 +1,6 @@
 class AnonymousPerson
+  extend ActiveModel::Naming
+  
   def first_name
     "Anonym"
   end
@@ -41,6 +43,4 @@ class AnonymousPerson
   def has_my_settings?
     false
   end
-  
-  
 end
