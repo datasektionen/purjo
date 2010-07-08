@@ -1,0 +1,17 @@
+<%= simple_form_for @mail, :url => { :action => 'send_mail' } do |f| %>
+  <% if @recipients # unspecified recipient: show list %>
+    <%= f.label :to %>
+    <%= f.select :to, @recipients, :selected => @mail.to.to_i %>
+  <% else %>
+    <%= f.hidden_field :to, :value => @post.id %>
+  <% end %>
+
+  <%= f.input :name %>
+
+  <%= f.input :email %>
+
+  <%= f.text_area :message %>
+
+  <%= f.submit 'Skicka meddelande' %>
+<% end %>
+
