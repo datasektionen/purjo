@@ -45,14 +45,6 @@ Rails.application.routes.draw do |map|
 
   map.resources :job_ads, :except => [:show]
 
-  map.resources :feedbacks
-
-  map.resources :list_fields
-
-  map.resources :lists do |lists|
-    lists.resources :list_entries, :shallow => true
-  end
-
   map.resource :sessions
 
   map.resources :kth_accounts

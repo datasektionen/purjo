@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100627201230) do
+ActiveRecord::Schema.define(:version => 20100708120723) do
 
   create_table "articles", :force => true do |t|
     t.integer  "blog_id"
@@ -35,14 +35,6 @@ ActiveRecord::Schema.define(:version => 20100627201230) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "email"
-  end
-
-  create_table "comments", :force => true do |t|
-    t.integer  "commentable_id"
-    t.string   "commentable_type"
-    t.text     "text"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "courses", :force => true do |t|
@@ -83,25 +75,26 @@ ActiveRecord::Schema.define(:version => 20100627201230) do
     t.string   "language"
   end
 
+  create_table "delayed_jobs", :force => true do |t|
+    t.integer  "priority",   :default => 0
+    t.integer  "attempts",   :default => 0
+    t.text     "handler"
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
+
   create_table "election_events", :force => true do |t|
     t.string   "name"
     t.date     "date"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "events", :force => true do |t|
-    t.string   "title"
-    t.text     "text"
-    t.boolean  "news"
-    t.boolean  "calendar"
-    t.datetime "start_date"
-    t.datetime "end_date"
-    t.datetime "expires_at"
-    t.boolean  "show_time"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "category"
   end
 
   create_table "file_nodes", :force => true do |t|
@@ -122,13 +115,6 @@ ActiveRecord::Schema.define(:version => 20100627201230) do
     t.date     "active_from"
     t.date     "active_to"
     t.boolean  "postponed"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "groups", :force => true do |t|
-    t.string   "name"
-    t.integer  "parent_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -165,43 +151,6 @@ ActiveRecord::Schema.define(:version => 20100627201230) do
     t.integer  "list_id"
   end
 
-  create_table "list_field_entries", :force => true do |t|
-    t.string   "value"
-    t.integer  "list_entry_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "list_field_id"
-    t.text     "text"
-  end
-
-  create_table "list_fields", :force => true do |t|
-    t.string   "name"
-    t.string   "description"
-    t.string   "kind"
-    t.string   "value"
-    t.integer  "position"
-    t.integer  "list_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean  "show_in_list", :default => true, :null => false
-  end
-
-  create_table "list_permissions", :force => true do |t|
-    t.integer  "list_id"
-    t.integer  "person_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "lists", :force => true do |t|
-    t.string   "title"
-    t.text     "description"
-    t.string   "identifier"
-    t.integer  "creator_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "memberships", :force => true do |t|
     t.integer  "person_id"
     t.integer  "role_id"
@@ -224,22 +173,20 @@ ActiveRecord::Schema.define(:version => 20100627201230) do
     t.datetime "updated_at"
   end
 
+  create_table "newsletter_subscriptions", :force => true do |t|
+    t.integer  "person_id"
+    t.string   "state"
+    t.datetime "subscribed_at"
+    t.datetime "cancelled_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "newsletters", :force => true do |t|
     t.string   "subject"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "campaign_id"
-  end
-
-  create_table "node_permissions", :force => true do |t|
-    t.integer  "group_id"
-    t.integer  "node_id"
-    t.string   "node_type"
-    t.boolean  "read"
-    t.boolean  "modify"
-    t.boolean  "admin"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "noises", :force => true do |t|
@@ -278,6 +225,7 @@ ActiveRecord::Schema.define(:version => 20100627201230) do
     t.string   "xmpp"
     t.text     "serialized_my_settings"
     t.text     "serialized_features"
+    t.boolean  "has_chosen_settings",    :default => false, :null => false
   end
 
   add_index "people", ["kth_ugid"], :name => "index_people_on_kth_ugid", :unique => true
