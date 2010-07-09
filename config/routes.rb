@@ -28,8 +28,8 @@ Rails.application.routes.draw do |map|
 #
 #  map.resources :functionaries, :as => "sektionen/funktionarer"
 
-  match "/kontakt" => 'contact#index'
-  match "/kontakt/skicka" => 'contact#send_mail', :via => :post
+  match "/kontakt" => 'contact#index', :via => :get
+  match "/kontakt" => 'contact#send_mail', :via => :post
   match "/kontakt/:id" => 'contact#single', :constraints => { :id => /\d+/ }
   match "/kontakt/:post" => 'contact#single'
 
