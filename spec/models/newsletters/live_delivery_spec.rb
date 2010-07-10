@@ -28,7 +28,11 @@ describe LiveDelivery do
       @delivery.perform
     end
     
-    it "doesn't send the newsletter if the update fails"
+    it "doesn't send the newsletter if the update fails" do
+      @hominid.stub(:update).and_return(false)
+      @hominid.should_not_receive(:send)
+      @delivery.perform
+    end
   end
 end
 
