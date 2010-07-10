@@ -1,22 +1,23 @@
-class TestDeliveriesController < ApplicationController
+class BaseDeliveriesController < ApplicationController
   before_filter :load_parent
   
   def new
     begin
-      @test_delivery = TestDelivery.new(@newsletter)
+      @delivery = delivery_class.new(@newsletter)
     rescue Hominid::CommunicationError, Hominid::APIError => e
-      render 'error'
+      render 'deliveries_base/error'
     end
   end
   
   def create
-    @test_delivery = TestDelivery.new(@newsletter, params[:test_delivery])
+    @delivery = new_delivery_with_params(@newsletter)
     
     begin
-      @test_delivery.perform
+      @delivery.perform
     rescue Hominid::CommunicationError, Hominid::APIError => e
       @error = e.message
-      render "error"
+      @error_class = e.class.to_s
+      render 'deliveries_base/error'
       return
     end
     redirect_to newsletters_path
@@ -26,5 +27,9 @@ class TestDeliveriesController < ApplicationController
   
   def load_parent
     @newsletter = Newsletter.find(params[:newsletter_id])
+  end
+  
+  def new_delivery_with_params(newsletter)
+    delivery_class.new(newsletter, params[:test_delivery] || {})
   end
 end

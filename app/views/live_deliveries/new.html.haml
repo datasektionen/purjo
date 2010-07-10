@@ -8,7 +8,6 @@
     %th Lista
     %td= "#{@delivery.list_name} (#{@delivery.subscriber_count} prenumeranter)"
 
-%div#test_send
-  - simple_form_for([@newsletter, @delivery], :url => newsletter_test_delivery_path) do |form|
-    = form.input :email
-    = form.submit
+%div#new_test_delivery
+  = simple_form_for([@newsletter, @delivery], :url => newsletter_live_delivery_path(@newsletter)) do |form|
+    = form.submit 'Skicka nyhetsbrev'

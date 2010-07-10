@@ -1,12 +1,12 @@
 require 'spec_helper'
 
-describe TestDelivery do
+describe DeliveryBase do
   before do
     @hominid = mock_hominid
     Hominid::Base.stub(:new).and_return(@hominid)
     @newsletter = Factory(:newsletter_march_2010)
     
-    @delivery = TestDelivery.new(@newsletter, :email => 'patrik@example.com')
+    @delivery = DeliveryBase.new(@newsletter)
   end
 
   it "makes the correct template avaiable as #template_name" do
@@ -32,26 +32,6 @@ describe TestDelivery do
     @delivery.list_id.should == HominidHelpers::ListId
   end
   
-  context "performing" do
-    
-    before do
-      @hominid.stub(:update).and_return(true)
-      @newsletter.stub(:formatted_content).and_return("hamstrar")
-      @newsletter.stub(:campaign_id).and_return("deadbeef")
-    end
-    it "updates campaign with content" do
-      @hominid.should_receive(:update).with("deadbeef", "content", hash_including("html_CONTENT" => "hamstrar"))
-      
-      @delivery.perform
-    end
-    
-    it "does the test sending" do
-      @hominid.should_receive(:send_test).with("deadbeef", ["patrik@example.com"])
-      
-      @delivery.perform
-    end
-  end
-  
   describe "ActiveModel Lint tests" do
     require 'test/unit/assertions'
     require 'active_model/lint'
@@ -66,7 +46,8 @@ describe TestDelivery do
     end
 
     def model
-      TestDelivery.new(mock_model(Newsletter))
+      DeliveryBase.new(mock_model(Newsletter))
     end
   end
+  
 end

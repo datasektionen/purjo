@@ -73,5 +73,22 @@ feature "newsletter system" do
     current_path.should == newsletters_path
   end
   
-  scenario "sending a news letter"
+  scenario "sending a news letter" do
+    newsletter = Factory(:newsletter_march_2010)
+    
+    visit newsletters_path
+    within("tr#newsletter_#{newsletter.id}") do
+      click "Skicka nyhetsbrev"
+    end
+    
+    page.should have_content("Datasektionen Template")
+    page.should have_content("Datasektionen Allmänt (110 prenumeranter)")
+    
+    click "Skicka nyhetsbrev"
+
+    save_and_open_page
+    page.should_not have_content("Ett fel uppstod vid testutskick!")
+    
+    current_path.should == newsletters_path
+  end
 end

@@ -12,6 +12,7 @@ module HominidHelpers
     mock_hominid_lists(hominid)
     mock_hominid_create_campaign(hominid)
     mock_hominid_send_test(hominid)
+    mock_hominid_send(hominid)
     mock_hominid_update(hominid)
     hominid
   end
@@ -79,6 +80,10 @@ module HominidHelpers
   
   def mock_hominid_update(hominid)
     hominid.stub(:update).and_return(true)
+  end
+  
+  def mock_hominid_send(hominid)
+    hominid.stub(:send).and_return(true)
   end
 end
 

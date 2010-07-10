@@ -19,8 +19,9 @@ Rails.application.routes.draw do |map|
   resources :morklaggnings, :as => 'morklaggning'
   
   resources :newsletters do
-    resource :test_delivery
     resources :newsletter_sections
+    resource :test_delivery
+    resource :live_delivery
   end
   
   resources :noises

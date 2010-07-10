@@ -1,12 +1,10 @@
-class TestDelivery
+class DeliveryBase
+  
   include ActiveModel::Validations
   include ActiveModel::Conversion  
   extend ActiveModel::Naming
   
-  attr_accessor :email
   attr_reader :template, :list
-  validates_presence_of :email
-  validates_format_of :email, :with => /^[-a-z0-9_+\.]+\@([-a-z0-9]+\.)+[a-z0-9]{2,4}$/i
   
   def initialize(newsletter, attributes = {})  
     @newsletter = newsletter
@@ -17,11 +15,6 @@ class TestDelivery
     
     fetch_template
     fetch_list
-  end
-
-  def perform
-    hominid.update(@newsletter.campaign_id, 'content', {'html_CONTENT' => @newsletter.formatted_content})
-    hominid.send_test(@newsletter.campaign_id, [email])
   end
   
   def persisted?
@@ -61,4 +54,5 @@ class TestDelivery
   def hominid
     Hominid::Base.new(:api_key => Purjo2::Application.settings[:newsletter_api_key])
   end
+  
 end
