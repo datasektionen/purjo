@@ -3,17 +3,24 @@
 %table
   %thead
     %tr
-      %th
-        Subject
+      %th Subject
+      %th State
       %th
   %tbody
     - @newsletters.each do |newsletter|
       %tr{:id => "newsletter_#{newsletter.id}"}
         %td= link_to newsletter.subject, newsletter
+        %td= newsletter.state
         %td
-          = link_to "Testutskick", new_newsletter_test_delivery_path(newsletter)
-          = link_to "Skicka nyhetsbrev", new_newsletter_live_delivery_path(newsletter)
-          Ta bort
+          - if newsletter.pending? || newsletter.failed?
+            = link_to "Testutskick", new_newsletter_test_delivery_path(newsletter)
+          - else
+            %span{:class => 'disabled'} Testutskick
+
+          - if newsletter.pending? || newsletter.failed?
+            = link_to "Skicka nyhetsbrev", new_newsletter_live_delivery_path(newsletter)
+          - else
+            %span{:class => 'disabled'} Skicka nyhetsbrev
 
 %p.actions
   = link_to t('.new'), new_newsletter_path

@@ -86,9 +86,26 @@ feature "newsletter system" do
     
     click "Skicka nyhetsbrev"
 
-    save_and_open_page
     page.should_not have_content("Ett fel uppstod vid testutskick!")
     
     current_path.should == newsletters_path
+  end
+  
+  scenario "trying to send an already sent newsletter" do
+    newsletter = Factory(:newsletter_march_2010)
+    
+    visit newsletters_path
+    within("tr#newsletter_#{newsletter.id}") do
+      page.should have_content("Skicka nyhetsbrev")
+    end
+    
+    click "Skicka nyhetsbrev" # Länken
+    click "Skicka nyhetsbrev" # Knappen
+    
+    visit newsletters_path
+    lambda { 
+      click "Skicka nyhetsbrev"
+    }.should raise_error(Capybara::ElementNotFound)
+    
   end
 end

@@ -5,6 +5,20 @@ class Newsletter < ActiveRecord::Base
   
   before_validation :create_mailchimp_campaign, :on => :create
   
+  state_machine :state, :initial => :pending do
+    state :pending
+    state :sent
+    state :failed
+    
+    event :sent do
+      transition :pending => :sent
+    end
+    
+    event :fail do
+      transition :pending => :failed
+    end
+  end
+  
   # TODO textile i en modell? Tveksamt va?
   def formatted_content
     formatted_sections = newsletter_sections.map do |section|

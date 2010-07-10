@@ -8,7 +8,7 @@ describe LiveDelivery do
     
     @delivery = LiveDelivery.new(@newsletter)
   end
-
+  
   context "performing" do
     before do
       @hominid.stub(:update).and_return(true)
@@ -32,6 +32,17 @@ describe LiveDelivery do
       @hominid.stub(:update).and_return(false)
       @hominid.should_not_receive(:send)
       @delivery.perform
+    end
+    
+    it "updates state to sent when sent" do
+      @delivery.perform
+      @newsletter.state.should == "sent"
+    end
+    
+    it "does changes state to failed if hominid fails" do
+      @hominid.stub(:send).and_return(false)
+      @delivery.perform
+      @newsletter.state.should == 'failed'
     end
   end
 end

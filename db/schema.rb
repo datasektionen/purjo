@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100708120723) do
+ActiveRecord::Schema.define(:version => 20100710115554) do
 
   create_table "articles", :force => true do |t|
     t.integer  "blog_id"
@@ -84,15 +84,6 @@ ActiveRecord::Schema.define(:version => 20100708120723) do
     t.datetime "locked_at"
     t.datetime "failed_at"
     t.string   "locked_by"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
-
-  create_table "election_events", :force => true do |t|
-    t.string   "name"
-    t.date     "date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -195,13 +186,8 @@ ActiveRecord::Schema.define(:version => 20100708120723) do
     t.string   "subject"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "newsletters", :force => true do |t|
-    t.string   "subject"
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.string   "campaign_id"
+    t.string   "state"
   end
 
   create_table "noises", :force => true do |t|
