@@ -3,7 +3,11 @@ class Person < ActiveRecord::Base
   
   has_many :memberships
   has_many :roles, :through => :memberships
-  has_many :newsletter_subscriptions
+  has_many :newsletter_subscriptions do
+    def active
+      where(:state => 'active').first
+    end
+  end
   
   accepts_nested_attributes_for :newsletter_subscriptions
   

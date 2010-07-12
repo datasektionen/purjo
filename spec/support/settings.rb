@@ -5,6 +5,8 @@ Purjo2::Application.settings = ActiveSupport::HashWithIndifferentAccess.new({
   :newsletter_from_email => "info@example.com",
   :newsletter_from_name => "Informationsministeriet",
   :newsletter_to_email => "info@example.com",
+  :mailchimp_hook_secret => "this is secret",
   :ldap_host =>  "localhost",
-  :show_n_days_in_calendar => 60
+  :show_n_days_in_calendar => 60,
+
 })

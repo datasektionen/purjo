@@ -23,6 +23,7 @@ Rails.application.routes.draw do |map|
     resource :test_delivery
     resource :live_delivery
   end
+  match "/newsletters/hook/:secret", :to => 'newsletter_hooks#mailchimp_endpoint', :via => [:post, :get]
   
   resources :noises
   

@@ -7,9 +7,14 @@ class NewsletterSubscription < ActiveRecord::Base
     
     state :unprocessed
     state :active
+    state :inactive
     
     event :process do
       transition :unprocessed => :active
+    end
+    
+    event :deactivate do
+      transition :active => :inactive
     end
   end
   
