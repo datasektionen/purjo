@@ -6,7 +6,35 @@ describe LiveDelivery do
     Hominid::Base.stub(:new).and_return(@hominid)
     @newsletter = Factory(:newsletter_march_2010)
     
-    @delivery = LiveDelivery.new(@newsletter)
+    @valid_params = {
+      :list_id => HominidHelpers::ListId
+    }
+    
+    @delivery = LiveDelivery.new(@newsletter, @valid_params)
+  end
+  
+  it "#subscriber_count" do
+    @delivery.subscriber_count.should == HominidHelpers::SubscriberCount
+  end
+  
+  it "#list_name" do
+    @delivery.list_name.should == HominidHelpers::ListName
+  end
+  
+  it "#list" do
+    @delivery.list['id'].should == HominidHelpers::ListId
+  end
+  
+  it "fetches #list from the list_id attribute" do
+    @delivery = LiveDelivery.new(@newsletter, @valid_params.with(:list_id => '1f3c1d4b9d'))
+    @delivery.list['name'].should == 'Ior'
+  end
+  
+  context "creating" do
+    it "requires list" do
+      delivery = LiveDelivery.new(@newsletter, @valid_params.except(:list_id))
+      delivery.should_not be_valid
+    end
   end
   
   context "performing" do
@@ -14,6 +42,15 @@ describe LiveDelivery do
       @hominid.stub(:update).and_return(true)
       @newsletter.stub(:formatted_content).and_return("hamstrar")
       @newsletter.stub(:campaign_id).and_return("deadbeef")
+    end
+    
+    it "does not perform job on invalid delivery" do
+      @delivery.stub(:valid?).and_return(false)
+      @delivery.perform.should == false
+    end
+    
+    it "returns true on success" do
+      @delivery.perform.should == true
     end
     
     it "updates campaign with content" do

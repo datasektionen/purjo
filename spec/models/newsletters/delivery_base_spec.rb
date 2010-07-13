@@ -20,16 +20,12 @@ describe DeliveryBase do
   # Move to separate context?
   it "raises exception if template not found" 
   
-  it "#subscriber_count" do
-    @delivery.subscriber_count.should == HominidHelpers::SubscriberCount
-  end
-  
-  it "#list_name" do
-    @delivery.list_name.should == HominidHelpers::ListName
-  end
-  
-  it "list_id" do
-    @delivery.list_id.should == HominidHelpers::ListId
+  it "#all_lists" do
+    @delivery.all_lists.first['id'].should == HominidHelpers::ListId
+    @delivery.all_lists.first['name'].should == HominidHelpers::ListName
+    
+    @delivery.all_lists.second['id'].should == '1f3c1d4b9d'
+    @delivery.all_lists.second['name'].should == 'Ior'
   end
   
   describe "ActiveModel Lint tests" do

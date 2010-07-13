@@ -45,7 +45,7 @@ module HominidHelpers
   end
   
   def mock_hominid_lists(hominid)
-    hominid.stub(:find_list_by_id).and_return({
+    dsekt_list = {
       "cleaned_count_since_send" => 0.0, 
       "unsubscribe_count_since_send" => 0.0, 
       "name" => ListName, 
@@ -62,8 +62,33 @@ module HominidHelpers
       "default_from_email" => "patrik.stenmark+dsekt@gmail.com", 
       "list_rating" => 0.0, 
       "date_created" => "2010-05-19 07:55:42"
-    })
+    }
+    hominid.stub(:find_list_by_id).with(ListId).and_return(dsekt_list)
     
+    ior_list = {
+      "cleaned_count_since_send" => 0.0,
+      "unsubscribe_count_since_send" => 0.0,
+      "name" => "Ior",
+      "member_count_since_send" => 0.0,
+      "default_language" => "en",
+      "default_from_name" => "Datasektionens Informationsorgan",
+      "email_type_option" => false,
+      "member_count" => 1.0,
+      "unsubscribe_count" => 0.0,
+      "id" => "1f3c1d4b9d",
+      "cleaned_count" => 0.0,
+      "web_id" => 757525,
+      "default_subject" => "",
+      "default_from_email" => "patrik.stenmark@gmail.com",
+      "list_rating" => 0.0,
+      "date_created" => "2010-06-06 16:24:45"
+    }
+    hominid.stub(:find_list_by_id).with('1f3c1d4b9d').and_return(ior_list)
+    
+    hominid.stub(:lists).and_return([
+      dsekt_list,
+      ior_list
+    ])
   end
   
   def mock_hominid_create_campaign(hominid)

@@ -4,10 +4,8 @@
   %tr
     %th Mall
     %td= @delivery.template_name
-  %tr
-    %th Lista
-    %td= "#{@delivery.list_name} (#{@delivery.subscriber_count} prenumeranter)"
 
 %div#new_test_delivery
   = simple_form_for([@newsletter, @delivery], :url => newsletter_live_delivery_path(@newsletter)) do |form|
+    = form.input :list_id, :collection => @delivery.all_lists.map { |list| [list['name'], list['id']] }
     = form.submit 'Skicka nyhetsbrev'

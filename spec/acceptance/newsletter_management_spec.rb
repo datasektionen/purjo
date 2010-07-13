@@ -44,14 +44,6 @@ feature "newsletter system" do
   scenario "editing a news letter section"
   
   scenario "test sending a newsletter" do
-    
-    #ListName = "Datasektionen Allmänt"
-    #ListId = "deadbeef"
-    #TemplateName = "Datasektionen Template"
-    #TemplateId = 4711
-    #SubscriberCount = 110
-    #ApiKey = "abc123"
-    
     newsletter = Factory(:newsletter_march_2010)
     
     visit newsletters_path
@@ -60,7 +52,6 @@ feature "newsletter system" do
     end
     
     page.should have_content("Datasektionen Template")
-    page.should have_content("Datasektionen Allmänt (110 prenumeranter)")
     
     within "div#test_send" do
       fill_in 'Email', :with => 'kalle@example.com'
@@ -82,11 +73,22 @@ feature "newsletter system" do
     end
     
     page.should have_content("Datasektionen Template")
-    page.should have_content("Datasektionen Allmänt (110 prenumeranter)")
+    
+    list_select = find_field("List").node
+    option_texts = list_select.css("option").map { |o| o.text }
+    option_texts.should include("Ior")
+    option_texts.should include(HominidHelpers::ListName)
+    
+    select HominidHelpers::ListName, :from => 'List'
+    
+    save_and_open_page  
+    
     
     click "Skicka nyhetsbrev"
 
     page.should_not have_content("Ett fel uppstod vid testutskick!")
+    
+    save_and_open_page  
     
     current_path.should == newsletters_path
   end

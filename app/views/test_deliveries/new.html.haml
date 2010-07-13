@@ -4,9 +4,6 @@
   %tr
     %th Mall
     %td= @delivery.template_name
-  %tr
-    %th Lista
-    %td= "#{@delivery.list_name} (#{@delivery.subscriber_count} prenumeranter)"
 
 %div#test_send
   - simple_form_for([@newsletter, @delivery], :url => newsletter_test_delivery_path) do |form|

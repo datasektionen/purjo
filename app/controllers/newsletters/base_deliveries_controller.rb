@@ -13,14 +13,18 @@ class BaseDeliveriesController < ApplicationController
     @delivery = new_delivery_with_params(@newsletter)
     
     begin
-      @delivery.perform
+      if @delivery.perform
+        redirect_to newsletters_path
+      else
+        render :action => 'new'
+      end
     rescue Hominid::CommunicationError, Hominid::APIError => e
       @error = e.message
       @error_class = e.class.to_s
       render 'deliveries_base/error'
       return
     end
-    redirect_to newsletters_path
+    
   end
   
   private
@@ -30,6 +34,10 @@ class BaseDeliveriesController < ApplicationController
   end
   
   def new_delivery_with_params(newsletter)
-    delivery_class.new(newsletter, params[:test_delivery] || {})
+    delivery_class.new(newsletter, params[delivery_class_name.to_sym] || {})
+  end
+  
+  def delivery_class_name
+    delivery_class.to_s.underscore
   end
 end

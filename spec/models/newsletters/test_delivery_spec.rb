@@ -16,6 +16,15 @@ describe TestDelivery do
       @newsletter.stub(:campaign_id).and_return("deadbeef")
     end
     
+    it "does not perform job on invalid delivery" do
+      @delivery.stub(:valid?).and_return(false)
+      @delivery.perform.should == false
+    end
+    
+    it "returns true on success" do
+      @delivery.perform.should == true
+    end
+    
     it "updates campaign with content" do
       @hominid.should_receive(:update).with("deadbeef", "content", hash_including("html_CONTENT" => "hamstrar"))
       

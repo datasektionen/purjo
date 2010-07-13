@@ -4,7 +4,7 @@ class DeliveryBase
   include ActiveModel::Conversion  
   extend ActiveModel::Naming
   
-  attr_reader :template, :list
+  attr_reader :template
   
   def initialize(newsletter, attributes = {})  
     @newsletter = newsletter
@@ -14,7 +14,6 @@ class DeliveryBase
     end
     
     fetch_template
-    fetch_list
   end
   
   def persisted?
@@ -29,26 +28,14 @@ class DeliveryBase
     template['id']
   end
   
-  def subscriber_count
-    list['member_count']
+  def all_lists
+    hominid.lists
   end
-  
-  def list_name
-    list['name']
-  end
-  
-  def list_id
-    list['id']
-  end
-  
+    
   private
   
   def fetch_template
     @template = hominid.templates.detect { |template| template['id'] == Purjo2::Application.settings[:newsletter_template_id]  }
-  end
-  
-  def fetch_list
-    @list = hominid.find_list_by_id(Purjo2::Application.settings[:newsletter_list_id])
   end
 
   def hominid
