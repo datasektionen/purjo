@@ -23,7 +23,7 @@ class ContactController < ApplicationController
     info = { :ip => request.remote_ip }
 
     if @mail.valid?
-      mailer = Contact.functionary(@post, @mail, info)
+      mailer = ContactMailer.functionary(@post, @mail, info)
       if mailer.deliver
         flash[:notice] = "Tack för ditt meddelande!"
         redirect_to "/kontakt"

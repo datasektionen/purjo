@@ -1,4 +1,4 @@
-class Contact < ActionMailer::Base
+class ContactMailer < ActionMailer::Base
   def functionary(post, mail, info)
     @post = post
     @mail = mail
@@ -6,7 +6,7 @@ class Contact < ActionMailer::Base
     mail(
       :from => email_with_name(@mail),
       :to => email_with_name(@post),
-      :subject => "Meddelande via hemsidan"
+      :subject => "Datasektionen: Meddelande via hemsidan"
     )
   end
 
