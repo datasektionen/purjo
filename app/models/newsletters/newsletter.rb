@@ -1,5 +1,5 @@
 class Newsletter < ActiveRecord::Base
-  
+  default_scope order(:created_at.desc)
   include Ior::Hominid::Common
   validates_presence_of :subject
   
