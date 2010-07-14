@@ -1,10 +1,8 @@
 class DeliveryBase
-  
   include ActiveModel::Validations
   include ActiveModel::Conversion  
   extend ActiveModel::Naming
-  
-  attr_reader :template
+  include Ior::Hominid::Common
   
   def initialize(newsletter, attributes = {})  
     @newsletter = newsletter
@@ -34,12 +32,5 @@ class DeliveryBase
     
   private
   
-  def fetch_template
-    @template = hominid.templates.detect { |template| template['id'] == Purjo2::Application.settings[:newsletter_template_id]  }
-  end
-
-  def hominid
-    Hominid::Base.new(:api_key => Purjo2::Application.settings[:newsletter_api_key])
-  end
   
 end

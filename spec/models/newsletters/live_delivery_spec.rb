@@ -2,27 +2,27 @@ require 'spec_helper'
 
 describe LiveDelivery do
   before do
-    @hominid = mock_hominid
-    Hominid::Base.stub(:new).and_return(@hominid)
+    @hominid = Ior::Hominid::TestBase.new(:api_key => 'cafebabe')
+    Ior::Hominid::TestBase.stub(:new).and_return(@hominid)
     @newsletter = Factory(:newsletter_march_2010)
     
     @valid_params = {
-      :list_id => HominidHelpers::ListId
+      :list_id => Ior::Hominid::TestBase::ListId
     }
     
     @delivery = LiveDelivery.new(@newsletter, @valid_params)
   end
   
   it "#subscriber_count" do
-    @delivery.subscriber_count.should == HominidHelpers::SubscriberCount
+    @delivery.subscriber_count.should == Ior::Hominid::TestBase::SubscriberCount
   end
   
   it "#list_name" do
-    @delivery.list_name.should == HominidHelpers::ListName
+    @delivery.list_name.should == Ior::Hominid::TestBase::ListName
   end
   
   it "#list" do
-    @delivery.list['id'].should == HominidHelpers::ListId
+    @delivery.list['id'].should == Ior::Hominid::TestBase::ListId
   end
   
   it "fetches #list from the list_id attribute" do

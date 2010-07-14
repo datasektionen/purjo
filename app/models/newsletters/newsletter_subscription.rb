@@ -1,4 +1,6 @@
 class NewsletterSubscription < ActiveRecord::Base
+  
+  include Ior::Hominid::Common
   belongs_to :person
   
   state_machine :state, :initial => :unprocessed do
@@ -23,9 +25,5 @@ class NewsletterSubscription < ActiveRecord::Base
       Purjo2::Application.settings[:newsletter_list_id],
       person.email
     )
-  end
-  
-  def hominid
-    Hominid::Base.new(:api_key => Purjo2::Application.settings[:newsletter_api_key])
   end
 end

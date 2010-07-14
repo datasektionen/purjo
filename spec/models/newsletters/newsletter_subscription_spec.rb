@@ -22,8 +22,8 @@ describe NewsletterSubscription do
         :person => @person
       }
       @subscription = NewsletterSubscription.new(@valid_attributes)
-      @hominid = mock_hominid
-      Hominid::Base.stub(:new).and_return(@hominid)
+      @hominid = Ior::Hominid::TestBase.new(:api_key => 'cafebabe')
+      Ior::Hominid::TestBase.stub(:new).and_return(@hominid)
       
     end
     

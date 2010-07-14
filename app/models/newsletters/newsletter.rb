@@ -1,4 +1,6 @@
 class Newsletter < ActiveRecord::Base
+  
+  include Ior::Hominid::Common
   validates_presence_of :subject
   
   has_many :newsletter_sections
@@ -45,9 +47,4 @@ class Newsletter < ActiveRecord::Base
     
     self.campaign_id = new_campaign_id
   end
-  
-  def hominid
-    Hominid::Base.new(:api_key => Purjo2::Application.settings[:newsletter_api_key])
-  end
-  
 end

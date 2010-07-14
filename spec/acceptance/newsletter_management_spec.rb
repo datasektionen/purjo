@@ -77,9 +77,9 @@ feature "newsletter system" do
     list_select = find_field("List").node
     option_texts = list_select.css("option").map { |o| o.text }
     option_texts.should include("Ior")
-    option_texts.should include(HominidHelpers::ListName)
+    option_texts.should include(Ior::Hominid::TestBase::ListName)
     
-    select HominidHelpers::ListName, :from => 'List'
+    select Ior::Hominid::TestBase::ListName, :from => 'List'
     
     save_and_open_page  
     

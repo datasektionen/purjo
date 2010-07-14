@@ -2,27 +2,27 @@ require 'spec_helper'
 
 describe DeliveryBase do
   before do
-    @hominid = mock_hominid
-    Hominid::Base.stub(:new).and_return(@hominid)
+    @hominid = Ior::Hominid::TestBase.new(:api_key => 'cafebabe')
+    Ior::Hominid::TestBase.stub(:new).and_return(@hominid)
     @newsletter = Factory(:newsletter_march_2010)
     
     @delivery = DeliveryBase.new(@newsletter)
   end
 
   it "makes the correct template avaiable as #template_name" do
-    @delivery.template_name.should == HominidHelpers::TemplateName
+    @delivery.template_name.should == Ior::Hominid::TestBase::TemplateName
   end
   
   it "makes the correct template id avaiable as #template_id" do
-    @delivery.template_id.should == HominidHelpers::TemplateId
+    @delivery.template_id.should == Ior::Hominid::TestBase::TemplateId
   end
   
   # Move to separate context?
   it "raises exception if template not found" 
   
   it "#all_lists" do
-    @delivery.all_lists.first['id'].should == HominidHelpers::ListId
-    @delivery.all_lists.first['name'].should == HominidHelpers::ListName
+    @delivery.all_lists.first['id'].should == Ior::Hominid::TestBase::ListId
+    @delivery.all_lists.first['name'].should == Ior::Hominid::TestBase::ListName
     
     @delivery.all_lists.second['id'].should == '1f3c1d4b9d'
     @delivery.all_lists.second['name'].should == 'Ior'

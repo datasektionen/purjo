@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe Newsletter do
   before do
-    @hominid = mock_hominid
-    Hominid::Base.stub(:new).and_return(@hominid)
+    @hominid = Ior::Hominid::TestBase.new(:api_key => 'cafebabe')
+    Ior::Hominid::TestBase.stub(:new).and_return(@hominid)
     @newsletter = Factory(:newsletter_march_2010)
   end
   
