@@ -1,0 +1,21 @@
+%h2 
+  Redigera #{@person} (#{@person.kth_username})
+
+%p
+  Här kan du regigera personlig info. Informationen kommer vara visningsbar för alla inloggade teknologer, och nick kommer vara sökbart på sök teknolog.
+
+= simple_form_for @person do |form|
+  - if Person.current.admin?
+    = form.association :roles, :as => :check_boxes
+  - if Person.current.admin? or Person.current.id == @person.id
+    = form.input :startyear
+    = form.input :address
+    = form.input :phone
+    = form.input :nickname
+    = form.input :personalemail
+    = form.input :homepage
+    = form.input :msn
+    = form.input :xmpp
+  
+  = form.submit "Spara", :cancel_link => link_to('avbryt', person_path(@person))
+  
