@@ -34,32 +34,6 @@
 </div>
 
 <div id="calendars">
-  
-  <% if Person.current.has_feature?(:my_leek) && Person.current.has_my_settings? %>
-    <h2>Mitt d.kth.se</h2>
-    
-    <% if Person.current.my_settings.has_schedule_link? %>
-      <a href="<%= Person.current.my_settings.schedule_link %>">Mitt schema</a>
-    <% end -%>
-    
-    <h3>Mina kurser</h3>
-    
-    <table>
-      <% Person.current.my_settings.courses.each do |course| %>
-      <tr>
-        <td>
-          <% if course.course_home_page.present? %>
-            <a href="<%= course.course_home_page %>"><%= truncate(course.name, 20) %></a>
-          <% else %>
-            <%= truncate(course.name, 20) %>
-          <% end -%>
-        </td>
-        <td><a href="<%= course.handbook_url %>">Studiehandboken</td>
-      </tr>
-      <% end %>
-    </table>
-  <% end %>
-  
   <h2>Agenda</h2>
   <p>Datasektionens agenda, vill du veta mer se <%= link_to 'kalendern', calendar_path(:year => Time.now.year, :month => Time.now.month) %>.</p>
   

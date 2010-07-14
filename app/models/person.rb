@@ -14,7 +14,6 @@ class Person < ActiveRecord::Base
   validates_presence_of :first_name, :last_name, :email
   
   serialize :serialized_features
-  serialize :serialized_my_settings, Ior::My::Settings
   
   def name
     "#{first_name} #{last_name}"
@@ -95,19 +94,4 @@ class Person < ActiveRecord::Base
     )
   end
   
-  def my_settings
-    if serialized_my_settings.blank?
-      self.serialized_my_settings = Ior::My::Settings.new
-    end
-    self.serialized_my_settings
-  end
-  
-  def my_settings_attributes=(settings)
-    my_settings.from_hash(settings)
-  end
-  
-  
-  def has_my_settings?
-    !my_settings.nil?
-  end
 end

@@ -39,8 +39,4 @@ class AnonymousPerson
   def has_feature?(feature)
     false
   end
-  
-  def has_my_settings?
-    false
-  end
 end

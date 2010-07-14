@@ -1,7 +1,0 @@
-<% ior_form_for(@person, :url => person_settings_path(@person)) do |f| %>
-  <% f.fields_for(:my_settings_attributes, @person.my_settings) do |ff| %>
-    <%= ff.text_field :schedule_link%>
-  <% end -%>
-  
-  <%= f.submit "Spara" %>
-<% end -%>

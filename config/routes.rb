@@ -28,9 +28,6 @@ Rails.application.routes.draw do |map|
   resources :noises
   
   resources :people do
-    controller 'my_settings' do
-      resource :settings
-    end
     resources :user_settings
     
   end
