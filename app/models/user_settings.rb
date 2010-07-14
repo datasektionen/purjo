@@ -3,6 +3,8 @@ class UserSettings
   include ActiveModel::Conversion  
   extend ActiveModel::Naming
   
+  attr_reader :person
+  
   def initialize(person, settings = {})
     @settings = settings
     @person = person

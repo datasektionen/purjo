@@ -10,14 +10,14 @@ describe UserSettings do
   
   describe "newsletter settings" do
     it "creates a newsletter subscription if the settings says so" do
-      nus = UserSettings.new(@person, :newsletter => true)
+      nus = @person.build_user_settings(:newsletter => true)
       lambda {
         nus.save!
       }.should change(NewsletterSubscription, :count).by(1)
     end
     
     it "does not create a newsletter subscription if the settings says so" do
-      nus = UserSettings.new(@person, @valid_settings.except(:newsletter))
+      nus = @person.build_user_settings(@valid_settings.except(:newsletter))
       lambda {
         nus.save!
       }.should_not change(NewsletterSubscription, :count)
@@ -26,7 +26,7 @@ describe UserSettings do
   end
   
   it "should mark the person as not new when saved" do
-    nus = UserSettings.new(@person, {})
+    nus = @person.build_user_settings
     nus.save!
     @person.has_chosen_settings.should == true
   end

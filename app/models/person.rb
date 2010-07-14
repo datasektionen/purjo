@@ -62,6 +62,10 @@ class Person < ActiveRecord::Base
     serialized_features
   end
   
+  def build_user_settings(attributes = {})
+    @user_settings = UserSettings.new(self, attributes)
+  end
+  
   def has_feature?(feature)
     features.include?(feature.to_s)
   end

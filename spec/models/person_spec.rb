@@ -9,6 +9,15 @@ describe Person do
     }
   end
   
-  it "only has one active newsletter subscription"
-  it "has one active and one cancelled newsletter subscription"
+  it "creates user setting for the person" do
+    person = Person.new(@valid_attributes)
+    settings = person.build_user_settings
+    settings.person.should == person
+  end
+  
+  it "creates user settings with params for the person" do
+    person = Person.new(@valid_attributes)
+    UserSettings.should_receive(:new).with(person, hash_including(:newsletter => true))
+    settings = person.build_user_settings(:newsletter => true)
+  end
 end
