@@ -4,7 +4,9 @@ class NewslettersController < InheritedResources::Base
     create! { newsletters_path }
   end
   
-  def deliver
-    @test_delivery = TestDelivery.new(@newsletter)
+  private
+  def collection
+    @newsletters ||= end_of_association_chain.sorted.paginate(:page => params[:page], :per_page => 10)
   end
+  
 end

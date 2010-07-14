@@ -22,6 +22,8 @@
           - else
             %span{:class => 'disabled'} Skicka nyhetsbrev
 
+%p
+  = will_paginate @newsletters
 %p.actions
   = link_to t('.new'), new_newsletter_path
   
