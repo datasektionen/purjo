@@ -10,3 +10,4 @@ doc/api
 tmp
 rerun.txt
 .bundle
+capybara-*.html
