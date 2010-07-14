@@ -31,7 +31,7 @@ Rails.application.routes.draw do |map|
     controller 'my_settings' do
       resource :settings
     end
-    resources :new_user_settings
+    resources :user_settings
     
   end
   

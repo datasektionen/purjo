@@ -5,8 +5,8 @@ feature "newsletter system" do
   include Rails.application.routes.url_helpers
   
   background do
-    hominid = mock_hominid
-    Hominid::Base.stub(:new).and_return(hominid)
+    @hominid = Ior::Hominid::TestBase.new(:api_key => 'cafebabe')
+    Ior::Hominid::TestBase.stub(:new).and_return(@hominid)
   end
   
   scenario "creating a new news letter" do
@@ -81,14 +81,9 @@ feature "newsletter system" do
     
     select Ior::Hominid::TestBase::ListName, :from => 'List'
     
-    save_and_open_page  
-    
-    
     click "Skicka nyhetsbrev"
 
     page.should_not have_content("Ett fel uppstod vid testutskick!")
-    
-    save_and_open_page  
     
     current_path.should == newsletters_path
   end
@@ -102,11 +97,15 @@ feature "newsletter system" do
     end
     
     click "Skicka nyhetsbrev" # Länken
+    select Ior::Hominid::TestBase::ListName, :from => 'List'
     click "Skicka nyhetsbrev" # Knappen
     
     visit newsletters_path
+    
     lambda { 
-      click "Skicka nyhetsbrev"
+      within("tr#newsletter_#{newsletter.id}") do
+        click "Skicka nyhetsbrev"
+      end
     }.should raise_error(Capybara::ElementNotFound)
     
   end

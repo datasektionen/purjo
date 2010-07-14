@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe NewUserSettings do
+describe UserSettings do
   before do
     @person = Factory(:norbert_nollan)
     @valid_settings = {
@@ -10,14 +10,14 @@ describe NewUserSettings do
   
   describe "newsletter settings" do
     it "creates a newsletter subscription if the settings says so" do
-      nus = NewUserSettings.new(@person, :newsletter => true)
+      nus = UserSettings.new(@person, :newsletter => true)
       lambda {
         nus.save!
       }.should change(NewsletterSubscription, :count).by(1)
     end
     
     it "does not create a newsletter subscription if the settings says so" do
-      nus = NewUserSettings.new(@person, @valid_settings.except(:newsletter))
+      nus = UserSettings.new(@person, @valid_settings.except(:newsletter))
       lambda {
         nus.save!
       }.should_not change(NewsletterSubscription, :count)
@@ -26,7 +26,7 @@ describe NewUserSettings do
   end
   
   it "should mark the person as not new when saved" do
-    nus = NewUserSettings.new(@person, {})
+    nus = UserSettings.new(@person, {})
     nus.save!
     @person.has_chosen_settings.should == true
   end
@@ -46,7 +46,7 @@ describe NewUserSettings do
     end
 
     def model
-      NewUserSettings.new(mock_model(Person), {})
+      UserSettings.new(mock_model(Person), {})
     end
   end
   

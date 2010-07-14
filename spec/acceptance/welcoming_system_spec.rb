@@ -4,8 +4,8 @@ feature "page management" do
   include Authentication
   
   background do
-    @hominid = mock_hominid
-    Hominid::Base.stub(:new).and_return(@hominid)
+    @hominid = Ior::Hominid::TestBase.new(:api_key => 'cafebabe')
+    Ior::Hominid::TestBase.stub(:new).and_return(@hominid)
   end
   
   scenario "visiting d.kth.se for the first time and signing up for the news letter" do

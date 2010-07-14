@@ -10,7 +10,7 @@
     <div id="first_time_welcome">
       <%= include_node("/first_time_welcome") %>
     
-      <%= simple_form_for([Person.current, @new_user_settings]) do |f| %>
+      <%= simple_form_for([Person.current, @user_settings]) do |f| %>
         <%= f.input :newsletter, :as => :boolean, :label => 'Nyhetsbrev' %>
         <%= f.submit :value => 'Spara inställningar' %>
       <% end -%>

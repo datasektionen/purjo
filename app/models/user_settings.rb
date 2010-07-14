@@ -1,4 +1,4 @@
-class NewUserSettings
+class UserSettings
   include ActiveModel::Validations
   include ActiveModel::Conversion  
   extend ActiveModel::Naming

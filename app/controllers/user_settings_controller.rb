@@ -1,8 +1,8 @@
-class NewUserSettingsController < ApplicationController
+class UserSettingsController < ApplicationController
   before_filter :load_person
   def create
-    @new_user_settings = NewUserSettings.new(@person, params[:new_user_settings])
-    @new_user_settings.save!
+    @user_settings = UserSettings.new(@person, params[:user_settings])
+    @user_settings.save!
     redirect_to root_path
   end
   
