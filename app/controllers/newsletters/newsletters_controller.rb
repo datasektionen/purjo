@@ -1,4 +1,6 @@
 class NewslettersController < InheritedResources::Base
+  require_role :admin, :only => [:create, :new, :edit, :update]
+  require_role :editor
   
   def create
     create! { newsletters_path }

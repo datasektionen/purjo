@@ -196,7 +196,7 @@
           <%= admin_link('Ny funktionärspost', :url => new_chapter_post_path, :icon => 'functionary_add.png') %>
         <% end %>
         
-        <% if @newsletter && !@newsletter.new_record? %>
+        <% if @newsletter && !@newsletter.new_record? && Person.current.admin? %>
           <%= admin_link('Skicka nyhetsbrev', :url => new_newsletter_live_delivery_path(@newsletter)) %>
           <%= admin_link('Testskicka nyhetsbrev', :url => new_newsletter_test_delivery_path(@newsletter)) %>
         <% end %>

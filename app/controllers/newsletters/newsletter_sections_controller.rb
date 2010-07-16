@@ -1,4 +1,6 @@
 class NewsletterSectionsController < InheritedResources::Base
+  require_role :editor
+  
   belongs_to :newsletter
   
   def create

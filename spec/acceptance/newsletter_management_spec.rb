@@ -7,9 +7,11 @@ feature "newsletter system" do
   background do
     @hominid = Ior::Hominid::TestBase.new(:api_key => 'cafebabe')
     Ior::Hominid::TestBase.stub(:new).and_return(@hominid)
+    Factory(:root_page)
   end
   
   scenario "creating a new news letter" do
+    login_as(:admin_user)
     visit newsletters_path
     click "Nytt nyhetsbrev"
     fill_in 'Ämne', :with => 'Nyhetsbrevet'
@@ -21,6 +23,8 @@ feature "newsletter system" do
   end
   
   scenario "Adding a section to a news letter" do
+    login_as(:ture_teknolog)
+    
     newsletter = Factory(:newsletter_march_2010)
     
     visit newsletters_path
@@ -44,6 +48,8 @@ feature "newsletter system" do
   scenario "editing a news letter section"
   
   scenario "test sending a newsletter" do
+    login_as(:admin_user)
+    
     newsletter = Factory(:newsletter_march_2010)
     
     visit newsletters_path
@@ -65,6 +71,7 @@ feature "newsletter system" do
   end
   
   scenario "sending a news letter" do
+    login_as(:admin_user)
     newsletter = Factory(:newsletter_march_2010)
     
     visit newsletters_path
@@ -89,6 +96,8 @@ feature "newsletter system" do
   end
   
   scenario "trying to send an already sent newsletter" do
+    login_as(:admin_user)
+    
     newsletter = Factory(:newsletter_march_2010)
     
     visit newsletters_path

@@ -57,6 +57,12 @@ Factory.define(:ture_teknolog, :parent => :person) do |f|
   f.last_name "Teknolog"
   f.email "ture.teknolog@example.com"
   f.has_chosen_settings true
+  
+  f.after_create do |p|
+    p.roles << (Role.find_by_name("editor") || Factory(:editor_role))
+    p.save!
+  end
+  
 end
 
 

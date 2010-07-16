@@ -1,5 +1,6 @@
 class BaseDeliveriesController < ApplicationController
   before_filter :load_parent
+  require_role :adminn
   
   def new
     begin
