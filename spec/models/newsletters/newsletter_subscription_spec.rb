@@ -48,7 +48,21 @@ describe NewsletterSubscription do
   end
   
   describe "cancelling" do
-    it "unsubscribes from hominid"
+    before do
+      @person = Factory(:ture_teknolog)
+      @valid_attributes = {
+        :person => @person
+      }
+      @subscription = NewsletterSubscription.new(@valid_attributes)
+      @subscription.process!
+      @hominid = Ior::Hominid::TestBase.new(:api_key => 'cafebabe')
+      Ior::Hominid::TestBase.stub(:new).and_return(@hominid)
+      
+    end
+    it "unsubscribes from hominid" do
+      @hominid.should_receive(:unsubscribe).with(Ior::Hominid::TestBase::ListId, 'ture.teknolog@example.com')
+      @subscription.deactivate!
+    end
     it "goes to state cancelled if unsubscribe successful"
     it "raises error if unsubscribe is unsucessful"
     it "sends email to someone if unsubscribe fails"

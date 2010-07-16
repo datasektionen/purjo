@@ -28,8 +28,7 @@ Rails.application.routes.draw do |map|
   resources :noises
   
   resources :people do
-    resources :user_settings
-    
+    resource :settings, :controller => 'user_settings', :as => 'user_settings'
   end
   
   resources 'nyheter', :as => 'posts', :controller => 'posts'

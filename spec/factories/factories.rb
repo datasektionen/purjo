@@ -50,6 +50,16 @@ Factory.define(:norbert_nollan, :parent => :person) do |f|
   f.email "norbert@example.com"
 end
 
+Factory.define(:ture_teknolog, :parent => :person) do |f|
+  f.kth_ugid 'u1turetek'
+  f.kth_username 'turetek'
+  f.first_name "Ture"
+  f.last_name "Teknolog"
+  f.email "ture.teknolog@example.com"
+  f.has_chosen_settings true
+end
+
+
 Factory.define(:admin_role, :class => 'Role') do |r|
   r.name "admin"
 end

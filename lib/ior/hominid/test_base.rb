@@ -9,10 +9,12 @@ module Ior
       ApiKey = "abc123"
       
       def initialize(options)
-        
+        Rails.logger.debug("Hominid::TestBase.new called with options:")
+        Rails.logger.debug(options.inspect)
       end
       
       def templates
+        Rails.logger.debug("Hominid::TestBase#templates called")
         [
           {
             "name" => TemplateName,
@@ -40,30 +42,47 @@ module Ior
       end   
 
       def lists
+        Rails.logger.debug("Hominid::TestBase#lists called")
         AllLists
       end
       
       def find_list_by_id(id)
+        Rails.logger.debug("Hominid::TestBase#find_list_by_id called with #{id}")
         AllLists.find { |list| list['id'] == id }
       end
       
       def create_campaign(options)
+        Rails.logger.debug("Hominid::TestBase#create_campaign called with options")
+        Rails.logger.debug(options.inspect)
+        
         "deadbeef"
       end
       
       def update(campaign_id, name, value)
+        Rails.logger.debug("Hominid::TestBase#update called with #{campaign_id}, #{name}, #{value}")
+        
         true
       end
       
       def send_test(campaign_id, emails = {}, send_type = nil) 
+        Rails.logger.debug("Hominid::TestBase#send_test called with #{campaign_id}, #{emails.inspect}, #{send_type}")
         true
       end
       
       def send(campaign_id)
+        Rails.logger.debug("Hominid::TestBase#send called with #{campaign_id}")
         true
       end
       
       def subscribe(list_id, email, merge_vars = {}, options = {})
+        Rails.logger.debug("Hominid::TestBase#subscribe called with #{list_id}, #{email.inspect}, #{merge_vars.inspect}, #{options.inspect}")
+        
+        true
+      end
+      
+      def unsubscribe(list_id, email, options = {})
+        Rails.logger.debug("Hominid::TestBase#unsubscribe called with #{list_id}, #{email.inspect}, #{options.inspect}")
+        
         true
       end
       

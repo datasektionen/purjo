@@ -1,7 +1,8 @@
 require File.dirname(__FILE__) + '/acceptance_helper'
 
-feature "page management" do
+feature "user settings" do
   include Authentication
+  include Rails.application.routes.url_helpers
   
   background do
     @hominid = Ior::Hominid::TestBase.new(:api_key => 'cafebabe')
@@ -32,4 +33,22 @@ feature "page management" do
     page.should_not have_css("div#first_time_welcome")
     norbert.should have(1).newsletter_subscription
   end
+  
+  scenario "unsubscribing from newsletter via purjo" do
+    ture = login_as(:ture_teknolog)
+    ture.newsletter_subscriptions.create!
+    ture.newsletter_subscriptions.first.process!
+    
+    visit person_user_settings_path(ture)
+    
+    click "Ändra inställningar"
+    
+    find_field("Nyhetsbrev")['checked'].should == true
+    
+    uncheck "Nyhetsbrev"
+    click "Spara inställningar"
+    ture.newsletter_subscriptions.active.should == nil
+    
+  end
+  
 end
