@@ -1,5 +1,5 @@
 set :stages, %w(staging production)
-set :default_stage, "staging"
+#set :default_stage, "staging"
 require 'capistrano/ext/multistage'
 
 # Not needed on new server?
@@ -18,7 +18,7 @@ set :keep_releases, 3
 
 role :app, "mission-to-marzipan.ben-and-jerrys.stacken.kth.se"
 role :web, "mission-to-marzipan.ben-and-jerrys.stacken.kth.se"
-#role :db,  "berried-treasure.ben-and-jerrys.stacken.kth.se", :primary => true
+role :db,  "mission-to-marzipan.ben-and-jerrys.stacken.kth.se", :primary => true
 
 namespace :deploy do
   #desc "Authenticate using Kerberos"
@@ -78,3 +78,18 @@ namespace :deploy do
   after  "deploy:update_code", "deploy:set_permissions"
   after  "deploy:update", "deploy:cleanup"
 end
+
+namespace :bundler do
+  task :create_symlink, :roles => :app do
+    shared_dir = File.join(shared_path, 'bundle')
+    release_dir = File.join(current_release, '.bundle')
+    run("mkdir -p #{shared_dir} && ln -s #{shared_dir} #{release_dir}")
+  end
+ 
+  task :bundle_new_release, :roles => :app do
+    bundler.create_symlink
+    run "cd #{release_path} && bundle install --without test"
+  end
+end
+ 
+after 'deploy:update_code', 'bundler:bundle_new_release'
