@@ -40,6 +40,8 @@ Rails.application.routes.draw do |map|
     end
   end
   
+  resources :students
+  
   resources :text_nodes do
     resources :children, :controller => 'TextNodeChildren', :path_prefix => 'text_nodes/:node_id'
     resources :files, :controller => 'FileNodeChildren', :path_prefix => 'text_nodes/:node_id'
