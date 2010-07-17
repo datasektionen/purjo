@@ -17,6 +17,7 @@ gem 'hominid'
 gem 'delayed_job'
 gem 'state_machine'
 gem 'meta_where'
+gem 'exceptional'
 
 group :development do
   gem 'ruby-debug'
