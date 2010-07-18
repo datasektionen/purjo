@@ -5,7 +5,7 @@
     = link_to "Ny undersida", new_text_node_child_path(tree_item)
     |
     = link_to "Redigera", edit_text_node_path(tree_item)
-    - if Person.current.admin?
+    - if Person.current.admin? && tree_item.deletable?
       |
       = link_to "Ta bort sida", delete_text_node_path(tree_item)
     )

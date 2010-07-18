@@ -5,6 +5,7 @@ class TextNode < ActiveRecord::Base
   has_many :file_nodes, :foreign_key => 'parent_id'
 
   before_validation :update_url
+  before_destroy :deletable?
   
   validates_uniqueness_of :url
   validates_presence_of :contents
@@ -30,6 +31,10 @@ class TextNode < ActiveRecord::Base
       node = node.parent
     end
     return "application"
+  end
+  
+  def deletable?
+    children.empty? && parent.present?
   end
   
   protected

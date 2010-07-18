@@ -94,4 +94,6 @@ feature "page management" do
     visit text_node_children_path(root)
     page.should_not have_content("Om datasektionen")
   end
+  
+  
 end
