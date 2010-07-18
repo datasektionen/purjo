@@ -1,15 +1,15 @@
 class FileNodeChildrenController < ApplicationController
   def index
-    @parent = TextNode.find(params[:node_id])
+    @parent = TextNode.find(params[:text_node_id])
     @files = @parent.file_nodes
   end
   def new
-    @parent = TextNode.find(params[:node_id])
+    @parent = TextNode.find(params[:text_node_id])
     @node = @parent.file_nodes.build
   end
   
   def create
-    @parent = TextNode.find(params[:node_id])
+    @parent = TextNode.find(params[:text_node_id])
     @node = @parent.file_nodes.build(params[:file_node])
     
     if @node.save

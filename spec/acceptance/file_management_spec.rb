@@ -34,6 +34,8 @@ feature "page management" do
     
     visit("/om_datasektionen")
     
+    save_and_open_page
+    
     click_admin_link "Ny fil"
     
     attach_file("Fil", Rails.root + "spec/fixtures/protokoll.pdf")
