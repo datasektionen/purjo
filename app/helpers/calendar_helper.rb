@@ -1,4 +1,10 @@
 module CalendarHelper
+  MONTH_NAMES = ["", "Januari", "Februari", "Mars", "April", "Maj", "Juni", "Juli", "Augusti", "September", "Oktober", "November", "December"]
+
+  def get_month_name(month)
+    return MONTH_NAMES[month]
+  end
+
   def previous_month_link(month, year)
     if month == 1
       month = 12
@@ -6,7 +12,7 @@ module CalendarHelper
     else
       month -= 1
     end
-    link_to "#{Ior::CalendarHelper::MONTH_NAMES[month]} #{year}", calendar_path(:month => month, :year => year)
+    link_to "#{MONTH_NAMES[month]} #{year}", calendar_path(:month => month, :year => year)
   end
   
   def next_month_link(month, year)
@@ -16,7 +22,7 @@ module CalendarHelper
     else
       month += 1
     end
-    link_to "#{Ior::CalendarHelper::MONTH_NAMES[month]} #{year}", calendar_path(:month => month, :year => year)
+    link_to "#{MONTH_NAMES[month]} #{year}", calendar_path(:month => month, :year => year)
   end
   
 end

@@ -6,8 +6,12 @@
 
 <ul id="navbar" class="horizontal">
   <li><%= previous_month_link(@month, @year) %></li>
-  <li><%#= Ior::CalendarHelper::MONTH_NAMES[@month] %> <%= @year %></li>
+  <li><%= get_month_name(@month) %> <%= @year %></li>
   <li><%= next_month_link(@month, @year) %></li>
 </ul>
 
-<%= calendar(@posts, :first_day_of_week => 1, :show_week => true, :month => @month, :year => @year, :abbrev => 0..-1) %>
+<%#= calendar(@posts, :first_day_of_week => 1, :show_week => true, :month => @month, :year => @year, :abbrev => 0..-1) %>
+
+<% html = Ior::Calendar::HtmlRenderer.new(@posts, @year, @month) %>
+<%= render :inline => html.render %>
+

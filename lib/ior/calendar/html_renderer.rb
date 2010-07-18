@@ -57,8 +57,10 @@ module Ior
 		    
 		    output += "\"><p class=\"daynumber\">#{time.day.to_s}</p>"
 		    
-		    #Insert events here
-		    posts_this_day = @posts.find_all{ |p| p.starts_at >= time.beginning_of_day && p.starts_at <= time.end_of_day }
+		    #Get all posts that happen during the current day. (Starts on, Ends on or Starts before and Ends after current day)
+		    posts_this_day = @posts.find_all{ |p| (p.starts_at >= time.beginning_of_day && p.starts_at <= time.end_of_day) ||
+													(p.starts_at <= time.beginning_of_day && p.ends_at >= time.end_of_day) ||
+													(p.ends_at >= time.beginning_of_day && p.ends_at <= time.end_of_day) }
 			posts_this_day.each { |p|
 				output += "<a href=\"/nyheter/#{p.id}\">#{p.to_s}</a><br>\n"
 			}

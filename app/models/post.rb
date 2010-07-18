@@ -1,17 +1,17 @@
 class Post < ActiveRecord::Base
   with_options :order => 'bumped_at' do |post|
-    named_scope :active, :conditions => ["expires_at > ?", DateTime.now]
+    scope :active, :conditions => ["expires_at > ?", DateTime.now]
   
-    named_scope :news_posts, :conditions => ["news_post = ?", true], :order => 'sticky DESC, bumped_at DESC'
-    named_scope :calendar_posts, :conditions => ["calendar_post = ?", true], :order => 'starts_at ASC'
+    scope :news_posts, :conditions => ["news_post = ?", true], :order => 'sticky DESC, bumped_at DESC'
+    scope :calendar_posts, :conditions => ["calendar_post = ?", true], :order => 'starts_at ASC'
   
-    named_scope :for_month, lambda { |month, year|
+    scope :for_month, lambda { |month, year|
       date = DateTime.civil(year, month)
       
       {:conditions => [ 'NOT (ends_at < :start_date OR starts_at > :end_date)', {:start_date => date, :end_date => date.end_of_month}]}
     }
     
-    named_scope :for_day, lambda {|day, month, year|
+    scope :for_day, lambda {|day, month, year|
       date = DateTime.civil(year, month, day)
       
       {:conditions => [ 'NOT (ends_at < :start_date OR starts_at > :end_date)', {:start_date => date.beginning_of_day, :end_date => date.end_of_day}]}
