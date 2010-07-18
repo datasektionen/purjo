@@ -1,6 +1,6 @@
 class TextNodesController < ApplicationController
   require_role 'editor'
-  require_role 'admin', :only => :destroy
+  require_role 'admin', :only => [:destroy, :delete]
   def edit
     @node = TextNode.find(params[:id])
     
@@ -24,5 +24,9 @@ class TextNodesController < ApplicationController
     
     @node.destroy
     redirect_to(parent.url)
+  end
+  
+  def delete
+    @node = TextNode.find(params[:id])
   end
 end

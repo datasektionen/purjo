@@ -50,6 +50,10 @@ Rails.application.routes.draw do |map|
         put :revert
       end
     end
+    
+    member do
+      get :delete
+    end
   end
   
   match "/protocols/:filename", :to => "protocols#show", :as => 'protocol'

@@ -74,4 +74,24 @@ feature "page management" do
     
     page.should_not have_content("Om datasektionen")
   end
+  
+  scenario "removing a page from the tree view" do
+    login_as(:admin_user)
+    about = Factory(:about_page)
+    root = TextNode.find_by_url("/")
+    visit text_node_children_path(root)
+    
+    within("#text_node_#{about.id}") do
+      click "Ta bort sida"
+    end
+    
+    page.should have_content(%Q{Är du säker på att du vill ta bort denna sida})
+    page.should have_content(%Q{Om datasektionen})
+    
+    click "Ja"
+    
+    current_path.should == '/'
+    visit text_node_children_path(root)
+    page.should_not have_content("Om datasektionen")
+  end
 end

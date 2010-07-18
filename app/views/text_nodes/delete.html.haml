@@ -1,0 +1,16 @@
+%h2 Ta bort #{@node.name}
+
+%p
+  Är du säker på att du vill ta bort denna sida:
+  
+  %dl
+    %dt Namn
+    %dd= @node.name
+    %dt URL
+    %dd= @node.url
+  
+  %p
+    %strong Detta går inte att ångra!
+  
+  = button_to "Ja", text_node_path(@node), :method => :delete
+  = link_to "Avbryt", :back
