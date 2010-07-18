@@ -26,6 +26,16 @@ Factory.define(:about_page, :parent => :text_node) do |f|
   f.parent { TextNode.find_by_url("/") || Factory(:root_page) }
 end
 
+Factory.define(:file_node) do
+  
+end
+
+Factory.define(:protocol_file, :parent => :file_node) do |f|
+  include ActionDispatch::TestProcess
+  f.resource   { fixture_file_upload( Rails.root + 'spec/fixtures/protokoll.pdf') }
+  f.parent { TextNode.find_by_url("/") || Factory(:root_page) }
+end
+
 Factory.define(:person) do |f|
   
 end

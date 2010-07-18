@@ -34,8 +34,6 @@ feature "page management" do
     
     visit("/om_datasektionen")
     
-    save_and_open_page
-    
     click_admin_link "Ny fil"
     
     attach_file("Fil", Rails.root + "spec/fixtures/protokoll.pdf")
@@ -50,4 +48,22 @@ feature "page management" do
     
     page.should have_content("/om_datasektionen/protokoll.pdf")
   end
+  
+  scenario "Removing a file" do
+    about = Factory(:about_page)
+    protocol = Factory(:protocol_file, :parent => about)
+    login_as(:admin_user)
+    
+    visit("/om_datasektionen")
+    click_admin_link "Lista filer"
+    
+    within("#file_node_#{protocol.id}") do
+      click "Ta bort"
+    end
+    
+    current_path.should == text_node_files_path(about)
+    
+    page.should_not have_content("protokoll.pdf")
+  end
+  
 end
