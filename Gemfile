@@ -18,6 +18,7 @@ gem 'delayed_job'
 gem 'state_machine'
 gem 'meta_where'
 gem 'exceptional'
+gem 'json_pure'
 
 group :development do
   gem 'ruby-debug'
