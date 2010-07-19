@@ -8,28 +8,28 @@ module Ior
       end
       
       def render
-		headers = ["Måndag", "Tisdag", "Onsdag", "Torsdag", "Fredag", "Lördag", "Söndag"]
-		time = Time.utc(@year, @month).beginning_of_week
+        headers = ["Måndag", "Tisdag", "Onsdag", "Torsdag", "Fredag", "Lördag", "Söndag"]
+        time = Time.utc(@year, @month).beginning_of_week
       
         output = "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"calendar\">\n"
-		
-		
-		output += "<thead>\n"
+        
+        
+        output += "<thead>\n"
         output += "<tr class=\"dayName\">\n"
         output += "<th class=\"week\">V.</th>\n"
         headers.each { |header|
           output += "<th scope=\"col\">#{header}</th>\n"
-		}
+        }
         output += "</tr>\n"
-		output += "</thead>\n"
-		
-		
-		
-		output += "<tbody>\n"
-		
-		#Avoid the following code if the month starts on a monday
-		if time.month != @month
-          output += "<tr>\n"	
+        output += "</thead>\n"
+        
+        
+        
+        output += "<tbody>\n"
+        
+        #Avoid the following code if the month starts on a monday
+        if time.month != @month
+          output += "<tr>\n"    
           output += "<td class=\"week\">#{time.strftime("%W")}</td>\n"
 
           while time.month != @month
@@ -63,17 +63,17 @@ module Ior
           posts_this_day.each { |p|
             output += "<a href=\"/nyheter/#{p.id}\">#{p.to_s}</a><br>\n"
           }
-			
+            
           output += "</td>\n"
-			
+            
           if time.wday == 0 #Sunday, end of the row
             output += "</tr>\n"
           end
-			
+            
           time = time.tomorrow
-		end
-		
-		
+        end
+        
+        
         #If the month ended on a sunday, the </tr> tag has already been inserted, so we
         #don't want another copy of it
         if time.wday != 1
