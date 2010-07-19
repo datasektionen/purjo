@@ -11,7 +11,10 @@ module Ior
       
       def hominid
         hominid_class = Purjo2::Application.settings[:newsletter_hominid_class_name].constantize
-        hominid_class.new(:api_key => Purjo2::Application.settings[:newsletter_api_key])
+        hominid_class.new(
+          :api_key => Purjo2::Application.settings[:newsletter_api_key],
+          :timeout => 60
+        )
       end
     end
   end
