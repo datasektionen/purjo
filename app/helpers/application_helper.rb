@@ -25,8 +25,10 @@ module ApplicationHelper
     end
   end
   
-  def title
-    I18n.t("new", :resource => resource.class.human_name)
+  def title(title = nil)
+    if @node.present?
+      @node.name
+    end
   end
 
   def current_url
