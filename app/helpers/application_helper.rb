@@ -25,12 +25,6 @@ module ApplicationHelper
     end
   end
   
-  def title(title = nil)
-    if @node.present?
-      @node.name
-    end
-  end
-
   def current_url
     "http://" + request.raw_host_with_port + request.fullpath
   end
