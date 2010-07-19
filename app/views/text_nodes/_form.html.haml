@@ -1,0 +1,7 @@
+= simple_form_for @node, :url => @parent.present? ? text_node_children_path(@parent) : text_node_path(@node) do |form|
+  = form.input :name
+  = form.input :title, :hint => 'Om inget anges används Namn-attributet'
+  = form.input :custom_layout
+  = form.input :contents
+  = form.submit
+  

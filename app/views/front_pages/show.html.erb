@@ -1,5 +1,5 @@
 <% stylesheet "nyheter" -%>
-
+<% title "Nyheter" %>
 <div id="news">
   <h2>
     Nyheter(<%= @tags.nil? ? 'Alla' : @tags.to_sentence(:connector => 'och') %>)

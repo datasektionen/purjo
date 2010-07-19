@@ -19,12 +19,7 @@
   <%= csrf_meta_tag %>
   
   <title>
-  Konglig Datasektionen
-  <% if false %>
-  <% if (not @node.nil?) %>
-      - <%= @node.name.capitalize %>
-  <% end %>
-  <% end %>
+    <%= render_title %>
   </title>
   
   <!--[if IE]> <style> #related_container { margin-right: 0; } </style> <![endif]-->

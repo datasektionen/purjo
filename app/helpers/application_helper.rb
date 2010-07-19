@@ -25,10 +25,6 @@ module ApplicationHelper
     end
   end
   
-  def title
-    I18n.t("new", :resource => resource.class.human_name)
-  end
-
   def current_url
     "http://" + request.raw_host_with_port + request.fullpath
   end

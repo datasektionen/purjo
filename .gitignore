@@ -11,3 +11,4 @@ tmp
 rerun.txt
 .bundle
 capybara-*.html
+public/system
