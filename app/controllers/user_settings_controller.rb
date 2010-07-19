@@ -1,5 +1,6 @@
 class UserSettingsController < ApplicationController
   before_filter :load_person
+  before_filter :check_access
   
   def show
     @user_settings = @person.user_settings
@@ -21,7 +22,14 @@ class UserSettingsController < ApplicationController
     @user_settings.save!
   end
   
+  private
   def load_person
     @person = Person.find_by_kth_username(params[:person_id])
+  end
+  
+  def check_access
+    if !(Person.current.admin? || Person.current == @person)
+      raise Ior::Security::AccessDenied
+    end
   end
 end
