@@ -6,6 +6,11 @@ class ApplicationController < ActionController::Base
   before_filter :authenticate
   before_filter :set_locale
   before_filter :save_return_to_url
+  
+  rescue_from ActiveRecord::RecordNotFound, :with => :not_found
+  rescue_from Ior::Security::AccessDenied, :with => :access_denied
+  rescue_from SyntaxError, :with => :syntax_error
+  
 
   def set_locale
     I18n.locale = :sv
@@ -21,23 +26,16 @@ class ApplicationController < ActionController::Base
   end
 
   protected
-  def rescue_action_in_public(exception)
-    @exception = exception
-    params[:format] = nil
-    case exception
-    when ActiveRecord::RecordNotFound
-      render :file => 'errors/file_not_found', :layout => true
-    when Ior::Security::AccessDenied
-      render :file => 'errors/access_denied', :layout => true
-    when SyntaxError
-      render :file => 'errors/syntax_error', :layout => true
-    else
-      render :file => 'errors/other_error', :layout => true
-      params_to_send = (respond_to? :filter_parameters) ? filter_parameters(params) : params
-      
-      Exceptional.handle(exception, self, request, params_to_send)
-      
-    end
+  def not_found
+    render :file => 'errors/file_not_found', :layout => true
+  end
+  
+  def access_denied
+    render :file => 'errors/access_denied', :layout => true
+  end
+  
+  def syntax_error
+    render :file => 'errors/syntax_error', :layout => true
   end
   
   def local_request?
