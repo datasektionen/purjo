@@ -9,10 +9,10 @@ Rails.application.routes.draw do |map|
   
   resources :job_ads, :except => [:show]
   
-  match "/kontakt" => 'contact#index', :via => :get
-  match "/kontakt" => 'contact#send_mail', :via => :post
-  match "/kontakt/:id" => 'contact#single', :constraints => { :id => /\d+/ }
-  match "/kontakt/:post" => 'contact#single'
+  get "/kontakt" => 'contact#index', :as => 'contact'
+  post "/kontakt" => 'contact#send_mail'
+  get "/kontakt/:id" => 'contact#single', :constraints => { :id => /\d+/ }
+  get "/kontakt/:post" => 'contact#single'
   
   resources :kth_accounts
   

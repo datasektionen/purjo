@@ -26,7 +26,7 @@ class ContactController < ApplicationController
       mailer = ContactMailer.functionary(@post, @mail, info)
       if mailer.deliver
         flash[:notice] = "Tack för ditt meddelande!"
-        redirect_to "/kontakt"
+        redirect_to contact_path
       else # mail delivery failed
         flash[:error] = "Meddelandet kunde inte skickas."
         render :action => 'index'
