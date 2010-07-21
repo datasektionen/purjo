@@ -4,6 +4,7 @@
     <%= f.select :to, @recipients, :selected => @mail.to.to_i %>
   <% else %>
     <%= f.hidden_field :to, :value => @post.id %>
+    <%= hidden_field :hidden, :true %>
   <% end %>
 
   <%= f.input :name %>

@@ -18,7 +18,7 @@ class ContactController < ApplicationController
 
   def send_mail
     @mail = ContactMail.new(params[:contact_mail])
-    @recipients = recipients
+    @recipients = recipients unless params[:hidden]
     @post = ChapterPost.find(@mail.to)
     info = { :ip => request.remote_ip }
 
