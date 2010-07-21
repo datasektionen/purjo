@@ -9,7 +9,7 @@ class ContactController < ApplicationController
     if params[:id]
       @post = ChapterPost.find(params[:id])
     else
-      #@post = ChapterPost.find_by(params[:post])
+      @post = ChapterPost.find_by_slug(params[:post])
     end
     @mail = ContactMail.new
     prefill_if_logged_in(@mail)
