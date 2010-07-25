@@ -8,7 +8,7 @@ dependencies:
     group: 
     - :default
     version: = 3.0.0.beta4
-  mysql: 
+  mongrel: 
     group: 
     - :default
     version: ">= 0"
@@ -16,15 +16,15 @@ dependencies:
     group: 
     - :default
     version: ">= 0"
+  mysql: 
+    group: 
+    - :default
+    version: ">= 0"
   timecop: 
     group: 
     - :test
     version: ">= 0"
-  meta_where: 
-    group: 
-    - :default
-    version: ">= 0"
-  delayed_job: 
+  acts-as-taggable-on: 
     group: 
     - :default
     version: ">= 0"
@@ -32,7 +32,11 @@ dependencies:
     group: 
     - :default
     version: ">= 0"
-  acts-as-taggable-on: 
+  delayed_job: 
+    group: 
+    - :default
+    version: ">= 0"
+  meta_where: 
     group: 
     - :default
     version: ">= 0"
@@ -44,11 +48,7 @@ dependencies:
     group: 
     - :test
     version: ">= 2.0.0.beta.11"
-  simple_form: 
-    group: 
-    - :default
-    version: ">= 0"
-  will_paginate: 
+  exceptional: 
     group: 
     - :default
     version: ">= 0"
@@ -56,7 +56,11 @@ dependencies:
     group: 
     - :default
     version: ">= 0"
-  exceptional: 
+  will_paginate: 
+    group: 
+    - :default
+    version: ">= 0"
+  simple_form: 
     group: 
     - :default
     version: ">= 0"
@@ -64,11 +68,11 @@ dependencies:
     group: 
     - :test
     version: ">= 0.4.0.a5"
-  icalendar: 
+  state_machine: 
     group: 
     - :default
     version: ">= 0"
-  state_machine: 
+  icalendar: 
     group: 
     - :default
     version: ">= 0"
@@ -88,11 +92,11 @@ dependencies:
     group: 
     - :test
     version: ">= 0"
-  liquid: 
+  hominid: 
     group: 
     - :default
     version: ">= 0"
-  hominid: 
+  liquid: 
     group: 
     - :default
     version: ">= 0"
@@ -167,6 +171,8 @@ specs:
     version: 0.0.27
 - capybara: 
     version: 0.3.9
+- cgi_multipart_eof_fix: 
+    version: 2.5.0
 - columnize: 
     version: 0.3.1
 - configuration: 
@@ -191,6 +197,10 @@ specs:
     version: 3.0.0.beta4
 - factory_girl_rails: 
     version: "1.0"
+- fastthread: 
+    version: 1.0.7
+- gem_plugin: 
+    version: 0.2.3
 - haml: 
     version: 3.0.13
 - has_scope: 
@@ -211,6 +221,8 @@ specs:
     version: 2.1.2
 - meta_where: 
     version: 0.5.2
+- mongrel: 
+    version: 1.1.5
 - mysql: 
     version: 2.8.1
 - paperclip: 
@@ -243,7 +255,7 @@ specs:
     version: 1.3.2
 - will_paginate: 
     version: 2.3.14
-hash: ad67e3a88a0b7d63abcd406fa4ab3456d2289cd9
+hash: a1edc3d92ebc563534ca76ee1df7d283299e209f
 sources: 
 - Rubygems: 
     uri: http://rubygems.org
