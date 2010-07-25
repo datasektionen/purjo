@@ -5,7 +5,7 @@ $(document).ready(function() {
     newsItem.find(".thumb").mouseover(function() {
       newsItem.find(".popup").show();
     });
-    
+
     newsItem.find(".thumb").mouseout(function() {
       newsItem.find(".popup").hide();
     });
