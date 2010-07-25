@@ -45,7 +45,7 @@
       <% end %>
       <% unless posts_this_day.empty? %>
         <tr>
-          <td class="nobr"><%= (@now + i.days).strftime("%a %b %d") %></td>
+          <td class="nobr"><%= (@now + i.days).to_s(:agenda) %></td>
           <td>
             <% posts_this_day.each do |post_this_day| %>
               <div>
