@@ -10,7 +10,7 @@ class NodesController < ApplicationController
     if @node.is_a? TextNode
       begin
         render :text => @node.formatted(self), :layout => @node.layout
-      rescue Liquid::SyntaxError => @e
+      rescue Liquid::SyntaxError => @exception
         render :template => 'text_nodes/syntax_error'
       end
     elsif @node.is_a? FileNode

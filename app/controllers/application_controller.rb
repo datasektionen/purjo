@@ -9,8 +9,6 @@ class ApplicationController < ActionController::Base
   
   rescue_from ActiveRecord::RecordNotFound, :with => :not_found
   rescue_from Ior::Security::AccessDenied, :with => :access_denied
-  rescue_from Liquid::SyntaxError, :with => :syntax_error
-  
 
   def set_locale
     I18n.locale = :sv
@@ -32,10 +30,6 @@ class ApplicationController < ActionController::Base
   
   def access_denied
     render :file => 'errors/access_denied', :layout => true
-  end
-  
-  def syntax_error
-    render :file => 'errors/syntax_error', :layout => true
   end
   
   def local_request?
