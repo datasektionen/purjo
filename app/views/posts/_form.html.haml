@@ -1,0 +1,36 @@
+= simple_form_for(@post) do |form|
+  = form.input :name
+  = form.input :content, :cols => 80, :rows => 25 
+
+  = form.input :category_list, :label => "Taggar"
+  
+  %p
+    Tillgängliga taggar: 
+    - ActsAsTaggableOn::Tag.all.each do |tag|
+      %span.tag
+        = tag.name
+
+  %li
+    %label{:for => 'post_news_post'} Nyhet
+    
+    .fields
+      = check_box_tag 'post[news_post]', true, @post.news_post, :onclick => '$("news_post").toggle()'
+      
+      #news_post.selection{:style => "display: #{ @post.news_post ? 'block' : 'none'}" }
+        %p
+          %label{:for => 'post_expires_at'} Visas till
+          = form.input :expires_at, :as => :string
+  
+  %li
+    %label{:for => 'post_calendar_post'} Kalender
+    .fields
+      = check_box_tag 'post[calendar_post]', true, @post.calendar_post, :onclick => '$("calendar_post").toggle()'
+      
+      #calendar_post.selection{:style => "display: #{@post.calendar_post ? 'block' : 'none'}"}
+        %p Aktivitet startar
+        = form.input :starts_at
+        = form.input :ends_at
+        = form.input :all_day
+  = form.input "sticky"
+  
+  = form.submit

@@ -1,0 +1,43 @@
+- stylesheet "nyheter"
+- title "Nyheter"
+#news
+  %h2
+    Nyheter (#{@tags.nil? ? 'Alla' : @tags.to_sentence})
+    = link_to image_tag('feed.png'), posts_path(:format => :rss, :tags => params[:tags])
+  
+  - if !Person.current.anonymous? && !Person.current.has_chosen_settings?
+    #first_time_welcome
+      = include_node("/first_time_welcome")
+      
+      = simple_form_for([Person.current, @user_settings]) do |f|
+        = f.input :newsletter, :as => :boolean, :label => 'Nyhetsbrev'
+        = f.submit :value => 'Spara inställningar'
+        
+  = include_node("/start")
+  
+  %h4 Kategorier
+  = link_tags ActsAsTaggableOn::Tag.all
+  
+  = render :partial => 'posts/post', :collection => @news_posts
+
+#calendars
+  %h2 Agenda
+  
+  %p
+    Datasektionens agenda, vill du veta mer se 
+    = link_to 'kalendern', calendar_path(:year => Time.now.year, :month => Time.now.month)
+    \.
+    
+    %table
+      - Purjo2::Application.settings['show_n_days_in_calendar'].times do |i|
+        - posts_this_day = @calendar_posts.find_all{ |p| p.starts_at >= (@now + i.days).beginning_of_day && p.starts_at <= (@now + i.days).end_of_day && p.ends_at >= @now}
+        - if i == 0
+          - posts_this_day += @calendar_posts.find_all{ |p| p.starts_at < @now.beginning_of_day && p.ends_at >= @now }
+        
+        - unless posts_this_day.empty?
+          %tr
+            %td.nobr= posts_this_day.first.starts_at.to_s(:cal)
+            %td
+              - posts_this_day.each do |post|
+                %div
+                  = link_to post, post
