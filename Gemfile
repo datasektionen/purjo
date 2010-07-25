@@ -20,6 +20,7 @@ gem 'meta_where'
 gem 'exceptional'
 gem 'json_pure'
 gem 'liquid'
+gem 'mongrel'
 
 group :development do
   gem 'ruby-debug'
