@@ -15,6 +15,7 @@ class Post < ActiveRecord::Base
   }
   
   scope :newer_than, lambda { |time| where(['starts_at > ?', Time.now - time]) }
+  default_scope order(:created_at.desc)
 
   acts_as_taggable_on :categories
   
