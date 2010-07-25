@@ -5,7 +5,7 @@
   - @calendar_posts.each do |calendar_post|
     .event
       .icon.esc
-      %p.description= calendar_post.to_s
+      %p.description= link_to calendar_post, calendar_post
       %p.time
         %span= calendar_post.starts_at.strftime "%A"
         %span= calendar_post.starts_at.strftime "%d %b"
