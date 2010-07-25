@@ -29,7 +29,6 @@ feature "the news system" do
     fill_in "Content", :with => "Todays news contents"
     fill_in 'Taggar', :with => "NLG"
     check "Nyhet"
-    fill_in "Visas till", :with => 1.day.ago.to_s
     
     click "Skapa Post"
   end

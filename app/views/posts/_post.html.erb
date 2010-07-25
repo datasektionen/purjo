@@ -25,7 +25,6 @@
     <% end %> 
     <li><%= link_to post.created_by, person_path(post.created_by) %></li>
     <li>Skapad <%= post.created_at.strftime "%d %b" %></li>
-    <li>Förfaller <%= post.expires_at.strftime "%d %b"%></li>
     <li class="last categories"><%= link_tags post.categories %></li>
   </ul>
 </div>

@@ -27,7 +27,6 @@ class PostsController < ApplicationController
   def new
     @post = Post.new
 
-    @post.expires_at = DateTime.now + 31.days
     @post.starts_at = DateTime.now
     @post.ends_at = DateTime.now + 1.hour
   end

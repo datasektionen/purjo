@@ -14,12 +14,7 @@
     %label{:for => 'post_news_post'} Nyhet
     
     .fields
-      = check_box_tag 'post[news_post]', true, @post.news_post, :onclick => '$("news_post").toggle()'
-      
-      #news_post.selection{:style => "display: #{ @post.news_post ? 'block' : 'none'}" }
-        %p
-          %label{:for => 'post_expires_at'} Visas till
-          = form.input :expires_at, :as => :string
+      = check_box_tag 'post[news_post]', true, @post.news_post
   
   %li
     %label{:for => 'post_calendar_post'} Kalender

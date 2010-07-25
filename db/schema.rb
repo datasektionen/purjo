@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100725094017) do
+ActiveRecord::Schema.define(:version => 20100725110308) do
 
   create_table "articles", :force => true do |t|
     t.integer  "blog_id"
@@ -235,7 +235,6 @@ ActiveRecord::Schema.define(:version => 20100725094017) do
     t.string   "name"
     t.text     "content"
     t.boolean  "news_post",     :default => false
-    t.datetime "expires_at"
     t.boolean  "calendar_post", :default => false
     t.datetime "starts_at"
     t.datetime "ends_at"

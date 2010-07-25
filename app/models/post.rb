@@ -1,5 +1,5 @@
 class Post < ActiveRecord::Base
-  scope :active, :conditions => ["expires_at > ?", DateTime.now]
+  scope :active, :conditions => ["1 = 1"]
   
   scope :news_posts, :conditions => ["news_post = ?", true], :order => 'sticky DESC'
   scope :calendar_posts, :conditions => ["calendar_post = ?", true], :order => 'starts_at ASC'
