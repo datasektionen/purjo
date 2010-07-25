@@ -27,9 +27,13 @@ class Newsletter < ActiveRecord::Base
       out = ""
       out << "<h2>#{section.title}</h2>\n"
       textilized = RedCloth.new(section.body)
-      out << textilized.to_html
+      out + textilized.to_html
     end
     formatted_sections.join("\n")
+  end
+  
+  def text_content
+    newsletter_sections.map { |sec| sec.title + "\n" + ("-" * sec.title.length) + "\n\n" + sec.body }.join("\n\n\n")
   end
   
   private

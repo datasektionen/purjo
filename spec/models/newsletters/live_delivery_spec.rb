@@ -41,6 +41,7 @@ describe LiveDelivery do
     before do
       @hominid.stub(:update).and_return(true)
       @newsletter.stub(:formatted_content).and_return("hamstrar")
+      @newsletter.stub(:text_content).and_return("texthamstrar")
       @newsletter.stub(:campaign_id).and_return("deadbeef")
     end
     
@@ -53,11 +54,18 @@ describe LiveDelivery do
       @delivery.perform.should == true
     end
     
-    it "updates campaign with content" do
+    it "updates campaign with html content" do
       @hominid.should_receive(:update).with("deadbeef", "content", hash_including("html_CONTENT" => "hamstrar"))
       
       @delivery.perform
     end
+    
+    it "updates campaign with text content" do
+      @hominid.should_receive(:update).with("deadbeef", "content", hash_including("text" => "texthamstrar"))
+      
+      @delivery.perform
+    end
+    
     
     it "does the test sending" do
       @hominid.should_receive(:send).with("deadbeef")

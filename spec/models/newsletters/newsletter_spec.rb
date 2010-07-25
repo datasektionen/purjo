@@ -29,6 +29,15 @@ describe Newsletter do
       @newsletter.formatted_content.should include("<h2>Section 1</h2>")
       @newsletter.formatted_content.should include("<p>Hamstrar</p>")
     end
+    
+    it "returns something good for text version" do
+      @newsletter.newsletter_sections.create!(:title => 'Section 1', :body => "Hamstrar")
+      @newsletter.newsletter_sections.create!(:title => 'Section 2', :body => "Marsvin")
+      
+      @newsletter.text_content.should be_a(String)
+      @newsletter.text_content.should include("Section 1\n---------\n\nHamstrar")
+      @newsletter.text_content.should include("Section 2\n---------\n\nMarsvin")
+    end
   end
   
   it "starts in state pending" do

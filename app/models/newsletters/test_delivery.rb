@@ -5,7 +5,7 @@ class TestDelivery < DeliveryBase
   
   def perform
     return false unless valid?
-    if hominid.update(@newsletter.campaign_id, 'content', {'html_CONTENT' => @newsletter.formatted_content})
+    if update_newsletter(@newsletter)
       hominid.send_test(@newsletter.campaign_id, [email])
     end
   end

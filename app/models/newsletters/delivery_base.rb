@@ -29,7 +29,14 @@ class DeliveryBase
   def all_lists
     hominid.lists
   end
+  
+  def update_newsletter(newsletter)
+    html_result = hominid.update(newsletter.campaign_id, 'content', {'html_CONTENT' => newsletter.formatted_content})
+    text_result = hominid.update(newsletter.campaign_id, 'content', {'text' => newsletter.text_content})
     
+    html_result && text_result
+  end
+  
   private
   
   
