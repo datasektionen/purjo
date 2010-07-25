@@ -9,7 +9,6 @@
       %span= l post.created_at, :format => "%d %b %Y"
       %span.dim klockan 
       %span= l post.created_at, :format => "%H:%M"
-    .clear &nbsp;
     
     .popup{:style => "display:none"}
       .popup-inner
@@ -17,6 +16,7 @@
         %h3= post.created_by
         %p Eventuell post
       .clear &nbsp;
+    .clear &nbsp;
     
   .tags
     - post.categories.each do |category|
