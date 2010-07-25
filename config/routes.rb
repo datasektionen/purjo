@@ -5,8 +5,7 @@ Rails.application.routes.draw do |map|
   end
   
   resources :file_nodes
-  resources :front_page
-  
+
   resources :job_ads, :except => [:show]
   
   get "/kontakt" => 'contact#index', :as => 'contact'
