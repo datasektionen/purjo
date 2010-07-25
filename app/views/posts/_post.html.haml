@@ -23,7 +23,7 @@
       .tag= category.name
     .clear &nbsp;
   
-  %p= textilize(post.content).html_safe
+  = textilize(post.content).html_safe
 
     
   - if Person.current.editor?
