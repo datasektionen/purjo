@@ -6,9 +6,9 @@
       %span= link_to post.created_by, person_path(post.created_by)
       %span.dim den 
       
-      %span= post.created_at.strftime "%d %b %Y"
+      %span= l post.created_at, :format => "%d %b %Y"
       %span.dim klockan 
-      %span= post.created_at.strftime "%H:%M"
+      %span= l post.created_at, :format => "%H:%M"
     .clear &nbsp;
     
     .popup{:style => "display:none"}
