@@ -14,7 +14,7 @@ class NodesController < ApplicationController
         render :template => 'text_nodes/syntax_error'
       end
     elsif @node.is_a? FileNode
-      send_data(@node.resource.path, :disposition => "inline", :type => @node.resource.content_type)
+      send_data(File.read(@node.resource.path), :disposition => "inline", :type => @node.resource.content_type)
     end
   end
 end
