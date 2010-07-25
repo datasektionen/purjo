@@ -1,0 +1,15 @@
+%ul
+  %li 
+    %span
+      - if params[:tags]
+        %span= link_to "Alla", root_path
+      - else
+        %b= link_to "Alla", root_path
+      %span.dim= "(#{Post.count})"
+  - ActsAsTaggableOn::Tag.all.each do |tag|
+    %li
+      - if params[:tags] == tag.name
+        %b= link_to tag, root_path(:tags => tag.name)
+      - else
+        %span= link_to tag, root_path(:tags => tag.name)
+      %span.dim= "(#{tag.taggings.count})"
