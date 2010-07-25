@@ -50,7 +50,7 @@
             %a.shield
               = image_tag('shield.png')
             .clear
-            = yield :submenu
+            = render :partial => "menus/#{@menu_template}"
               
           .grid_9
             = yield

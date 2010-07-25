@@ -10,6 +10,8 @@ class FrontPagesController < ApplicationController
 
     @now = Time.now
 
+    @menu_template = "nyheter"
+
     @calendar_posts = Post.calendar_posts.find(:all, 
       :conditions => ["starts_at > ? AND ends_at < ?", (@now - 7.days).beginning_of_day, @now + Purjo2::Application.settings['show_n_days_in_calendar'].days])
     

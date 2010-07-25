@@ -8,6 +8,9 @@ class NodesController < ApplicationController
     raise ActiveRecord::RecordNotFound if @node.nil?
     
     if @node.is_a? TextNode
+      # TODO parsing the URI for which submenu to display
+      @menu_template = "sektionen"
+
       begin
         render :text => @node.formatted(self), :layout => @node.layout
       rescue Liquid::SyntaxError => @exception
