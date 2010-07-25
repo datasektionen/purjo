@@ -1,7 +1,9 @@
 class Cv < ActiveRecord::Base
   #acts_as_textiled :personal, :ambitions, :employment, :education, :other_commitments, :language_skills, :it_skills, :other
 
-  #has_attached_file :photo, :styles => { :thumb => "80x80>", :normal => "200>x200" }
+  has_attached_file :photo, :styles => { :thumb => "80x80>", :normal => "200>x200" }
+  
+  
   
   belongs_to :travel_year
 

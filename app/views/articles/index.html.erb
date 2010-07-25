@@ -1,6 +1,6 @@
 <h1 class="blog_title">
   <%= @blog.name %>
-  <%= link_to image_tag('feed.png'), formatted_blog_articles_url(@blog, :rss) %>
+  <%= link_to image_tag('feed.png'), blog_articles_url(@blog, :format => :rss) %>
 </h1>
 
 <p><%= @blog.description %></p>

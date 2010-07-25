@@ -1,8 +1,0 @@
-<div class="event_container" style="height: <%= (event.stop.hour - event.start.hour)*45 %>px; margin-top: <%= margin_top %>px">
-	<div class="event" style="background-color: <%= @colourize.color(event) %>;">
-	    <div class="time"><%= event.start.strftime('%H') %>-<%= event.stop.strftime('%H') %></div>
-	    <div class="name"><%= event.name %></div>
-		<div class="type"><%= event.type %></div>
-	    <div class="location"><%= event.locations.to_sentence(:connector => 'och', :skip_last_comma => true) %></div>
-	</div>
-</div>

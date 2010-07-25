@@ -2,7 +2,7 @@ xml.instruct! :xml, :version => "1.0"
 xml.rss :version => "2.0" do
   xml.channel do
     xml.title "www.d.kth.se - Nyheter"
-    xml.description "Kategorier: #{@tags.nil? ? 'Alla' : @tags.to_sentence(:connector => 'och')}"
+    xml.description "Kategorier: #{@tags.nil? ? 'Alla' : @tags.to_sentence}"
     xml.link posts_url
     
     @news_posts.each do |post|
