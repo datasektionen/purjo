@@ -2,22 +2,6 @@ class PostsController < ApplicationController
   require_role :editor, :except => [:show, :index]
   require_role :admin, :only => [:destroy]
   
-  # GET /posts
-  def index
-    @news_posts = Post.news_posts
-    
-    if params[:tags]
-      @news_posts = @news_posts.tagged_with(params[:tags])
-    end
-    
-    @news_posts = @news_posts.paginate(:per_page => 10)
-    
-    respond_to do |wants|
-      wants.html
-      wants.rss
-    end
-  end
-
   # GET /posts/1
   def show
     @post = Post.find(params[:id])
