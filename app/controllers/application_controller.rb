@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   
   rescue_from ActiveRecord::RecordNotFound, :with => :not_found
   rescue_from Ior::Security::AccessDenied, :with => :access_denied
-  rescue_from SyntaxError, :with => :syntax_error
+  rescue_from Liquid::SyntaxError, :with => :syntax_error
   
 
   def set_locale
