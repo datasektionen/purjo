@@ -1,26 +1,23 @@
 class Post < ActiveRecord::Base
-  with_options :order => 'bumped_at' do |post|
-    scope :active, :conditions => ["expires_at > ?", DateTime.now]
+  scope :active, :conditions => ["expires_at > ?", DateTime.now]
   
-    scope :news_posts, :conditions => ["news_post = ?", true], :order => 'sticky DESC, bumped_at DESC'
-    scope :calendar_posts, :conditions => ["calendar_post = ?", true], :order => 'starts_at ASC'
+  scope :news_posts, :conditions => ["news_post = ?", true], :order => 'sticky DESC'
+  scope :calendar_posts, :conditions => ["calendar_post = ?", true], :order => 'starts_at ASC'
   
-    scope :for_month, lambda { |month, year|
-      date = DateTime.civil(year, month)
-      
-      {:conditions => [ 'NOT (ends_at < :start_date OR starts_at > :end_date)', {:start_date => date, :end_date => date.end_of_month}]}
-    }
+  scope :for_month, lambda { |month, year|
+    date = DateTime.civil(year, month)
     
-    scope :for_day, lambda {|day, month, year|
-      date = DateTime.civil(year, month, day)
-      
-      {:conditions => [ 'NOT (ends_at < :start_date OR starts_at > :end_date)', {:start_date => date.beginning_of_day, :end_date => date.end_of_day}]}
-    }
+    {:conditions => [ 'NOT (ends_at < :start_date OR starts_at > :end_date)', {:start_date => date, :end_date => date.end_of_month}]}
+  }
+  
+  scope :for_day, lambda {|day, month, year|
+    date = DateTime.civil(year, month, day)
     
-    scope :newer_than, lambda { |time| where(['starts_at > ?', Time.now - time]) }
-  end
+    {:conditions => [ 'NOT (ends_at < :start_date OR starts_at > :end_date)', {:start_date => date.beginning_of_day, :end_date => date.end_of_day}]}
+  }
   
-  
+  scope :newer_than, lambda { |time| where(['starts_at > ?', Time.now - time]) }
+
   acts_as_taggable_on :categories
   
   belongs_to :created_by, :class_name => 'Person'

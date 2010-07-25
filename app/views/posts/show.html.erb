@@ -44,7 +44,7 @@
 <div>
 <div class="comment_header"><strong>Skriv kommentar</strong></div>
 <% if !Person.current.is_a? AnonymousPerson %>
-	<% form_for(Noise.new) do |f| %>
+	<%= form_for(Noise.new) do |f| %>
 		<%= f.error_messages %>
 		<%= f.text_area :message, :size => "50x5" %>
 		<%= f.hidden_field :post_id, :value => @post.id %>

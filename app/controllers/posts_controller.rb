@@ -40,7 +40,6 @@ class PostsController < ApplicationController
     
     @post = Post.new(params[:post])
     @post.created_by = Person.current
-    @post.bumped_at = DateTime.now
     
     # if none checkbox is checked..
     params[:post][:categories_attributes] = {} unless params[:post][:categories_attributes]
@@ -63,8 +62,6 @@ class PostsController < ApplicationController
 
     # if none checkbox is checked..
     params[:post][:categories_attributes] = {} unless params[:post][:categories_attributes]
-    
-    @post.bumped_at = DateTime.now if params[:bumping][:do_bump] == "1"
     
     if @post.update_attributes(params[:post])
       flash[:notice] = 'Nyhets-/kalenderinlägget uppdaterat.'

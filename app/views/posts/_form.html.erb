@@ -56,9 +56,7 @@
     </div>
   </li>
 
-  <li><label>Bump</label><%= check_box "bumping", "do_bump" %><span class="suffix">Bumpa posten till l&auml;ngst upp p&aring; framsidan.</span></li>
-
-  <%= form.check_box "sticky", :suffix => "L&aring;s posten l&auml;ngst upp p&aring; framsidan." %>
+  <%= form.input "sticky" %>
   
   <%= form.submit %>
 

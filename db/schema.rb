@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100721100000) do
+ActiveRecord::Schema.define(:version => 20100725094017) do
 
   create_table "articles", :force => true do |t|
     t.integer  "blog_id"
@@ -243,7 +243,6 @@ ActiveRecord::Schema.define(:version => 20100721100000) do
     t.integer  "created_by_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.datetime "bumped_at"
     t.boolean  "sticky"
   end
 
