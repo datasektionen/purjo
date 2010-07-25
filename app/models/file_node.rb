@@ -1,5 +1,5 @@
 class FileNode < ActiveRecord::Base
-  has_attached_file :resource
+  has_attached_file :resource, :path => ':rails_root/public/file_nodes/:parent_id_partition/:filename'
   
   belongs_to :parent, :class_name => 'TextNode', :foreign_key => 'parent_id'
   
