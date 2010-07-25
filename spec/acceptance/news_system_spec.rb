@@ -47,8 +47,9 @@ feature "the news system" do
     fill_in "Name", :with => "Updated news"
     click "Spara Post"
     
-    current_path.should == "/nyheter"
+    current_path.should == "/"
     
+    save_and_open_page
     # TODO page.should have_success_message
     page.should have_content("Updated news")
   end
@@ -57,7 +58,7 @@ feature "the news system" do
     Factory(:root_page)
     Factory(:naringslivsgruppen_tag)
     Factory(:nlg_news_post)
-    visit "/nyheter?tags=NLG"
+    visit "/?tags=NLG"
     
     page.should have_content("Näringslivsgruppsnyhet")
   end

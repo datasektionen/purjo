@@ -50,7 +50,7 @@ class PostsController < ApplicationController
       if @post.calendar_post
         redirect_to calendar_path
       else
-        redirect_to posts_path
+        redirect_to root_path
       end
     else
       render :action => "edit"
