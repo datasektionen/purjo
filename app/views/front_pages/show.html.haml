@@ -38,7 +38,7 @@
         
         - unless posts_this_day.empty?
           %tr
-            %td.nobr= posts_this_day.first.starts_at.to_s(:cal)
+            %td.nobr= posts_this_day.first.starts_at.to_s(:agenda)
             %td
               - posts_this_day.each do |post|
                 %div
