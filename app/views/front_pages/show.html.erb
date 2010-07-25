@@ -39,11 +39,13 @@
   
   <table>
     <% Purjo2::Application.settings['show_n_days_in_calendar'].times do |i| %>
-      <% posts_this_day = @calendar_posts.find_all{|p| p.starts_at >= (@now + i.days).beginning_of_day && p.starts_at <= (@now + i.days).end_of_day} %>
-
+      <% posts_this_day = @calendar_posts.find_all{ |p| p.starts_at >= (@now + i.days).beginning_of_day && p.starts_at <= (@now + i.days).end_of_day} %>
+      <% if i == 0 %>
+        <% posts_this_day += @calendar_posts.find_all{ |p| p.starts_at < @now.beginning_of_day && p.ends_at >= @now.beginning_of_day } %>
+      <% end %>
       <% unless posts_this_day.empty? %>
         <tr>
-          <td class="nobr"><%= posts_this_day.first.starts_at.to_s(:cal) %></td>
+          <td class="nobr"><%= (@now + i.days).strftime("%a %b %d") %></td>
           <td>
             <% posts_this_day.each do |post_this_day| %>
               <div>
