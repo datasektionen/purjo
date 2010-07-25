@@ -44,9 +44,6 @@ class PostsController < ApplicationController
     @post = Post.new(params[:post])
     @post.created_by = Person.current
     
-    # if none checkbox is checked..
-    params[:post][:categories_attributes] = {} unless params[:post][:categories_attributes]
-
     if @post.save
       flash[:notice] = 'Nyhets-/kalenderinlägget skapat!'
 
@@ -63,9 +60,6 @@ class PostsController < ApplicationController
     
     @post = Post.find(params[:id])
 
-    # if none checkbox is checked..
-    params[:post][:categories_attributes] = {} unless params[:post][:categories_attributes]
-    
     if @post.update_attributes(params[:post])
       flash[:notice] = 'Nyhets-/kalenderinlägget uppdaterat.'
     
