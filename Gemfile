@@ -19,6 +19,7 @@ gem 'state_machine'
 gem 'meta_where'
 gem 'exceptional'
 gem 'json_pure'
+gem 'liquid'
 
 group :development do
   gem 'ruby-debug'
