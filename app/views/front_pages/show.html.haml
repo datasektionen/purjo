@@ -19,6 +19,8 @@
   = link_tags ActsAsTaggableOn::Tag.all
   
   = render :partial => 'posts/post', :collection => @news_posts
+  
+  = will_paginate(@news_posts)
 
 #calendars
   %h2 Agenda

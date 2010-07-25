@@ -2,7 +2,13 @@ class FrontPagesController < ApplicationController
   include Ior::Posts::NewsPostParamsFinder
   
   def show
-    @news_posts, @tags, @archive = find_news_post_by_params(params)
+    @news_posts = Post.news_posts
+    
+    if params[:tags]
+      @news_posts = @news_posts.tagged_with(params[:tags])
+    end
+    
+    @news_posts = @news_posts.paginate(:per_page => 10)
 
     @now = Time.now
 
