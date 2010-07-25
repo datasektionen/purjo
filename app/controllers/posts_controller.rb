@@ -2,11 +2,15 @@ class PostsController < ApplicationController
   require_role :editor, :except => [:show, :index]
   require_role :admin, :only => [:destroy]
   
-  include Ior::Posts::NewsPostParamsFinder
-
   # GET /posts
   def index
-    @news_posts, @tags, @archive = find_news_post_by_params(params)
+    @news_posts = Post.news_posts
+    
+    if params[:tags]
+      @news_posts = @news_posts.tagged_with(params[:tags])
+    end
+    
+    @news_posts = @news_posts.paginate(:per_page => 10)
     
     respond_to do |wants|
       wants.html

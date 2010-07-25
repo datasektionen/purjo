@@ -1,6 +1,4 @@
 class FrontPagesController < ApplicationController
-  include Ior::Posts::NewsPostParamsFinder
-  
   def show
     @news_posts = Post.news_posts
     
