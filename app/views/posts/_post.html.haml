@@ -1,0 +1,33 @@
+.news-item
+  %h2= link_to post, post
+  .meta
+    = link_to image_tag(post.created_by.gravatar_url, :class => "thumb"), person_path(post.created_by)
+    .author
+      %span= link_to post.created_by, person_path(post.created_by)
+      %span.dim den 
+      
+      %span= post.created_at.strftime "%d %b %Y"
+      %span.dim klockan 
+      %span= post.created_at.strftime "%H:%M"
+    .clear &nbsp;
+    
+    .popup{:style => "display:none"}
+      .popup-inner
+        = image_tag(post.created_by.gravatar_url)
+        %h3= post.created_by
+        %p eventuell post
+      .clear &nbsp;
+    
+  .tags
+    - post.categories.each do |category|
+      .tag= category.name
+    .clear &nbsp;
+  
+  %p= textilize(post.content).html_safe
+
+    
+  - if Person.current.editor?
+    %ul
+      %li= link_to 'Redigera', edit_post_path(post)
+      %li= link_to 'Ta bort', post, :method => :delete, :confirm => 'Är du säker på att du vill ta bort den här nyheten?'
+

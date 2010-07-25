@@ -1,0 +1,60 @@
+!!!
+
+%html
+  %head
+    %title= render_title
+    = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz"
+    = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Crimson+Text"
+    = javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"
+    = javascript_include_tag "application.js", :cache => true
+    = stylesheet_link_tag "screen"
+    
+    != '<meta property="og:title" content="En asfet nyhet"/>'
+    != '<meta property="og:type" content="article"/>'
+    != '<meta property="og:url" content="http://www.d.kth.se/foo"/>'
+    != '<meta property="og:image" content="http://ia.media-imdb.com/rock.jpg"/>'
+  %body
+    #fb-root
+    :javascript
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId  : '131161626900092',
+          status : true, // check login status
+          cookie : true, // enable cookies to allow the server to access the session
+          xfbml  : true  // parse XFBML
+        });
+      };
+
+      (function() {
+        var e = document.createElement('script');
+        e.src = document.location.protocol + '//connect.facebook.net/sv_SE/all.js';
+        e.async = true;
+        document.getElementById('fb-root').appendChild(e);
+      }());
+    #wrapper
+      #main
+        %nav.main
+          .container_16
+            .grid_13.prefix_3
+              %ul
+                %li 
+                  %b= link_to "Nyheter", ""
+                %li= link_to "Sektionen", ""
+                %li= link_to "Näringsliv", ""
+                %li= link_to "Studier", ""
+                %li= link_to "Kontakt", ""
+            .clear &nbsp;
+        
+        .content.container_16
+          %nav.sub.grid_3
+            %a.shield
+              = image_tag('shield.png')
+            .clear
+            = yield :submenu
+              
+          .grid_9
+            = yield
+        
+          .grid_4
+            =yield :sidecontent
+            

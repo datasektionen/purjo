@@ -1,2 +1,12 @@
-// Place your application-specific JavaScript functions and classes here
-// This file is automatically included by javascript_include_tag :defaults
+$(document).ready(function() {
+  $(".news-item").each(function() {
+    var newsItem = $(this);
+    $(this).find(".thumb").mouseover(function() {
+      newsItem.find(".popup").show();
+    });
+    
+    $(this).find(".thumb").mouseout(function() {
+      newsItem.find(".popup").hide();
+    });
+  });
+});
