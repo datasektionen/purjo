@@ -1,4 +1,6 @@
 .news-item {
+  margin-bottom: 25px;
+
   .meta {
     position: relative;
     margin-top: 10px;
@@ -81,6 +83,8 @@
 
 .tags {
   .tag {
+    margin-top: 2px;
+    margin-bottom: 2px;
     margin-right: 5px;
     float: left;
     -webkit-border-radius: 5px;
