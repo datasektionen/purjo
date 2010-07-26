@@ -1,7 +1,7 @@
 %h2 Nyhetsbrev #{@newsletter.subject}
 
 - @newsletter.newsletter_sections.each do |section|
-  %h3= section.title
+  %h3= link_to section.title, edit_newsletter_newsletter_section_path(section)
   
   %p= section.body
 
