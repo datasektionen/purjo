@@ -21,6 +21,8 @@ gem 'exceptional'
 gem 'json_pure'
 gem 'liquid'
 gem 'mongrel'
+gem 'capistrano'
+gem 'capistrano-ext'
 
 group :development do
   gem 'ruby-debug'
