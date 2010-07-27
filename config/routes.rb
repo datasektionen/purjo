@@ -1,5 +1,5 @@
 Rails.application.routes.draw do |map|
-  
+
   resources :blogs do
     resources :articles
   end
@@ -75,22 +75,21 @@ Rails.application.routes.draw do |map|
   map.schema '/schema/proxy.:format', :controller => 'schema', :action => 'proxy'
   map.schema '/schema/:year', :controller => 'schema', :action => 'index', :year => 'D1'
 
+  # Måste ligga ovanför alla resurser som använder auto_complete:
+  map.auto_complete ':controller/:action',
+    :requirements => { :action => /auto_complete_for_\S+/ },
+    :conditions => { :method => :get }
+
+  map.resources :nominees, :as => "sektionen/val"
+
+  map.resources :election_events
+
+  map.resources :chapter_posts
+
+  map.resources :functionaries, :as => "sektionen/funktionarer"
+
   map.root :controller => 'front_pages', :action => 'show'
 
   map.connect "*url", :controller => 'nodes', :action => 'show'
+
 end
-
-# Illaluktande kommentarer
-#  # Måste ligga ovanför alla resurser som använder auto_complete:
-#  map.auto_complete ':controller/:action',
-#    :requirements => { :action => /auto_complete_for_\S+/ },
-#    :conditions => { :method => :get }
-#
-#  map.resources :nominees, :as => "sektionen/val"
-#
-#  map.resources :election_events
-#
-#  map.resources :chapter_posts
-#
-#  map.resources :functionaries, :as => "sektionen/funktionarer"
-

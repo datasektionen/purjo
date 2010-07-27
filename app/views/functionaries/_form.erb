@@ -1,7 +1,7 @@
   <p>
     <%= f.label 'Användarnamn' %><br />
     (<em><small>Du kan söka på namn. Lämna tom om posten är bordlagd</small></em>)<br />
-    <%= text_field_with_auto_complete :functionary, :person_id, {}, {:tokens => ';', :method => :get} %>
+    <%= text_field :functionary, :person_id %>
   </p>
 
   <p>

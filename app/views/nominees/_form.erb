@@ -1,7 +1,7 @@
 <p>
   <%= f.label :person_id %><br />
   (<em><small>Du kan söka på namn.</small></em>)<br />
-  <%= text_field_with_auto_complete :nominee, :person_id, {}, {:tokens => ';', :method => :get} %>
+  <%= text_field :nominee, :person_id %>
 </p>
 <p>
   <%= f.label "Valtillfälle" %><br />
