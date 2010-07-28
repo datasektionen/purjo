@@ -1,3 +1,4 @@
+require 'ior/hominid/common'
 class NewsletterSubscription < ActiveRecord::Base
   
   include Ior::Hominid::Common

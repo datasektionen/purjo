@@ -1,7 +1,6 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
-puts $:.grep(/purjo.lib/).inspect
 
 # If you have a Gemfile, require the gems listed there, including any gems
 # you've limited to :test, :development, or :production.
@@ -46,9 +45,9 @@ module Purjo2
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
     
-    paths.app.models << Rails.root + "app" + "models/newsletters"
-    paths.app.controllers << Rails.root + "app" + "controllers/newsletters"
-    #config.load_paths += ["models/newsletters", "controllers/newsletters"].map { |path| Rails.root + "app" + path}
+    paths.app.models << "app/models/newsletters"
+    
+    paths.app.controllers << "app/controllers/newsletters"
   end
 end
 

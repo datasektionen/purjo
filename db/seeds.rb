@@ -14,3 +14,8 @@ raise "Skapa en config/my_user.yml (exempel finns i katalogen)" unless File.exis
 person_info = YAML::load(File.read(person_info_file))
 person = Person.create!(person_info)
 
+['editor', 'admin', 'pr'].each { |r| Role.create!(:name => r) }
+
+person.roles << Role.find_by_name('admin')
+person.save!
+
