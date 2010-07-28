@@ -1,3 +1,7 @@
+require 'ior/security/authentication_system'
+require 'role_requirement_system'
+
+
 class ApplicationController < ActionController::Base
   protect_from_forgery
   layout 'application'

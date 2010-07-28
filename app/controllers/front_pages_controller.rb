@@ -6,7 +6,7 @@ class FrontPagesController < ApplicationController
       @news_posts = @news_posts.tagged_with(params[:tags])
     end
     
-    @news_posts = @news_posts.paginate(:per_page => 10)
+    @news_posts = @news_posts.paginate(:page => params[:page], :per_page => 10)
 
     @now = Time.now
 

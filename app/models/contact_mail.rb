@@ -1,3 +1,5 @@
+require 'active_record/base_without_table'
+
 class ContactMail < ActiveRecord::BaseWithoutTable
   column :to, :string
   column :name, :string
