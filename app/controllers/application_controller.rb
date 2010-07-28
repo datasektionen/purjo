@@ -1,12 +1,12 @@
 require 'ior/security/authentication_system'
-require 'role_requirement_system'
+require 'ior/security/role_requirement_system'
 
 
 class ApplicationController < ActionController::Base
   protect_from_forgery
   layout 'application'
   include Ior::Security::AuthenticationSystem
-  include RoleRequirementSystem
+  include Ior::Security::RoleRequirementSystem
   before_filter :authenticate
   before_filter :set_locale
   before_filter :save_return_to_url
