@@ -9,7 +9,7 @@
     #first_time_welcome
       = include_node("/first_time_welcome")
       
-      = simple_form_for([Person.current, @user_settings]) do |f|
+      = simple_form_for([Person.current, @user_settings], :url => person_user_settings_path(Person.current, @user_settings)) do |f|
         = f.input :newsletter, :as => :boolean, :label => 'Nyhetsbrev'
         = f.submit :value => 'Spara inställningar'
         
