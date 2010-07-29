@@ -1,7 +1,7 @@
 .news-item
   %h2= link_to post, post
   .meta
-    = link_to image_tag(post.created_by.gravatar_url, :class => "thumb"), person_path(post.created_by)
+    = link_to image_tag(post.created_by.gravatar_url, :class => "thumb", :alt => "", :title => post.created_by), person_path(post.created_by)
     .author
       %span= link_to post.created_by, person_path(post.created_by)
       %span.dim den 
