@@ -1,6 +1,7 @@
 class ChapterPost < ActiveRecord::Base
 
   has_many :functionary
+  has_one :committee
 
   # Någon som känner behovet att eliminera sql:en, varsegod. Föresatt att den
   # gör samma sak och är lika effektiv.
