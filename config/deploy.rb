@@ -80,15 +80,19 @@ namespace :deploy do
 end
 
 namespace :bundler do
-  task :create_symlink, :roles => :app do
-    shared_dir = File.join(shared_path, 'bundle')
-    release_dir = File.join(current_release, '.bundle')
-    run("mkdir -p #{shared_dir} && ln -s #{shared_dir} #{release_dir}")
+  namespace :bundler do  
+    task :create_symlink, :roles => :app do
+      set :bundle_dir, 'vendor/bundle'
+      
+      shared_dir = File.join(shared_path, 'bundle')
+      run " cd #{release_path} && rm -rf #{bundle_dir}" # in the event it already exists..?
+      run("mkdir -p #{shared_dir} && cd #{release_path} && ln -s #{shared_dir} #{bundle_dir}")
+    end
   end
- 
+
   task :bundle_new_release, :roles => :app do
     bundler.create_symlink
-    run "cd #{release_path} && bundle install"
+    run "cd #{release_path} ; bundle install #{bundle_dir} --without development --disable-shared-gems --without test"
   end
 end
  
