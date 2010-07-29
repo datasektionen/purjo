@@ -16,6 +16,8 @@ set :rails_env, "migration"
 set :tmp_path, "/var/tmp/rails"
 set :keep_releases, 3
 
+ssh_options[:forward_agent] = true
+
 role :app, "mission-to-marzipan.ben-and-jerrys.stacken.kth.se"
 role :web, "mission-to-marzipan.ben-and-jerrys.stacken.kth.se"
 role :db,  "mission-to-marzipan.ben-and-jerrys.stacken.kth.se", :primary => true
@@ -92,7 +94,7 @@ namespace :bundler do
 
   task :bundle_new_release, :roles => :app do
     bundler.create_symlink
-    run "cd #{release_path} ; bundle install #{bundle_dir} --without development --disable-shared-gems --without test"
+    run "cd #{release_path} ; bundle install #{bundle_dir} --without development --disable-shared-gems"
   end
 end
  
