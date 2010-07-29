@@ -4,9 +4,6 @@ class NewsletterSectionsController < InheritedResources::Base
   
   belongs_to :newsletter
 
-  # TODO: varför vill inte InheritedResources göra det här åt mig? =(
-  def edit
-  end
 
   def update
     update! { newsletter_path(@newsletter) }
