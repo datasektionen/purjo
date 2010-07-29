@@ -2,7 +2,7 @@ class ContactController < ApplicationController
   def index
     @mail = ContactMail.new
     prefill_if_logged_in(@mail)
-    @recipients = recipients
+    load_available_recipients
   end
 
   def single
@@ -18,12 +18,11 @@ class ContactController < ApplicationController
 
   def send_mail
     @mail = ContactMail.new(params[:contact_mail])
-    @recipients = recipients unless params[:hidden]
-    @post = ChapterPost.find(@mail.to)
+    load_available_recipients unless params[:hidden]
     info = { :ip => request.remote_ip }
 
     if @mail.valid?
-      mailer = ContactMailer.functionary(@post, @mail, info)
+      mailer = ContactMailer.contact(@mail, info)
       if mailer.deliver
         flash[:notice] = "Tack för ditt meddelande!"
         redirect_to contact_path
@@ -41,11 +40,9 @@ class ContactController < ApplicationController
 
   # Returns an array of available recipients
   # to be used by the select() form helper
-  def recipients
-    posts = ChapterPost.find(:all)
-    recipients = []
-    posts.each { |p| recipients << [p.name, p.id] }
-    return recipients
+  def load_available_recipients
+    @posts = ChapterPost.find(:all)
+    @committees = Committee.find(:all)
   end
 
   # Automatically specify name and email if user is logged in

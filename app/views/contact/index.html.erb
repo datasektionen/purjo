@@ -1,8 +1,29 @@
 <%= simple_form_for @mail, :url => { :action => 'send_mail' } do |f| %>
-  <% if @recipients # unspecified recipient: show list %>
-    <%= f.label :to %>
-    <%= f.select :to, @recipients, :selected => @mail.to.to_i %>
-  <% else %>
+  <% if @mail.errors[:base] %>
+    <p class="error"><%= @mail.errors[:base] %></p>
+  <% end %>
+
+  <% if @committees %>
+    <h3>Nämnder</h3>
+    <div id="committees">
+    <% @committees.each do |p| %>
+      <%= check_box_tag "contact_mail[committees][]", p.id, @mail.committees.include?(p.id.to_s), :id => "committee_#{p.id}" %>
+      <%= label_tag "committee_#{p.id}", p.name %><br />
+    <% end %>
+    </div>
+  <% end %>
+
+  <% if @posts %>
+    <h3>Funktionärer</h3>
+    <div id="posts">
+    <% @posts.each do |p| %>
+      <%= check_box_tag "contact_mail[posts][]", p.id, @mail.posts.include?(p.id.to_s), :id => "posts_#{p.id}" %>
+      <%= label_tag "posts_#{p.id}", p.name %><br />
+    <% end %>
+    </div>
+  <% end %>
+
+  <% unless @committees or @posts %>
     <%= f.hidden_field :to, :value => @post.id %>
     <%= hidden_field :hidden, :true %>
   <% end %>
@@ -11,8 +32,10 @@
 
   <%= f.input :email %>
 
-  <%= f.text_area :message %>
+  <%= f.input :message %>
 
   <%= f.submit 'Skicka meddelande' %>
+
+  <%= debug @mail %>
 <% end %>
 
