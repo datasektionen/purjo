@@ -1,0 +1,11 @@
+%h3
+  Nyhet: 
+  = link_to result.name, post_path(result)  
+
+- if result.calendar_post?
+  Tid: 
+  = result.starts_at
+  -
+  = result.ends_at
+  
+  

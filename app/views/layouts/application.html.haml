@@ -70,7 +70,8 @@
                 = top_navigation_link("Kontakt", "/kontakt", /^\/kontakt/)
             
             .search.grid_4
-              %input{:type => "search", :placeholder => "Sök"}
+              = form_tag(search_path, :method => :get) do
+                %input{:type => "search", :placeholder => "Sök", :name => 'q', :value => params[:q]}
             
             .clear &nbsp;
         

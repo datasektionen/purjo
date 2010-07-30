@@ -41,6 +41,8 @@ Rails.application.routes.draw do |map|
   resources :noises
   
   
+  match "/sok", :to => 'search#index', :as => 'search'
+  
   resource :sessions
   resources 'sektionen/sok', :as => 'students', :controller => 'students' do
     member do
