@@ -24,6 +24,11 @@ class Post < ActiveRecord::Base
   validates_presence_of :starts_at, :ends_at, :if => lambda { |post| post.calendar_post? }
   validate :must_have_either_news_post_or_calendar_post
   validate :start_date_before_end_date
+  
+  searchable do
+    text :content
+    text :name, :default_boost => 2
+  end
 
   # after_create :set_perma_name
   

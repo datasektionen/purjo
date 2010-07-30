@@ -1,5 +1,10 @@
 class Student < ActiveRecord::Base
 
+  searchable do
+    text :name
+    text :username_nada
+  end
+  
   def username
     return username_nada if !username_nada.nil?
     username_kth
