@@ -20,11 +20,14 @@ gem 'exceptional'
 gem 'json_pure'
 gem 'liquid'
 gem 'mongrel'
+
 gem 'capistrano'
 gem 'capistrano-ext'
 
 gem 'refraction'
 gem 'whenever'
+
+gem 'sunspot_rails', :require => 'sunspot/rails'
 
 group :production do
    gem 'mysql'
