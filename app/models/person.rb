@@ -93,6 +93,14 @@ class Person < ActiveRecord::Base
     return false
   end
 
+  # TODO remove or rename this, or make it a named scope like it's supposed to be
+  def functionaries
+    @functionaries = Functionary.find(:all, :conditions =>
+      { :person_id => self.id },
+      :order => "active_from desc"
+    )
+  end
+  
   def gravatar_url
     "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(self.kth_username + '@kth.se')}'"
   end
