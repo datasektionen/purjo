@@ -28,7 +28,7 @@ class Post < ActiveRecord::Base
   searchable do
     text :content
     text :name, :default_boost => 2
-    text :class
+    string :tags, :multiple => true, :using => :categories
   end
 
   # after_create :set_perma_name

@@ -9,12 +9,17 @@ class SearchController < ApplicationController
     @search = Sunspot.search(*classes) do
       keywords params[:q]
       facet :class
+      facet :tags
       
       paginate :page => params[:page]
       
-      if params[:f]
-        with(:class).equal_to(params[:f].classify.constantize)
+      if params[:ft]
+        with(:class).equal_to(params[:ft].constantize)
       end
+      if params[:f]
+        with(:tags).equal_to(params[:f])
+      end
+      
     end
   end
 end

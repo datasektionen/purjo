@@ -5,20 +5,19 @@ class Student < ActiveRecord::Base
   has_one :person, :class_name => "Person", :foreign_key => "kth_username", :primary_key => "username_nada" 
 
   searchable do
-    text :name
+    text :name 
     text :username_nada
-    text :chapter_posts, :stored => true do
+    text :chapter_posts_text, :stored => true do
       if person.present?
         person.functionaries.map { |f| f.chapter_post.name }.join " "
       end
     end
     
-    text :committees, :stored => true do
+    text :committees_text, :stored => true do
       if person.present?
         person.functionaries.map { |f| f.chapter_post.committee.name }.join " "
       end
     end
-    text :class
   end
   
   def username
