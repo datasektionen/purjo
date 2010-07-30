@@ -13,7 +13,7 @@ class Person < ActiveRecord::Base
   
   accepts_nested_attributes_for :newsletter_subscriptions
   
-  validates_presence_of :first_name, :last_name, :email
+  validates_presence_of :first_name, :last_name, :email, :kth_username
   
   serialize :serialized_features
   

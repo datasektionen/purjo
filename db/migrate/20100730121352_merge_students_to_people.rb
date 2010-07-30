@@ -18,7 +18,9 @@ class MergeStudentsToPeople < ActiveRecord::Migration
             :last_name => (last_name || "N/A"),
             :email => student.email,
             :gender => student.gender,
-            :cell_phone_number => student.phone_mobile
+            :cell_phone_number => student.phone_mobile,
+            :kth_username => student.username_nada,
+            :kth_ugid => student.uid
           )
         
         end  
