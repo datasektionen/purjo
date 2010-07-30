@@ -4,6 +4,7 @@ class TextNode < ActiveRecord::Base
     text :name
     text :contents
     text :title, :boost => 2
+    text :class
   end
   #acts_as_versioned
   acts_as_tree

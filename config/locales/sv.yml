@@ -273,4 +273,8 @@
         create: Skicka testutskick
       user_settings:
         create: Spara inställningar
-  
+  search:
+    text_node: Sidor
+    post: Nyhets- och kalenderinlägg
+    student: Studenter
+    committee: Nämnder

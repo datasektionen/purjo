@@ -18,7 +18,7 @@ class Student < ActiveRecord::Base
         person.functionaries.map { |f| f.chapter_post.committee.name }.join " "
       end
     end
-    
+    text :class
   end
   
   def username

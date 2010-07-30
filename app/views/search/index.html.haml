@@ -1,4 +1,14 @@
 %h2 Sökresultat
 
-- @search.each_hit_with_result do |hit, result|
-  = render :partial => "#{result.class.to_s.underscore}_result", :locals => {:hit => hit, :result => result}
+- if @search.total == 0
+  %p
+    Inga sökträffar hittades.
+
+- else
+  %p
+    = @search.total
+    sökträffar
+  - @search.each_hit_with_result do |hit, result|
+    = render :partial => "#{result.class.to_s.underscore}_result", :locals => {:hit => hit, :result => result}
+  
+  = will_paginate(@search.hits)
