@@ -9,7 +9,7 @@ Rails.application.routes.draw do |map|
   resources :committees
   
   resources :file_nodes
-
+  
   resources :job_ads, :except => [:show]
   
   get "/kontakt/:slug" => 'contact#index', :as => 'contact'
@@ -25,6 +25,7 @@ Rails.application.routes.draw do |map|
     resource :live_delivery
   end
   match "/newsletters/hook/:secret", :to => 'newsletter_hooks#mailchimp_endpoint', :via => [:post, :get]
+  
   
   
   resources :people do
@@ -46,6 +47,9 @@ Rails.application.routes.draw do |map|
       get :xfinger
     end
   end
+  
+  resources 'sektionen/funktionarer', :as => "functionaries", :controller => 'functionaries'
+  resources 'sektionen/val', :as => "nominees", :controller => 'nominees'
   
   resources :text_nodes do
     resources :children, :controller => 'TextNodeChildren', :path_prefix => 'text_nodes/:node_id'
