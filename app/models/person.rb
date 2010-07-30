@@ -17,6 +17,20 @@ class Person < ActiveRecord::Base
   
   serialize :serialized_features
   
+  searchable do
+    text :name 
+    text :kth_username
+    text :chapter_posts_text, :stored => true do
+      functionaries.map { |f| f.chapter_post.name }.join " "
+  
+    end
+    
+    text :committees_text, :stored => true do
+      functionaries.map { |f| f.chapter_post.committee.name }.join " "
+    end
+  end
+  
+  
   def name
     "#{first_name} #{last_name}"
   end

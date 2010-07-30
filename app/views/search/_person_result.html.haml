@@ -1,0 +1,8 @@
+%h3
+  Student:
+  = link_to result.name, person_path(result)
+
+  -if result.functionaries.count > 0
+    %p
+      %b Funktionärsposter: 
+      = result.functionaries.map { |f| f.chapter_post.name  }.to_sentence

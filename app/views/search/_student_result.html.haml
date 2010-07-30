@@ -1,8 +1,0 @@
-%h3
-  Student:
-  = link_to result.name, student_path(result)
-
-  -if result.person.present?
-    %p
-      %b Funktionärsposter: 
-      = result.person.functionaries.map { |f| f.chapter_post.name  }.to_sentence

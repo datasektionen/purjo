@@ -4,21 +4,6 @@ class Student < ActiveRecord::Base
   # It enables searches on the posts the Student/Person has
   has_one :person, :class_name => "Person", :foreign_key => "kth_username", :primary_key => "username_nada" 
 
-  searchable do
-    text :name 
-    text :username_nada
-    text :chapter_posts_text, :stored => true do
-      if person.present?
-        person.functionaries.map { |f| f.chapter_post.name }.join " "
-      end
-    end
-    
-    text :committees_text, :stored => true do
-      if person.present?
-        person.functionaries.map { |f| f.chapter_post.committee.name }.join " "
-      end
-    end
-  end
   
   def username
     return username_nada if !username_nada.nil?
