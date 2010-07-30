@@ -3,6 +3,6 @@
     = link_to "Visa allt", search_path(:q => params[:q])
   - @search.facet(:class).rows.each do |row|
     %li
-      = link_to row.value, search_path(:q => params[:q], :f => row.value.to_s)
+      = link_to t("search.#{row.value.to_s.underscore}"), search_path(:q => params[:q], :f => row.value.to_s)
       
       %span.dim= "(#{row.count})"
