@@ -12,6 +12,7 @@ rerun.txt
 .bundle
 capybara-*.html
 public/system
+public/file_nodes
 public/stylesheets/screen.css
 public/stylesheets/navigation.css
 public/stylesheets/news.css
