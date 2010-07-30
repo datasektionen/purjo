@@ -10,6 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+
 ActiveRecord::Schema.define(:version => 20100803133043) do
 
   create_table "articles", :force => true do |t|
@@ -237,6 +238,9 @@ ActiveRecord::Schema.define(:version => 20100803133043) do
     t.string   "xmpp"
     t.text     "serialized_features"
     t.boolean  "has_chosen_settings", :default => false, :null => false
+    t.string   "chapter"
+    t.string   "gender"
+    t.string   "homedir"
   end
 
   add_index "people", ["kth_ugid"], :name => "index_people_on_kth_ugid", :unique => true
@@ -267,21 +271,6 @@ ActiveRecord::Schema.define(:version => 20100803133043) do
     t.string   "value"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "students", :force => true do |t|
-    t.string   "username_nada"
-    t.string   "username_kth"
-    t.string   "sektion"
-    t.string   "adress"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "name"
-    t.string   "uid"
-    t.string   "homedir"
-    t.string   "gender"
-    t.string   "phone_home"
-    t.string   "phone_mobile"
   end
 
   create_table "system_permissions", :force => true do |t|

@@ -97,4 +97,58 @@ class Person < ActiveRecord::Base
     "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(self.kth_username + '@kth.se')}'"
   end
   
+  # Methods for compatibility with Student interface (fold)
+  def sektion
+    chapter
+  end
+  deprecate :sektion => 'use chapter instead'
+  
+  def username_nada
+    kth_username
+  end
+  deprecate :username_nada => 'use kth_username'
+  
+  def username_kth
+    kth_ugid
+  end
+  deprecate :username_kth => 'use kth_ugid'
+  
+  def uid
+    kth_ugid
+  end
+  deprecate :uid => 'use kth_ugid'
+  # (end)
+  
+  # Methods copied from Student (fold)
+  def username
+    return username_nada if !username_nada.nil?
+    username_kth
+  end
+
+  #def email
+  #  return username_nada + "@nada.kth.se" if !username_nada.nil?
+  #  username_kth + "@kth.se"
+  #end
+
+  def plan
+    if homedir
+      if file_ok(homedir + "/.plan")
+        File.open(homedir + "/.plan").to_a.join
+      else
+        ""
+      end
+    else
+      "no homedir" # Har kvar som debug, man bör aldrig se den
+    end
+  end
+
+  def file_ok(path)
+    if File.exists?(path) && File.readable?(path)
+      return true
+    end
+    false
+  end
+  
+  # (end)
+
 end

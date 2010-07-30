@@ -29,6 +29,9 @@ Rails.application.routes.draw do |map|
   
   resources :people do
     resource :settings, :controller => 'user_settings', :as => 'user_settings'
+    member do
+      get :xfinger
+    end
   end
   
   resources 'nyheter', :as => 'posts', :controller => 'posts' do
@@ -43,8 +46,6 @@ Rails.application.routes.draw do |map|
       get :xfinger
     end
   end
-  
-  resources :students
   
   resources :text_nodes do
     resources :children, :controller => 'TextNodeChildren', :path_prefix => 'text_nodes/:node_id'

@@ -51,4 +51,32 @@ class PeopleController < ApplicationController
 
     redirect_to(people_url)
   end
+  
+  def xfinger
+
+    # T.ex. drifvarna laddas med id-nummer
+    if params[:id].match(/\d+/)
+      @person = Person.find(params[:id])
+    else
+      @person = Person.find_by_kth_username(params[:id])
+    end
+    
+    raise ActiveRecord::RecordNotFound if @person.nil?
+
+    xfinger = nil
+    if @person.homedir
+      if @person.file_ok(@person.homedir + "/.bild")
+          xfinger = @person.homedir + "/.bild"
+      elsif @person.file_ok('/afs/nada.kth.se/misc/hacks/graphic/bitmaps/xfinger' + @person.homedir.gsub(/.*\/home/,''))
+          xfinger = '/afs/nada.kth.se/misc/hacks/graphic/bitmaps/xfinger' + @person.homedir.gsub(/.*\/home/,'')
+      end
+    end
+
+    if xfinger.nil?
+      xfinger = "public/images/xfinger-notfound.png"
+    end
+
+    send_file(xfinger, :disposition => "inline")
+  end
+  
 end
