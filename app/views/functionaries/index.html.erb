@@ -7,10 +7,9 @@
   “<a href="/sektionen/formalia/stadgar/#paragraf7.4.33">löper tills arbetet med uppsättningen i fråga avslutas</a>".
 </p>
 
-<table>
+<table class="styled-table">
   <tr>
     <th>Post</th>
-    <th>&nbsp;</th>
     <th>Person</th>
     <th>E-post</th>
     <th>Aktiv fram till</th>
@@ -24,11 +23,6 @@
   <% end %>
     <td><%= link_to functionary.chapter_post.name, functionary.chapter_post %></td>
     <td>
-      <% if functionary.chapter_post.description != "" %>
-        <a href="#" onclick="Effect.toggle('descr_<%= functionary.id %>', 'blind', { duration: 0 }); return false;">?</a>
-      <% end %>
-    </td>
-    <td>
       <% if functionary.postponed %>
         <em>Bordlagd</em>
       <% elsif functionary.person %>
@@ -39,10 +33,5 @@
     <td><acronym title="<%=h functionary.active_from %> till <%=h functionary.active_to %>"><%=h functionary.active_to %></acronym></td>
     <td><%= link_to 'Redigera', edit_functionary_path(functionary) %></td>
   </tr>
-  <% if functionary.chapter_post.description != "" %>
-    <tr id="descr_<%= functionary.id %>" style="display: none">
-      <td colspan="4"><%=h functionary.chapter_post.description %></td>
-    </tr>
-  <% end %>
 <% end %>
 </table>

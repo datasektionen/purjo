@@ -1,6 +1,7 @@
 @import "960.scss";
 @import "news.scss";
 @import "navigation.scss";
+@import "styled_table.scss";
 
 * {
   padding: 0;
@@ -80,6 +81,10 @@ span.dim {
     font-size: 15px;
     font-weight: normal;
     color: #222;
+  }
+  
+  h4 {
+    font-size: 18px;
   }
   
   p {
