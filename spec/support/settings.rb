@@ -1,3 +1,5 @@
+require 'ior/hominid/test_base'
+
 Purjo2::Application.settings = ActiveSupport::HashWithIndifferentAccess.new({
   :newsletter_template_id => Ior::Hominid::TestBase::TemplateId,
   :newsletter_list_id => Ior::Hominid::TestBase::ListId,

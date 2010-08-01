@@ -1,7 +1,5 @@
 - stylesheet "nyheter"
 - title "Nyheter"
-- content_for :submenu do
-  = render :partial => "front_pages/submenu"
 
 - content_for :sidecontent do 
   = render :partial => "front_pages/calendar"
@@ -13,7 +11,7 @@
     #first_time_welcome
       = include_node("/first_time_welcome")
       
-      = simple_form_for([Person.current, @user_settings]) do |f|
+      = simple_form_for([Person.current, @user_settings], :url => person_user_settings_path(Person.current, @user_settings)) do |f|
         = f.input :newsletter, :as => :boolean, :label => 'Nyhetsbrev'
         = f.submit :value => 'Spara inställningar'
   

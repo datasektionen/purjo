@@ -1,3 +1,6 @@
+require 'ior/calendar/ics_renderer'
+require 'ior/calendar/html_renderer'
+
 class CalendarsController < ApplicationController
   def show
     respond_to do |format|

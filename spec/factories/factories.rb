@@ -95,6 +95,7 @@ end
 Factory.define(:nlg_news_post, :class => 'Post') do |f|
   f.name "Näringslivsgruppsnyhet"
   f.news_post true
+  f.content "fuckoff"
   f.after_create do |post|
     post.created_by = Person.find_by_kth_username("admin") || Factory(:admin_user)
     nlg_tag = ActsAsTaggableOn::Tag.find_by_name('NLG') || Factory(:naringslivsgruppen_tag)

@@ -1,3 +1,4 @@
+require 'ior/hominid/common'
 class Newsletter < ActiveRecord::Base
   scope :sorted, order('created_at desc')
   include Ior::Hominid::Common

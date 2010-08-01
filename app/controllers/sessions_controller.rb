@@ -1,3 +1,5 @@
+require 'ior/kth/users_groups/login_service'
+
 class SessionsController < ApplicationController
   
   def show

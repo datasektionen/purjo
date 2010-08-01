@@ -46,6 +46,10 @@ module Purjo2
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
     
-    config.load_paths += ["models/newsletters", "controllers/newsletters"].map { |path| Rails.root + "app" + path}
+    paths.app.models << "app/models/newsletters"
+    
+    paths.app.controllers << "app/controllers/newsletters"
   end
 end
+
+

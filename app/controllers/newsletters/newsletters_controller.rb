@@ -1,5 +1,5 @@
 class NewslettersController < InheritedResources::Base
-  require_role :admin, :only => [:create, :new, :edit, :update]
+  require_role :admin, :only => [:create, :new, :edit, :update, :delete]
   require_role :editor
   
   def create
