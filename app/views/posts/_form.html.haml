@@ -19,7 +19,7 @@
   %li
     %label{:for => 'post_calendar_post'} Kalender
     .fields
-      = check_box_tag 'post[calendar_post]', true, @post.calendar_post, :onclick => '$("calendar_post").toggle()'
+      = check_box_tag 'post[calendar_post]', true, @post.calendar_post, :onclick => '$("#calendar_post").toggle()'
       
       #calendar_post.selection{:style => "display: #{@post.calendar_post ? 'block' : 'none'}"}
         %p Aktivitet startar
