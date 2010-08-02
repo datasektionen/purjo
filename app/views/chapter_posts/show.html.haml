@@ -21,11 +21,12 @@
       %td= link_to_if(functionary.postponed, functionary.person_or_postponed, functionary.person)
       %td= functionary.active_from
       %td= functionary.active_to
-%p
-  = link_to 'Redigera funktionärsposter', chapter_posts_path
-  |
-  = link_to 'Tillbaka till funktionärer', functionaries_path
-  |
-  = link_to 'Redigera', edit_chapter_post_path(@chapter_post)
-  |
-  = link_to 'Ta bort', @chapter_post, :confirm => 'Är du säker?', :method => :delete
+- if Person.current.editor?
+  %p
+    = link_to 'Redigera funktionärsposter', chapter_posts_path
+    |
+    = link_to 'Tillbaka till funktionärer', functionaries_path
+    |
+    = link_to 'Redigera', edit_chapter_post_path(@chapter_post)
+    |
+    = link_to 'Ta bort', @chapter_post, :confirm => 'Är du säker?', :method => :delete

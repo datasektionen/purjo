@@ -31,7 +31,9 @@
     </td>
     <td><%=h functionary.chapter_post.email %></td>
     <td><acronym title="<%=h functionary.active_from %> till <%=h functionary.active_to %>"><%=h functionary.active_to %></acronym></td>
-    <td><%= link_to 'Redigera', edit_functionary_path(functionary) %></td>
+    <% if Person.current.editor? %>
+      <td><%= link_to 'Redigera', edit_functionary_path(functionary) %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>
