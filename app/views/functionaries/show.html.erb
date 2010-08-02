@@ -13,6 +13,6 @@
   <%=h @functionary.active_from %> till <%=h @functionary.active_to %>
 </p>
 
-<%= link_to 'Back', functionaries_path %> |
-<%= link_to 'Edit', edit_functionary_path(@functionary) %> |
-<%= link_to 'Destroy', functionary_path, :confirm => 'Are you sure?', :method => :delete %>
+<%= link_to 'Tillbaka till funktionärsposter', functionaries_path %> |
+<%= link_to 'Redigera', edit_functionary_path(@functionary) %> |
+<%= link_to 'Ta bort', functionary_path, :confirm => 'Are you sure?', :method => :delete %>

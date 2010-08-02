@@ -1,6 +1,7 @@
 @import "960.scss";
 @import "news.scss";
 @import "navigation.scss";
+@import "styled_table.scss";
 
 * {
   padding: 0;
@@ -57,7 +58,7 @@ body {
 }
 
 span.dim {
-  color: #c6c6c6;
+  color: #777;
 }
 
 .logo {
@@ -82,12 +83,17 @@ span.dim {
     color: #222;
   }
   
+  h4 {
+    font-size: 18px;
+  }
+  
   p {
     font-family: 'Crimson Text' ,Georgia, sans-serif;
     font-size: 16px;
     color: #222;
     line-height: 1.5em;
     -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
   }
 }
 

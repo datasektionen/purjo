@@ -1,6 +1,7 @@
 class ElectionEventsController < ApplicationController
 
   layout 'application'
+  require_role "editor"
 
   # GET /election_events
   # GET /election_events.xml

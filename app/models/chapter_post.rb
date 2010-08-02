@@ -7,7 +7,7 @@ class ChapterPost < ActiveRecord::Base
   # gör samma sak och är lika effektiv.
   def find_chapter_posts_by_kth_username username
     @chapter_posts = ChapterPost.find_by_sql(
-      "select chapter_posts.id, chapter_posts.name, chapter_posts.email,
+      "select chapter_posts.id, chapter_posts.name, chapter_posts.slug,
               chapter_posts.description, people.kth_username,
               chapter_posts.updated_at
        from chapter_posts
