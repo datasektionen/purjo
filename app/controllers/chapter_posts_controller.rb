@@ -1,6 +1,7 @@
 class ChapterPostsController < ApplicationController
 
   layout 'application'
+  require_role "editor", :except => [:show]
 
   # GET /chapter_posts
   # GET /chapter_posts.xml

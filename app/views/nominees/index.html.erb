@@ -23,10 +23,9 @@
   Vanlig stil på namnet = inte svarat ännu
 </p>
 
-<table>
+<table class="styled-table">
   <tr>
     <th>Post</th>
-    <th>&nbsp;</th>
     <th>Tidigare innehavare</th>
     <th>Nominerade</th>
   </tr>
@@ -38,21 +37,9 @@
   <% for nominee in format_nominees(@nominees) %>
     <tr>
       <td><%= nominee[1][2] %></td>
-      <td>
-        <% if not nominee[1][3].empty? %>
-          <a href="#" onclick="Effect.toggle('descr_<%= nominee[1][4] %>', 'blind', { duration: 0 }); return false;">?</a>
-        <% end %>
-      </td>
       <td><%= nominee[1][1] %></td>
       <td><%= nominee[1][0].html_safe %></td>
     </tr>
-    <% if not nominee[1][3].empty? %>
-      <tr style="display: none" id="descr_<%= nominee[1][4] %>">
-        <td colspan="4">
-          <%= nominee[1][3] %>
-        </td>
-      </tr>
-    <% end %>
   <% end %>
 <% else %>
   <tr>

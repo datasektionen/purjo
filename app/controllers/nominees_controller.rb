@@ -1,6 +1,7 @@
 class NomineesController < ApplicationController
 
   layout 'application'
+  require_role "editor", :except => [:index]
 
   # GET /nominees
   # GET /nominees.xml

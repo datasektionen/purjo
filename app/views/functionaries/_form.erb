@@ -1,6 +1,5 @@
   <p>
     <%= f.label 'Användarnamn' %><br />
-    (<em><small>Du kan söka på namn. Lämna tom om posten är bordlagd</small></em>)<br />
     <%= text_field :functionary, :person_id %>
   </p>
 
@@ -19,4 +18,5 @@
   <p>
     <%= f.label 'Posten är bordlagd' %><br />
     <%= f.check_box :postponed %>
+    todo: fixa de andra state:en en post kan ha.
   </p>

@@ -40,7 +40,7 @@
                 Du är
                 - if Person.current.is_a? AnonymousPerson
                   inte inloggad,
-                  = link_to 'Logga in', new_sessions_path(:return_url => current_url)
+                  %strong= link_to 'Logga in', new_sessions_path(:return_url => current_url)
                 - else
                   inloggad som
                   %strong= link_to Person.current.name, Person.current
@@ -52,10 +52,10 @@
               %ul
                 %li 
                   %b= link_to "Nyheter", "/"
-                %li= link_to "Sektionen", "sektionen"
-                %li= link_to "Näringsliv", "naringsliv"
-                %li= link_to "Studier", "studier"
-                %li= link_to "Kontakt", "kontakt"
+                %li= link_to "Sektionen", "/sektionen"
+                %li= link_to "Näringsliv", "/naringsliv"
+                %li= link_to "Studier", "/studier"
+                %li= link_to "Kontakt", "/kontakt"
             
             .grid_3
               %input{:type => "search", :placeholder => "Sök"}

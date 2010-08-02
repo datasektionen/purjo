@@ -22,7 +22,9 @@
       %td= functionary.active_from
       %td= functionary.active_to
 %p
-  = link_to 'Tillbaka', chapter_posts_path
+  = link_to 'Redigera funktionärsposter', chapter_posts_path
+  |
+  = link_to 'Tillbaka till funktionärer', functionaries_path
   |
   = link_to 'Redigera', edit_chapter_post_path(@chapter_post)
   |
