@@ -1,5 +1,7 @@
 Rails.application.routes.draw do |map|
-
+  
+  match "/admin", :to => 'admin#index'
+  
   resources :blogs do
     resources :articles
   end
