@@ -29,7 +29,7 @@
           <%= link_to functionary.person.name, functionary.person %>
       <% end %>
     </td>
-    <td><%=h functionary.chapter_post.email %></td>
+    <td><%=h functionary.chapter_post.slug %></td>
     <td><acronym title="<%=h functionary.active_from %> till <%=h functionary.active_to %>"><%=h functionary.active_to %></acronym></td>
     <% if Person.current.editor? %>
       <td><%= link_to 'Redigera', edit_functionary_path(functionary) %></td>
