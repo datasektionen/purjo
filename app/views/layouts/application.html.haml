@@ -37,9 +37,16 @@
           .container_16
             .grid_10.prefix_3
               %span 
-                Du är inte 
-                %b inloggad
-                logga in?
+                -if Person.current.anonymous?
+                  Du är inte 
+                  %b inloggad. 
+                  = link_to 'Logga in', new_sessions_path(:return_url => current_url) 
+                - else 
+                  Du är inloggad som
+                  = Person.current
+                  (
+                  = link_to 'Logga ut', sessions_path(:return_url => current_url), :method => :delete 
+                  )
             .clear &nbsp;
         %nav.main
           .container_16
