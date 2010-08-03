@@ -20,7 +20,7 @@
     
   .tags
     - post.categories.each do |category|
-      .tag= category.name
+      .tag= link_to category.name, root_path(:tags => category.name)
     .clear &nbsp;
   
   = textilize(post.content).html_safe

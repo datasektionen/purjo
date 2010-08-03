@@ -1,0 +1,23 @@
+%h2 Alla användare
+
+%table
+  %tr
+    %th Användarnamn
+    %th Förnamn
+    %th Efternamn
+    %th Email
+    %th Roller
+    %th
+  - @people.each do |person|
+    %tr
+      %td= person.kth_username
+      %td= person.first_name
+      %td= person.last_name
+      %td= person.email
+      %td= person.roles.to_sentence
+      %td
+        = link_to 'Show', person
+        = link_to 'Edit', edit_person_path(person)
+        = link_to 'Destroy', person, :confirm => "Är du säker på att du vill ta bort #{person} (#{person.kth_username})?", :method => :delete
+
+= will_paginate(@people)

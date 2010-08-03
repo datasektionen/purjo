@@ -8,10 +8,14 @@
       %p.description= link_to calendar_post, calendar_post
       %p.time
         %span= l(calendar_post.starts_at, :format => "%A %d %b").humanize
-        %span.dim klockan
-        %span= l calendar_post.starts_at, :format => "%H:%M"
+        - if !calendar_post.all_day?
+          %span.dim klockan
+          %span= l calendar_post.starts_at, :format => "%H:%M"
       .clear
   
-  %p Se alla event i kalendern
+  %p
+    Se alla event i 
+    = link_to "kalendern", calendar_path
+    \.
   
   .clear
