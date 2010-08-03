@@ -23,6 +23,7 @@ div.main {
     font-size: 14px;
     width: 200px;
     -webkit-appearance: textfield;
+    -moz-appearance: textfield;
   }
   
   ul {
@@ -45,12 +46,16 @@ div.sub {
     margin: 10px 0px;
     float: right;
     -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
   	-webkit-transition: all 0.7s ease-in;
+  	-moz-transition: all 0.7s ease-in;
   }
   
   a.shield:hover {
     -webkit-transform: rotate(0deg);
-  	-webkit-transition: all 0.3s ease-in;
+  	-moz-transform: rotate(0deg);
+    -webkit-transition: all 0.3s ease-in;
+    -moz-transition: all 0.3s ease-in;
   }
 
   ul {
