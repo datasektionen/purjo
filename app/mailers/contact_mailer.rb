@@ -9,7 +9,7 @@ class ContactMailer < ActionMailer::Base
     end
     mail(
       :from => email_with_name(@mail.name, @mail.email),
-      :to => "vigge19@gmail.com", #to,
+      :to => to,
       :subject => "Datasektionen: Meddelande via hemsidan"
     )
   end
