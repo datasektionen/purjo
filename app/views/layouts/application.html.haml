@@ -33,22 +33,28 @@
       }());
     #wrapper
       #main
-        %div.main
+        .top
           .container_16
-            .grid_10.prefix_3
+            .grid_9.prefix_3
               %span 
-                -if Person.current.anonymous?
+                - if Person.current.anonymous?
                   Du är inte 
                   %b inloggad. 
-                  = link_to 'Logga in', new_sessions_path(:return_url => current_url) 
                 - else 
                   Du är inloggad som
-                  = Person.current
-                  (
-                  = link_to 'Logga ut', sessions_path(:return_url => current_url), :method => :delete 
-                  )
+                  %b= Person.current
+            .grid_3
+              - if Person.current.anonymous?
+                = link_to 'Logga in', new_sessions_path(:return_url => current_url)
+              - else
+                = link_to 'Logga ut', sessions_path(:return_url => current_url), :method => :delete
+          .clear &nbsp
+        .main
+          .container_16
+            .grid_10.prefix_3
+
             .clear &nbsp;
-        %div.main
+        .main
           .container_16
             .grid_9.prefix_3
               %ul
@@ -65,12 +71,12 @@
             .clear &nbsp;
         
         .content.container_16
-          %div.sub.grid_3
+          .sub.grid_3
             %a.shield
               = image_tag('shield.png')
             .clear
             - if Person.current.editor?
-              %div.admin= render :partial => "front_pages/admin_box"
+              .admin= render :partial => "front_pages/admin_box"
             - if @menu_template
               = render :partial => "menus/#{@menu_template}"
               
