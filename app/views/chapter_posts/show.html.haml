@@ -3,7 +3,7 @@
   %em= @chapter_post.description
 %p
   %b E-post:
-  = @chapter_post.slug
+  = @chapter_post.slug + "@d.kth.se"
 %p
   %b Person:
   - if @chapter_post.functionary and @chapter_post.functionary.person
@@ -21,6 +21,8 @@
       %td= link_to_if(functionary.postponed, functionary.person_or_postponed, functionary.person)
       %td= functionary.active_from
       %td= functionary.active_to
+      - if Person.current.editor?
+        %td= link_to "Redigera", functionary
 - if Person.current.editor?
   %p
     = link_to 'Redigera funktionärsposter', chapter_posts_path
