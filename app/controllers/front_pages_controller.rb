@@ -19,4 +19,14 @@ class FrontPagesController < ApplicationController
       @user_settings = Person.current.build_user_settings
     end
   end
+  
+  def rss
+    @news_posts = Post.news_posts
+    
+    if params[:tags]
+      @news_posts = @news_posts.tagged_with(params[:tags])
+    end
+    
+    @news_posts = @news_posts.limit(20)
+  end
 end

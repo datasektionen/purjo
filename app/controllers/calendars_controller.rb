@@ -7,7 +7,11 @@ class CalendarsController < ApplicationController
       format.html do
         @month = (params[:month] || Time.now.month).to_i
         @year = (params[:year] || Time.now.year).to_i
-        @posts = Post.calendar_posts.for_month(@month, @year)
+        begin
+          @posts = Post.calendar_posts.for_month(@month, @year)
+        rescue ArgumentError => e
+          render :text => "This doesn't seem like a valid date", :layout => true
+        end
       end
       
       format.ics do
@@ -16,5 +20,5 @@ class CalendarsController < ApplicationController
         render :text => renderer.render
       end
     end
-  end
+  end 
 end
