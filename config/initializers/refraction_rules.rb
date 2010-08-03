@@ -1,13 +1,9 @@
-puts  Object.const_defined?(:Refraction)
 if Object.const_defined?(:Refraction)
   Refraction.configure do |req|
-    puts "HEJ VÄRLDEN"
-    puts req.path
-    
     if req.path =~ %r{^.*/nyheter/rss.php$} || req.path =~ %r{^/nyheter.rss}
       req.permanent!("/rss")
-    elsif req.path =~ %r{^/nyheter(.*)}
-      req.permanent!("/#{$1}")
+    elsif req.path =~ %r{^/nyheter}
+      req.permanent!("/")
     end
     
     # RewriteCond %{REQUEST_URI} ^/sektionen/sok/teknolog.php$
