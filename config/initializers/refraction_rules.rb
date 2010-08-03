@@ -2,7 +2,7 @@ if Object.const_defined?(:Refraction)
   Refraction.configure do |req|
     if req.path =~ %r{^.*/nyheter/rss.php$} || req.path =~ %r{^/nyheter.rss}
       req.permanent!("/rss")
-    elsif req.path =~ %r{^/nyheter}
+    elsif req.path =~ %r{^/nyheter} || req.path =~ %r{^/nyheter?archive=}
       req.permanent!("/")
     end
     
