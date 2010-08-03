@@ -1,6 +1,6 @@
 %ul
   %li
-    %strong= "Redigera"
+    %strong= "Administration"
   - if @posts or @news_posts
     %li= link_to 'Ny nyhet-/kalender-post', new_post_path
   - if @functionaries
@@ -15,12 +15,12 @@
   - if @election_events
     %li= link_to 'Nytt val', new_election_event_path
   - if !@node.nil? && !@node.new_record?
-    %li= link_to 'Ny undersida', new_text_node_child_path(@node)
-    %li= link_to 'Ny fil', new_text_node_file_path(@node)
     %li= link_to 'Redigera sida', edit_text_node_path(@node)
+    %li= link_to "Historia", text_node_versions_path(@node)
     - if @node.children.empty?
       %li= link_to('Ta bort sida', text_node_path(@node), :method => :delete, :confirm => "Detta kommer ta bort noden #{@node.url}(#{@node.name}). Är du säker på att detta verkligen är det du vill?")
-    %li= link_to "Lista subnoder", text_node_children_path(@node)
+    %li= link_to 'Ny undersida', new_text_node_child_path(@node)
+    %li= link_to "Lista undersidor", text_node_children_path(@node)
+    %li= link_to 'Ny fil', new_text_node_file_path(@node)
     %li= link_to "Lista filer", text_node_files_path(@node)
-    %li= link_to "Historia", text_node_versions_path(@node)
-  %li= link_to "Alla noder", text_node_children_path(Node.find_by_url("/"))
+    %li= link_to "Alla sidor", text_node_children_path(Node.find_by_url("/"))
