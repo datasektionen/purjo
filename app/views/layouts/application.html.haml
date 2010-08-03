@@ -49,16 +49,16 @@
               - else
                 = link_to 'Logga ut', sessions_path(:return_url => current_url), :method => :delete
           .clear &nbsp
-        .main
-          .container_16
-            .grid_10.prefix_3
 
-            .clear &nbsp;
         .main
           .container_16
-            .grid_9.prefix_3
+            .grid_3
+              .prefix &nbsp;
+              = link_to image_tag("shield.png"), "bar", :class => "shield"
+            .grid_9
+              %h1 Konglig Datasektionen
               %ul
-                %li 
+                %li
                   %b= link_to "Nyheter", "/"
                 %li= link_to "Sektionen", "/sektionen"
                 %li= link_to "Näringsliv", "/naringsliv"
@@ -72,8 +72,6 @@
         
         .content.container_16
           .sub.grid_3
-            %a.shield
-              = image_tag('shield.png')
             .clear
             - if Person.current.editor?
               .admin= render :partial => "front_pages/admin_box"
