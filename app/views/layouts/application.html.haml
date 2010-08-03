@@ -1,12 +1,12 @@
 !!!
 
-%html
+%html{:lang => "en"}
   %head
     %title= render_title
     = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz"
     = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Crimson+Text"
     = javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"
-    = javascript_include_tag "application.js", "rails.js"
+    = javascript_include_tag "application.js", "rails.js", "hyphenate.js"
     = stylesheet_link_tag "screen"
     
     = csrf_meta_tag
@@ -33,6 +33,7 @@
         e.async = true;
         document.getElementById('fb-root').appendChild(e);
       }());
+      
     #wrapper
       #main
         .top
@@ -58,7 +59,7 @@
               .prefix &nbsp;
               = link_to image_tag("shield.png"), root_path, :class => "shield"
             .grid_9
-              %h1 Konglig Datasektionen
+              %h1= link_to "Konglig Datasektionen", "/"
               %ul
                 %li
                   %b= link_to "Nyheter", "/"
@@ -75,10 +76,10 @@
         .content.container_16
           .sub.grid_3
             .clear
-            - if Person.current.editor?
-              .admin= render :partial => "front_pages/admin_box"
             - if @menu_template
               = render :partial => "menus/#{@menu_template}"
+            - if Person.current.editor?
+              .admin= render :partial => "front_pages/admin_box"
               
           .grid_9
             = yield
