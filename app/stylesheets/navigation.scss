@@ -6,6 +6,10 @@ div.top {
   color: #e7e7e7;
   font-family: helvetica, sans-serif;
 
+  a {
+    color: white;
+  }
+
   b {
     color: white;
     margin-right: 3px;
@@ -13,19 +17,26 @@ div.top {
 }
 
 div.main {
+  position: relative;
   background-color: #fff;
   -webkit-box-shadow: 0px 3px 3px #d7d7d7;
   -moz-box-shadow: 0px 3px 3px #d7d7d7;
 
   input {
     padding: 5px 0px;
-    margin-top: 5px;
+    margin-top: 30px;
     font-size: 14px;
     width: 200px;
     -webkit-appearance: textfield;
     -moz-appearance: textfield;
   }
   
+  h1 {
+    font-family: 'Yanone Kaffeesatz', arial, serif;
+    font-size: 35px;
+    margin-bottom: 0px;
+  }
+
   ul {
     margin: 0px;
     padding: 13px 0px 28px 0px;
@@ -39,24 +50,28 @@ div.main {
       float: left;
     }
   }
-}
 
-div.sub {
-  a.shield {
-    margin: 10px 0px;
-    float: right;
-    -webkit-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-  	-webkit-transition: all 0.7s ease-in;
-  	-moz-transition: all 0.7s ease-in;
+  .shield {
+    img {
+      position: absolute;
+      left: 10px;
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+  	  -webkit-transition: all 0.7s ease-in;
+  	  -moz-transition: all 0.7s ease-in;
+    }
   }
-  
+
   a.shield:hover {
     -webkit-transform: rotate(0deg);
   	-moz-transform: rotate(0deg);
     -webkit-transition: all 0.3s ease-in;
     -moz-transition: all 0.3s ease-in;
   }
+}
+
+div.sub {
+  margin-top: 80px;
 
   ul {
     li {
