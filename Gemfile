@@ -23,6 +23,8 @@ gem 'mongrel'
 gem 'capistrano'
 gem 'capistrano-ext'
 
+gem 'refraction'
+
 group :production do
    gem 'mysql'
 end

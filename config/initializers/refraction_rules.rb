@@ -1,5 +1,14 @@
+puts  Object.const_defined?(:Refraction)
 if Object.const_defined?(:Refraction)
   Refraction.configure do |req|
+    puts "HEJ VÄRLDEN"
+    puts req.path
+    
+    if req.path =~ %r{^.*/nyheter/rss.php$} || req.path =~ %r{^/nyheter.rss}
+      req.permanent!("/rss")
+    elsif req.path =~ %r{^/nyheter(.*)}
+      req.permanent!("/#{$1}")
+    end
     
     # RewriteCond %{REQUEST_URI} ^/sektionen/sok/teknolog.php$
     # RewriteCond %{QUERY_STRING} user=([-_A-Za-z0-9]+)
@@ -8,11 +17,7 @@ if Object.const_defined?(:Refraction)
       req.permanent!("/students/#{$1}")
     end
     
-    # RewriteRule ^.*/nyheter/rss.php$ http://%{HTTP_HOST}/nyheter.rss [R=301,L]
-    if req.path =~ %r{^.*/nyheter/rss.php$}
-      req.permanent!("http://#{req.host}/nyheter.rss")
-    end
-
+    
     if req.path =~ %r{^/mottagningen/janifattar/?$}
       req.permanent!("http://www.d.kth.se/ston/apps/new")
     end

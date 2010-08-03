@@ -59,6 +59,9 @@ Rails.application.routes.draw do |map|
   
   match "/protocols/:filename", :to => "protocols#show", :as => 'protocol'
   match "/protocols", :to => "protocols#index", :as => 'protocols'
+  
+  root :to => 'front_pages#show'
+  match '/rss', :to => 'front_pages#rss'
 
   # Studs-relaterat
   map.resources :travel_years
