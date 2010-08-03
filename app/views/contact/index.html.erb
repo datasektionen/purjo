@@ -1,30 +1,25 @@
-<%= simple_form_for @mail, :url => { :action => 'send_mail' } do |f| %>
+<%= simple_form_for @mail, :url => { :action => 'send_mail', :slug => params[:slug] } do |f| %>
   <% if @mail.errors[:base] %>
     <p class="error"><%= @mail.errors[:base] %></p>
   <% end %>
 
-  <% if @committees %>
-    <h3>Nämnder</h3>
-    <div id="committees">
-    <% @committees.each do |p| %>
-      <%= check_box_tag "contact_mail[committees][]", p.id, @mail.committees.include?(p.id.to_s), :id => "committee_#{p.id}" %>
-      <%= label_tag "committee_#{p.id}", p.name %><br />
-    <% end %>
-    </div>
-  <% end %>
-
-  <% if @posts %>
-    <h3>Funktionärer</h3>
-    <div id="posts">
-    <% @posts.each do |p| %>
-      <%= check_box_tag "contact_mail[posts][]", p.id, @mail.posts.include?(p.id.to_s), :id => "posts_#{p.id}" %>
-      <%= label_tag "posts_#{p.id}", p.name %><br />
-    <% end %>
-    </div>
-  <% end %>
-
-  <% unless @committees or @posts %>
-    <%= f.hidden_field :to, :value => @post.id %>
+  <%= label_tag "recipient", "Mottagare" %>
+  <% if @committees or @posts %>
+    <select id="recipient" name="contact_mail[recipient_id]">
+      <option value="">-- Välj mottagare --</option>
+      <% if @committees %>
+      <optgroup label="Nämnder">
+      <%= group_collection_options(@committees, "committee", @mail.recipient_id) %>
+      </optgroup>
+      <% end; if @posts %>
+      <optgroup label="Funktionärer">
+      <%= group_collection_options(@posts, "chapter_post", @mail.recipient_id) %>
+      </optgroup>
+      <% end %>
+    </select>
+  <% else %>
+    <span id="recipient"><%= @mail.recipient.name %></span>
+    <%= f.hidden_field :recipient_id, :value => @mail.recipient_id %>
     <%= hidden_field :hidden, :true %>
   <% end %>
 
@@ -35,7 +30,5 @@
   <%= f.input :message %>
 
   <%= f.submit 'Skicka meddelande' %>
-
-  <%= debug @mail %>
 <% end %>
 
