@@ -4,7 +4,7 @@ require 'ior/security/role_requirement_system'
 
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  layout 'full'
+  layout 'text_node_default'
   include Ior::Security::AuthenticationSystem
   include Ior::Security::RoleRequirementSystem
   before_filter :authenticate
