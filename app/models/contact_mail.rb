@@ -12,34 +12,28 @@ class ContactMail < ActiveRecord::BaseWithoutTable
 
   validate :at_least_one_recipient
 
-  # recipients
-  attr_writer :committees, :posts
-  def committees
-    @committees || []
+  # recipients (objects)
+  attr_reader :recipient_id, :recipient
+  def recipient=(v)
+    @recipient = v
+    @recipient_id = "#{v.class.to_s.underscore}_#{v.id}" unless v.nil?
   end
-  def posts
-    @posts || []
-  end
-
-  # array of email addresses to send to
-  def recipients
-    recipients = []
-    @committees.each do |p|
-      r = Committee.find(p.to_i)
-      recipients << r if r
+  # form input value (in the format of ":class_:id")
+  def recipient_id=(v)
+    @recipient_id = v
+    # set @recipient to matching object
+    match = v.match(/([a-z]+)_(\d+)/)
+    if !match.nil?
+      classified = match[1].camelize.constantize
+      @recipient = classified.find(match[2].to_i)
     end
-    @posts.each do |p|
-      r = ChapterPost.find(p.to_i)
-      recipients << r if r
-    end
-    recipients
   end
 
   protected
 
   def at_least_one_recipient
-    if self.committees.empty? && self.posts.empty?
-      errors.add_to_base("Ingen mottagare har specificerats!")
+    if recipient.nil? or recipient == "" or (recipient.is_a?(Array) and recipient.empty?)
+      errors.add(:base, "Ingen mottagare har specificerats!")
     end
   end
 end

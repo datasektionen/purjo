@@ -1,0 +1,26 @@
+- require 'rss/2.0'
+
+- open('app/views/twitter/twitter.rss') do |file|
+  - response = file.read
+  - result = RSS::Parser.parse(response, false)
+  %h2
+    = link_to image_tag("twitter_logo.png", :size => "200x52"), result.channel.link
+  
+  - result.items.each_with_index do |item, i|
+    %p.tweet
+      - item.title.split(' ')[1..-1].each do |part|
+        - if part.starts_with? '@'
+          - name = part.slice(/\w{1,15}/)
+          - if name
+            = link_to part, "http://twitter.com/#{name}"
+          - else
+            = part
+        - elsif part.starts_with? '#'
+          = link_to part, "http://twitter.com/search?q=#{part}"
+        - else
+          = part
+      %span.tweet-date 
+        = l(item.pubDate, :format => "%A %d %b").humanize
+        %span.dim klockan
+        = l item.pubDate, :format => "%H:%M"
+

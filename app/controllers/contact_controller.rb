@@ -1,19 +1,14 @@
 class ContactController < ApplicationController
+  helper GroupedCollectionHelper
+
   def index
     @mail = ContactMail.new
-    prefill_if_logged_in(@mail)
-    load_available_recipients
-  end
-
-  def single
-    if params[:id]
-      @post = ChapterPost.find(params[:id])
-    else
-      @post = ChapterPost.find_by_slug(params[:post])
+    if params.include?(:slug)
+      @mail.recipient = Committee.find_by_slug(params[:slug])
+      @mail.recipient = ChapterPost.find_by_slug(params[:slug]) unless @mail.recipient
     end
-    @mail = ContactMail.new
+    load_available_recipients if @mail.recipient.nil?
     prefill_if_logged_in(@mail)
-    render :action => 'index'
   end
 
   def send_mail
