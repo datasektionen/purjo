@@ -7,12 +7,16 @@ module PostsHelper
     if post.calendar_post
       if post.all_day
         if post.starts_at.to_date == post.ends_at.to_date
-          post.starts_at.strftime "%A %d %B"
+          l(post.starts_at, :format => "%A %d %B").capitalize
         else
-          "#{post.starts_at.strftime("%A %d %B")} - #{post.ends_at.strftime("%A %d %B")}"
+          "#{l(post.starts_at, :format => "%A %d %B").capitalize} - #{l(post.ends_at, :format => "%A %d %B")}"
         end
       else
-        "#{post.starts_at.strftime("%A %d %B %H:%M")} - #{post.ends_at.strftime("%H:%M")}"
+        if post.starts_at.to_date == post.ends_at.to_date
+          "#{l(post.starts_at, :format => "%A %d %B %H:%M").capitalize} - #{l(post.ends_at, :format => "%H:%M")}"
+        else
+          "#{l(post.starts_at, :format => "%A %d %B %H:%M").capitalize} - #{l(post.ends_at, :format => "%A %d %B %H:%M")}"
+        end
       end
     end
   end
