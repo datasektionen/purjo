@@ -4,7 +4,7 @@ module TextNodesHelper
     if node.nil?
       ""
     else
-      node.formatted(self).html_safe
+      node.formatted_contents(self).html_safe
     end
   end
 end
