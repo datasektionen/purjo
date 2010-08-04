@@ -6,6 +6,8 @@ Rails.application.routes.draw do |map|
     resources :articles
   end
   
+  resources :committees
+  
   resources :file_nodes
 
   resources :job_ads, :except => [:show]

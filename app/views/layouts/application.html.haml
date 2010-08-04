@@ -79,8 +79,8 @@
             - if @menu_template
               = render :partial => "menus/#{@menu_template}"
             
-              - if Person.current.editor?
-                .admin= render :partial => "front_pages/admin_box"
+            - if Person.current.editor?
+              .admin= render :partial => "front_pages/admin_box"
 
           - if content_for?(:main_content)
             = yield(:main_content)

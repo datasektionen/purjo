@@ -7,13 +7,27 @@
     %li= link_to 'Nytt funktionärsmandat', new_functionary_path
     %li= link_to 'Ny funktionärspost', new_chapter_post_path
     %li= link_to 'Redigera funktionärsposter', chapter_posts_path
+
+  %li= link_to "Funktionärer", functionaries_path
+    
   - if @chapter_posts
     %li= link_to 'Ny funktionärspost', new_chapter_post_path
+
+  %li= link_to 'Funktionärsposter', chapter_posts_path
+    
   - if @nominees
     %li= link_to 'Ny nominering', new_nominee_path
-    %li= link_to 'Valtillfällen', { :controller => 'election_events' }
+    %li= link_to 'Valtillfällen', election_events_path
+    
+  %li= link_to 'Nomineringar', nominees_path
+    
   - if @election_events
     %li= link_to 'Nytt val', new_election_event_path
+    
+  %li= link_to "Nämnder", committees_path
+  - if @committees
+    %li= link_to "Ny nämnd", new_committee_path
+    
   - if !@node.nil? && !@node.new_record?
     %li= link_to 'Redigera sida', edit_text_node_path(@node)
     %li= link_to "Historia", text_node_versions_path(@node)

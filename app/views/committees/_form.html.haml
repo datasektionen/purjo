@@ -1,0 +1,6 @@
+= simple_form_for(@committee) do |form|
+  = form.input :name
+  = form.input :description
+  = form.input :slug
+  = form.association :chapter_post
+  = form.button :submit
