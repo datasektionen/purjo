@@ -26,6 +26,18 @@
     .clear &nbsp;
   
   = textilize(post.content).html_safe
+  
+  .comments
+    = image_tag 'icons/IM.png'
+    - if post.has_comments?
+      - if post.comment_count == 1
+        = link_to post.comment_count.to_s + " kommentar", post
+      - else
+        = link_to post.comment_count.to_s + " kommentarer", post
+    - else
+      = link_to "Kommentera", post
+
+    .clear &nbsp;
     
   - if Person.current.editor?
     %ul

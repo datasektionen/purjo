@@ -1,11 +1,11 @@
 .news-item {
   margin-bottom: 25px;
-
+  font-family: 'Crimson Text', Georgia, sans-serif;
+  
   .meta {
     position: relative;
     margin-top: 10px;
     margin-bottom: 10px;
-    font-family: 'Crimson Text' ,Georgia, sans-serif;
     font-size: 16px;
     font-style: italic;
     color: #222;
@@ -63,6 +63,18 @@
       img {
         float: left;
       }
+    }
+  }
+  
+  .comments {
+    img {
+      float: left;
+    }
+    
+    a {
+      float: left;
+      margin-left: 5px;
+      margin-top: 2px;
     }
   }
   
