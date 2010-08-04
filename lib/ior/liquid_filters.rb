@@ -5,3 +5,7 @@ module Ior
     end
   end
 end
+
+Dir[Rails.root + "lib/ior/liquid_filters/*.rb"].each do |f|
+  require f
+end

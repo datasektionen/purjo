@@ -14,7 +14,7 @@ module Ior
         if node.nil?
           return "Icke-existerande nod #{@url}"
         end
-        node.formatted(context.registers[:controller])
+        node.formatted_contents(context.registers[:controller])
       end
     end
     

@@ -11,15 +11,26 @@ class TextNode < ActiveRecord::Base
   validates_presence_of :contents
   validates_presence_of :name
   
-  def formatted(controller)
+  
+  def formatted_additional_contents(controller)
+    format_text(additional_content, controller)
+  end
+  
+  def formatted_contents(controller)
+    format_text(contents, controller)
+  end
+  
+  def format_text(text, controller)
     template = Liquid::Template.new
-    template.parse(contents)
+    template.parse(text)
     #template = Liquid::Template.parse(contents)
     template.registers[:controller] = controller
+    
     redcloth = RedCloth.new(template.render(:filters => [Ior::LiquidFilters]))
     redcloth.no_span_caps = true
     
-    redcloth.to_html
+    redcloth.to_html.html_safe
+    
   end
   
   def layout

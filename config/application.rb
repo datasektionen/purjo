@@ -35,3 +35,4 @@ module Purjo2
   end
 end
 
+require 'ior/liquid_filters'

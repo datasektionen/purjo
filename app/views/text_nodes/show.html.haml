@@ -1,5 +1,5 @@
 - content_for :content do
-  = textilize(@node.contents).html_safe
+  = @node.formatted_contents(controller)
   
 - content_for :additional_content do
-  = textilize(@node.additional_content).html_safe
+  =# @node.formatted_additional_content(controller)
