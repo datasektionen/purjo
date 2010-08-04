@@ -77,7 +77,7 @@
       <th>Från</th>
       <th>Till</th>
     </tr>
-    <% for functionary in @person.functionaries do %>
+    <% for functionary in @person.functionaries.sorted do %>
       <tr>
         <td><%= link_to(functionary.chapter_post.name, functionary.chapter_post) %></td>
         <td><%= functionary.active_from %></td>

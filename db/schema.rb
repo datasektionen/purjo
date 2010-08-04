@@ -318,7 +318,7 @@ ActiveRecord::Schema.define(:version => 20100803133043) do
     t.integer  "version"
     t.string   "custom_layout"
     t.string   "title"
-    t.text     "additional_content"
+    t.text     "additional_content", :null => false
   end
 
   create_table "travel_years", :force => true do |t|
