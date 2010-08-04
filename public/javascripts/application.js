@@ -26,7 +26,7 @@ $(function() {
 					top: '-31px',
 					left: '15px',
 					display: 'block',
-					opacity: 1
+					opacity: 0
 				})
 				.animate({
 					left: 31,
