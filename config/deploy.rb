@@ -92,7 +92,7 @@ namespace :bundler do
 
   task :bundle_new_release, :roles => :app do
     bundler.create_symlink
-    run "cd #{release_path} ; bundle install #{shared_bundle_path} --without development --disable-shared-gems --without test"
+    run "cd #{release_path} ; bundle install #{shared_bundle_path} --without development --disable-shared-gems"
   end
 end
  
