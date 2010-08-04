@@ -1,0 +1,11 @@
+- content_for :main_content do
+  .grid_9
+    - if content_for?(:content)
+      = yield :content
+    - else 
+      = yield 
+
+  .grid_4
+    = yield :additional_content
+
+= render :file => 'layouts/application'

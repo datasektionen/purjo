@@ -79,10 +79,9 @@
               .admin= render :partial => "front_pages/admin_box"
             - if @menu_template
               = render :partial => "menus/#{@menu_template}"
-              
-          .grid_9
+
+          - if content_for?(:main_content)
+            = yield(:main_content)
+          - else
             = yield
-        
-          .grid_4
-            =yield :sidecontent
             

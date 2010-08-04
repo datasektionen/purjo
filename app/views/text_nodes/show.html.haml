@@ -1,0 +1,5 @@
+- content_for :content do
+  = textilize(@node.contents).html_safe
+  
+- content_for :additional_content do
+  = textilize(@node.additional_content).html_safe

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100729143558) do
+ActiveRecord::Schema.define(:version => 20100803133043) do
 
   create_table "articles", :force => true do |t|
     t.integer  "blog_id"
@@ -318,6 +318,7 @@ ActiveRecord::Schema.define(:version => 20100729143558) do
     t.integer  "version"
     t.string   "custom_layout"
     t.string   "title"
+    t.text     "additional_content"
   end
 
   create_table "travel_years", :force => true do |t|

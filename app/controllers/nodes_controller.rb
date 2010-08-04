@@ -1,6 +1,4 @@
 class NodesController < ApplicationController
-  skip_before_filter :verify_authenticity_token
-
   def show
     url = "/" + params[:url].join("/")
     @node = Node.find_by_url(url)
@@ -12,7 +10,7 @@ class NodesController < ApplicationController
       @menu_template = "sektionen"
 
       begin
-        render :text => @node.formatted(self), :layout => @node.layout
+        render "text_nodes/show", :layout => @node.layout
       rescue Liquid::SyntaxError => @exception
         render :template => 'text_nodes/syntax_error'
       end

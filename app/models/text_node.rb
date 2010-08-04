@@ -30,7 +30,7 @@ class TextNode < ActiveRecord::Base
       end
       node = node.parent
     end
-    return "application"
+    return "text_node_default"
   end
   
   def deletable?
