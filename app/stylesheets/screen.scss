@@ -46,7 +46,7 @@ body {
 }
 
 #main {
-  overflow: auto;
+  overflow: hidden; /* funkar(?), auto lägger till horisontal scrollbar i FF */ 
   padding-bottom: 150px;
 }
 
@@ -60,7 +60,7 @@ body {
   -moz-box-shadow: 0px 5px 20px #7b7b7b;
 }
 
-span.dim {
+.dim {
   color: #777;
 }
 
@@ -137,7 +137,7 @@ span.dim {
   text-align: justify;
 }
 
-.twitter {
+.twitter h2 {
 	background: url(/images/twitter_dark.png) no-repeat right center;
 }
 .tweet {
