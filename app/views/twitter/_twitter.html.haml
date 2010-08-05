@@ -8,17 +8,9 @@
   
   - result.items.each_with_index do |item, i|
     %p.tweet
-      - item.title.split(' ')[1..-1].each do |part|
-        - if part.starts_with? '@'
-          - name = part.slice(/\w{1,15}/)
-          - if name
-            = link_to part, "http://twitter.com/#{name}"
-          - else
-            = part
-        - elsif part.starts_with? '#'
-          = link_to part, "http://twitter.com/search?q=#{part}"
-        - else
-          = part
+      != tweet_to_html(item.title)
+
+      
       %span.tweet-date 
         = l(item.pubDate, :format => "%A %d %b").humanize
         %span.dim klockan
