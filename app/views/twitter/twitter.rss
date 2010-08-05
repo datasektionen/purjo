@@ -1,56 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:georss="http://www.georss.org/georss" xmlns:twitter="http://api.twitter.com">
-  <channel>
-    <title>Twitter / drektoratet</title>
-    <link>http://twitter.com/drektoratet</link>
-    <atom:link type="application/rss+xml" href="http://twitter.com/statuses/user_timeline/22768776.rss?count=5" rel="self"/>
-    <description>Twitter updates from Drek / drektoratet.</description>
-    <language>en-us</language>
-    <ttl>40</ttl>
-  <item>
-    <title>drektoratet: styrelsen har nu &#229;terh&#228;mtat sig fr&#229;n styrelsemiddag och SSCOs coctailparty i helgen lagom till att motioner till SM b&#246;rjar droppa in</title>
-    <description>drektoratet: styrelsen har nu &#229;terh&#228;mtat sig fr&#229;n styrelsemiddag och SSCOs coctailparty i helgen lagom till att motioner till SM b&#246;rjar droppa in</description>
-    <pubDate>Tue, 21 Apr 2009 09:20:20 +0000</pubDate>
-    <guid>http://twitter.com/drektoratet/statuses/1573681694</guid>
-    <link>http://twitter.com/drektoratet/statuses/1573681694</link>
-    <twitter:source>web</twitter:source>
-    <twitter:place/>
-  </item>
-  <item>
-    <title>drektoratet: semlor till SM &#228;r best&#228;llda</title>
-    <description>drektoratet: semlor till SM &#228;r best&#228;llda</description>
-    <pubDate>Thu, 19 Mar 2009 15:03:08 +0000</pubDate>
-    <guid>http://twitter.com/drektoratet/statuses/1354735513</guid>
-    <link>http://twitter.com/drektoratet/statuses/1354735513</link>
-    <twitter:source>web</twitter:source>
-    <twitter:place/>
-  </item>
-  <item>
-    <title>drektoratet: en del av styrelsen f&#246;rs&#246;ker piggna till &#229; l&#228;sa p&#229; inf&#246;r kv&#228;llens KF som riskerar bli l&#229;ngt... vi ska ber&#228;tta f&#246;r ths varf&#246;r Joel har r&#228;tt..</title>
-    <description>drektoratet: en del av styrelsen f&#246;rs&#246;ker piggna till &#229; l&#228;sa p&#229; inf&#246;r kv&#228;llens KF som riskerar bli l&#229;ngt... vi ska ber&#228;tta f&#246;r ths varf&#246;r Joel har r&#228;tt..</description>
-    <pubDate>Thu, 19 Mar 2009 12:26:47 +0000</pubDate>
-    <guid>http://twitter.com/drektoratet/statuses/1353998651</guid>
-    <link>http://twitter.com/drektoratet/statuses/1353998651</link>
-    <twitter:source>web</twitter:source>
-    <twitter:place/>
-  </item>
-  <item>
-    <title>drektoratet: Drektoratet och v&#228;nner har spridit ordet om det &#228;rorika civilingenj&#246;rsprogrammet Datateknik p&#229; KTH &#214;ppet Hus. Det gick v&#228;l!</title>
-    <description>drektoratet: Drektoratet och v&#228;nner har spridit ordet om det &#228;rorika civilingenj&#246;rsprogrammet Datateknik p&#229; KTH &#214;ppet Hus. Det gick v&#228;l!</description>
-    <pubDate>Sun, 15 Mar 2009 14:46:59 +0000</pubDate>
-    <guid>http://twitter.com/drektoratet/statuses/1331520868</guid>
-    <link>http://twitter.com/drektoratet/statuses/1331520868</link>
-    <twitter:source>web</twitter:source>
-    <twitter:place/>
-  </item>
-  <item>
-    <title>drektoratet: Drek representationsshottar p&#229; fysik</title>
-    <description>drektoratet: Drek representationsshottar p&#229; fysik</description>
-    <pubDate>Sat, 14 Mar 2009 22:37:28 +0000</pubDate>
-    <guid>http://twitter.com/drektoratet/statuses/1328961778</guid>
-    <link>http://twitter.com/drektoratet/statuses/1328961778</link>
-    <twitter:source>&lt;a href=&quot;/devices&quot; rel=&quot;nofollow&quot;&gt;txt&lt;/a&gt;</twitter:source>
-    <twitter:place/>
-  </item>
-  </channel>
-</rss>
+<rss version="2.0" xmlns:google="http://base.google.com/ns/1.0" xmlns:openSearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:media="http://search.yahoo.com/mrss/" xmlns:twitter="http://api.twitter.com/">
+<channel><item>
+  <title>Was looking forward to spotting Grand Canyon but woman took 10min to order her PLANE FOOD &amp; blocked me from sitting down so I missed it #grr</title>
+  <link>http://twitter.com/feliciaday/statuses/20410123251</link>
+  <description>Was looking forward to spotting Grand Canyon but woman took 10min to order her PLANE FOOD &amp;amp; blocked me from sitting down so I missed it &lt;a href=&quot;http://search.twitter.com/search?q=%23grr&quot; onclick=&quot;pageTracker._setCustomVar(2, 'result_type', 'recent', 3);pageTracker._trackPageview('/intra/hashtag/#grr');&quot;&gt;#grr&lt;/a&gt;</description>
+  <author>feliciaday@twitter.com (Felicia Day)</author>
+  <pubDate>Thu, 05 Aug 2010 21:11:40 +0200</pubDate>
+  <guid>http://twitter.com/feliciaday/statuses/20410123251</guid>
+</item><item>
+  <title>#WIN *-* RT @AllanChef: Ok, ayer nos quedamos con los Aztecas y el chocolate :)</title>
+  <link>http://twitter.com/KakyRP/statuses/20410122279</link>
+  <description>&lt;a href=&quot;http://search.twitter.com/search?q=%23WIN&quot; onclick=&quot;pageTracker._setCustomVar(2, 'result_type', 'recent', 3);pageTracker._trackPageview('/intra/hashtag/#WIN');&quot;&gt;&lt;b&gt;#WIN&lt;/b&gt;&lt;/a&gt; *-* RT &lt;a href=&quot;http://twitter.com/AllanChef&quot;&gt;@AllanChef&lt;/a&gt;: Ok, ayer nos quedamos con los Aztecas y el chocolate :)</description>
+  <author>KakyRP@twitter.com (Kaky Rodríguez P.)</author>
+  <pubDate>Thu, 05 Aug 2010 21:11:39 +0200</pubDate>
+  <guid>http://twitter.com/KakyRP/statuses/20410122279</guid>
+</item><item>
+  <title>Anniversary Bash Finale: WIN a custom FLIP MinoHD camcorder ($200) from @CafePress! @thxmailcarrier http://bit.ly/d2zwpk #win #giveaway</title>
+  <link>http://twitter.com/getinonthewins/statuses/20410122037</link>
+  <description>Anniversary Bash Finale: WIN a custom FLIP MinoHD camcorder ($200) from &lt;a href=&quot;http://twitter.com/CafePress&quot;&gt;@CafePress&lt;/a&gt;! &lt;a href=&quot;http://twitter.com/thxmailcarrier&quot;&gt;@thxmailcarrier&lt;/a&gt; &lt;a href=&quot;http://bit.ly/d2zwpk&quot;&gt;http://bit.ly/d2zwpk&lt;/a&gt; &lt;a href=&quot;http://search.twitter.com/search?q=%23win&quot; onclick=&quot;pageTracker._setCustomVar(2, 'result_type', 'recent', 3);pageTracker._trackPageview('/intra/hashtag/#win');&quot;&gt;&lt;b&gt;#win&lt;/b&gt;&lt;/a&gt; &lt;a href=&quot;http://search.twitter.com/search?q=%23giveaway&quot; onclick=&quot;pageTracker._setCustomVar(2, 'result_type', 'recent', 3);pageTracker._trackPageview('/intra/hashtag/#giveaway');&quot;&gt;#giveaway&lt;/a&gt;</description>
+  <author>getinonthewins@twitter.com (Mary Williams)</author>
+  <pubDate>Thu, 05 Aug 2010 21:11:38 +0200</pubDate>
+  <guid>http://twitter.com/getinonthewins/statuses/20410122037</guid>
+</item><item>
+  <title>yay they are here #WIN!</title>
+  <link>http://twitter.com/love_ashleyrose/statuses/20410116072</link>
+  <description>yay they are here &lt;a href=&quot;http://search.twitter.com/search?q=%23WIN&quot; onclick=&quot;pageTracker._setCustomVar(2, 'result_type', 'recent', 3);pageTracker._trackPageview('/intra/hashtag/#WIN');&quot;&gt;&lt;b&gt;#WIN&lt;/b&gt;&lt;/a&gt;!</description>
+  <author>love_ashleyrose@twitter.com (Ashley Creft)</author>
+  <pubDate>Thu, 05 Aug 2010 21:11:32 +0200</pubDate>
+  <guid>http://twitter.com/love_ashleyrose/statuses/20410116072</guid>
+</item><item>
+  <title>RT @LuVn7421 FML LOL....HORNY #thatisall &lt;&lt;#win lol</title>
+  <link>http://twitter.com/1NonlyBighomey/statuses/20410110843</link>
+  <description>RT &lt;a href=&quot;http://twitter.com/LuVn7421&quot;&gt;@LuVn7421&lt;/a&gt; FML LOL....HORNY &lt;a href=&quot;http://search.twitter.com/search?q=%23thatisall&quot; onclick=&quot;pageTracker._setCustomVar(2, 'result_type', 'recent', 3);pageTracker._trackPageview('/intra/hashtag/#thatisall');&quot;&gt;#thatisall&lt;/a&gt; &amp;lt;&amp;lt;&lt;a href=&quot;http://search.twitter.com/search?q=%23win&quot; onclick=&quot;pageTracker._setCustomVar(2, 'result_type', 'recent', 3);pageTracker._trackPageview('/intra/hashtag/#win');&quot;&gt;&lt;b&gt;#win&lt;/b&gt;&lt;/a&gt; lol</description>
+  <author>1NonlyBighomey@twitter.com (Patrick Brown)</author>
+  <pubDate>Thu, 05 Aug 2010 21:11:26 +0200</pubDate>
+  <guid>http://twitter.com/1NonlyBighomey/statuses/20410110843</guid>
+</item><item>
+  <title>RT @OnTimeSupplies I want to win free school supplies from OnTimeSupplies.com! http://bit.ly/aBfbMa #win #giveaway</title>
+  <link>http://twitter.com/dolls123/statuses/20410106877</link>
+  <description>RT &lt;a href=&quot;http://twitter.com/OnTimeSupplies&quot;&gt;@OnTimeSupplies&lt;/a&gt; I want to win free school supplies from OnTimeSupplies.com! &lt;a href=&quot;http://bit.ly/aBfbMa&quot;&gt;http://bit.ly/aBfbMa&lt;/a&gt; &lt;a href=&quot;http://search.twitter.com/search?q=%23win&quot; onclick=&quot;pageTracker._setCustomVar(2, 'result_type', 'recent', 3);pageTracker._trackPageview('/intra/hashtag/#win');&quot;&gt;&lt;b&gt;#win&lt;/b&gt;&lt;/a&gt; &lt;a href=&quot;http://search.twitter.com/search?q=%23giveaway&quot; onclick=&quot;pageTracker._setCustomVar(2, 'result_type', 'recent', 3);pageTracker._trackPageview('/intra/hashtag/#giveaway');&quot;&gt;#giveaway&lt;/a&gt;</description>
+  <author>dolls123@twitter.com (Michelle Rosborough)</author>
+  <pubDate>Thu, 05 Aug 2010 21:11:22 +0200</pubDate>
+  <guid>http://twitter.com/dolls123/statuses/20410106877</guid>
+</item></channel></rss>

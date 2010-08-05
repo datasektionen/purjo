@@ -8,7 +8,7 @@ module TwitterHelper
     }
 
     tweet.scan(/#\w+/) {|match| #Hashtags
-      message.sub!(match, (link_to match, "http://twitter.com/search?q=#{match}"))
+      message.sub!(match, (link_to match, "http://twitter.com/search?q=%23#{match[1..-1]}"))
     }
 
     tweet.scan(/http\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}[\/a-zA-Z0-9\-\.]*/) {|match| #URL

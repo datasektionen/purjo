@@ -4,7 +4,7 @@
   - response = file.read
   - result = RSS::Parser.parse(response, false)
   %h2
-    = link_to image_tag("twitter_logo.png", :size => "200x52"), result.channel.link
+    = link_to image_tag("twitter_logo.png", :size => "200x52"), 'http://twitter.com'
   
   - result.items.each_with_index do |item, i|
     %p.tweet
