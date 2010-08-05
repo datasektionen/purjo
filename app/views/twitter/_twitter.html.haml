@@ -9,9 +9,10 @@
   - result.items.each_with_index do |item, i|
     %p.tweet
       != tweet_to_html(item.title)
-
       
       %span.tweet-date 
+        = get_author(item.author)
+        %span.dim den
         = l(item.pubDate, :format => "%A %d %b").humanize
         %span.dim klockan
         = l item.pubDate, :format => "%H:%M"

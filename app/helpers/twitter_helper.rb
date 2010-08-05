@@ -16,5 +16,9 @@ module TwitterHelper
     }
     return message
   end
+  
+  def get_author(string)
+    return string.slice(/^\w{1,15}/)
+  end
 
 end
