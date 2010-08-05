@@ -1,7 +1,8 @@
 <% stylesheet "nyheter" -%>
+<% title @post.name -%>
 
 <div>
-  <h3><%= @post.name %></h3>
+  <h2><%= @post.name %></h2>
   <p>
     <%= calendar_post_date_format(@post) %>
     
