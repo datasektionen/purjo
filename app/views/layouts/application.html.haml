@@ -41,40 +41,37 @@
             .grid_9.prefix_3
               %span 
                 - if Person.current.anonymous?
-                  Du är inte 
-                  %b inloggad. 
+                  Du är inte <strong>inloggad</strong>.
                 - else 
-                  Du är inloggad som
-                  %b= Person.current
-            .grid_3
+                  == Du är inloggad som <strong>#{Person.current}</strong>.
+            .grid_4
               - if Person.current.anonymous?
                 = link_to 'Logga in', new_sessions_path(:return_url => current_url)
               - else
                 = link_to 'Logga ut', sessions_path(:return_url => current_url), :method => :delete
           .clear &nbsp
 
-        .main
+        .header
           .container_16
             .grid_3
               .prefix &nbsp;
               = link_to image_tag("shield.png"), root_path, :class => "shield"
-            .grid_9
+            .title.grid_9
               %h1= link_to "Konglig Datasektionen", "/"
-              %ul
-                %li
-                  %b= link_to "Nyheter", "/"
+              %ul.nav
+                %li.active= link_to "Nyheter", "/"
                 %li= link_to "Sektionen", "/sektionen"
                 %li= link_to "Näringsliv", "/naringsliv"
                 %li= link_to "Studier", "/studier"
                 %li= link_to "Kontakt", "/kontakt"
             
-            .grid_3
+            .search.grid_4
               %input{:type => "search", :placeholder => "Sök"}
             
             .clear &nbsp;
         
-        .content.container_16
-          .sub.grid_3
+        .body.container_16
+          .subnav.grid_3
             .clear
             - if @menu_template
               = render :partial => "menus/#{@menu_template}"
@@ -82,9 +79,10 @@
             - if Person.current.editor?
               .admin= render :partial => "front_pages/admin_box"
 
-          - if content_for?(:main_content)
-            = yield(:main_content)
-          - else
-            .grid_9
-              = yield
+          .content
+            - if content_for?(:main_content)
+              = yield(:main_content)
+            - else
+              .grid_9
+                = yield
             

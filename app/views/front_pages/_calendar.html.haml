@@ -1,5 +1,4 @@
 .events
-  %h3 &nbsp;
   %h2 Agenda
   %p Här är datasektionens agenda för en vecka framåt i tiden
   - @calendar_posts.each do |calendar_post|
@@ -14,8 +13,6 @@
       .clear
   
   %p
-    Se alla event i 
-    = link_to "kalendern", calendar_path
-    \.
+    == Se alla event i #{link_to "kalendern", calendar_path}.
   
   .clear

@@ -3,25 +3,27 @@
     <p class="error"><%= @mail.errors[:base] %></p>
   <% end %>
 
-  <%= label_tag "recipient", "Mottagare" %>
-  <% if @committees or @posts %>
-    <select id="recipient" name="contact_mail[recipient_id]">
-      <option value="">-- Välj mottagare --</option>
-      <% if @committees %>
-      <optgroup label="Nämnder">
-      <%= group_collection_options(@committees, "committee", @mail.recipient_id) %>
-      </optgroup>
-      <% end; if @posts %>
-      <optgroup label="Funktionärer">
-      <%= group_collection_options(@posts, "chapter_post", @mail.recipient_id) %>
-      </optgroup>
-      <% end %>
-    </select>
-  <% else %>
-    <span id="recipient"><%= @mail.recipient.name %></span>
-    <%= f.hidden_field :recipient_id, :value => @mail.recipient_id %>
-    <%= hidden_field :hidden, :true %>
-  <% end %>
+  <div class="input select required">
+    <%= label_tag "recipient", "Mottagare" %>
+    <% if @committees or @posts %>
+      <select id="recipient" name="contact_mail[recipient_id]">
+        <option value="">-- Välj mottagare --</option>
+        <% if @committees %>
+        <optgroup label="Nämnder">
+        <%= group_collection_options(@committees, "committee", @mail.recipient_id) %>
+        </optgroup>
+        <% end; if @posts %>
+        <optgroup label="Funktionärer">
+        <%= group_collection_options(@posts, "chapter_post", @mail.recipient_id) %>
+        </optgroup>
+        <% end %>
+      </select>
+    <% else %>
+      <span id="recipient"><%= @mail.recipient.name %></span>
+      <%= f.hidden_field :recipient_id, :value => @mail.recipient_id %>
+      <%= hidden_field :hidden, :true %>
+    <% end %>
+  </div>
 
   <%= f.input :name %>
 

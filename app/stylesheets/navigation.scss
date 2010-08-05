@@ -6,17 +6,12 @@ div.top {
   color: #e7e7e7;
   font-family: helvetica, sans-serif;
 
-  a {
+  a, strong {
     color: white;
-  }
-
-  b {
-    color: white;
-    margin-right: 3px;
   }
 }
 
-div.main {
+div.header {
   position: relative;
   background-color: #fff;
   -webkit-box-shadow: 0px 3px 3px #d7d7d7;
@@ -37,9 +32,9 @@ div.main {
     margin-bottom: 0px;
   }
 
-  ul {
+  ul.nav {
     margin: 0px;
-    padding: 13px 0px 28px 0px;
+    padding: 8px 0px 28px 0px;
 
     li {
       font-family: 'Helvetica';
@@ -48,6 +43,9 @@ div.main {
       list-style-type: none;
       margin-right: 40px;
       float: left;
+    }
+    li.active {
+      font-weight: bold;
     }
   }
 
@@ -64,27 +62,28 @@ div.main {
 
   a.shield:hover {
     -webkit-transform: rotate(0deg);
-  	-moz-transform: rotate(0deg);
+  	// -moz-transform: rotate(0deg); // får skölden att hoppa skumt(?)
     -webkit-transition: all 0.3s ease-in;
     -moz-transition: all 0.3s ease-in;
   }
 }
 
-div.sub {
+div.subnav {
   margin-top: 80px;
+  color: #222;
+  font-family: 'Helvetica', arial, sans-serif;
+  font-size: 14px;
+  text-align: right;
+  line-height: 1.5;
 
   ul {
-    li {
-      font-family: 'Helvetica';
-      font-size: 15px;
-      text-align: right;
-      list-style-type: none;
-      color: #222;
-      margin-bottom: 5px;
-    }
+    margin-left: 0;
+    list-style-type: none;
   }
 }
 
 div.admin {
   margin-top: 30px;
+  h3, ul { margin: 0; }
+  ul li { font-size: 13px; }
 }

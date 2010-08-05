@@ -1,15 +1,15 @@
 .news-item {
   margin-bottom: 25px;
-  font-family: 'Crimson Text', Georgia, sans-serif;
+    
+  h2 a { color: #222; }
   
   .meta {
     position: relative;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin: 8px 0;
     font-size: 16px;
     font-style: italic;
     color: #222;
-    height: 28px;
+    line-height: 1.2;
 
     .author {
       float: left;
@@ -77,27 +77,10 @@
       margin-top: 2px;
     }
   }
-  
-  p {
-    a {
-      color: #e2007f;
-    }
-    
-    a:hover {
-      text-decoration: underline;
-    }
-
-    a:visited {
-      color: #e2007f;
-    }
-  }
 }
 
 .tags {
   .tag {
-    a {
-      color: white;
-    }
     margin-top: 2px;
     margin-bottom: 2px;
     margin-right: 5px;
@@ -105,9 +88,12 @@
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     padding: 2px 7px;
-    font-family: 'Helvetica';
+    font-family: Helvetica, arial, sans-serif;
     font-size: 12px;
     color: white;
     background-color: #393939;
+    line-height: 15px;
+
+    a, a:visited { color: white; }
   }
 }

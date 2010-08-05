@@ -2,11 +2,12 @@
 - title "Nyheter"
 
 - content_for :additional_content do 
+  %h3.sub &nbsp;
   = render :partial => "front_pages/calendar"
   = render :partial => "twitter/twitter"
 
 #news
-  %h3 &nbsp;
+  %h3.sub &nbsp;
 
   - if !Person.current.anonymous? && !Person.current.has_chosen_settings?
     #first_time_welcome
