@@ -23,7 +23,7 @@ $(function() {
 				beingShown = true;
 				
 				popup.css({
-					top: '-31px',
+					top: '45px',
 					left: '15px',
 					display: 'block',
 					opacity: 0
