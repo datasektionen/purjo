@@ -3,8 +3,8 @@ namespace :twitter do
     require 'net/http'
     require 'rss/2.0'
     
-    users = ['feliciaday', 'doqumenteriet', 'd-rek']
-    hashtags = ['kthd', 'win']
+    users = ['doqumenteriet', 'drektoratet']
+    hashtags = ['kthd']
     
     tweets = []
     
@@ -30,7 +30,7 @@ namespace :twitter do
       file.write('<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:google="http://base.google.com/ns/1.0" xmlns:openSearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:media="http://search.yahoo.com/mrss/" xmlns:twitter="http://api.twitter.com/">
 <channel>')
-      tweets[0..5].each {|item|
+      tweets[0...5].each {|item|
         file.write(item)
       }
       file.write('</channel></rss>')
