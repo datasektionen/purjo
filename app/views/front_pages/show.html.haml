@@ -7,7 +7,12 @@
   = render :partial => "twitter/twitter"
 
 #news
-  %h3.sub &nbsp;
+  %h3.sub
+    - if params[:tags]
+      Nyheter taggade:
+      %strong= params[:tags]
+    - else
+      Alla nyheter
 
   - if !Person.current.anonymous? && !Person.current.has_chosen_settings?
     #first_time_welcome

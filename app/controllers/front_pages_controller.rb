@@ -2,8 +2,10 @@ class FrontPagesController < ApplicationController
   def show
     @news_posts = Post.news_posts
     
+    @tags = ActsAsTaggableOn::Tag.all
     if params[:tags]
       @news_posts = @news_posts.tagged_with(params[:tags])
+      @active_tags = ActsAsTaggableOn::TagList.from(params[:tags])
     end
     
     @news_posts = @news_posts.paginate(:page => params[:page], :per_page => 10)
