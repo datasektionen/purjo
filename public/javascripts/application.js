@@ -1,6 +1,6 @@
 $(function() {
 	$('.meta').each(function() {
-		var distance = 31;
+		var distance = 20;
 		var time = 250;
 		var hideDelay = 500;
 		
@@ -23,7 +23,7 @@ $(function() {
 				beingShown = true;
 				
 				popup.css({
-					top: '45px',
+					top: '-31px',
 					left: '15px',
 					display: 'block',
 					opacity: 0

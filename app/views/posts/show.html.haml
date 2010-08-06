@@ -1,3 +1,7 @@
+- stylesheet "nyheter"
+- post = @post
+- title post.name
+
 .news-item
   %h2= link_to post, post
   %div.meta
@@ -9,7 +13,7 @@
       = l post.created_at, :format => "%e %b %Y"
       %span.dim klockan 
       = l post.created_at, :format => "%H:%M"
-    
+  
     .popup{:style => "display:none"}
       .popup-inner
         = image_tag(post.created_by.gravatar_url)
@@ -30,7 +34,12 @@
       = link_to 'Redigera', edit_post_path(post), :class => "edit"
       = link_to 'Ta bort', post, :method => :delete, :confirm => 'Är du säker på att du vill ta bort den här nyheten?', :class => "delete"
 
-    - comment_title = post.has_comments? ? post.comment_count.to_s + " kommentar" : "Kommentera"
-    - comment_title << "er" if post.comment_count > 1
-    = link_to comment_title, post, :class => "comments"
+    %iframe{ :class => "fb-like", :src => "http://www.facebook.com/plugins/like.php?href=#{post_url(@post)}&amp;layout=standard&amp;show_faces=false&amp;width=340&amp;height=25&amp;action=like&amp;colorscheme=light", :scrolling => "no", :frameborder => "0", :allowTransparency => "true" }
 
+  .comments
+    - if @post.noises.count > 0
+      %h3 Kommentarer
+      = render :partial => 'noises/noise', :collection => @post.noises
+
+  .respond
+    %h3 Kommentera (TODO)

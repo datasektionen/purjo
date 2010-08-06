@@ -1,0 +1,23 @@
+.comment{ :id => "comment-" + noise.id.to_s }
+  %div.meta
+    = link_to 'Redigera', edit_noise_path(noise), :class => "edit"
+    = link_to image_tag(noise.person.gravatar_url, :class => "trigger thumb", :alt => "", :title => noise.person), person_path(noise.person)
+    = link_to noise.person.try(:name), person_path(noise.person), :class => "author"
+
+    %span.date
+      %span.dim den
+      = l(noise.created_at, :format => "%e %B %Y").humanize
+      %span.dim klockan
+      = l noise.created_at, :format => "%H:%M"
+    
+    .popup{:style => "display:none"}
+      .popup-inner
+        = image_tag(noise.person.gravatar_url)
+        %h3= noise.person
+        - if noise.person.functionaries.present?
+          %p
+            = noise.person.functionaries.active.map { |f| link_to f.chapter_post.name, contact_path(f.chapter_post.slug) }.to_sentence
+      .clear &nbsp;
+
+  .message
+    = noise.message
