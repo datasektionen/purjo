@@ -20,6 +20,7 @@
     }
 
     .popup {
+      display: none;
       position: absolute;
       width: 317px;
       height: 90px;
@@ -38,23 +39,22 @@
       -moz-border-radius: 5px;
       
       h3, p {
+        float: left;
+        color: white;
+        margin-left: 10px;
         font-family: helvetica, sans-serif;
         font-style: normal;
         width: 200px;
-        float: left;
-        color: white;
       }
     
       h3 {
+        margin-top: 13px;
         font-size: 16px;
-        margin-top: 15px;
-        margin-left: 10px;
       }
       
       p {
-        font-size: 14px;
-        margin-top: 0px;
-        margin-left: 10px;
+        font-size: 13px;
+        line-height: 15px;
       }
       
       img {

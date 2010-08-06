@@ -10,13 +10,7 @@
       %span.dim klockan 
       = l post.created_at, :format => "%H:%M"
     
-    .popup{:style => "display:none"}
-      .popup-inner
-        = image_tag(post.created_by.gravatar_url)
-        %h3= post.created_by
-        - if post.created_by.functionaries.present?
-          %p= post.created_by.functionaries.active.map { |f| link_to f.chapter_post.name, contact_path(f.chapter_post.slug) }.to_sentence
-      .clear &nbsp;
+    = render :partial => "people/popup", :locals => { :person => post.created_by }
     
   .tags
     - post.categories.each do |category|
