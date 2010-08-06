@@ -6,9 +6,8 @@
     = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz"
     = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Crimson+Text"
     = javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"
-    != '<!--[if lt IE 9]>'
-    != '<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>'
-    != '<![endif]-->'
+    /[if lt IE 9]
+      = javascript_include_tag 'http://html5shiv.googlecode.com/svn/trunk/html5.js'
     = javascript_include_tag "application.js", "rails.js", "hyphenate.js"
     = stylesheet_link_tag "screen"
     
