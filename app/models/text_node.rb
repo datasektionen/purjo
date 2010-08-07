@@ -6,8 +6,8 @@ class TextNode < ActiveRecord::Base
 
   before_validation :update_url
   before_destroy :deletable?
-  
-  validates_uniqueness_of :url
+
+  validate :unique_url
   validates_presence_of :contents
   validates_presence_of :name
   
@@ -49,6 +49,12 @@ class TextNode < ActiveRecord::Base
   end
   
   protected
+  
+  def unique_url
+    if TextNode.where(:url => url).count != 0
+      errors.add(:name, "already exists under the node #{parent.name}")
+    end
+  end
   
   def update_url
     node = self
