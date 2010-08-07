@@ -7,7 +7,7 @@ class Functionary < ActiveRecord::Base
 
   def person_or_postponed
     if postponed
-      return "Bordlagd"
+      return "Vakantsatt"
     end
     person
   end 

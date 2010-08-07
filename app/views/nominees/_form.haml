@@ -13,4 +13,4 @@
 %p
   = f.label "Svar"
   <br />
-  = select_tag "nominee[status]", options_for_select({ "Ej svarat" => 0, "Tackat ja" => 1, "Tackat nej" => 2}, 0)
+  = select_tag "nominee[status]", options_for_select({ "Ej svarat" => 0, "Tackat ja" => 1, "Tackat nej" => 2}, @nominee.status)

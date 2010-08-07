@@ -83,7 +83,7 @@ Rails.application.routes.draw do |map|
   map.schema '/schema/proxy.:format', :controller => 'schema', :action => 'proxy'
   map.schema '/schema/:year', :controller => 'schema', :action => 'index', :year => 'D1'
 
-  map.resources :nominees, :as => "sektionen/val"
+  resources '/sektionen/val', :as => 'nominees', :controller => 'nominees'
 
   map.resources :election_events
 

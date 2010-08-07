@@ -6,13 +6,14 @@
   %tr
     %th Namn (nominerade)
     %th Datum
-- for election_event in @election_events
-  %tr
-    %td
-      = link_to election_event.name, election_event
-      = "(" + link_to 'visa', :controller => 'nominees', :election_event => election_event.id + ")"
-    %td= election_event.date
-    %td= link_to 'Edit', edit_election_event_path(election_event)
+    %th
+  - for election_event in @election_events
+    %tr
+      %td
+        = link_to election_event.name, election_event
+        = link_to('(visa)', :controller => 'nominees', :election_event => election_event.id)
+      %td= election_event.date
+      %td= link_to 'Redigera val', edit_election_event_path(election_event)
 
 %h3 Hjälp
 

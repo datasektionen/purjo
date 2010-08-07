@@ -1,15 +1,15 @@
 %p
   %b Person:
-  = @nominee.person_id
+  = @nominee.person
 %p
-  %b Election event:
-  = @nominee.election_event_id
+  %b Valtillfälle:
+  = @nominee.election_event.formated
 %p
-  %b Chapter post:
-  = @nominee.chapter_post_id
+  %b Post:
+  = @nominee.chapter_post.name
 %p
   %b Status:
-  = @nominee.status
+  = @nominee.status_text
 
 = link_to 'Edit', edit_nominee_path(@nominee)
 |
