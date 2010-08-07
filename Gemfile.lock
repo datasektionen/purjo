@@ -56,6 +56,8 @@ GEM
       rack-test (>= 0.5.4)
       selenium-webdriver (>= 0.0.3)
     cgi_multipart_eof_fix (2.5.0)
+    chronic (0.2.3)
+      hoe (>= 1.2.1)
     columnize (0.3.1)
     configuration (1.1.0)
     crack (0.1.8)
@@ -78,6 +80,9 @@ GEM
     haml (3.0.15)
     has_scope (0.5.0)
     highline (1.6.1)
+    hoe (2.6.1)
+      rake (>= 0.8.7)
+      rubyforge (>= 2.0.4)
     hominid (2.1.5)
     i18n (0.4.1)
     icalendar (1.1.5)
@@ -154,6 +159,8 @@ GEM
       ruby-debug-base (~> 0.10.3.0)
     ruby-debug-base (0.10.3)
       linecache (>= 0.3)
+    rubyforge (2.0.4)
+      json_pure (>= 1.1.7)
     rubyzip (0.9.4)
     selenium-webdriver (0.0.27)
       ffi (>= 0.6.1)
@@ -174,6 +181,8 @@ GEM
       nokogiri (>= 1.2.0)
       rack (>= 1.0)
       rack-test (>= 0.5.3)
+    whenever (0.5.0)
+      chronic (>= 0.2.3)
     will_paginate (3.0.pre2)
 
 PLATFORMS
@@ -209,4 +218,5 @@ DEPENDENCIES
   steak (>= 0.4.0.a5)
   timecop
   webmock
+  whenever
   will_paginate (~> 3.0.pre2)

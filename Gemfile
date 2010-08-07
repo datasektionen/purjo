@@ -24,6 +24,7 @@ gem 'capistrano'
 gem 'capistrano-ext'
 
 gem 'refraction'
+gem 'whenever'
 
 group :production do
    gem 'mysql'
