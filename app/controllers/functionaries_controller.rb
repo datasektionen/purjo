@@ -1,5 +1,6 @@
 class FunctionariesController < ApplicationController
   layout 'application'
+  require_role "editor", :except => [:show, :index]
 
   # GET /functionaries
   # GET /functionaries.xml

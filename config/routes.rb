@@ -1,17 +1,19 @@
 Rails.application.routes.draw do |map|
   
+  match "/admin", :to => 'admin#index'
+  
   resources :blogs do
     resources :articles
   end
+  
+  resources :committees
   
   resources :file_nodes
 
   resources :job_ads, :except => [:show]
   
-  get "/kontakt" => 'contact#index', :as => 'contact'
-  post "/kontakt" => 'contact#send_mail'
-  get "/kontakt/:id" => 'contact#single', :constraints => { :id => /\d+/ }
-  get "/kontakt/:post" => 'contact#single'
+  get "/kontakt(/:slug)" => 'contact#index', :as => 'contact'
+  post "/kontakt(/:slug)" => 'contact#send_mail'
   
   resources :kth_accounts
   
@@ -57,6 +59,9 @@ Rails.application.routes.draw do |map|
   
   match "/protocols/:filename", :to => "protocols#show", :as => 'protocol'
   match "/protocols", :to => "protocols#index", :as => 'protocols'
+  
+  root :to => 'front_pages#show'
+  match '/rss', :to => 'front_pages#rss'
 
   # Studs-relaterat
   map.resources :travel_years
@@ -75,22 +80,16 @@ Rails.application.routes.draw do |map|
   map.schema '/schema/proxy.:format', :controller => 'schema', :action => 'proxy'
   map.schema '/schema/:year', :controller => 'schema', :action => 'index', :year => 'D1'
 
+  map.resources :nominees, :as => "sektionen/val"
+
+  map.resources :election_events
+
+  map.resources :chapter_posts
+
+  map.resources :functionaries, :as => "sektionen/funktionarer"
+
   map.root :controller => 'front_pages', :action => 'show'
 
   map.connect "*url", :controller => 'nodes', :action => 'show'
+
 end
-
-# Illaluktande kommentarer
-#  # Måste ligga ovanför alla resurser som använder auto_complete:
-#  map.auto_complete ':controller/:action',
-#    :requirements => { :action => /auto_complete_for_\S+/ },
-#    :conditions => { :method => :get }
-#
-#  map.resources :nominees, :as => "sektionen/val"
-#
-#  map.resources :election_events
-#
-#  map.resources :chapter_posts
-#
-#  map.resources :functionaries, :as => "sektionen/funktionarer"
-

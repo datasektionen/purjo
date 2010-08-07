@@ -1,0 +1,12 @@
+%h2 Nämnder
+
+%table
+  %tr
+    %th Namn
+    %th
+    
+  - @committees.each do |committee|
+    %tr
+      %td= committee.name
+      %td
+        = link_to "Redigera", edit_committee_path(committee)

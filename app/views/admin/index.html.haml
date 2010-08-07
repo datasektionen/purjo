@@ -1,0 +1,86 @@
+%h2 Administration
+
+%ul
+  - if @posts or @news_posts 
+    =  admin_link('Ny nyhet-/kalender-post', :url => new_post_path, :icon => 'date_add.png') 
+  
+  
+  =  admin_link('Nytt funktionärsmandat', :url => new_functionary_path, :icon => 'functionary_add.png') 
+  =  admin_link('Ny funktionärspost', :url => new_chapter_post_path, :icon => 'functionary_add.png') 
+  =  admin_link('Redigera funktionärsposter', :url => chapter_posts_path, :icon => 'chapter_post_edit.png') 
+
+  
+  =  admin_link('Ny funktionärspost', :url => new_chapter_post_path, :icon => 'functionary_add.png') 
+  
+  - if @newsletter && !@newsletter.new_record? && Person.current.admin? 
+    =  admin_link('Skicka nyhetsbrev', :url => new_newsletter_live_delivery_path(@newsletter)) 
+    =  admin_link('Testskicka nyhetsbrev', :url => new_newsletter_test_delivery_path(@newsletter)) 
+
+  =  admin_link('Ny nominering', :url => new_nominee_path, :icon => 'functionary_add.png') 
+  =  admin_link('Valtillfällen', :url => { :controller => 'election_events' }, :icon => 'event_edit.png') 
+
+  
+  =  admin_link('Nytt val', :url => new_election_event_path, :icon => 'election_add.png') 
+
+  
+  - if !@node.nil? && !@node.new_record? 
+    =  admin_link('Ny undersida', :url => new_text_node_child_path(@node), :icon => 'page_add.png') 
+    =  admin_link('Ny fil', :url => new_text_node_file_path(@node), :icon => "page_attach.png") 
+    =  admin_link('Redigera sida', :url => edit_text_node_path(@node), :icon => "page_edit.png") 
+    - if @node.children.empty?
+      =  admin_link('Ta bort sida', :icon => "page_delete.png", :url => text_node_path(@node), :method => :delete, :confirm => "Detta kommer ta bort noden #{@node.url}(#{@node.name}). Är du säker på att detta verkligen är det du vill?") 
+
+    
+    =  admin_link("Lista subnoder", :url => text_node_children_path(@node), :icon => 'page_go.png') 
+    =  admin_link("Lista filer", :url => text_node_files_path(@node), :icon => 'attach.png') 
+    =  admin_link("Historia", :url => text_node_versions_path(@node), :icon => 'page_gear.png') 
+    
+
+  =  admin_link("Alla noder", :url => text_node_children_path(Node.find_by_url("/")), :icon => 'nodes.png' ) 
+  
+
+-#<% if Person.current.editor? %>
+-#<div id="admin_links">
+-#  <% if @posts or @news_posts %>
+-#    <%= admin_link('Ny nyhet-/kalender-post', :url => new_post_path, :icon => 'date_add.png') %>
+-#  <% end %>
+-#
+-#  <% if @functionaries %>
+-#    <%= admin_link('Nytt funktionärsmandat', :url => new_functionary_path, :icon => 'functionary_add.png') %>
+-#    <%= admin_link('Ny funktionärspost', :url => new_chapter_post_path, :icon => 'functionary_add.png') %>
+-#    <%= admin_link('Redigera funktionärsposter', :url => chapter_posts_path, :icon => 'chapter_post_edit.png') %>
+-#  <% end %>
+-#
+-#  <% if @chapter_posts %>
+-#    <%= admin_link('Ny funktionärspost', :url => new_chapter_post_path, :icon => 'functionary_add.png') %>
+-#  <% end %>
+-#  
+-#  <% if @newsletter && !@newsletter.new_record? && Person.current.admin? %>
+-#    <%= admin_link('Skicka nyhetsbrev', :url => new_newsletter_live_delivery_path(@newsletter)) %>
+-#    <%= admin_link('Testskicka nyhetsbrev', :url => new_newsletter_test_delivery_path(@newsletter)) %>
+-#  <% end %>
+-#
+-#  <% if @nominees %>
+-#    <%= admin_link('Ny nominering', :url => new_nominee_path, :icon => 'functionary_add.png') %>
+-#    <%= admin_link('Valtillfällen', :url => { :controller => 'election_events' }, :icon => 'event_edit.png') %>
+-#  <% end %>
+-#
+-#  <% if @election_events %>
+-#    <%= admin_link('Nytt val', :url => new_election_event_path, :icon => 'election_add.png') %>
+-#  <% end %>
+-#
+-#  <% if !@node.nil? && !@node.new_record? %>
+-#    <%= admin_link('Ny undersida', :url => new_text_node_child_path(@node), :icon => 'page_add.png') %>
+-#    <%= admin_link('Ny fil', :url => new_text_node_file_path(@node), :icon => "page_attach.png") %>
+-#    <%= admin_link('Redigera sida', :url => edit_text_node_path(@node), :icon => "page_edit.png") %>
+-#    <% if @node.children.empty? -%>
+-#      <%= admin_link('Ta bort sida', :icon => "page_delete.png", :url => text_node_path(@node), :method => :delete, :confirm => "Detta kommer ta bort noden #{@node.url}(#{@node.name}). Är du säker på att detta verkligen är det du vill?") %>
+-#    <% end -%>
+-#    
+-#    <%= admin_link("Lista subnoder", :url => text_node_children_path(@node), :icon => 'page_go.png') %>
+-#    <%= admin_link("Lista filer", :url => text_node_files_path(@node), :icon => 'attach.png') %>
+-#    <%= admin_link("Historia", :url => text_node_versions_path(@node), :icon => 'page_gear.png') %>
+-#    
+-#  <% end %>
+-#  <%= admin_link("Alla noder", :url => text_node_children_path(Node.find_by_url("/")), :icon => 'nodes.png' ) %>
+-#</div>

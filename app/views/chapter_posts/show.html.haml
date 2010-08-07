@@ -1,0 +1,34 @@
+%h2= @chapter_post.name
+%p
+  %em= @chapter_post.description
+%p
+  %b E-post:
+  = @chapter_post.slug + "@d.kth.se"
+%p
+  %b Person:
+  - if @chapter_post.functionary and @chapter_post.functionary.person
+    = @chapter_post.functionary.person.name
+  - else
+    %em Posten är bordlagd
+%h4 Historik
+%table.styled-table
+  %tr
+    %th Person
+    %th Från
+    %th Till
+  - for functionary in @chapter_post.functionaries
+    %tr
+      %td= link_to_if(functionary.postponed, functionary.person_or_postponed, functionary.person)
+      %td= functionary.active_from
+      %td= functionary.active_to
+      - if Person.current.editor?
+        %td= link_to "Redigera", functionary
+- if Person.current.editor?
+  %p
+    = link_to 'Redigera funktionärsposter', chapter_posts_path
+    |
+    = link_to 'Tillbaka till funktionärer', functionaries_path
+    |
+    = link_to 'Redigera', edit_chapter_post_path(@chapter_post)
+    |
+    = link_to 'Ta bort', @chapter_post, :confirm => 'Är du säker?', :method => :delete

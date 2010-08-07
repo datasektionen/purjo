@@ -2,7 +2,7 @@ class PeopleController < ApplicationController
   require_role "admin", :except => [:show, :edit, :update]
 
   def index
-    @people = Person.find(:all, :include => :roles)  
+    @people = Person.all(:include => :roles).paginate(:page => params[:page])
   end
 
   def show

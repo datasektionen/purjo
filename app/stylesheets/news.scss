@@ -1,32 +1,26 @@
 .news-item {
-  margin-bottom: 25px;
-
+  margin-bottom: 30px;
+    
+  h2 a { color: #222; }
+  
   .meta {
     position: relative;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    font-family: 'Crimson Text' ,Georgia, sans-serif;
+    margin: 8px 0;
     font-size: 16px;
     font-style: italic;
     color: #222;
+    line-height: 26px;
     height: 28px;
-
-    .author {
-      float: left;
-      margin-top: 5px;
-      margin-left: 7px;
-    }
     
     img.thumb {
       float: left;
+      margin-right: 7px;
       width: 28px;
       height: 28px;
     }
 
     .popup {
       position: absolute;
-      top: -31px;
-      left: 30px;
       width: 317px;
       height: 90px;
       background-image: url('/images/box-arrow.png');
@@ -34,12 +28,14 @@
 
     .popup-inner {
       float: right;
-      font: helvetica;
+      font: helvetica, arial, sans-serif;
       height: 80px;
       width: 300px;
       padding: 5px;
       background-color: #242424;
+      border-radius: 5px;
       -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
       
       h3, p {
         font-family: helvetica, sans-serif;
@@ -67,18 +63,37 @@
     }
   }
   
-  p {
-    a {
-      color: #e2007f;
+  .foot {
+    height: 24px;
+    .comments, .edit {
+      float: left;
+      padding-left: 26px;
+      background: url(/images/icons/AIM.png) no-repeat 0 1px;
     }
-    
-    a:hover {
-      text-decoration: underline;
+    .edit { background-image: url(/images/icons/Writing.png); }
+    .edit, .delete {
+      float: right;
+      margin-left: 20px;
     }
+  }
 
-    a:visited {
-      color: #e2007f;
+  div.comments, div.respond { margin-top: 30px; }
+
+  .comment {
+    margin: 5px 0 15px;
+    .meta { margin-bottom: 5px; }
+    .edit {
+      float: right;
+      font-style: normal;
     }
+  }
+
+  .fb-like {
+    margin-top: 1px;
+    overflow: hidden;
+    border: none;
+    width: 340px;
+    height: 25px;
   }
 }
 
@@ -88,11 +103,17 @@
     margin-bottom: 2px;
     margin-right: 5px;
     float: left;
+    border-radius: 5px;
     -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
     padding: 2px 7px;
-    font-family: 'Helvetica';
+    font-family: Helvetica, arial, sans-serif;
     font-size: 12px;
     color: white;
     background-color: #393939;
+    line-height: 15px;
+
+    a, a:visited { color: white; }
   }
 }
+

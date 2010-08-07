@@ -1,0 +1,10 @@
+%p
+  %strong Name:
+  = @election_event.name
+%p
+  %strong Date:
+  = @election_event.date
+
+= link_to 'Edit', edit_election_event_path(@election_event)
+|
+= link_to 'Back', election_events_path

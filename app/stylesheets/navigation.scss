@@ -1,4 +1,4 @@
-nav.top {
+div.top {
   background-color: #242424;
   font-size: 12px;
   padding-top: 3px;
@@ -6,27 +6,35 @@ nav.top {
   color: #e7e7e7;
   font-family: helvetica, sans-serif;
 
-  b {
+  a, strong {
     color: white;
-    margin-right: 3px;
   }
 }
 
-nav.main {
+div.header {
+  position: relative;
   background-color: #fff;
   -webkit-box-shadow: 0px 3px 3px #d7d7d7;
+  -moz-box-shadow: 0px 3px 3px #d7d7d7;
 
   input {
     padding: 5px 0px;
-    margin-top: 5px;
+    margin-top: 30px;
     font-size: 14px;
     width: 200px;
     -webkit-appearance: textfield;
+    -moz-appearance: textfield;
   }
   
-  ul {
+  h1 {
+    font-family: 'Yanone Kaffeesatz', arial, serif;
+    font-size: 35px;
+    margin-bottom: 0px;
+  }
+
+  ul.nav {
     margin: 0px;
-    padding: 13px 0px 28px 0px;
+    padding: 8px 0px 28px 0px;
 
     li {
       font-family: 'Helvetica';
@@ -36,30 +44,46 @@ nav.main {
       margin-right: 40px;
       float: left;
     }
+    li.active {
+      font-weight: bold;
+    }
+  }
+
+  .shield {
+    img {
+      position: absolute;
+      left: 10px;
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+  	  -webkit-transition: all 0.7s ease-in;
+  	  -moz-transition: all 0.7s ease-in;
+    }
+  }
+
+  a.shield:hover {
+    -webkit-transform: rotate(0deg);
+  	// -moz-transform: rotate(0deg); // får skölden att hoppa skumt(?)
+    -webkit-transition: all 0.3s ease-in;
+    -moz-transition: all 0.3s ease-in;
   }
 }
 
-nav.sub {
-  a.shield {
-    margin: 10px 0px;
-    float: right;
-    -webkit-transform: rotate(0deg);
-  	-webkit-transition: all 0.7s ease-in;
-  }
-  
-  a.shield:hover {
-    -webkit-transform: rotate(0deg);
-  	-webkit-transition: all 0.3s ease-in;
-  }
+div.subnav {
+  margin-top: 80px;
+  color: #222;
+  font-family: 'Helvetica', arial, sans-serif;
+  font-size: 14px;
+  text-align: right;
+  line-height: 1.5;
 
   ul {
-    li {
-      font-family: 'Helvetica';
-      font-size: 15px;
-      text-align: right;
-      list-style-type: none;
-      color: #222;
-      margin-bottom: 5px;
-    }
+    margin-left: 0;
+    list-style-type: none;
   }
+}
+
+div.admin {
+  margin-top: 30px;
+  h3, ul { margin: 0; }
+  ul li { font-size: 13px; }
 }

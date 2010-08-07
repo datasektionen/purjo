@@ -1,32 +1,36 @@
 .news-item
   %h2= link_to post, post
-  .meta
-    = link_to image_tag(post.created_by.gravatar_url, :class => "thumb"), person_path(post.created_by)
-    .author
-      %span= link_to post.created_by, person_path(post.created_by)
+  %div.meta
+    = link_to image_tag(post.created_by.gravatar_url, :class => "trigger thumb", :alt => "", :title => post.created_by), person_path(post.created_by)
+    = link_to post.created_by, person_path(post.created_by), :class => "author"
+
+    %span.date
       %span.dim den 
-      
-      %span= l post.created_at, :format => "%d %b %Y"
+      = l post.created_at, :format => "%e %b %Y"
       %span.dim klockan 
-      %span= l post.created_at, :format => "%H:%M"
+      = l post.created_at, :format => "%H:%M"
     
     .popup{:style => "display:none"}
       .popup-inner
         = image_tag(post.created_by.gravatar_url)
         %h3= post.created_by
-        %p Eventuell post
+        - if post.created_by.functionaries.present?
+          %p= post.created_by.functionaries.active.map { |f| link_to f.chapter_post.name, contact_path(f.chapter_post.slug) }.to_sentence
       .clear &nbsp;
-    .clear &nbsp;
     
   .tags
     - post.categories.each do |category|
-      .tag= category.name
+      .tag= link_to category.name, root_path(:tags => category.name)
     .clear &nbsp;
   
   = textilize(post.content).html_safe
-    
-  - if Person.current.editor?
-    %ul
-      %li= link_to 'Redigera', edit_post_path(post)
-      %li= link_to 'Ta bort', post, :method => :delete, :confirm => 'Är du säker på att du vill ta bort den här nyheten?'
+  
+  %p.foot
+    - if Person.current.editor?
+      = link_to 'Redigera', edit_post_path(post), :class => "edit"
+      = link_to 'Ta bort', post, :method => :delete, :confirm => 'Är du säker på att du vill ta bort den här nyheten?', :class => "delete"
+
+    - comment_title = post.has_comments? ? post.comment_count.to_s + " kommentar" : "Kommentera"
+    - comment_title << "er" if post.comment_count > 1
+    = link_to comment_title, post, :class => "comments"
 

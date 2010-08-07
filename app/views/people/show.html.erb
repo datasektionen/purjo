@@ -67,33 +67,22 @@
   | <%= link_to 'Tillbaka', people_path %>
 <% end -%>
 
-<% if false and @person.functionaries.size > 0 %>
+<% if @person.functionaries.size > 0 %>
 
-  <h3>Förtroendeuppdrag</h3>
+  <h4>Förtroendeuppdrag</h4>
 
-  <table>
+  <table class="styled-table">
     <tr>
       <th>Person</th>
-      <th>&nbsp;</th>
       <th>Från</th>
       <th>Till</th>
     </tr>
-    <% for functionary in @person.functionaries do %>
+    <% for functionary in @person.functionaries.sorted do %>
       <tr>
         <td><%= link_to(functionary.chapter_post.name, functionary.chapter_post) %></td>
-        <td>
-          <% if functionary.chapter_post.description != "" %>
-            <a href="#" onclick="Effect.toggle('descr_<%= functionary.id %>', 'blind', { duration: 0 }); return false;">?</a>
-          <% end %>
-        </td>
         <td><%= functionary.active_from %></td>
         <td><%= functionary.active_to %></td>
       </tr>
-      <% if functionary.chapter_post.description != "" %>
-        <tr id="descr_<%= functionary.id %>" style="display: none">
-          <td colspan="4"><%=h functionary.chapter_post.description %></td>
-        </tr>
-      <% end %>
     <% end %>
   </table>
 <% end %>

@@ -10,22 +10,15 @@
       %span.tag
         = tag.name
 
-  %li
-    %label{:for => 'post_news_post'} Nyhet
-    
-    .fields
-      = check_box_tag 'post[news_post]', true, @post.news_post
+  = form.input :news_post
   
-  %li
-    %label{:for => 'post_calendar_post'} Kalender
-    .fields
-      = check_box_tag 'post[calendar_post]', true, @post.calendar_post, :onclick => '$("calendar_post").toggle()'
-      
-      #calendar_post.selection{:style => "display: #{@post.calendar_post ? 'block' : 'none'}"}
-        %p Aktivitet startar
-        = form.input :starts_at
-        = form.input :ends_at
-        = form.input :all_day
+  = form.input :calendar_post
+  #calendar_post.selection
+    %p Aktivitet startar
+    = form.input :starts_at
+    = form.input :ends_at
+    = form.input :all_day
+    
   = form.input "sticky"
   
   = form.submit

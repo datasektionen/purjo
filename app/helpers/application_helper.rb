@@ -3,14 +3,15 @@ module ApplicationHelper
     url = options.delete(:url)
     icon = options.delete(:icon)
     
-    output = "<div>"
-    if icon
-      output += link_to(image_tag(icon, :class => 'icon'), url, options)
-      output += " "
+    content_tag(:li) do
+      output = ""
+      if icon
+        output += link_to(image_tag(icon, :class => 'icon'), url, options)
+        output += " "
+      end
+      output += link_to(text, url, options) 
+      output
     end
-    output += link_to(text, url, options) 
-    output += "</div>"
-    output.html_safe
   end
   
   def javascript(*scripts)

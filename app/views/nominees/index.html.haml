@@ -1,0 +1,39 @@
+%h2 
+  Nomineringar till 
+  = @election_event.name 
+  = "(#{@election_event.date})"
+%h3 Nomineringar
+%p
+  För att nominera någon eller själv kandidera till en post kan du skicka ett mail till valberedningen valberedning@d.kth.se. 
+  <br />
+  Sista nomineringsdatum är 4 dagar innan sektionsmötet då valet sker.
+%p
+  Blir du nominerad kommer du få ett mail till ditt kth.se-konto med en förfrågan om du accepterar nomineringen. 
+  <br />
+  För att kunna kandidera till posten måste du 
+  %strong
+    svara på nomineringen senast 1 dag innan SM
+%p
+  Är du nominerad och har inte fått något mail? Skicka ett mail till valberedningen, så löser vi detta.
+%p
+  Nomineringarna senaste uppdaterade:
+  %strong= @last_change
+  <br />
+  <strike>Genomstruket namn</strike> = tackat nej till nomineringen. <br />
+  <strong>Fet stil på namnet</strong> = tackat ja till nomineringen <br />
+  Vanlig stil på namnet = inte svarat ännu
+
+%table.styled-table
+  %tr
+    %th Post
+    %th Tidigare innehavare
+    %th Nominerade
+  - if @nominees.size > 0
+    - for nominee in format_nominees(@nominees)
+      %tr
+        %td= nominee[1][2]
+        %td= nominee[1][1]
+        %td= nominee[1][0].html_safe
+  %tr
+    %td{:colspan=>4}
+      %em Ingen är nominerad till det här valet.

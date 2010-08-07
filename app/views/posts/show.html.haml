@@ -1,0 +1,45 @@
+- stylesheet "nyheter"
+- post = @post
+- title post.name
+
+.news-item
+  %h2= link_to post, post
+  %div.meta
+    = link_to image_tag(post.created_by.gravatar_url, :class => "trigger thumb", :alt => "", :title => post.created_by), person_path(post.created_by)
+    = link_to post.created_by, person_path(post.created_by), :class => "author"
+
+    %span.date
+      %span.dim den 
+      = l post.created_at, :format => "%e %b %Y"
+      %span.dim klockan 
+      = l post.created_at, :format => "%H:%M"
+  
+    .popup{:style => "display:none"}
+      .popup-inner
+        = image_tag(post.created_by.gravatar_url)
+        %h3= post.created_by
+        - if post.created_by.functionaries.present?
+          %p= post.created_by.functionaries.active.map { |f| link_to f.chapter_post.name, contact_path(f.chapter_post.slug) }.to_sentence
+      .clear &nbsp;
+    
+  .tags
+    - post.categories.each do |category|
+      .tag= link_to category.name, root_path(:tags => category.name)
+    .clear &nbsp;
+  
+  = textilize(post.content).html_safe
+  
+  %p.foot
+    - if Person.current.editor?
+      = link_to 'Redigera', edit_post_path(post), :class => "edit"
+      = link_to 'Ta bort', post, :method => :delete, :confirm => 'Är du säker på att du vill ta bort den här nyheten?', :class => "delete"
+
+    %iframe{ :class => "fb-like", :src => "http://www.facebook.com/plugins/like.php?href=#{post_url(@post)}&amp;layout=standard&amp;show_faces=false&amp;width=340&amp;height=25&amp;action=like&amp;colorscheme=light", :scrolling => "no", :frameborder => "0", :allowTransparency => "true" }
+
+  .comments
+    - if @post.noises.count > 0
+      %h3 Kommentarer
+      = render :partial => 'noises/noise', :collection => @post.noises
+
+  .respond
+    %h3 Kommentera (TODO)

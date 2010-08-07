@@ -1,0 +1,8 @@
+# Om du av någon outgrundlig anledning vill köra exceptional under
+# utveckling finns nycklarna här:
+
+# Staging
+#api-key: 718c7769b1731b983f02f2cc073fb59c95755ccb
+
+# Production
+#api-key: cf54fd1bd1088f23103851ad9a8f384d163cc0a4

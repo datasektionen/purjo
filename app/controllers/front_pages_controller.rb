@@ -2,8 +2,10 @@ class FrontPagesController < ApplicationController
   def show
     @news_posts = Post.news_posts
     
+    @tags = ActsAsTaggableOn::Tag.all
     if params[:tags]
       @news_posts = @news_posts.tagged_with(params[:tags])
+      @active_tags = ActsAsTaggableOn::TagList.from(params[:tags])
     end
     
     @news_posts = @news_posts.paginate(:page => params[:page], :per_page => 10)
@@ -18,5 +20,15 @@ class FrontPagesController < ApplicationController
     unless Person.current.anonymous?  
       @user_settings = Person.current.build_user_settings
     end
+  end
+  
+  def rss
+    @news_posts = Post.news_posts
+    
+    if params[:tags]
+      @news_posts = @news_posts.tagged_with(params[:tags])
+    end
+    
+    @news_posts = @news_posts.limit(20)
   end
 end

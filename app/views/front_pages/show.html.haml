@@ -1,11 +1,18 @@
 - stylesheet "nyheter"
 - title "Nyheter"
 
-- content_for :sidecontent do 
+- content_for :additional_content do 
+  %h3.sub &nbsp;
   = render :partial => "front_pages/calendar"
+  = render :partial => "twitter/twitter"
 
 #news
-  %h3 Alla nyheter
+  %h3.sub
+    - if params[:tags]
+      Nyheter taggade:
+      %strong= params[:tags]
+    - else
+      Alla nyheter
 
   - if !Person.current.anonymous? && !Person.current.has_chosen_settings?
     #first_time_welcome

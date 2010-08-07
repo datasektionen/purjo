@@ -1,0 +1,15 @@
+%h2 Redigera funktionärsposter
+%p Här kan du redigera alla funktionärsposter.
+%table.styled-table
+  %tr
+    %th Post
+    %th E-post
+    %th Sittande
+  - for chapter_post in @chapter_posts
+    %tr
+      %td= link_to chapter_post.name, chapter_post, :title => chapter_post.description
+      %td= chapter_post.slug
+      %td
+        - if chapter_post.functionary and chapter_post.functionary.person
+          = link_to chapter_post.functionary.person.name, chapter_post.functionary.person
+      %td= link_to 'Redigera', edit_chapter_post_path(chapter_post)

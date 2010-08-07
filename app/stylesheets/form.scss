@@ -1,0 +1,212 @@
+form {
+  div.email {
+    margin-bottom: 1.5em; 
+  }
+   
+  .radio,
+  .check_boxes,
+  .select {
+    position: relative;
+    font-size: 1em; 
+  }
+  
+  boolean {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .radio label,
+  .check_boxes label,
+  .select label {
+    font-weight: bold;
+    width: 200px;
+    display: block;
+    margin-right: 20px;
+    font-size: 16px;
+    font-family: 'Crimson Text' ,Georgia, sans-serif;
+  }
+  
+  .radio label.collection_radio,
+  .radio label.collection_check_boxes,
+  .check_boxes label.collection_radio,
+  .check_boxes label.collection_check_boxes,
+  .select label.collection_radio,
+  .select label.collection_check_boxes {
+    font-weight: normal;
+    width: auto;
+    float: none;
+  }
+  
+  .radio .hint,
+  .check_boxes .hint,
+  .select .hint {
+    float: left;
+    clear: left;
+    width: 200px;
+    font-weight: normal;
+    color: #999999;
+    text-align: right;
+  }
+  .string,
+  .date,
+  .text,
+  .password,
+  .file,
+  .integer,
+  .url,
+  .email {
+    position: relative;
+  }
+  
+  .string label,
+  .string .hint,
+  .date label,
+  .date .hint,
+  .text label,
+  .text .hint,
+  .password label,
+  .password .hint,
+  .file label,
+  .file .hint,
+  .integer label,
+  .integer .hint,
+  .url label,
+  .url .hint,
+  .email label,
+  .email .hint {
+    margin-right: 20px;
+    float: left;
+    clear: left;
+    font-weight: bold;
+    width: 200px;
+    font-family: 'Crimson Text' ,Georgia, sans-serif;
+  }
+  
+  .boolean label,
+  .boolean .hint {
+    font-family: 'Crimson Text' ,Georgia, sans-serif;
+    
+  }
+  
+  
+  .string .hint,
+  .date .hint,
+  .text .hint,
+  .password .hint,
+  .file .hint,
+  .integer .hint,
+  .url .hint,
+  .email .hint {
+    font-weight: normal;
+    color: #999999;
+    width: 400px;
+  }
+  
+  .string input[type=text],
+  .string input[type=password],
+  .string input[type=url],
+  .string input[type=email],
+  .string textarea,
+  .date input[type=text],
+  .date input[type=password],
+  .date input[type=url],
+  .date input[type=email],
+  .date textarea,
+  .text input[type=text],
+  .text input[type=password],
+  .text input[type=url],
+  .text input[type=email],
+  .text textarea,
+  .password input[type=text],
+  .password input[type=password],
+  .password input[type=url],
+  .password input[type=email],
+  .password textarea,
+  .file input[type=text],
+  .file input[type=password],
+  .file input[type=url],
+  .file input[type=email],
+  .file textarea,
+  .integer input[type=text],
+  .integer input[type=password],
+  .integer input[type=url],
+  .integer input[type=email],
+  .integer textarea,
+  .url input[type=text],
+  .url input[type=password],
+  .url input[type=url],
+  .url input[type=email],
+  .url textarea,
+  .email input[type=text],
+  .email input[type=password],
+  .email input[type=url],
+  .email input[type=email],
+  .email textarea {
+    font-size: 1em;
+    border: 1px solid #999999;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    padding: 8px 8px;
+    width: 400px;
+  }
+  
+  .string input[type=text],
+  .string input[type=url],
+  .string input[type=email],
+  .string input[type=password],
+  .date input[type=text],
+  .date input[type=url],
+  .date input[type=email],
+  .date input[type=password],
+  .text input[type=text],
+  .text input[type=url],
+  .text input[type=email],
+  .text input[type=password],
+  .password input[type=text],
+  .password input[type=url],
+  .password input[type=email],
+  .password input[type=password],
+  .file input[type=text],
+  .file input[type=url],
+  .file input[type=email],
+  .file input[type=password],
+  .integer input[type=text],
+  .integer input[type=url],
+  .integer input[type=email],
+  .integer input[type=password],
+  .url input[type=text],
+  .url input[type=url],
+  .url input[type=email],
+  .url input[type=password],
+  .email input[type=text],
+  .email input[type=url],
+  .email input[type=email],
+  .email input[type=password] {
+    /*padding: 0.5em 1em;*/
+  }
+}
+
+.field_with_errors {
+  span.error {
+    color: #D12F19;
+    display: block;
+  }
+  input.string  {
+    background-color: #FBE3E4;
+  }
+}
+
+form.post {
+  textarea {
+    width: 700px;
+    height: 400px;
+  }
+}
+
+form.text_node {
+  textarea {
+    width: 700px;
+    height: 400px;
+  }
+}

@@ -9,6 +9,8 @@ class Person < ActiveRecord::Base
     end
   end
   
+  has_many :functionaries
+  
   accepts_nested_attributes_for :newsletter_subscriptions
   
   validates_presence_of :first_name, :last_name, :email
@@ -91,13 +93,6 @@ class Person < ActiveRecord::Base
     return false
   end
 
-  def functionaries
-    @functionaries = Functionary.find(:all, :conditions =>
-      { :person_id => self.id },
-      :order => "active_from desc"
-    )
-  end
-  
   def gravatar_url
     "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(self.kth_username + '@kth.se')}'"
   end

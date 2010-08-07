@@ -1,0 +1,59 @@
+<% stylesheet "nyheter" -%>
+<% title @post.name -%>
+
+<div>
+  <h2><%= @post.name %></h2>
+  <p>
+    <%= calendar_post_date_format(@post) %>
+    
+    <%= textilize(@post.content).html_safe %>
+  </p>
+
+  <iframe class="fb-like" src="http://www.facebook.com/plugins/like.php?href=<%=post_url(@post)%>&amp;layout=standard&amp;show_faces=false&amp;width=400&amp;action=like&amp;colorscheme=light&amp;height=30" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:400px; height:30px;" allowTransparency="true"></iframe>
+  
+  <% if Person.current.editor? %>
+  <ul class="horizontal author left">
+    <li><%= link_to 'Redigera', edit_post_path(@post) %></li>
+    <li class="last"><%= link_to 'Ta bort', @post, :method => :delete, :confirm => 'Är du säker på att du vill ta bort den här nyheten?' %></li>
+  </ul>
+  <% end %>
+  
+  <ul class="horizontal author right">
+    <li><%= link_to @post.created_by, person_path(@post.created_by) %></li>
+    <li>Skapad <%= @post.created_at.strftime "%d %b" %></li>
+    <li class="last"><%= link_tags @post.categories %></li>
+  </ul>
+
+  </div>
+
+<% for noise in  @post.noises do %>
+	<div>
+		<div class="comment_header"><strong><%= link_to noise.person.try(:name), person_path(noise.person) %></strong> sa:</div>
+		<span style="float: left; padding-right: 10px"><a href="http://www.gravatar.com"><img src=http://www.gravatar.com/avatar/<%=Digest::MD5.hexdigest(noise.person.try(:kth_username) + "@kth.se")%>/></a></span>
+		<%= h noise.message %>
+		  <ul class="horizontal author right">
+		  <li><% if noise.editable? %>
+		  <%= link_to 'Redigera', edit_noise_path(noise) %> | 
+		  <% end %>
+		  <%= noise.created_at.strftime "%Y-%m-%d %H:%M:%S" %></li>
+		  </ul>
+
+
+	</div>	
+
+<% end %>
+<div>
+<div class="comment_header"><strong>Skriv kommentar</strong></div>
+<% if !Person.current.is_a? AnonymousPerson %>
+	<%= form_for(Noise.new) do |f| %>
+		<%= f.text_area :message, :size => "50x5" %>
+		<%= f.hidden_field :post_id, :value => @post.id %>
+		<p>
+		<%= f.submit 'Skapa' %>
+		</p>
+	<% end %>
+<% else %>
+	<strong>Du måste vara inloggad för att kommentera</strong>
+<% end %>
+</div>
+

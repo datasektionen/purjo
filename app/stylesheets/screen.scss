@@ -1,6 +1,9 @@
 @import "960.scss";
 @import "news.scss";
 @import "navigation.scss";
+@import "styled_table.scss";
+@import "tables.scss";
+@import "form.scss";
 
 * {
   padding: 0;
@@ -8,34 +11,24 @@
 }
 
 h1, h2, h3, h4, h5, h6, p, pre, blockquote, label, ul, ol, dl, fieldset, address {
-  margin: 10px 0px;
+  margin: 9px 0px;
 }
 
 a {
   color: #000;
   text-decoration: none;
 }
+a:hover { text-decoration: underline; }
 
-a:visited {
-  color: #000;
-}
+a img { border: none; }
 
-a:hover {
-  text-decoration: underline;
-}
-
-a img {
-  border: none;
-}
-
-html, body {
-  height: 100%;
-}
+html, body { height: 100%; }
 
 body {
   background-image: url("/images/background.png");
   font-family: helvetica, sans-serif;
   min-height: 100%;
+  line-height: 1.3;
 }
 
 #wrapper {
@@ -43,7 +36,7 @@ body {
 }
 
 #main {
-  overflow: auto;
+  overflow: hidden; /* funkar(?), auto lägger till horisontal scrollbar i FF */ 
   padding-bottom: 150px;
 }
 
@@ -54,10 +47,11 @@ body {
   clear: both;
   background-color: #fff;
   -webkit-box-shadow: 0px 5px 20px #7b7b7b;
+  -moz-box-shadow: 0px 5px 20px #7b7b7b;
 }
 
-span.dim {
-  color: #c6c6c6;
+.dim {
+  color: #777;
 }
 
 .logo {
@@ -69,26 +63,42 @@ span.dim {
   background-image: url(/images/shield-small-shadow.png);
 }
 
-.content {
+.body {
+  h2, h3 {
+    font-family: 'Yanone Kaffeesatz', arial, sans-serif;
+    line-height: 1.2;
+  }
+
   h2 {
-    font-family: 'Yanone Kaffeesatz', arial, serif;
-    font-size: 32px;
-    # text-shadow: 2px 2px 2px white;
+    font-size: 26px;
+    // text-shadow: 2px 2px 2px white;
   }
   
   h3 {
-    font-size: 15px;
+    font-size: 24px;
     font-weight: normal;
+  }
+  h3.sub {
+    font-family: helvetica, sans-serif;
+    font-size: 14px;
     color: #222;
+    line-height: 1;
   }
   
-  p {
-    font-family: 'Crimson Text' ,Georgia, sans-serif;
-    font-size: 16px;
-    color: #222;
-    line-height: 1.5em;
-    -webkit-border-radius: 7px;
-  }
+  h4 { font-size: 18px; }
+}
+
+.content {
+  color: #222;
+  font-family: 'Crimson Text', Georgia, serif;
+  font-size: 16px;
+  line-height: 1.5;
+  
+  ul { margin-left: 18px; }
+  ol { margin-left: 18px; }
+
+  a { color: #e2007f; }
+  a:hover { text-decoration: underline; }
 }
 
 .events {
@@ -122,4 +132,20 @@ span.dim {
       margin-bottom: 0px;
     }
   }
+}
+
+.justify {
+  text-align: justify;
+}
+
+.twitter h2 {
+	background: url(/images/twitter_dark.png) no-repeat right center;
+}
+.tweet {
+	.text { margin-bottom: 0; }
+	.author { font-weight: bold; }
+	.meta {
+		margin-top: 0;
+		font-style: italic;
+	}
 }
