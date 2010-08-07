@@ -21,3 +21,4 @@ public/stylesheets/styled_table.css
 public/stylesheets/admin_box.css
 public/stylesheets/functionaries_and_nominees.css
 public/stylesheets/mottagningen.css
+app/views/twitter/twitter.rss

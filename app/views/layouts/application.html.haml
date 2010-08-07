@@ -45,7 +45,9 @@
                 - if Person.current.anonymous?
                   Du är inte <strong>inloggad</strong>.
                 - else 
-                  == Du är inloggad som <strong>#{Person.current}</strong>.
+                  Du är inloggad som
+                  %strong
+                    = link_to Person.current, Person.current
             .grid_4
               - if Person.current.anonymous?
                 = link_to 'Logga in', new_sessions_path(:return_url => current_url)
