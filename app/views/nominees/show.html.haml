@@ -1,0 +1,16 @@
+%p
+  %b Person:
+  = @nominee.person_id
+%p
+  %b Election event:
+  = @nominee.election_event_id
+%p
+  %b Chapter post:
+  = @nominee.chapter_post_id
+%p
+  %b Status:
+  = @nominee.status
+
+= link_to 'Edit', edit_nominee_path(@nominee)
+|
+= link_to 'Back', nominees_path
