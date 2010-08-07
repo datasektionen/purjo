@@ -26,13 +26,16 @@ Rails.application.routes.draw do |map|
   end
   match "/newsletters/hook/:secret", :to => 'newsletter_hooks#mailchimp_endpoint', :via => [:post, :get]
   
-  resources :noises
   
   resources :people do
     resource :settings, :controller => 'user_settings', :as => 'user_settings'
   end
   
-  resources 'nyheter', :as => 'posts', :controller => 'posts'
+  resources 'nyheter', :as => 'posts', :controller => 'posts' do
+    resources :noises
+  end
+  resources :noises
+  
   
   resource :sessions
   resources 'sektionen/sok', :as => 'students', :controller => 'students' do
