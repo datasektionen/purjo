@@ -21,15 +21,6 @@ if Object.const_defined?(:Refraction)
     if req.path =~ %r{^/mottagningen(/(.*))?$}
       req.found!("/sektionen/mottagningen/#{$2}")
     end
-    # RewriteRule ^/dkm(/(.*))?$ /sektionen/namnder/dkm/$2 [R,L]
-    # RewriteRule ^/qn(/(.*))?$ /sektionen/namnder/qn/$2 [R,L]
-    # RewriteRule ^/naringsliv(/(.*))?$ /sektionen/namnder/naringsliv/$2 [R,L]
-    # RewriteRule ^/mottagningen(/(.*))?$ /sektionen/namnder/mottagningen/$2 [R,L]
-    %w(dkm qn naringsliv).each do |directory|
-      if req.path =~ %r{^/#{directory}(/(.*))?$}
-        req.found!("/sektionen/namnder/#{directory}/#{$2}")
-      end
-    end
     
     case req.path
     when %r{^/ovve(/(.*))?$}
