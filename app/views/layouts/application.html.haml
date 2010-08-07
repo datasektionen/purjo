@@ -61,11 +61,11 @@
             .title.grid_9
               %h1= link_to "Konglig Datasektionen", "/"
               %ul.nav
-                %li.active= link_to "Nyheter", "/"
-                %li= link_to "Sektionen", "/sektionen"
-                %li= link_to "Näringsliv", "/naringsliv"
-                %li= link_to "Studier", "/studier"
-                %li= link_to "Kontakt", "/kontakt"
+                = top_navigation_link("Nyheter", "/", /^\/(nyheter.*)?$/)
+                = top_navigation_link("Sektionen", "/sektionen", /^\/sektionen/)
+                = top_navigation_link("Näringsliv", "/naringsliv", /^\/naringsliv/)
+                = top_navigation_link("Studier", "/studier", /^\/studier/)
+                = top_navigation_link("Kontakt", "/kontakt", /^\/kontakt/)
             
             .search.grid_4
               %input{:type => "search", :placeholder => "Sök"}

@@ -6,8 +6,8 @@ class TextNode < ActiveRecord::Base
 
   before_validation :update_url
   before_destroy :deletable?
-  
-  validates_uniqueness_of :url
+
+  validate :unique_url, :on => :create
   validates_presence_of :contents
   validates_presence_of :name
   
@@ -28,6 +28,7 @@ class TextNode < ActiveRecord::Base
     
     redcloth = RedCloth.new(template.render(:filters => [Ior::LiquidFilters]))
     redcloth.no_span_caps = true
+    redcloth.hard_breaks = false
     
     redcloth.to_html.html_safe
     
@@ -49,6 +50,12 @@ class TextNode < ActiveRecord::Base
   end
   
   protected
+  
+  def unique_url
+    if TextNode.where(:url => url).count != 0
+      errors.add(:name, "already exists under the node #{parent.name}")
+    end
+  end
   
   def update_url
     node = self

@@ -1,0 +1,8 @@
+%h1 
+  Ändra kommentar till "#{@noise.post.name}"
+
+= simple_form_for(@noise) do |f|
+  = f.input :message, :size => "50x5"
+  = f.button :submit
+
+= link_to 'Avbryt', @noise.post

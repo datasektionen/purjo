@@ -18,14 +18,8 @@ if Object.const_defined?(:Refraction)
       req.permanent!("http://www.d.kth.se/ston/apps/new")
     end
     
-    # RewriteRule ^/dkm(/(.*))?$ /sektionen/namnder/dkm/$2 [R,L]
-    # RewriteRule ^/qn(/(.*))?$ /sektionen/namnder/qn/$2 [R,L]
-    # RewriteRule ^/naringsliv(/(.*))?$ /sektionen/namnder/naringsliv/$2 [R,L]
-    # RewriteRule ^/mottagningen(/(.*))?$ /sektionen/namnder/mottagningen/$2 [R,L]
-    %w(dkm qn naringsliv mottagningen).each do |directory|
-      if req.path =~ %r{^/#{directory}(/(.*))?$}
-        req.found!("/sektionen/namnder/#{directory}/#{$2}")
-      end
+    if req.path =~ %r{^/mottagningen(/(.*))?$}
+      req.found!("/sektionen/mottagningen/#{$2}")
     end
     
     case req.path
