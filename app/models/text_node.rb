@@ -28,6 +28,7 @@ class TextNode < ActiveRecord::Base
     
     redcloth = RedCloth.new(template.render(:filters => [Ior::LiquidFilters]))
     redcloth.no_span_caps = true
+    redcloth.hard_breaks = false
     
     redcloth.to_html.html_safe
     
