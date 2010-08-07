@@ -31,7 +31,7 @@ module ApplicationHelper
   end
   
   def top_navigation_link(text, path, regex)
-    css_class = (request.request_uri =~ regex) ? 'active' : ''
+    css_class = (request.fullpath =~ regex) ? 'active' : ''
     
     content_tag(:li, :class => css_class) do
       link_to text, path
