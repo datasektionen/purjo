@@ -61,7 +61,7 @@
             .title.grid_9
               %h1= link_to "Konglig Datasektionen", "/"
               %ul.nav
-                = top_navigation_link("Nyheter", "/", /^\/$/)
+                = top_navigation_link("Nyheter", "/", /^\/(nyheter.*)?$/)
                 = top_navigation_link("Sektionen", "/sektionen", /^\/sektionen/)
                 = top_navigation_link("Näringsliv", "/naringsliv", /^\/naringsliv/)
                 = top_navigation_link("Studier", "/studier", /^\/studier/)
