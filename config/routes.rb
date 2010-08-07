@@ -12,8 +12,8 @@ Rails.application.routes.draw do |map|
 
   resources :job_ads, :except => [:show]
   
-  get "/kontakt(/:slug)" => 'contact#index', :as => 'contact'
-  post "/kontakt(/:slug)" => 'contact#send_mail'
+  get "/kontakt/:slug" => 'contact#index', :as => 'contact'
+  post "/kontakt/:slug" => 'contact#send_mail'
   
   resources :kth_accounts
   

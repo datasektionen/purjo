@@ -100,6 +100,16 @@ body {
 
   a { color: #e2007f; }
   a:hover { text-decoration: underline; }
+  
+  dl {
+    dt {
+      font-weight: bold;
+    }
+    
+    dd {
+      margin-left: 20px;
+    }
+  }
 }
 
 .events {
