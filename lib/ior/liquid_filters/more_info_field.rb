@@ -18,11 +18,12 @@ module Ior
       
       def render(context)
         out = %q{<div class="more_info">}
-        out += %Q{<a href="/kontakt/#{@committee_slug}">Kontakt</a>}
         
         if @more_info_url.present?
-          out += %Q{ | <a href="#{@more_info_url}">Mer info</a>}
+          out += %Q{<a href="#{@more_info_url}">Mer info</a> | }
         end
+        
+        out += %Q{<a href="/kontakt/#{@committee_slug}">Kontakt</a>}
         
         out += %q{</div>} 
                 
