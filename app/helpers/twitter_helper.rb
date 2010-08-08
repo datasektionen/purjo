@@ -1,5 +1,3 @@
-require 'rss/2.0'
-
 module TwitterHelper
   def tweet_to_html(tweet)
     msg = String.new(tweet)
@@ -23,16 +21,5 @@ module TwitterHelper
     return msg
   end
   
-  def get_author(string)
-    return string.slice(/^\w{1,15}/)
-  end
   
-  def get_items
-    items = []
-    open('app/views/twitter/twitter.rss') do |file|
-      response = file.read
-      result = RSS::Parser.parse(response, false)
-      result.items.each {|item| items << item }
-    end 
-  end
 end

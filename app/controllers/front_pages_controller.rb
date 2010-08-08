@@ -1,3 +1,5 @@
+require 'twitter/twitter_item'
+
 class FrontPagesController < ApplicationController
   def show
     @news_posts = Post.news_posts

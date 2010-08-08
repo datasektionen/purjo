@@ -36,3 +36,5 @@ module Purjo2
 end
 
 require 'ior/liquid_filters'
+require 'rss/2.0'
+

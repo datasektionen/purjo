@@ -1,16 +1,13 @@
-- require 'rss/2.0'
-
 .twitter
   %h2 Twitter
   
-  - items = get_items  
+  - items = Twitter::TwitterItem.get
   - if items.size > 0 
     - items.each do |item|
       .tweet
         %p.text
-          - author = get_author item.author
-          != link_to(author, "http://twitter.com/#{author}", { :class => "author" }) + ": "
-          != tweet_to_html(item.title)
+          != link_to(item.author, "http://twitter.com/#{item.author}", { :class => "author" }) + ": "
+          != tweet_to_html(item.text)
         %p.meta
           %span.dim den
           = l(item.pubDate, :format => "%e %B").humanize
