@@ -179,13 +179,22 @@
     models:
       newsletter_section: Nyhetsbrevssektion
     attributes:
+      person:
+        startyear: Startår
+        address: Adress
+        phone: Telefon
+        nickname: Nick
+        personalemail: Personlig email
+        homepage: Personlig hemsida
+        msn: MSN-adress
+        xmpp: XMPP-adress
       newsletter:
         subject: Ämne
       newsletter_section:
         title: Rubrik
         body: Innehåll
       user_settings:
-        newsletter: Nyhetsbrev
+        newsletter: Nyhetsbrevssektion
 
     # Translate model attribute names. Used in Model.human_attribute_name(attribute).
     #attributes:
@@ -262,6 +271,9 @@
     new: Ny sektion
   new: Ny %{resource}
   simple_form:
+    hints:
+      person:
+        xmpp: Jabber, Google chat
     labels:
       user_settings:
         newsletter: Nyhetsbrev
@@ -273,6 +285,8 @@
         create: Skicka testutskick
       user_settings:
         create: Spara inställningar
+      noise:
+        create: Kommentera
   search:
     text_node: Sidor
     post: Nyhets- och kalenderinlägg
