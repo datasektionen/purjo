@@ -11,11 +11,11 @@ module Ior
         
         return "Ingen sådan post finns" if post.nil?
         
-        functionary = post.functionaries.active.first
+        functionaries = post.functionaries.active
         
-        return "Ingen på posten" if functionary.nil?
+        return "Ingen på posten" if functionaries.empty?
         
-        functionary.person.name
+        functionaries.map {|f| f.person.name }.to_sentence
       end
     end
   end
