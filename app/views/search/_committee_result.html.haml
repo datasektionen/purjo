@@ -3,8 +3,9 @@
   = result.name
 
 %p
-  Ordförande:
+  - if result.chapter_post.present?
+    Ordförande:
   
-  = result.chapter_post.name
-  = result.chapter_post.functionary.person.name
+    = result.chapter_post.name
+    = result.chapter_post.functionary.person.name
   
