@@ -31,10 +31,11 @@ class MergeStudentsToPeople < ActiveRecord::Migration
         
         begin
           person.save!
-        rescue
+        rescue => e
           puts "#{person.inspect} is invalid: "
           puts person.errors.inspect
           puts "student: #{student.inspect}"
+          puts "exception: #{e}"
         end
         
       end
