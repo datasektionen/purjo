@@ -1,6 +1,6 @@
 class ChapterPost < ActiveRecord::Base
 
-  has_many :functionary
+  has_many :functionaries
   has_one :committee
 
   # Någon som känner behovet att eliminera sql:en, varsegod. Föresatt att den
@@ -38,17 +38,8 @@ class ChapterPost < ActiveRecord::Base
     end
   end
 
-  def functionaries
-    @functionaries = Functionary.find(:all, :conditions =>
-      { :chapter_post_id => self.id },
-      :order => "active_from desc"
-    )
-  end
-  
   def functionary
-    @functionary = Functionary.find(:first, :conditions =>
-        ["chapter_post_id = ? and active_from <= ? and active_to >= ?", self.id, DateTime.now, DateTime.now]
-    )
+    functionaries.active.first
   end
 
 end
