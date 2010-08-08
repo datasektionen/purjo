@@ -26,7 +26,7 @@ class Person < ActiveRecord::Base
     end
     
     text :committees_text, :stored => true do
-      functionaries.map { |f| f.chapter_post.committee.name }.join " "
+      functionaries.map { |f| f.chapter_post.committee.present? && f.chapter_post.committee.name }.join " "
     end
   end
   
