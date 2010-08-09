@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/collectiveidea/delayed_job.git
+  revision: b983b7e
+  specs:
+    delayed_job (2.1.0.pre)
+      daemons
+
+GIT
   remote: http://github.com/pluginaweek/state_machine.git
   revision: 707511c
   specs:
@@ -63,8 +70,6 @@ GEM
     crack (0.1.8)
     culerity (0.2.10)
     daemons (1.1.0)
-    delayed_job (2.0.3)
-      daemons
     diff-lcs (1.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
@@ -202,7 +207,7 @@ DEPENDENCIES
   capistrano
   capistrano-ext
   capybara
-  delayed_job
+  delayed_job!
   exceptional
   factory_girl_rails
   haml
