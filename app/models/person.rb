@@ -108,7 +108,7 @@ class Person < ActiveRecord::Base
   end
 
   def gravatar_url
-    "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(self.kth_username + '@kth.se')}'"
+    "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(self.kth_username + '@kth.se')}?d=mm"
   end
   
   # Methods for compatibility with Student interface (fold)
