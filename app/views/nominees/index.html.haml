@@ -1,0 +1,27 @@
+%h2 
+  Nomineringar till 
+  = @election_event.name 
+  = "(#{@election_event.date})"
+%h3 Nomineringar
+
+%p
+  = include_node("/sektionen/val/text").gsub(/@last_change/, @last_change.to_s)
+- if Person.current.editor?
+  %p
+    = link_to "Redigera texten", "/sektionen/val/text"
+
+%table.styled-table
+  %tr
+    %th Post
+    %th Tidigare innehavare
+    %th Nominerade
+  - if @nominees.size > 0
+    - for nominee in format_nominees(@nominees)
+      %tr
+        %td= nominee[1][2]
+        %td= nominee[1][1]
+        %td= nominee[1][0].html_safe
+  - else
+    %tr
+      %td{:colspan=>4}
+        %em Ingen är nominerad till det här valet.

@@ -1,0 +1,25 @@
+%h2 Index över val
+%p
+  Närmaste nästkommande val visas under sektionen/val. För nomineringar
+  på ett annat val, klicka på <em>visa</em> här under.
+%table.styled-table
+  %tr
+    %th Namn (nominerade)
+    %th Datum
+    %th
+  - for election_event in @election_events
+    %tr
+      %td
+        = link_to election_event.name, election_event
+        = link_to('(visa)', :controller => 'nominees', :election_event => election_event.id)
+      %td= election_event.date
+      %td= link_to 'Redigera val', edit_election_event_path(election_event)
+
+%h3 Hjälp
+
+%p
+  Valen används när du nominerar en person, skapa nya val för varje val. <br />
+  Återanvänd ej gamla val från förra året.
+%p
+  Sker det inga nomineringar under ett SM så finns det ingen poäng att
+  skapa ett val här.

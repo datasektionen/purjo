@@ -10,11 +10,9 @@
   <p>Begränsad vy då du inte är inloggad</p>
 <% else -%>
   <p>
-    <%= link_to "Sök teknolog", "/students/#{@person.kth_username}" %> | 
     <%= link_to "NADA hemsida", "http://www.nada.kth.se/~#{@person.kth_username}" %> |
     <%= link_to @person.email, "mailto:#{@person.email}" %>
   </p>
-
 
   <table>
     <tr>
@@ -57,6 +55,16 @@
       <td><%= @person.try(:xmpp) %></td>
     </tr>
   </table>
+  
+  <p>
+    <b>Plan:</b>
+    <pre>
+      <%=@person.plan %>
+    </pre>
+  </p>
+  
+
+  <div class="xfinger"><%= image_tag xfinger_person_path(@person.username_nada) %></div>
 
 <% end -%>
 

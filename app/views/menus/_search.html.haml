@@ -1,0 +1,20 @@
+%ul
+  %li
+    = link_to "Visa allt", search_path(:q => params[:q])
+
+%h2 Dokumenttyp
+
+%ul
+  - @search.facet(:class).rows.each do |row|
+    %li
+      = link_to t("search.#{row.value.to_s.underscore}"), search_path(:q => params[:q], :ft => row.value.to_s, :f => params[:f])
+      
+      %span.dim= "(#{row.count})"
+%h2 Taggar
+
+%ul
+  - @search.facet(:tags).rows.each do |row|
+    %li
+      = link_to row.value, search_path(:q => params[:q], :f => row.value.to_s, :ft => params[:ft])
+      
+      %span.dim= "(#{row.count})"

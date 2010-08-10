@@ -1,31 +1,4 @@
 class NoisesController < ApplicationController
-layout 'application'
-  # GET /noises
-  # GET /noises.xml
-  def index
-    @noises = Noise.all
-    redirect_to "/"
-  end
-
-  # GET /noises/1
-  # GET /noises/1.xml
-  def show
-    @noise = Noise.find(params[:id])
-
-    redirect_to post_url(@noise.post_id)
-   end
-
-  # GET /noises/new
-  # GET /noises/new.xml
-  def new
-    @noise = Noise.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @noise }
-    end
-  end
-
   # GET /noises/1/edit
   def edit
     @noise = Noise.find(params[:id])
@@ -34,8 +7,11 @@ layout 'application'
   # POST /noises
   # POST /noises.xml
   def create
-    @noise = Noise.new(params[:noise])
+    @post = Post.find(params[:post_id])
+    @noise = @post.noises.new(params[:noise])
+    
     @noise.person_id = Person.current.id
+    
     if @noise.save
 	    flash[:notice] = 'Kommentar skapad.'
     else

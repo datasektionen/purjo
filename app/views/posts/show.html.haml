@@ -36,4 +36,9 @@
       = render :partial => 'noises/noise', :collection => @post.noises
 
   .respond
-    %h3 Kommentera (TODO)
+    %h3 Kommentera
+    
+    = simple_form_for([@post, Noise.new]) do |form|
+      = form.input :message, :label => false
+      = form.button :submit
+

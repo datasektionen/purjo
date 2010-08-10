@@ -12,9 +12,17 @@ rerun.txt
 .bundle
 capybara-*.html
 public/system
+public/file_nodes
 public/stylesheets/screen.css
 public/stylesheets/navigation.css
 public/stylesheets/news.css
 public/stylesheets/form.css
 public/stylesheets/tables.css
 public/stylesheets/styled_table.css
+public/stylesheets/admin_box.css
+public/stylesheets/functionaries_and_nominees.css
+public/stylesheets/mottagningen.css
+app/views/twitter/twitter.rss
+solr
+config/my_user.yml
+

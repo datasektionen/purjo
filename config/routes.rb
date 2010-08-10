@@ -9,11 +9,11 @@ Rails.application.routes.draw do |map|
   resources :committees
   
   resources :file_nodes
-
+  
   resources :job_ads, :except => [:show]
   
-  get "/kontakt(/:slug)" => 'contact#index', :as => 'contact'
-  post "/kontakt(/:slug)" => 'contact#send_mail'
+  get "/kontakt/:slug" => 'contact#index', :as => 'contact'
+  post "/kontakt/:slug" => 'contact#send_mail'
   
   resources :kth_accounts
   
@@ -26,13 +26,22 @@ Rails.application.routes.draw do |map|
   end
   match "/newsletters/hook/:secret", :to => 'newsletter_hooks#mailchimp_endpoint', :via => [:post, :get]
   
-  resources :noises
+  
   
   resources :people do
     resource :settings, :controller => 'user_settings', :as => 'user_settings'
+    member do
+      get :xfinger
+    end
   end
   
-  resources 'nyheter', :as => 'posts', :controller => 'posts'
+  resources 'nyheter', :as => 'posts', :controller => 'posts' do
+    resources :noises
+  end
+  resources :noises
+  
+  
+  match "/sok", :to => 'search#index', :as => 'search'
   
   resource :sessions
   resources 'sektionen/sok', :as => 'students', :controller => 'students' do
@@ -41,7 +50,8 @@ Rails.application.routes.draw do |map|
     end
   end
   
-  resources :students
+  resources 'sektionen/funktionarer', :as => "functionaries", :controller => 'functionaries'
+  resources 'sektionen/val', :as => "nominees", :controller => 'nominees'
   
   resources :text_nodes do
     resources :children, :controller => 'TextNodeChildren', :path_prefix => 'text_nodes/:node_id'
@@ -80,7 +90,7 @@ Rails.application.routes.draw do |map|
   map.schema '/schema/proxy.:format', :controller => 'schema', :action => 'proxy'
   map.schema '/schema/:year', :controller => 'schema', :action => 'index', :year => 'D1'
 
-  map.resources :nominees, :as => "sektionen/val"
+  resources '/sektionen/val', :as => 'nominees', :controller => 'nominees'
 
   map.resources :election_events
 

@@ -1,22 +1,17 @@
-- require 'rss/2.0'
-
-- open('app/views/twitter/twitter.rss') do |file|
-  - response = file.read
-  - result = RSS::Parser.parse(response, false)
-  .twitter
-    %h2 Twitter
-    
-    - if result.items.size > 0 
-      - result.items.each_with_index do |item, i|
-        .tweet
-          %p.text
-            - author = item.author.slice(/^\w+/)
-            != link_to(author, "http://twitter.com/#{author}", { :class => "author" }) + ": "
-            != tweet_to_html(item.title)
-          %p.meta
-            %span.dim den
-            = l(item.pubDate, :format => "%e %B").humanize
-            %span.dim klockan
-            = l item.pubDate, :format => "%H:%M"
-    - else
-      %p Data har varit dåliga på att twittra den senaste tiden.
+.twitter
+  %h2 Twitter
+  
+  - items = Twitter::TwitterItem.get
+  - if items.size > 0 
+    - items.each do |item|
+      .tweet
+        %p.text
+          != link_to(item.author, "http://twitter.com/#{item.author}", { :class => "author" }) + ": "
+          != tweet_to_html(item.text)
+        %p.meta
+          %span.dim den
+          = l(item.pubDate, :format => "%e %B").humanize
+          %span.dim klockan
+          = l item.pubDate, :format => "%H:%M"
+  - else
+    %p Data har varit dåliga på att twittra den senaste tiden.

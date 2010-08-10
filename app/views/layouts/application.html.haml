@@ -13,10 +13,10 @@
     
     = csrf_meta_tag
     
-    != '<meta property="og:title" content="En asfet nyhet"/>'
-    != '<meta property="og:type" content="article"/>'
-    != '<meta property="og:url" content="http://www.d.kth.se/foo"/>'
-    != '<meta property="og:image" content="http://ia.media-imdb.com/rock.jpg"/>'
+    -#!= '<meta property="og:title" content="En asfet nyhet"/>'
+    -#!= '<meta property="og:type" content="article"/>'
+    -#!= '<meta property="og:url" content="http://www.d.kth.se/foo"/>'
+    -#!= '<meta property="og:image" content="http://ia.media-imdb.com/rock.jpg"/>'
   %body
     #fb-root
     :javascript
@@ -45,7 +45,9 @@
                 - if Person.current.anonymous?
                   Du är inte <strong>inloggad</strong>.
                 - else 
-                  == Du är inloggad som <strong>#{Person.current}</strong>.
+                  Du är inloggad som
+                  %strong
+                    = link_to Person.current, Person.current
             .grid_4
               - if Person.current.anonymous?
                 = link_to 'Logga in', new_sessions_path(:return_url => current_url)
@@ -61,14 +63,15 @@
             .title.grid_9
               %h1= link_to "Konglig Datasektionen", "/"
               %ul.nav
-                %li.active= link_to "Nyheter", "/"
-                %li= link_to "Sektionen", "/sektionen"
-                %li= link_to "Näringsliv", "/naringsliv"
-                %li= link_to "Studier", "/studier"
-                %li= link_to "Kontakt", "/kontakt"
+                = top_navigation_link("Nyheter", "/", /^\/(nyheter.*)?$/)
+                = top_navigation_link("Sektionen", "/sektionen", /^\/sektionen/)
+                = top_navigation_link("Näringsliv", "/naringsliv", /^\/naringsliv/)
+                = top_navigation_link("Studier", "/studier", /^\/studier/)
+                = top_navigation_link("Kontakt", "/kontakt", /^\/kontakt/)
             
             .search.grid_4
-              %input{:type => "search", :placeholder => "Sök"}
+              = form_tag(search_path, :method => :get) do
+                %input{:type => "search", :placeholder => "Sök", :name => 'q', :value => params[:q], :id => 'search'}
             
             .clear &nbsp;
         
@@ -82,6 +85,9 @@
               .admin= render :partial => "front_pages/admin_box"
 
           .content
+            - if flash[:notice]
+              %div.notice
+                = flash[:notice]
             - if content_for?(:main_content)
               = yield(:main_content)
             - else

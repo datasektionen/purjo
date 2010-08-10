@@ -13,17 +13,21 @@ gem 'simple_form'
 gem 'paperclip'
 gem 'inherited_resources'
 gem 'hominid'
-gem 'delayed_job'
+gem 'delayed_job', :git => 'git://github.com/collectiveidea/delayed_job.git'
 gem 'state_machine', :git => "http://github.com/pluginaweek/state_machine.git"
 gem 'meta_where'
 gem 'exceptional'
 gem 'json_pure'
 gem 'liquid'
 gem 'mongrel'
+
 gem 'capistrano'
 gem 'capistrano-ext'
 
 gem 'refraction'
+gem 'whenever'
+
+gem 'sunspot_rails', :require => 'sunspot/rails'
 
 group :production do
    gem 'mysql'

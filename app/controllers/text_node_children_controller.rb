@@ -12,11 +12,11 @@ class TextNodeChildrenController < ApplicationController
   
   def create 
     @parent = TextNode.find(params[:text_node_id])
-    @child = @parent.children.build(params[:text_node])
+    @node = @parent.children.build(params[:text_node])
     
-    if @child.save
-      flash[:notice] = "Nod \"#{@child.url}\" sparad!"
-      redirect_to @child.url
+    if @node.save
+      flash[:notice] = "Nod \"#{@node.url}\" sparad!"
+      redirect_to @node.url
     else
       flash[:error] = "Ett fel uppstod!"
       render :action => 'new'

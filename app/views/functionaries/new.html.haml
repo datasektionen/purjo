@@ -1,0 +1,9 @@
+%h2 Nytt funktionärsmandat
+
+- form_for(@functionary) do |f|
+  = f.hidden_field :active_to
+  = render :partial => 'form', :locals => { :f => f }
+  %p
+    = f.submit "Create"
+
+= link_to 'Back', functionaries_path

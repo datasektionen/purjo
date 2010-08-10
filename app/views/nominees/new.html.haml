@@ -1,0 +1,7 @@
+%h2 Skapa ny nominering
+- form_for(@nominee) do |f|
+  = render :partial => 'form', :locals => { :f => f }
+  %p
+    = f.submit "Create"
+
+= link_to 'Back', nominees_path

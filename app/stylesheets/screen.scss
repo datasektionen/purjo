@@ -4,6 +4,7 @@
 @import "styled_table.scss";
 @import "tables.scss";
 @import "form.scss";
+@import "mottagningen.scss";
 
 * {
   padding: 0;
@@ -99,6 +100,20 @@ body {
 
   a { color: #e2007f; }
   a:hover { text-decoration: underline; }
+  
+  dl {
+    dt {
+      font-weight: bold;
+    }
+    
+    dd {
+      margin-left: 20px;
+    }
+  }
+  
+  .more_info {
+    float: right;
+  }
 }
 
 .events {
@@ -148,4 +163,53 @@ body {
 		margin-top: 0;
 		font-style: italic;
 	}
+}
+
+form.noise {
+  #noise_message {
+    height: 70px;
+  }
+}
+
+div.error, div.notice, div.success,
+#flash_failure, #flash_success, #flash_notice {
+  padding: 0.8em;
+  margin-bottom: 1em;
+  border: 1px solid #ddd;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+}
+div.error,
+#flash_failure {
+  background: #FBE3E4;
+  color: #D12F19;
+  border-color: #FBC2C4;
+}
+div.error a,
+#flash_failure a { color: #D12F19; }
+
+div.notice,
+#flash_notice {
+  background: #FFF6BF;
+  color: #817134;
+  border-color: #FFD324;
+}
+div.notice a,
+#flash_notice a { color: #817134; }
+
+div.success,
+#flash_success {
+  background: #E6EFC2;
+  color: #529214;
+  border-color: #C6D880;
+}
+div.success a,
+#flash_success a { color: #529214; }
+
+input#search.active {
+  color: black;
+}
+
+input#search.inactive {
+  color: #ccc;
 }

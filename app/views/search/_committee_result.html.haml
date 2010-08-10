@@ -1,0 +1,11 @@
+%h3
+  Nämnd: 
+  = result.name
+
+%p
+  - if result.chapter_post.present?
+    Ordförande:
+  
+    = result.chapter_post.name
+    = result.chapter_post.functionary.person.name
+  

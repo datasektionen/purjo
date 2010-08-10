@@ -1,5 +1,10 @@
 class Student < ActiveRecord::Base
+  
+  # So this is a hack to work around the fact that Person and Student isn't the same thing.
+  # It enables searches on the posts the Student/Person has
+  has_one :person, :class_name => "Person", :foreign_key => "kth_username", :primary_key => "username_nada" 
 
+  
   def username
     return username_nada if !username_nada.nil?
     username_kth

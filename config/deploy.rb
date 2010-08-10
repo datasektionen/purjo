@@ -16,6 +16,8 @@ set :rails_env, "migration"
 set :tmp_path, "/var/tmp/rails"
 set :keep_releases, 3
 
+ssh_options[:forward_agent] = true
+
 role :app, "mission-to-marzipan.ben-and-jerrys.stacken.kth.se"
 role :web, "mission-to-marzipan.ben-and-jerrys.stacken.kth.se"
 role :db,  "mission-to-marzipan.ben-and-jerrys.stacken.kth.se", :primary => true
@@ -97,3 +99,13 @@ namespace :bundler do
 end
  
 after 'deploy:update_code', 'bundler:bundle_new_release'
+
+
+after "deploy:symlink", "deploy:update_crontab"
+
+namespace :deploy do
+  desc "Update the crontab file"
+  task :update_crontab, :roles => :db do
+    run "cd #{release_path} && bundle exec whenever --update-crontab #{application}"
+  end
+end
