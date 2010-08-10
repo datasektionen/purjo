@@ -206,3 +206,10 @@ div.success,
 div.success a,
 #flash_success a { color: #529214; }
 
+input#search.active {
+  color: black;
+}
+
+input#search.inactive {
+  color: #ccc;
+}

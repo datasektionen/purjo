@@ -1,61 +1,89 @@
 $(function() {
-	$('.meta').each(function() {
-		var distance = 20;
-		var time = 250;
-		var hideDelay = 500;
-		
-		var hideDelayTimer = null;
-		
-		var beingShown = false;
-		var shown = false;
-		
-		var trigger = $('.trigger', this);
-		var popup = $('.popup', this).css('opacity', 0);
-		
-		$([trigger.get(0), popup.get(0)]).mouseover(function () {
-			if (hideDelayTimer) {
-				clearTimeout(hideDelayTimer);
-			}
-			
-			if (beingShown || shown) {
-				return;
-			} else {
-				beingShown = true;
-				
-				popup.css({
-					top: '-31px',
-					left: '15px',
-					display: 'block',
-					opacity: 0
-				})
-				.animate({
-					left: 31,
-					opacity: 1
-				}, time, 'swing', function() {
-					beingShown = false;
-					shown = true;
-				});
-				
-				
-			}
+  $('div.meta').each(function() {
+    var distance = 20;
+    var time = 250;
+    var hideDelay = 500;
+    
+    var hideDelayTimer = null;
+    
+    var beingShown = false;
+    var shown = false;
+    
+    var trigger = $('.trigger', this);
+    var popup = $('.popup', this).css('opacity', 0);
+
+    $([trigger.get(0), popup.get(0)]).mouseover(function () {
+      if (hideDelayTimer) {
+        clearTimeout(hideDelayTimer);
+      }
+      
+      if (beingShown || shown) {
+        return;
+      } else {
+        beingShown = true;
+        
+        popup.css({
+          top: '-31px',
+          left: '15px',
+          display: 'block',
+          opacity: 0
+        })
+        .animate({
+          left: 31,
+          opacity: 1
+        }, time, 'swing', function() {
+          beingShown = false;
+          shown = true;
+        });
+        
+        
+      }
     }).mouseout(function() {
-			if (hideDelayTimer) {
-				clearTimeout(hideDelayTimer);
-			}
-			
-			
-			hideDelayTimer = setTimeout(function() {
-				hideDelayTimer = null;
-				
-				
-				popup.animate({
-					left: 0,
-					opacity: 0
-				}, time, 'swing', function() {
-					shown = false;
-					popup.css('display', 'none');
-				});
-			}, hideDelay);
-		});
-	})
+      if (hideDelayTimer) {
+        clearTimeout(hideDelayTimer);
+      }
+      
+      
+      hideDelayTimer = setTimeout(function() {
+        hideDelayTimer = null;
+        
+        
+        popup.animate({
+          left: 0,
+          opacity: 0
+        }, time, 'swing', function() {
+          shown = false;
+          popup.css('display', 'none');
+        });
+      }, hideDelay);
+    });
+  })
+});
+
+$(function() {
+  // Safaris has this functionality, so let's not overwrite it
+  if (!$.browser.webkit) {
+    $("#search").val($("#search").attr("placeholder"));
+    $("#search").addClass("inactive");
+  
+  
+    $("#search").focus(function() {
+      var searchBox = $(this);
+      var placeholderValue = searchBox.attr("placeholder");
+      if (searchBox.val() == placeholderValue) {
+        searchBox.addClass("active");
+        searchBox.removeClass("inactive");
+        searchBox.val("");
+      } 
+    }).blur(function() {
+      var searchBox = $(this);
+      var placeholderValue = searchBox.attr("placeholder");
+    
+      if (searchBox.val() == "") {
+        searchBox.addClass("inactive");
+        searchBox.removeClass("active");
+        searchBox.val(placeholderValue);
+      }
+    });
+  }
 })
