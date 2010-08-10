@@ -85,6 +85,9 @@
               .admin= render :partial => "front_pages/admin_box"
 
           .content
+            - if flash[:notice]
+              %div.notice
+                = flash[:notice]
             - if content_for?(:main_content)
               = yield(:main_content)
             - else
