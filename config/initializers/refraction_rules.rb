@@ -13,6 +13,9 @@ if Object.const_defined?(:Refraction)
       req.permanent!("/students/#{$1}")
     end
     
+    if req.path =~ %r{/sektionen/sok}
+      req.permanent!("/sok?" + req.query)
+    end
     
     if req.path =~ %r{^/mottagningen/janifattar/?$}
       req.permanent!("http://www.d.kth.se/ston/apps/new")
