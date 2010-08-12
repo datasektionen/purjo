@@ -13,7 +13,11 @@ class LunchController < ApplicationController
       return
     end
 
-    str = open("https://www.kth.se/internt/lunch/day_menu.asp?date=" + @date.to_s).read
+    begin
+      str = open("https://www.kth.se/internt/lunch/day_menu.asp?date=" + @date.to_s).read
+    rescue OpenURI::HTTPError, Errno::ECONNREFUSED => e
+      render :inline => "Ett fel uppstod vid kontakt med lunch-tjänsten: #{e}", :layout => true
+    end
     str = Iconv.conv("utf-8", "ISO-8859-1", str)
     
     re = /<A href=\"restaurant_menu.asp.*?>(.*?)<\/A><\/TD><\/TR>|<TR><TD width=\"40\".*?><I>(.*?)<\/I>.*?<\/TD><TD align=\"left\".*?>(.*?)&nbsp;<\/TD>/m
