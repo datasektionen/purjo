@@ -22,10 +22,10 @@ class ContactMail < ActiveRecord::BaseWithoutTable
   def recipient_id=(v)
     @recipient_id = v
     # set @recipient to matching object
-    match = v.match(/([a-z]+)_(\d+)/)
+    match = v.match(/\A([a-z]+(_[a-z]+)*)_(\d+)\Z/)
     if !match.nil?
       classified = match[1].camelize.constantize
-      @recipient = classified.find(match[2].to_i)
+      @recipient = classified.find(match[3].to_i)
     end
   end
 
