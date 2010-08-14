@@ -36,9 +36,16 @@
       = render :partial => 'noises/noise', :collection => @post.noises
 
   .respond
-    %h3 Kommentera
+    - if Person.current.anonymous?
+      %p 
+        Du måste vara 
+        = link_to "inloggad",  new_sessions_path(:return_url => current_url)
+        för att kommentera! 
+      
+    - else
+      %h3 Kommentera
     
-    = simple_form_for([@post, Noise.new]) do |form|
-      = form.input :message, :label => false
-      = form.button :submit
+      = simple_form_for([@post, Noise.new]) do |form|
+        = form.input :message, :label => false
+        = form.button :submit
 
