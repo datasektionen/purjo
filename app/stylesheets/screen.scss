@@ -1,9 +1,9 @@
 @import "960.scss";
+@import "form.scss";
 @import "news.scss";
 @import "navigation.scss";
 @import "styled_table.scss";
 @import "tables.scss";
-@import "form.scss";
 @import "mottagningen.scss";
 
 * {
@@ -11,7 +11,7 @@
   margin: 0;
 }
 
-h1, h2, h3, h4, h5, h6, p, pre, blockquote, label, ul, ol, dl, fieldset, address {
+h1, h2, h3, h4, h5, h6, p, pre, blockquote, ul, ol, dl, fieldset, address {
   margin: 9px 0px;
 }
 

@@ -1,18 +1,14 @@
 form {
-  div.email {
-    margin-bottom: 1.5em; 
-  }
-   
-  .radio,
-  .check_boxes,
-  .select {
-    position: relative;
-    font-size: 1em; 
-  }
-  
-  boolean {
+  label { margin-top: 8px; }
+
+  .boolean {
     margin-top: 20px;
     margin-bottom: 20px;
+  }
+
+  .radio, .check_boxes, .select {
+    position: relative;
+    font-size: 1em; 
   }
   
   .radio label,
@@ -23,7 +19,6 @@ form {
     display: block;
     margin-right: 20px;
     font-size: 16px;
-    font-family: 'Crimson Text' ,Georgia, sans-serif;
   }
   
   .radio label.collection_radio,
@@ -47,14 +42,7 @@ form {
     color: #999999;
     text-align: right;
   }
-  .string,
-  .date,
-  .text,
-  .password,
-  .file,
-  .integer,
-  .url,
-  .email {
+  .string, .date, .text, .password, .file, .integer, .url, .email {
     position: relative;
   }
   
@@ -79,15 +67,7 @@ form {
     clear: left;
     font-weight: bold;
     width: 200px;
-    font-family: 'Crimson Text' ,Georgia, sans-serif;
   }
-  
-  .boolean label,
-  .boolean .hint {
-    font-family: 'Crimson Text' ,Georgia, sans-serif;
-    
-  }
-  
   
   .string .hint,
   .date .hint,
@@ -102,89 +82,16 @@ form {
     width: 400px;
   }
   
-  .string input[type=text],
-  .string input[type=password],
-  .string input[type=url],
-  .string input[type=email],
-  .string textarea,
-  .date input[type=text],
-  .date input[type=password],
-  .date input[type=url],
-  .date input[type=email],
-  .date textarea,
-  .text input[type=text],
-  .text input[type=password],
-  .text input[type=url],
-  .text input[type=email],
-  .text textarea,
-  .password input[type=text],
-  .password input[type=password],
-  .password input[type=url],
-  .password input[type=email],
-  .password textarea,
-  .file input[type=text],
-  .file input[type=password],
-  .file input[type=url],
-  .file input[type=email],
-  .file textarea,
-  .integer input[type=text],
-  .integer input[type=password],
-  .integer input[type=url],
-  .integer input[type=email],
-  .integer textarea,
-  .numeric input[type=number],
-  .url input[type=text],
-  .url input[type=password],
-  .url input[type=url],
-  .url input[type=email],
-  .url textarea,
-  .email input[type=text],
-  .email input[type=password],
-  .email input[type=url],
-  .email input[type=email],
-  .email textarea {
-    font-size: 1em;
+  .string input, .date input, .text input, .password input,
+  .file input, .integer input, .url input, .email input,
+  textarea {
+    font-size: 15px;
     border: 1px solid #999999;
     border-radius: 3px;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
-    padding: 8px 8px;
+    padding: 6px 6px;
     width: 400px;
-  }
-  
-  .string input[type=text],
-  .string input[type=url],
-  .string input[type=email],
-  .string input[type=password],
-  .date input[type=text],
-  .date input[type=url],
-  .date input[type=email],
-  .date input[type=password],
-  .text input[type=text],
-  .text input[type=url],
-  .text input[type=email],
-  .text input[type=password],
-  .password input[type=text],
-  .password input[type=url],
-  .password input[type=email],
-  .password input[type=password],
-  .file input[type=text],
-  .file input[type=url],
-  .file input[type=email],
-  .file input[type=password],
-  .integer input[type=text],
-  .integer input[type=url],
-  .integer input[type=email],
-  .integer input[type=password],
-  .url input[type=text],
-  .url input[type=url],
-  .url input[type=email],
-  .url input[type=password],
-  .email input[type=text],
-  .email input[type=url],
-  .email input[type=email],
-  .email input[type=password] {
-    /*padding: 0.5em 1em;*/
   }
 }
 
@@ -198,14 +105,7 @@ form {
   }
 }
 
-form.post {
-  textarea {
-    width: 700px;
-    height: 400px;
-  }
-}
-
-form.text_node {
+form.post, form.text_node {
   textarea {
     width: 700px;
     height: 400px;
