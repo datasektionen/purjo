@@ -21,12 +21,12 @@ form {
     font-size: 16px;
   }
   
-  .radio label.collection_radio,
-  .radio label.collection_check_boxes,
-  .check_boxes label.collection_radio,
-  .check_boxes label.collection_check_boxes,
-  .select label.collection_radio,
-  .select label.collection_check_boxes {
+  label.collection_radio,
+  label.collection_check_boxes,
+  label.collection_radio,
+  label.collection_check_boxes,
+  label.collection_radio,
+  label.collection_check_boxes {
     font-weight: normal;
     width: auto;
     float: none;
