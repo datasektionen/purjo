@@ -1,39 +1,40 @@
 %h3 Administration
-%ul
-  - if @posts or @news_posts
-    %li= link_to 'Ny nyhet-/kalender-post', new_post_path
-  - if @functionaries
-    %li= link_to 'Nytt funktionärsmandat', new_functionary_path
-    %li= link_to 'Ny funktionärspost', new_chapter_post_path
-    %li= link_to 'Redigera funktionärsposter', chapter_posts_path
+#admin_links
+  %ul
+    - if @posts or @news_posts
+      %li= link_to 'Ny nyhet-/kalender-post', new_post_path
+    - if @functionaries
+      %li= link_to 'Nytt funktionärsmandat', new_functionary_path
+      %li= link_to 'Ny funktionärspost', new_chapter_post_path
+      %li= link_to 'Redigera funktionärsposter', chapter_posts_path
 
-  %li= link_to "Funktionärer", functionaries_path
+    %li= link_to "Funktionärer", functionaries_path
     
-  - if @chapter_posts
-    %li= link_to 'Ny funktionärspost', new_chapter_post_path
+    - if @chapter_posts
+      %li= link_to 'Ny funktionärspost', new_chapter_post_path
 
-  %li= link_to 'Funktionärsposter', chapter_posts_path
+    %li= link_to 'Funktionärsposter', chapter_posts_path
     
-  - if @nominees
-    %li= link_to 'Ny nominering', new_nominee_path
-    %li= link_to 'Valtillfällen', election_events_path
+    - if @nominees
+      %li= link_to 'Ny nominering', new_nominee_path
+      %li= link_to 'Valtillfällen', election_events_path
     
-  %li= link_to 'Nomineringar', nominees_path
+    %li= link_to 'Nomineringar', nominees_path
     
-  - if @election_events
-    %li= link_to 'Nytt val', new_election_event_path
+    - if @election_events
+      %li= link_to 'Nytt val', new_election_event_path
     
-  %li= link_to "Nämnder", committees_path
-  - if @committees
-    %li= link_to "Ny nämnd", new_committee_path
+    %li= link_to "Nämnder", committees_path
+    - if @committees
+      %li= link_to "Ny nämnd", new_committee_path
     
-  - if !@node.nil? && !@node.new_record?
-    %li= link_to 'Redigera sida', edit_text_node_path(@node)
-    %li= link_to "Historia", text_node_versions_path(@node)
-    - if @node.children.empty?
-      %li= link_to('Ta bort sida', text_node_path(@node), :method => :delete, :confirm => "Detta kommer ta bort noden #{@node.url}(#{@node.name}). Är du säker på att detta verkligen är det du vill?")
-    %li= link_to 'Ny undersida', new_text_node_child_path(@node)
-    %li= link_to "Lista undersidor", text_node_children_path(@node)
-    %li= link_to 'Ny fil', new_text_node_file_path(@node)
-    %li= link_to "Lista filer", text_node_files_path(@node)
-  %li= link_to "Alla sidor", text_node_children_path(Node.find_by_url("/"))
+    - if !@node.nil? && !@node.new_record?
+      %li= link_to 'Redigera sida', edit_text_node_path(@node)
+      %li= link_to "Historia", text_node_versions_path(@node)
+      - if @node.children.empty?
+        %li= link_to('Ta bort sida', text_node_path(@node), :method => :delete, :confirm => "Detta kommer ta bort noden #{@node.url}(#{@node.name}). Är du säker på att detta verkligen är det du vill?")
+      %li= link_to 'Ny undersida', new_text_node_child_path(@node)
+      %li= link_to "Lista undersidor", text_node_children_path(@node)
+      %li= link_to 'Ny fil', new_text_node_file_path(@node)
+      %li= link_to "Lista filer", text_node_files_path(@node)
+    %li= link_to "Alla sidor", text_node_children_path(Node.find_by_url("/"))

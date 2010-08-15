@@ -11,7 +11,7 @@ feature "the news system" do
     
     page.should have_content("Näringslivsgruppsnyhet")
     
-    within("div#news_post_#{nlg_news.id} .categories") do
+    within("div#post_#{nlg_news.id} .tags") do
       page.should have_content("NLG")
     end
   end
@@ -40,7 +40,7 @@ feature "the news system" do
     news_post = Factory(:nlg_news_post)
     
     visit "/"
-    within "div#news_post_#{news_post.id}" do
+    within "div#post_#{news_post.id}" do
       click_link "Redigera"
     end
     
@@ -49,7 +49,6 @@ feature "the news system" do
     
     current_path.should == "/"
     
-    save_and_open_page
     # TODO page.should have_success_message
     page.should have_content("Updated news")
   end

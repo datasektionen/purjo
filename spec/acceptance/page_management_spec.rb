@@ -6,24 +6,9 @@ feature "page management" do
   include Rails.application.routes.url_helpers
   background do
     @root_page = Factory(:root_page)
-    Factory(:admin_role)
-    Factory(:editor_role)
+    mock_roles
+  end
     
-    Person.class_eval do
-      Role.all.each do |role|
-        define_method "#{role.to_s}?" do 
-          has_role?(role.to_s)
-        end
-      end
-    end
-  end
-  
-  scenario "show the root page" do
-    Factory(:start_page)
-    visit("/")
-    page.should have_content("This is the start node")
-  end
-  
   scenario "creating a new page" do
     login_as(:admin_user)
     

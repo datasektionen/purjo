@@ -7,6 +7,14 @@
   = render :partial => "twitter/twitter"
 
 #news
+  - if !Person.current.anonymous? && !Person.current.has_chosen_settings?
+    #first_time_welcome.notification
+      = include_node("/first_time_welcome")
+      
+      = simple_form_for([Person.current, @user_settings], :url => person_user_settings_path(Person.current, @user_settings)) do |f|
+        = f.input :newsletter, :as => :boolean, :label => 'Nyhetsbrev'
+        = f.submit :value => 'Spara inställningar'
+
   %h3.sub
     - if params[:tags]
       Nyheter taggade:
@@ -14,16 +22,6 @@
     - else
       Alla nyheter
 
-  - if !Person.current.anonymous? && !Person.current.has_chosen_settings?
-    #first_time_welcome
-      = include_node("/first_time_welcome")
-      
-      = simple_form_for([Person.current, @user_settings], :url => person_user_settings_path(Person.current, @user_settings)) do |f|
-        = f.input :newsletter, :as => :boolean, :label => 'Nyhetsbrev'
-        = f.submit :value => 'Spara inställningar'
-  
-  - if false      
-    = include_node("/start")
   
   = render :partial => 'posts/post', :collection => @news_posts
   

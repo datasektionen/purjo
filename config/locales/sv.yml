@@ -195,6 +195,9 @@
         body: Innehåll
       user_settings:
         newsletter: Nyhetsbrevssektion
+      post:
+        news_post: Nyhet
+        calendar_post: Kalender
 
     # Translate model attribute names. Used in Model.human_attribute_name(attribute).
     #attributes:
