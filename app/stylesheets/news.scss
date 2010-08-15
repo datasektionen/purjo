@@ -63,19 +63,6 @@
     }
   }
   
-  .foot {
-    height: 24px;
-    .comments, .edit {
-      float: left;
-      padding-left: 26px;
-      background: url(/images/icons/AIM.png) no-repeat 0 1px;
-    }
-    .edit { background-image: url(/images/icons/Writing.png); }
-    .edit, .delete {
-      float: right;
-      margin-left: 20px;
-    }
-  }
 
   div.comments, div.respond { margin-top: 30px; }
 
@@ -119,6 +106,20 @@
     line-height: 15px;
 
     a, a:visited { color: white; }
+  }
+}
+
+.foot {
+  height: 24px;
+  .comments, .edit {
+    float: left;
+    padding-left: 26px;
+    background: url(/images/icons/AIM.png) no-repeat 0 1px;
+  }
+  .edit { background-image: url(/images/icons/Writing.png); }
+  .edit, .delete {
+    float: right;
+    margin-left: 20px;
   }
 }
 

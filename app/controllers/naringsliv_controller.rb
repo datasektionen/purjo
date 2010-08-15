@@ -6,6 +6,7 @@ class NaringslivController < ApplicationController
     conditions << "full_time = 1" if params[:full_time] 
     conditions = conditions.join(" OR ")
     @job_ads = JobAd.where(conditions)
+    render :layout => 'diy'
   end
   
 end

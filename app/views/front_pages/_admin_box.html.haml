@@ -36,4 +36,4 @@
     %li= link_to "Lista undersidor", text_node_children_path(@node)
     %li= link_to 'Ny fil', new_text_node_file_path(@node)
     %li= link_to "Lista filer", text_node_files_path(@node)
-    %li= link_to "Alla sidor", text_node_children_path(Node.find_by_url("/"))
+  %li= link_to "Alla sidor", text_node_children_path(Node.find_by_url("/"))

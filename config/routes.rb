@@ -9,9 +9,7 @@ Rails.application.routes.draw do |map|
   resources :committees
   
   resources :file_nodes
-  
-  resources :job_ads, :except => [:show]
-  
+    
   get "/kontakt/:slug" => 'contact#index', :as => 'contact'
   post "/kontakt/:slug" => 'contact#send_mail'
   
@@ -55,6 +53,8 @@ Rails.application.routes.draw do |map|
   resources 'sektionen/funktionarer', :as => "functionaries", :controller => 'functionaries'
   resources 'sektionen/val', :as => "nominees", :controller => 'nominees'
   match '/sektionen/naringsliv', :controller => 'naringsliv', :action => 'index', :as => 'naringsliv_index'
+  resources '/sektionen/naringsliv/jobb', :controller => 'job_ads', :as => 'job_ads', :except => [:show]
+  
   
   resources :text_nodes do
     resources :children, :controller => 'TextNodeChildren', :path_prefix => 'text_nodes/:node_id'

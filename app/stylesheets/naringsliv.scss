@@ -1,0 +1,11 @@
+#naringsliv {
+  #job_ads {
+    ul {
+      @include unstyled-list;
+    } 
+  }
+  
+  .company {
+    font-style: italic;
+  }
+}
