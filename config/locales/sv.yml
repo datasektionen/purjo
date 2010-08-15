@@ -179,6 +179,11 @@
     models:
       newsletter_section: Nyhetsbrevssektion
     attributes:
+      contact_mail:
+        name: Avsändarens namn
+        email: Avsändarens email-adress
+        message: Meddelande
+        
       person:
         startyear: Startår
         address: Adress
