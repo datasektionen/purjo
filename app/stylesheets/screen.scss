@@ -198,14 +198,27 @@ div.notice,
 div.notice a,
 #flash_notice a { color: #817134; }
 
-div.success,
-#flash_success {
+div.notification {
+  padding: 0.8em;
+  margin-bottom: 1em;
+  border: 1px solid #ddd;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
   background: #E6EFC2;
-  color: #529214;
+  //color: #529214;
+  color: #222;
   border-color: #C6D880;
+  padding-top: 0px;
+  margin-top: 12px;
+  a {
+    color: #529214;
+  }
+  
+  div.input, input.boolean {
+    margin-top: 12px;
+    margin-bottom: 12px;
+  }
 }
-div.success a,
-#flash_success a { color: #529214; }
 
 input#search.active {
   color: black;
