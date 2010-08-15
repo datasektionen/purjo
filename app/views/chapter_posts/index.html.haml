@@ -5,6 +5,7 @@
     %th Post
     %th E-post
     %th Sittande
+    %th
   - for chapter_post in @chapter_posts
     %tr
       %td= link_to chapter_post.name, chapter_post, :title => chapter_post.description

@@ -16,9 +16,11 @@
     %th Person
     %th Från
     %th Till
+    - if Person.current.editor?
+      %th
   - for functionary in @chapter_post.functionaries
     %tr
-      %td= link_to_if(functionary.postponed, functionary.person_or_postponed, functionary.person)
+      %td= link_to_unless(functionary.postponed, functionary.person_or_postponed, functionary.person)
       %td= functionary.active_from
       %td= functionary.active_to
       - if Person.current.editor?
