@@ -22,9 +22,6 @@
         = f.input :newsletter, :as => :boolean, :label => 'Nyhetsbrev'
         = f.submit :value => 'Spara inställningar'
   
-  - if false      
-    = include_node("/start")
-  
   = render :partial => 'posts/post', :collection => @news_posts
   
   = will_paginate(@news_posts)
