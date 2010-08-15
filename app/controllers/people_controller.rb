@@ -86,14 +86,14 @@ class PeopleController < ApplicationController
     xfinger_api_path = "http://xfinger.fossil-fuel.ben-and-jerrys.stacken.kth.se/image/"
     FileUtils.mkdir_p(xfinger_dir)
     if File.exists?(file_name) && File.atime(file_name) > 1.week.ago
-      send_file(file_name)
+        send_file file_name,:type=> 'image/jpeg',:disposition=>'inline'
     else
       begin
         file = File.open(file_name, "wb")
         puts xfinger_api_path+uid
         file.write(RestClient.get(xfinger_api_path + uid))
         file.close
-        send_file(file_name)
+        send_file file_name,:type=> 'image/jpeg',:disposition=>'inline'
       rescue Exception => e
         #do nothing
       end
