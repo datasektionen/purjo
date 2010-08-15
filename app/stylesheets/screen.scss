@@ -33,6 +33,14 @@ body {
   line-height: 1.3;
 }
 
+blockquote {
+  padding-left: 48px;
+  font-style: italic;
+  background: url("/images/quotation.png");
+  background-repeat: no-repeat;
+  
+}
+
 #wrapper {
   min-height: 100%;
 }
