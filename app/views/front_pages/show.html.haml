@@ -7,6 +7,8 @@
   = render :partial => "twitter/twitter"
 
 #news
+  .notification
+    = include_node("/_ugly_hack_welcome")
   - if !Person.current.anonymous? && !Person.current.has_chosen_settings?
     #first_time_welcome.notification
       = include_node("/first_time_welcome")
