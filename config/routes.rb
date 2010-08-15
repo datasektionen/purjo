@@ -34,6 +34,8 @@ Rails.application.routes.draw do |map|
       get :xfinger
     end
   end
+
+  map.xfinger_image 'people/xfinger_image/:uid', :controller=>'people',:action=>'xfinger_image'
   
   resources 'nyheter', :as => 'posts', :controller => 'posts' do
     resources :noises

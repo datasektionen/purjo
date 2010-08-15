@@ -149,6 +149,8 @@ GEM
     rake (0.8.7)
     refraction (0.2.0)
     responders (0.6.2)
+    rest-client (1.6.0)
+      mime-types (>= 1.16)
     rsolr (0.12.1)
       builder (>= 2.1.2)
     rspec (2.0.0.beta.19)
@@ -223,6 +225,7 @@ DEPENDENCIES
   paperclip
   rails (= 3.0.0.rc)
   refraction
+  rest-client
   rspec (>= 2.0.0.beta.11)
   rspec-rails (>= 2.0.0.beta.11)
   ruby-debug

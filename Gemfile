@@ -27,6 +27,8 @@ gem 'capistrano-ext'
 gem 'refraction'
 gem 'whenever'
 
+gem 'rest-client'
+
 gem 'sunspot_rails', :require => 'sunspot/rails'
 
 group :production do
