@@ -1,0 +1,40 @@
+#naringsliv 
+  %h2 Jobb
+
+  - form_tag(job_ads_path, :method => :get) do 
+    = label_tag "full_time", "Heltid"
+    = check_box_tag "full_time", 1, params[:full_time] 
+
+    = label_tag "part_time", "Deltid" 
+    = check_box_tag "part_time", 1, params[:part_time] 
+
+    = label_tag "thesis", "Exjobb" 
+    = check_box_tag "thesis", 1, params[:thesis] 
+
+    = submit_tag "Filtrera"
+
+  - @job_ads.each do |ad|
+    %div
+      %h3= ad.title
+    
+      %p.company= ad.company
+    
+      = raw textilize(ad.description)
+    
+      - if Person.current.pr?
+        .foot
+        
+          = link_to 'Redigera', edit_job_ad_path(ad), :class => 'edit'
+          = link_to 'Ta bort', ad, :method => :delete, :confirm => 'Är du säker på att du vill ta bort den här jobbanonsen?', :class => 'delete'
+    
+  -#    <ul class="horizontal author right">
+  -#      <li><%= link_to ad.created_by, person_path(ad.created_by) %></li>
+  -#      <li>Skapad <%= ad.created_at.strftime "%d %b" %></li>
+  -#      <li>Förfaller <%= ad.expires_at.strftime "%d %b"%></li>
+  -#      <li class="last"><%= ad.types.join(", ") %></li>
+  -#    </ul>
+    
+    .clear
+
+  - if Person.current.pr?
+    = link_to 'Ny Jobbannons', new_job_ad_path 

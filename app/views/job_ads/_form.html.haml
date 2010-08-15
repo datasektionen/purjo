@@ -1,0 +1,12 @@
+- simple_form_for(@job_ad) do |form|
+  = form.input :title, :caption => 'Rubrik'
+  = form.input :company, :caption => 'Företag'
+  = form.input :description, :caption => 'Beskrivning', :size => '50x15'
+  = form.input :start_date , :caption => 'Startdatum'
+  = form.input :end_date, :caption => 'Slutdatum'
+  = form.input :part_time, :caption => 'Deltid'
+  = form.input :full_time, :caption => 'Heltid'
+  = form.input :thesis, :caption => 'Exjobb'
+  = form.input :expires_at, :caption => 'Visa till'
+  
+  = form.button :submit
