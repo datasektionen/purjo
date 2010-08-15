@@ -54,6 +54,7 @@ Rails.application.routes.draw do |map|
   
   resources 'sektionen/funktionarer', :as => "functionaries", :controller => 'functionaries'
   resources 'sektionen/val', :as => "nominees", :controller => 'nominees'
+  match '/sektionen/naringsliv', :controller => 'naringsliv', :action => 'index', :as => 'naringsliv_index'
   
   resources :text_nodes do
     resources :children, :controller => 'TextNodeChildren', :path_prefix => 'text_nodes/:node_id'
@@ -87,7 +88,6 @@ Rails.application.routes.draw do |map|
 
   map.lunch '/lunch/:date', :controller => 'lunch', :action => 'index', :date => nil
 
-  map.naringsliv_index '/sektionen/namnder/naringsliv', :controller => 'job_ads', :action => 'naringsliv_index'
 
   map.schema '/schema/proxy.:format', :controller => 'schema', :action => 'proxy'
   map.schema '/schema/:year', :controller => 'schema', :action => 'index', :year => 'D1'
