@@ -14,6 +14,10 @@ class Post < ActiveRecord::Base
     {:conditions => [ 'NOT (ends_at < :start_date OR starts_at > :end_date)', {:start_date => date.beginning_of_day, :end_date => date.end_of_day}]}
   }
   
+  scope :between, lambda { |from, to|
+    where(:starts_at.gt => from, :ends_at.lt => to)
+  }
+  
   scope :newer_than, lambda { |time| where(['starts_at > ?', Time.now - time]) }
   default_scope order(:created_at.desc)
 
