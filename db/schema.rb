@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100803133043) do
+ActiveRecord::Schema.define(:version => 20100817174916) do
 
   create_table "articles", :force => true do |t|
     t.integer  "blog_id"
@@ -169,10 +169,10 @@ ActiveRecord::Schema.define(:version => 20100803133043) do
   end
 
   create_table "morklaggnings", :force => true do |t|
-    t.string   "username"
     t.string   "drifvarname"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "person_id"
   end
 
   create_table "newsletter_sections", :force => true do |t|
@@ -214,6 +214,14 @@ ActiveRecord::Schema.define(:version => 20100803133043) do
     t.integer  "election_event_id"
     t.integer  "chapter_post_id"
     t.integer  "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "notifications", :force => true do |t|
+    t.string   "subject"
+    t.text     "text"
+    t.datetime "expires_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
