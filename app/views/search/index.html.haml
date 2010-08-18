@@ -6,9 +6,9 @@
 
 - else
   %p
-    = @search.total
+    = @hit_count
     sökträffar
-  - @search.each_hit_with_result do |hit, result|
+  - @hits_and_results.each do |hit, result|
     = render :partial => "#{result.class.to_s.underscore}_result", :locals => {:hit => hit, :result => result}
   
   = will_paginate(@search.hits)
