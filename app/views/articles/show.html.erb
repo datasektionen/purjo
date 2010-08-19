@@ -1,7 +1,7 @@
 <div class="article">
   <h3><%= @article.title %></h3>
   <p class="content">
-    <%= @article.content %>
+    <%= textilize @article.content %>
   </p>
   <ul class="horizontal author right">
     <li class="author"><%= link_to @article.author, @article.author %></li>
