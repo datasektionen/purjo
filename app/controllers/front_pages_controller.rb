@@ -20,6 +20,10 @@ class FrontPagesController < ApplicationController
       now + Rails.application.settings[:show_n_days_in_calendar].days
     )
     
+    #Sort in cronological order and limit to five posts
+    @calendar_posts = @calendar_posts.sort_by {|cal| cal.starts_at }
+    @calendar_posts = @calendar_posts[0..4]
+    
     unless Person.current.anonymous?  
       @user_settings = Person.current.build_user_settings
     end
