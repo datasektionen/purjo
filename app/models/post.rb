@@ -1,6 +1,6 @@
 class Post < ActiveRecord::Base
-  scope :news_posts, :conditions => ["news_post = ?", true], :order => 'sticky DESC'
-  scope :calendar_posts, :conditions => ["calendar_post = ?", true], :order => 'starts_at ASC'
+  scope :news_posts, where(:news_post =>  true)
+  scope :calendar_posts, where(:calendar_post => true)
   
   scope :for_month, lambda { |month, year|
     date = DateTime.civil(year, month)
