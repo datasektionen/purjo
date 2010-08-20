@@ -30,7 +30,7 @@ class FrontPagesController < ApplicationController
   end
   
   def rss
-    @news_posts = Post.news_posts
+    @news_posts = Post.news_posts.ordered_descending
     
     if params[:tags]
       @news_posts = @news_posts.tagged_with(params[:tags])
