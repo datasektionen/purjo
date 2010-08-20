@@ -10,7 +10,7 @@ class FrontPagesController < ApplicationController
       @active_tags = ActsAsTaggableOn::TagList.from(params[:tags])
     end
     
-    @news_posts = @news_posts.ordered_descending.paginate(:page => params[:page], :per_page => 10)
+    @news_posts = @news_posts.paginate(:page => params[:page], :per_page => 10)
 
     @menu_template = "nyheter"
 
@@ -30,7 +30,7 @@ class FrontPagesController < ApplicationController
   end
   
   def rss
-    @news_posts = Post.news_posts.ordered_descending
+    @news_posts = Post.news_posts
     
     if params[:tags]
       @news_posts = @news_posts.tagged_with(params[:tags])
