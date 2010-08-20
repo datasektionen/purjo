@@ -20,8 +20,6 @@ class FrontPagesController < ApplicationController
       now + Rails.application.settings[:show_n_days_in_calendar].days
     )
     
-    # Fetch 5 calendar posts in the wrong order, then reverse, 
-    # to avoid an unnessesary SQL count query.
     @current_calendar_posts = @current_calendar_posts.order(:starts_at.asc).limit(5)
     
     unless Person.current.anonymous?  
