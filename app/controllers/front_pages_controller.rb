@@ -15,14 +15,14 @@ class FrontPagesController < ApplicationController
     @menu_template = "nyheter"
 
     now = Time.now
-    @calendar_posts = Post.calendar_posts.between(
-      (now - 7.days).beginning_of_day,
+    @current_calendar_posts = Post.calendar_posts.between(
+      (now - 1.day).beginning_of_day,
       now + Rails.application.settings[:show_n_days_in_calendar].days
     )
     
     # Fetch 5 calendar posts in the wrong order, then reverse, 
     # to avoid an unnessesary SQL count query.
-    @calendar_posts = @calendar_posts.order(:starts_at.desc).limit(5).reverse
+    @current_calendar_posts = @current_calendar_posts.order(:starts_at.asc).limit(5)
     
     unless Person.current.anonymous?  
       @user_settings = Person.current.build_user_settings
