@@ -3,11 +3,11 @@
   %em= @chapter_post.description
 %p
   %b E-post:
-  = @chapter_post.slug + "@d.kth.se"
+  = link_to(@chapter_post.slug + "@d.kth.se", contact_path(:slug => @chapter_post.slug))
 %p
   %b Person:
   - if @chapter_post.functionary and @chapter_post.functionary.person
-    = @chapter_post.functionary.person.name
+    = link_to @chapter_post.functionary.person.name, person_path(@chapter_post.functionary.person)
   - else
     %em Posten är bordlagd
 %h4 Historik
@@ -18,7 +18,7 @@
     %th Till
   - for functionary in @chapter_post.functionaries
     %tr
-      %td= link_to_if(functionary.postponed, functionary.person_or_postponed, functionary.person)
+      %td= link_to_if(!functionary.postponed, functionary.person_or_postponed, person_path(functionary.person))
       %td= functionary.active_from
       %td= functionary.active_to
       - if Person.current.editor?
