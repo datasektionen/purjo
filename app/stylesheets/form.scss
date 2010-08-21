@@ -10,6 +10,7 @@ form {
     position: relative;
     font-size: 1em; 
   }
+
   
   .radio label,
   .check_boxes label,
@@ -21,15 +22,17 @@ form {
     font-size: 16px;
   }
   
-  label.collection_radio,
-  label.collection_check_boxes,
-  label.collection_radio,
-  label.collection_check_boxes,
+  .check_boxes input.check_boxes,
+  .check_boxes label.collection_check_boxes {
+    margin-top: 0;
+    display: inline;
+  }
+  .check_boxes input.check_boxes { margin: 5px 5px 0 0; }
+
   label.collection_radio,
   label.collection_check_boxes {
     font-weight: normal;
     width: auto;
-    float: none;
   }
   
   .radio .hint,

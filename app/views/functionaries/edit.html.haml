@@ -2,6 +2,6 @@
 - form_for(@functionary) do |f|
   = render :partial => 'form', :locals => { :f => f }
   %p
-    = f.submit "Update"
+    = f.submit "Spara"
 
-= link_to 'Ta bort', functionary_path, :confirm => 'Are you sure?', :method => :delete
+= link_to 'Ta bort', functionary_path, :confirm => 'Är du säker?', :method => :delete
