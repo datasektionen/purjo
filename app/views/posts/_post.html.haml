@@ -29,5 +29,5 @@
     - comment_title << "er" if post.comment_count > 1
     = link_to comment_title, post, :class => "comments"
   
-    %iframe{ :class => "fb-like tiny", :src => "http://www.facebook.com/plugins/like.php?href=#{CGI::escape post_url(post)}&amp;layout=button_count&amp;show_faces=false&amp;width=90&amp;height=20&amp;action=like&amp;colorscheme=light&amp;locale=sv_SE", :scrolling => "no", :frameborder => "0", :allowTransparency => "true" }
+    %iframe{ :class => "fb-like tiny", :src => "http://www.facebook.com/plugins/like.php?href=#{CGI::escape post_url(post)}&amp;layout=button_count&amp;show_faces=false&amp;width=100&amp;height=20&amp;action=like&amp;colorscheme=light&amp;locale=sv_SE", :scrolling => "no", :frameborder => "0", :allowTransparency => "true" }
 
