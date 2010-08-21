@@ -105,6 +105,7 @@ GEM
       activesupport (>= 2.3.6)
       mime-types
       treetop (>= 1.4.5)
+    memcache-client (1.8.5)
     meta_where (0.5.2)
       activerecord (>= 3.0.0.beta4)
       activesupport (>= 3.0.0.beta4)
@@ -220,6 +221,7 @@ DEPENDENCIES
   json_pure
   launchy
   liquid
+  memcache-client
   meta_where
   mongrel
   mysql

@@ -1,32 +1,33 @@
-.news-item[post]
-  %h2= link_to post, post
-  %div.meta
-    = link_to image_tag(post.created_by.gravatar_url, :class => "trigger thumb", :alt => "", :title => post.created_by), person_path(post.created_by)
-    = link_to post.created_by, person_path(post.created_by), :class => "author"
+- cache(post) do
+  .news-item[post]
+    %h2= link_to post, post
+    %div.meta
+      = link_to image_tag(post.created_by.gravatar_url, :class => "trigger thumb", :alt => "", :title => post.created_by), person_path(post.created_by)
+      = link_to post.created_by, person_path(post.created_by), :class => "author"
 
-    %span.date
-      %span.dim den 
-      = l post.created_at, :format => "%e %b %Y"
-      %span.dim klockan 
-      = l post.created_at, :format => "%H:%M"
+      %span.date
+        %span.dim den 
+        = l post.created_at, :format => "%e %b %Y"
+        %span.dim klockan 
+        = l post.created_at, :format => "%H:%M"
     
-    = render :partial => "people/popup", :locals => { :person => post.created_by }
+      = render :partial => "people/popup", :locals => { :person => post.created_by }
     
-  .tags
-    - post.categories.each do |category|
-      .tag= link_to category.name, root_path(:tags => category.name)
-    .clear &nbsp;
+    .tags
+      - post.categories.each do |category|
+        .tag= link_to category.name, root_path(:tags => category.name)
+      .clear &nbsp;
   
-  = textilize(post.content).html_safe
+    = textilize(post.content).html_safe
   
-  %p.foot
-    - if Person.current.editor?
-      = link_to 'Redigera', edit_post_path(post), :class => "edit"
-      = link_to 'Ta bort', post, :method => :delete, :confirm => 'Är du säker på att du vill ta bort den här nyheten?', :class => "delete"
+    %p.foot
+      - if Person.current.editor?
+        = link_to 'Redigera', edit_post_path(post), :class => "edit"
+        = link_to 'Ta bort', post, :method => :delete, :confirm => 'Är du säker på att du vill ta bort den här nyheten?', :class => "delete"
 
-    - comment_title = post.has_comments? ? post.comment_count.to_s + " kommentar" : "Kommentera"
-    - comment_title << "er" if post.comment_count > 1
-    = link_to comment_title, post, :class => "comments"
+      - comment_title = post.has_comments? ? post.comment_count.to_s + " kommentar" : "Kommentera"
+      - comment_title << "er" if post.comment_count > 1
+      = link_to comment_title, post, :class => "comments"
 
-    %iframe{ :class => "fb-like tiny", :src => "http://www.facebook.com/plugins/like.php?href=#{CGI::escape post_url(post)}&amp;layout=button_count&amp;show_faces=false&amp;width=90&amp;height=20&amp;action=like&amp;colorscheme=light&amp;locale=sv_SE", :scrolling => "no", :frameborder => "0", :allowTransparency => "true" }
+      %iframe{ :class => "fb-like tiny", :src => "http://www.facebook.com/plugins/like.php?href=#{CGI::escape post_url(post)}&amp;layout=button_count&amp;show_faces=false&amp;width=90&amp;height=20&amp;action=like&amp;colorscheme=light&amp;locale=sv_SE", :scrolling => "no", :frameborder => "0", :allowTransparency => "true" }
 
