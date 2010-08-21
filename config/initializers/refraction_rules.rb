@@ -25,6 +25,10 @@ if Object.const_defined?(:Refraction)
       req.found!("/sektionen/mottagningen/#{$2}")
     end
     
+    if req.path =~ %r{/sektionen/namnder/naringsliv/ddagen/}
+      req.permanent!("/naringsliv/d-dagen")
+    end
+    
     case req.path
     when %r{^/ovve(/(.*))?$}
       # RewriteRule ^/ovve(/(.*))?$ /sektionen/namnder/prylmanglaren/ovve/$2 [R,L]
