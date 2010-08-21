@@ -8,7 +8,7 @@
     = javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"
     /[if lt IE 9]
       = javascript_include_tag 'http://html5shiv.googlecode.com/svn/trunk/html5.js'
-    = javascript_include_tag "application.js", "rails.js", "hyphenate.js"
+    = javascript_include_tag "application.js", "rails.js", "hyphenate.js", :cache => true
     = stylesheet_link_tag "screen"
     
     = csrf_meta_tag
