@@ -1,18 +1,19 @@
-.events
-  %h2 Agenda
-  %p Här är datasektionens agenda för den närmaste tiden.
-  - @current_calendar_posts.each do |calendar_post|
-    .event
-      .icon.esc
-      %p.description= link_to calendar_post, calendar_post
-      %p.time
-        %span= l(calendar_post.starts_at, :format => "%A %d %b").humanize
-        - if !calendar_post.all_day?
-          %span.dim klockan
-          %span= l calendar_post.starts_at, :format => "%H:%M"
-      .clear
+- cache("front_pages/agenda") do
+  .events
+    %h2 Agenda
+    %p Här är datasektionens agenda för den närmaste tiden.
+    - @current_calendar_posts.each do |calendar_post|
+      .event
+        .icon.esc
+        %p.description= link_to calendar_post, calendar_post
+        %p.time
+          %span= l(calendar_post.starts_at, :format => "%A %d %b").humanize
+          - if !calendar_post.all_day?
+            %span.dim klockan
+            %span= l calendar_post.starts_at, :format => "%H:%M"
+        .clear
   
-  %p
-    == Se alla event i #{link_to "kalendern", calendar_path}.
+    %p
+      == Se alla event i #{link_to "kalendern", calendar_path}.
   
-  .clear
+    .clear
