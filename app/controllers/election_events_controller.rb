@@ -48,7 +48,7 @@ class ElectionEventsController < ApplicationController
 
     respond_to do |format|
       if @election_event.save
-        flash[:notice] = 'ElectionEvent was successfully created.'
+        flash[:notice] = 'Valtillfälle skapat.'
         format.html { redirect_to(@election_event) }
         format.xml  { render :xml => @election_event, :status => :created, :location => @election_event }
       else
@@ -65,7 +65,7 @@ class ElectionEventsController < ApplicationController
 
     respond_to do |format|
       if @election_event.update_attributes(params[:election_event])
-        flash[:notice] = 'ElectionEvent was successfully updated.'
+        flash[:notice] = 'Valtillfälle uppdaterat.'
         format.html { redirect_to(@election_event) }
         format.xml  { head :ok }
       else

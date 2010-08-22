@@ -72,7 +72,7 @@ class NomineesController < ApplicationController
 
     respond_to do |format|
       if @nominee.save
-        flash[:notice] = 'Nominee was successfully created.'
+        flash[:notice] = 'Nominering skapad.'
         format.html { redirect_to(@nominee) }
         format.xml  { render :xml => @nominee, :status => :created, :location => @nominee }
       else
@@ -91,7 +91,7 @@ class NomineesController < ApplicationController
 
     respond_to do |format|
       if @nominee.update_attributes(params[:nominee])
-        flash[:notice] = 'Nominee was successfully updated.'
+        flash[:notice] = 'Nominering uppdaterad.'
         format.html { redirect_to(@nominee) }
         format.xml  { head :ok }
       else
