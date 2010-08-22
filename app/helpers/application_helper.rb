@@ -37,4 +37,9 @@ module ApplicationHelper
       link_to text, path
     end
   end
+  
+  def side_link(title, url, *options)
+    @view_menus = Array.new unless @view_menus
+    @view_menus.push :title => title, :url => url
+  end
 end

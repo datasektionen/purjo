@@ -1,5 +1,10 @@
-%h3 Administration
 #admin_links
+  - if @view_menus
+    %h3 Funktioner
+    %ul
+      - for link in @view_menus
+        %li= link_to link[:title], link[:url]
+  %h3 Administration
   %ul
     - if @posts or @news_posts
       %li= link_to 'Ny nyhet-/kalender-post', new_post_path
