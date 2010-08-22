@@ -26,11 +26,7 @@
       - if Person.current.editor?
         %td= link_to "Redigera", functionary
 - if Person.current.editor?
-  %p
-    = link_to 'Redigera funktionärsposter', chapter_posts_path
-    |
-    = link_to 'Tillbaka till funktionärer', functionaries_path
-    |
-    = link_to 'Redigera', edit_chapter_post_path(@chapter_post)
-    |
-    = link_to 'Ta bort', @chapter_post, :confirm => 'Är du säker?', :method => :delete
+  - side_link 'Till funktionärsposter', chapter_posts_path
+  - side_link 'Tillbaka till funktionärer', functionaries_path
+  - side_link 'Redigera funktionärsposten', edit_chapter_post_path(@chapter_post)
+  - side_link 'Ta bort funktionärsposten', @chapter_post, :confirm => 'Är du säker?', :method => :delete
