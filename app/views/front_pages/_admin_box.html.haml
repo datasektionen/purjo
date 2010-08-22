@@ -1,9 +1,9 @@
 #admin_links
   - if @view_menus
-    %h3 Funktioner
+    %h3 Länkar
     %ul
       - for link in @view_menus
-        %li= link_to link[:title], link[:url]
+        %li= get_side_link link
   %h3 Administration
   %ul
     - if @posts or @news_posts
