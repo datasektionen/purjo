@@ -21,7 +21,7 @@
         %em Vakantsatt
       - elsif functionary.person
         = link_to functionary.person.name, functionary.person
-    %td= functionary.chapter_post.slug
+    %td= link_to functionary.chapter_post.slug, contact_path(:slug => functionary.chapter_post.slug)
     %td= "<acronym title=\"#{functionary.active_from} till #{functionary.active_to}\">#{functionary.active_to}</acronym>".html_safe
     - if Person.current.editor?
       %td= link_to 'Redigera', edit_functionary_path(functionary)

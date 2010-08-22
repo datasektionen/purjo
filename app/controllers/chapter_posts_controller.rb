@@ -20,6 +20,7 @@ class ChapterPostsController < ApplicationController
   # GET /chapter_posts/1
   # GET /chapter_posts/1.xml
   def show
+    @menu_template = "sektionen"
     @chapter_post = ChapterPost.find(params[:id])
 
     respond_to do |format|

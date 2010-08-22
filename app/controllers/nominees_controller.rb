@@ -6,6 +6,7 @@ class NomineesController < ApplicationController
   # GET /nominees
   # GET /nominees.xml
   def index
+    @menu_template = "sektionen"
     if params[:election_event]
       @nominees = Nominee.find(:all, :conditions => { :election_event_id => params[:election_event]})
       @election_event = ElectionEvent.find(params[:election_event])
