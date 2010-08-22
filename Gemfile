@@ -20,6 +20,8 @@ gem 'exceptional'
 gem 'json_pure'
 gem 'liquid'
 gem 'mongrel'
+gem 'net-ldap'
+gem 'memcache-client'
 
 gem 'capistrano'
 gem 'capistrano-ext'

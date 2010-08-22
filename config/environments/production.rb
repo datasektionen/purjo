@@ -39,4 +39,7 @@ Purjo2::Application.configure do
 
   # Enable threaded mode
   # config.threadsafe!
+  
+  config.cache_store = :mem_cache_store
+  
 end

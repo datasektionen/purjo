@@ -8,7 +8,7 @@ xml.rss :version => "2.0" do
     @news_posts.each do |post|
       xml.item do 
         xml.title post.name
-        xml.description post.content
+        xml.description(textilize(post.content))
         
         xml.author post.created_by
         # Tue, 10 Jun 2003 04:00:00 GMT

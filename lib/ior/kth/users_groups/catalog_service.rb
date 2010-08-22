@@ -1,4 +1,5 @@
 require 'net/ldap'
+require 'ior/kth/users_groups/user'
 
 module Ior
   module KTH

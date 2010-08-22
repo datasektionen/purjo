@@ -1,3 +1,5 @@
+require 'ior/kth/users_groups/catalog_service'
+
 class Person < ActiveRecord::Base
   has_one :kth_account, :dependent => :destroy
   

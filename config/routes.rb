@@ -96,8 +96,7 @@ Rails.application.routes.draw do |map|
 
   map.resources :election_events
 
-  map.resources :chapter_posts
-
+  map.resources :chapter_posts, :as => "sektionen/funktionarsposter"
   map.resources :functionaries, :as => "sektionen/funktionarer"
 
   map.root :controller => 'front_pages', :action => 'show'

@@ -1,6 +1,6 @@
 class Post < ActiveRecord::Base
-  scope :news_posts, :conditions => ["news_post = ?", true], :order => 'sticky DESC'
-  scope :calendar_posts, :conditions => ["calendar_post = ?", true], :order => 'starts_at ASC'
+  scope :news_posts, where(:news_post =>  true).order(:created_at.desc)
+  scope :calendar_posts, where(:calendar_post => true)
   
   scope :for_month, lambda { |month, year|
     date = DateTime.civil(year, month)
@@ -19,8 +19,7 @@ class Post < ActiveRecord::Base
   }
   
   scope :newer_than, lambda { |time| where(['starts_at > ?', Time.now - time]) }
-  default_scope order(:created_at.desc)
-
+  
   acts_as_taggable_on :categories
   
   belongs_to :created_by, :class_name => 'Person'

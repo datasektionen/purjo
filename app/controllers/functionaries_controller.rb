@@ -5,6 +5,7 @@ class FunctionariesController < ApplicationController
   # GET /functionaries
   # GET /functionaries.xml
   def index
+    @menu_template = "sektionen"
     @functionaries = Functionary.find(:all, :conditions =>
         ["active_from <= ? and active_to >= ?", DateTime.now, DateTime.now]
     )
@@ -18,6 +19,7 @@ class FunctionariesController < ApplicationController
   # GET /functionaries/1
   # GET /functionaries/1.xml
   def show
+    @menu_template = "sektionen"
     @functionary = Functionary.find(params[:id])
 
     respond_to do |format|
