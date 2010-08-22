@@ -1,10 +1,11 @@
 #admin_links
+  %h3 Administration
   - if @view_menus
-    %h3 Länkar
     %ul
       - for link in @view_menus
         %li= get_side_link link
-  %h3 Administration
+    %ul
+      %li &nbsp;
   %ul
     - if @posts or @news_posts
       %li= link_to 'Ny nyhet-/kalender-post', new_post_path
