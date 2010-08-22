@@ -1,5 +1,6 @@
-- cache(post) do
-  .news-item[post]
+
+.news-item[post]
+  - cache(post) do
     %h2= link_to post, post
     %div.meta
       = link_to image_tag(post.created_by.gravatar_url, :class => "trigger thumb", :alt => "", :title => post.created_by), person_path(post.created_by)
