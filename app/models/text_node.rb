@@ -70,20 +70,20 @@ class TextNode < ActiveRecord::Base
 
     if !self.menu_items.empty?
       menu[:items][ menu[:levels] ] = self.menu_items
-      menu[:levels] = ++menu[:levels];
+      menu[:levels] = menu[:levels]+1
     end
 
     return menu
   end
 
-  def add_node_to_menu(node,title)
+  def add_node_to_menu(title,url)
     if !self.menu_items.empty?
       sort_order=self.menu_items.last.sort_order+1
     else
       sort_order=0
     end
 
-    return !MenuItem::create({:parent_id=>self.id,:text_node_id=>node.id,:title=>title,:sort_order=>sort_order}).nil?
+    return !MenuItem::create({:parent_id=>self.id,:url=>url,:title=>title,:sort_order=>sort_order}).nil?
   end
 
   protected

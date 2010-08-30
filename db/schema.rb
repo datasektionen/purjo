@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100830113901) do
+ActiveRecord::Schema.define(:version => 20100830204540) do
 
   create_table "articles", :force => true do |t|
     t.integer  "blog_id"
@@ -170,11 +170,11 @@ ActiveRecord::Schema.define(:version => 20100830113901) do
 
   create_table "menu_items", :force => true do |t|
     t.integer  "parent_id"
-    t.integer  "text_node_id"
     t.string   "title"
     t.integer  "sort_order"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "url"
   end
 
   create_table "morklaggnings", :force => true do |t|

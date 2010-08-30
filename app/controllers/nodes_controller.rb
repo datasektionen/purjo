@@ -6,7 +6,7 @@ class NodesController < ApplicationController
     raise ActiveRecord::RecordNotFound if @node.nil?
     
     if @node.is_a? TextNode
-      @menu_items=@node.menu
+      @menu_items=@node.menu[:items]
 
       begin
         render "text_nodes/show", :layout => @node.layout

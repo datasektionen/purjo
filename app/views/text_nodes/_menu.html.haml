@@ -1,2 +1,4 @@
 %ul
-  =menu
+  -menu_item.each do |m|
+    %li
+      =link_to m.title,m.url

@@ -1,4 +1,4 @@
 class MenuItem < ActiveRecord::Base
   belongs_to :text_node, :foreign_key => 'parent_id'
-  has_one :text_node 
+  belongs_to :text_node 
 end

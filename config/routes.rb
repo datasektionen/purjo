@@ -71,9 +71,10 @@ Rails.application.routes.draw do |map|
   end
 
   match '/text_nodes/:text_node_id/menu', :controller => 'TextNodeMenu', :action => 'update', :via => :put
-  match '/text_nodes/:text_node_id/menu', :controller => 'TextNodeMenu', :action => 'add', :via => :post
-  match '/text_nodes/:text_node_id/menu', :controller => 'TextNodeMenu', :action => 'delete', :via => :delete
+  match '/text_nodes/:text_node_id/menu', :controller => 'TextNodeMenu', :action => 'add',:via=>:post
+  match '/text_nodes/:text_node_id/menu/delete/:id', :controller => 'TextNodeMenu', :action => 'delete', :via => :delete
 
+  map.delete_text_node_menu '/text_nodes/:text_node_id/menu/delete/:id'
   map.edit_text_node_menu '/text_nodes/:text_node_id/menu', :controller => 'TextNodeMenu', :action => 'edit'
   
   match "/protocols/:filename", :to => "protocols#show", :as => 'protocol'
