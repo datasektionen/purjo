@@ -35,7 +35,7 @@
         %li= link_to('Ta bort sida', text_node_path(@node), :method => :delete, :confirm => "Detta kommer ta bort noden #{@node.url}(#{@node.name}). Är du säker på att detta verkligen är det du vill?")
       %li= link_to 'Ny undersida', new_text_node_child_path(@node)
       %li= link_to "Lista undersidor", text_node_children_path(@node)
-      %li= link_to "Redigera menu", edit_text_node_menu_path(@node)
+      %li= link_to "Redigera meny", edit_text_node_menu_path(@node)
       %li= link_to 'Ny fil', new_text_node_file_path(@node)
       %li= link_to "Lista filer", text_node_files_path(@node)
     %li= link_to "Alla sidor", text_node_children_path(Node.find_by_url("/"))
