@@ -1,0 +1,53 @@
+%h2 Nuvarande meny
+%span{:id=>"js_show",:style=>"display: none;"} Dra och släpp för att ordna om i listan
+
+= form_for :menu_item, @node, :html => {:method=>:put} do |f|
+  %ul{:id=>"menu_content"}
+    -f.object.menu_items.each do |m|
+      = f.fields_for "#{m.id}",m do |mf|
+        %li
+          = m.title
+          %span{:class=>"menu_edit_info js_hide"}
+            %span Sortering: 
+            = mf.text_field :sort_order, :class=>"order_input"
+
+    = f.submit "Spara ändringar"
+
+%h2 Alla sidor
+%div{:id=>"child_list"}
+  = render :partial => 'tree_item', :collection => @node.children, :locals=>{:node=>@node}
+
+
+%style{:type=> "text/css"}
+  :plain
+    #child_list form {
+      display: inline;
+    }
+    #menu_content {
+      width: 300px;
+      list-style: none;
+    }
+    #menu_content li {
+      margin-top: 3px;
+      margin-bottom: 3px;
+      -moz-border-radius: 5px;
+      background-color: #fff6bf;
+      border: 1px solid #ffd324;
+      color: #817134;
+      padding: 2px 4px;
+    }
+    .menu_edit_info {
+      float: right;
+    }
+    .menu_edit_info span{
+      font-size: 12px;
+      margin-right: 5px;
+      color: #a4924a;
+    }
+    .order_input {
+      width: 20px;
+      text-align: right;
+    }
+
+  
+

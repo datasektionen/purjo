@@ -76,6 +76,16 @@ class TextNode < ActiveRecord::Base
     return menu
   end
 
+  def add_node_to_menu(node,title)
+    if !self.menu_items.empty?
+      sort_order=self.menu_items.last.sort_order+1
+    else
+      sort_order=0
+    end
+
+    return !MenuItem::create({:parent_id=>self.id,:text_node_id=>node.id,:title=>title,:sort_order=>sort_order}).nil?
+  end
+
   protected
   
   def unique_url

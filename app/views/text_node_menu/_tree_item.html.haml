@@ -1,13 +1,9 @@
 %ul
   %li[tree_item]
     = link_to tree_item.name, tree_item.url
-    (
-    = link_to "Ny undersida", new_text_node_child_path(tree_item)
-    |
-    = link_to "Redigera", edit_text_node_path(tree_item)
-    - if Person.current.admin? && tree_item.deletable?
-      |
-      = link_to "Ta bort sida", delete_text_node_path(tree_item)
-    )
-      
-    = render :partial => 'tree_item', :collection => tree_item.children
+    -#= button_to "Lägg till i menyn", add_menu_item_to_text_node_menu_path(node,tree_item)
+    = form_tag '',{:method => 'post',:class=>'js_form'} do
+      = hidden_field_tag 'id', tree_item.id
+      = submit_tag "Lägg till i menyn"
+
+    = render :partial => 'tree_item', :collection => tree_item.children, :locals=>{:node=>node}
