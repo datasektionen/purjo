@@ -80,6 +80,9 @@
             .clear
             - if @menu_template
               = render :partial => "menus/#{@menu_template}"
+
+            - if @menu_items
+              = render :partial => "text_nodes/menu", :object=>@menu_items
             
             - if Person.current.editor?
               .admin= render :partial => "front_pages/admin_box"

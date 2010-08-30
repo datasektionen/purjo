@@ -6,15 +6,7 @@ class NodesController < ApplicationController
     raise ActiveRecord::RecordNotFound if @node.nil?
     
     if @node.is_a? TextNode
-      if params[:url][0] == "sektionen"
-        @menu_template = "sektionen"
-      elsif params[:url][0] == "naringsliv"
-        @menu_template = "naringsliv"
-      elsif params[:url][0] == "studier"
-        @menu_template = "studier"
-      elsif params[:url][0] == "kontakt"
-        @menu_template = "kontakt"
-      end
+      @menu_items=@node.menu
 
       begin
         render "text_nodes/show", :layout => @node.layout

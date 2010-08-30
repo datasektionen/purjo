@@ -9,6 +9,7 @@ class TextNode < ActiveRecord::Base
   acts_as_tree
   
   has_many :file_nodes, :foreign_key => 'parent_id'
+  has_many :menu_items, :foreign_key => 'parent_id', :order=>'sort_order'
 
   before_validation :update_url
   before_destroy :deletable?
@@ -42,7 +43,7 @@ class TextNode < ActiveRecord::Base
   
   def layout
     node = self
-    while node.parent != nil
+    while node.has_parent?
       if !node.custom_layout.blank?
         return node.custom_layout
       end
@@ -54,7 +55,27 @@ class TextNode < ActiveRecord::Base
   def deletable?
     children.empty? && parent.present?
   end
+
+  def has_parent?
+    !self.parent.nil?
+  end
   
+  #Returns the menu items for this node and all of it's parents
+  def menu
+    if self.has_parent?
+      menu = self.parent.menu
+    else
+      menu = {:levels=>0,:items=>Array.new}
+    end
+
+    if !self.menu_items.empty?
+      menu[:items][ menu[:levels] ] = self.menu_items
+      menu[:levels] = ++menu[:levels];
+    end
+
+    return menu
+  end
+
   protected
   
   def unique_url
