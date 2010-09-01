@@ -1,4 +1,3 @@
 %ul
   -menu_item.each do |m|
-    %li
-      =link_to m.title,m.url
+    -subnav_menu_item m.title, m.url

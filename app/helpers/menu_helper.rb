@@ -117,6 +117,18 @@ module MenuHelper
     end
     return true
   end
+
+  def subnav_menu_item(title,url)
+    if request.fullpath == url
+      haml_tag :li, :class=>"current" do
+        haml_concat link_to(title,url)
+      end
+    else
+      haml_tag :li do
+        haml_concat link_to(title,url)
+      end
+    end
+  end
   
   
   
