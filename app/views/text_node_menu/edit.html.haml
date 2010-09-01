@@ -1,109 +1,31 @@
+-javascript 'menu_edit'
 %h2
   Meny för 
   =@node.name
 
-- if !@node.menu_items.empty?
-  %span{:class=>"js_show",:style=>"display: none;"} Dra och släpp för att ordna om i listan
+%div{:id => "menu_edit"}
+  - if !@node.menu_items.empty?
+    %span{:class=>"js_show",:style=>"display: none;"} Dra och släpp för att ordna om i listan
 
-  = form_for :menu_item, @node,:url=>edit_text_node_menu_path(@node), :html => {:method=>:put} do |f|
-    %ul{:id=>"menu_content"}
-      -f.object.menu_items.each do |m|
-        = f.fields_for "#{m.id}",m do |mf|
-          %li
-            = mf.text_field  :title, :style=>"width: 150px"
-            %span{:class=>"menu_edit_url"}
-              Mål:
-              =m.url
-            %span{:class=>"menu_edit_info"} 
-              = link_to "Radera", delete_text_node_menu_path(@node,m.id), :method => :delete,:class=>"js_delete"
-              %span{:class=>"js_hide menu_edit_sort"}
-                %span Sortering: 
-                = mf.text_field :sort_order, :class=>"order_input"
-              
-    = f.submit "Spara ändringar"
-- else
-  Menyn är tom
-%h2 Alla sidor
-%div{:id=>"child_list"}
-  = render :partial => 'tree_item', :object=> [@node], :locals=>{:node=>@node}
+    = form_for :menu_item, @node,:url=>edit_text_node_menu_path(@node), :html => {:method=>:put} do |f|
+      %ul{:id=>"menu_content"}
+        -f.object.menu_items.each do |m|
+          = f.fields_for "#{m.id}",m do |mf|
+            %li
+              = mf.text_field  :title, :style=>"width: 150px"
+              %span{:class=>"menu_edit_url"}
+                Mål:
+                =m.url
+              %span{:class=>"menu_edit_info"} 
+                = link_to "Radera", delete_text_node_menu_path(@node,m.id), :method => :delete,:class=>"js_delete"
+                %span{:class=>"js_hide menu_edit_sort"}
+                  %span Sortering: 
+                  = mf.text_field :sort_order, :class=>"order_input"
+                
+      = f.submit "Spara ändringar"
+  - else
+    Menyn är tom
+  %h2 Alla sidor
+  %div{:id=>"child_list"}
+    = render :partial => 'tree_item', :object=> [@node], :locals=>{:node=>@node}
 
-
-%style{:type=> "text/css"}
-  :plain
-    #child_list {
-      width: 500px;
-    }
-
-    #child_list form {
-      display: inline;
-      float: right;
-    }
-
-    #menu_content {
-      width: 500px;
-      list-style: none;
-    }
-
-    #menu_content li {
-      margin-top: 3px;
-      margin-bottom: 3px;
-      -moz-border-radius: 5px;
-      background-color: #fff6bf;
-      border: 1px solid #ffd324;
-      color: #817134;
-      padding: 2px 4px;
-    }
-
-    .menu_edit_info {
-      float: right;
-    }
-
-    .menu_edit_info span,.menu_edit_url {
-      font-size: 12px;
-      color: #a4924a;
-    }
-
-    .menu_edit_info span {
-      margin-right: 5px;
-    }
-
-    .menu_edit_url {
-      margin-left: 20px;
-    }
-
-    .order_input {
-      width: 20px;
-      text-align: right;
-    }
-
-    .menu_edit_sort{
-      margin-left: 7px;
-    }
-
-:javascript
-  $(".js_show").show()
-  $(".js_hide").hide()
-  $("#menu_content").sortable({
-    update: update_list
-  });
-  function update_list() {
-      items=$("#menu_content > li > .menu_edit_info > .menu_edit_sort >input")
-      for(i=0;i<items.length;++i) {
-        items[i].value=i
-      }
-  }
-
-
--#$(".js_delete").click(function() {
--#  $.ajax({
--#  data: {ajax: 'true'},
--#  success: function(data,status,xhr,form) {
--#    if(data=="OK") {
--#      li=form.parent().parent()
--#      li.hide(1000, function() {
--#        $(this).remove()
--#        update_list()
--#      })
--#    }
--#  }
--# });
