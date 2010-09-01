@@ -84,6 +84,10 @@ div.subnav {
   font-size: 14px;
   text-align: right;
   line-height: 1.5;
+  
+  li.current {
+    font-weight: bold;
+  }
 
 }
 
