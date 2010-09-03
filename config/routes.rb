@@ -6,7 +6,7 @@ Rails.application.routes.draw do |map|
     resources :articles
   end
   
-  resources :committees
+  resources :committees, :as => 'namnder'
   
   resources :file_nodes
     
