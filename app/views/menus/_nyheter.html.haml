@@ -7,7 +7,7 @@
         - else
           %strong= link_to "Alla", root_path
         %span.dim= "(#{Post.count})"
-    - @tags.each do |tag|
+    - ActsAsTaggableOn::Tag.all.sort { |t1, t2| t2.taggings.count <=> t1.taggings.count }.reject {|t| t.taggings.count == 0 }.each do |tag|
       %li
         - if @active_tags and @active_tags.include? tag.to_s
           %strong= link_to tag, root_path(:tags => tag.name)
