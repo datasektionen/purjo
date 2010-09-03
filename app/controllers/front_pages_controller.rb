@@ -6,7 +6,6 @@ class FrontPagesController < ApplicationController
   def show
     @news_posts = Post.news_posts
     
-    @tags = ActsAsTaggableOn::Tag.all.sort { |t1, t2| t2.taggings.count <=> t1.taggings.count }.reject {|t| t.taggings.count == 0 }
     if params[:tags]
       @news_posts = @news_posts.tagged_with(params[:tags])
       @active_tags = ActsAsTaggableOn::TagList.from(params[:tags])
