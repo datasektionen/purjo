@@ -7,13 +7,11 @@ Rails.application.routes.draw do |map|
   end
   
   resources :committees, :as => 'namnder'
-  
-  resources :file_nodes
     
   get "/kontakt/:slug" => 'contact#index', :as => 'contact'
   post "/kontakt/:slug" => 'contact#send_mail'
   
-  resources :kth_accounts
+  resources :kth_accounts, :as => 'kth-konton'
   
   resources :morklaggnings, :as => 'morklaggning'
   
@@ -36,9 +34,9 @@ Rails.application.routes.draw do |map|
   map.xfinger_image 'people/xfinger_image/:uid', :controller=>'people',:action=>'xfinger_image'
   
   resources 'nyheter', :as => 'posts', :controller => 'posts' do
-    resources :noises
+    resources :noises, :as => 'kommentarer'
   end
-  resources :noises
+  resources :noises, :as => 'kommentarer'
   
   
   match "/sok", :to => 'search#index', :as => 'search'
@@ -55,6 +53,7 @@ Rails.application.routes.draw do |map|
   match '/sektionen/naringsliv', :controller => 'naringsliv', :action => 'index', :as => 'naringsliv_index'
   resources '/sektionen/naringsliv/jobb', :controller => 'job_ads', :as => 'job_ads', :except => [:show]
   
+  resources :file_nodes
   
   resources :text_nodes do
     resources :children, :controller => 'TextNodeChildren', :path_prefix => 'text_nodes/:node_id'
@@ -77,8 +76,8 @@ Rails.application.routes.draw do |map|
   map.delete_text_node_menu '/text_nodes/:text_node_id/menu/delete/:id'
   map.edit_text_node_menu '/text_nodes/:text_node_id/menu', :controller => 'TextNodeMenu', :action => 'edit'
   
-  match "/protocols/:filename", :to => "protocols#show", :as => 'protocol'
-  match "/protocols", :to => "protocols#index", :as => 'protocols'
+  match "/protokoll/:filename", :to => "protocols#show", :as => 'protocol'
+  match "/protokoll", :to => "protocols#index", :as => 'protocols'
   
   root :to => 'front_pages#show'
   match '/rss', :to => 'front_pages#rss'
