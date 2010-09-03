@@ -5,4 +5,7 @@
     = form.input :newsletter, :as => :boolean, :label => 'Nyhetsbrev', :input_html => {:disabled => true}, :hint => 'Din nyhetsbrevsprenumeration är på väg att läggas in i systemet, men detta kan ta några minuter!'
   - else
     = form.input :newsletter, :as => :boolean, :label => 'Nyhetsbrev'
+
   = form.submit
+  ~ " | "
+  = link_to "Tillbaka", person_path(@person)

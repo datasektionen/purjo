@@ -1,16 +1,12 @@
 form {
   label { margin-top: 8px; }
 
-  .boolean {
-    margin-top: 20px;
-    margin-bottom: 20px;
-  }
-
   .radio, .check_boxes, .select {
     position: relative;
     font-size: 1em; 
   }
 
+  label.boolean { margin-right: 10px; }
   
   .radio label,
   .check_boxes label,
@@ -34,6 +30,8 @@ form {
     font-weight: normal;
     width: auto;
   }
+
+  .boolean .hint { color: #555; font-style: italic; }
   
   .radio .hint,
   .check_boxes .hint,

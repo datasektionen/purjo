@@ -6,7 +6,7 @@ Rails.application.routes.draw do |map|
     resources :articles
   end
   
-  resources 'namnder', :as => 'committees', :controller => 'committees'
+  resources :namnder, :as => 'committees', :controller => 'committees'
     
   get "/kontakt/:slug" => 'contact#index', :as => 'contact'
   post "/kontakt/:slug" => 'contact#send_mail'
@@ -24,8 +24,8 @@ Rails.application.routes.draw do |map|
   
   
   
-  resources :people do
-    resource :settings, :controller => 'user_settings', :as => 'user_settings'
+  resources :personer, :as => 'people', :controller => 'people' do
+    resource :installningar, :controller => 'user_settings', :as => 'user_settings'
     member do
       get :xfinger
     end
@@ -33,10 +33,10 @@ Rails.application.routes.draw do |map|
 
   map.xfinger_image 'people/xfinger_image/:uid', :controller=>'people',:action=>'xfinger_image'
   
-  resources 'nyheter', :as => 'posts', :controller => 'posts' do
-    resources 'kommentarer', :as => 'noises', :controller => 'noises'
+  resources :nyheter, :as => 'posts', :controller => 'posts' do
+    resources :kommentarer, :as => 'noises', :controller => 'noises'
   end
-  resources 'kommentarer', :as => 'noises', :controller => 'noises'
+  resources :kommentarer, :as => 'noises', :controller => 'noises'
   
   match "/sok", :to => 'search#index', :as => 'search'
   

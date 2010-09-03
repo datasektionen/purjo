@@ -4,6 +4,7 @@ class UserSettingsController < ApplicationController
   
   def show
     @user_settings = @person.user_settings
+    render :action => 'edit'
   end
   
   def create
@@ -12,14 +13,11 @@ class UserSettingsController < ApplicationController
     redirect_to 
   end
   
-  def edit
-    @user_settings = @person.user_settings
-  end
-  
   def update
     @user_settings = @person.user_settings
     @user_settings.update_attributes(params[:user_settings])
     @user_settings.save!
+    redirect_to :action => 'show'
   end
   
   private
