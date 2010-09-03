@@ -6,12 +6,12 @@ Rails.application.routes.draw do |map|
     resources :articles
   end
   
-  resources :committees, :as => 'namnder'
+  resources 'namnder', :as => 'committees', :controller => 'committees'
     
   get "/kontakt/:slug" => 'contact#index', :as => 'contact'
   post "/kontakt/:slug" => 'contact#send_mail'
   
-  resources :kth_accounts, :as => 'kth-konton'
+  resources 'kth-konton', :as => 'kth_accounts', :controller => 'kth_accounts'
   
   resources :morklaggnings, :as => 'morklaggning'
   
@@ -34,10 +34,9 @@ Rails.application.routes.draw do |map|
   map.xfinger_image 'people/xfinger_image/:uid', :controller=>'people',:action=>'xfinger_image'
   
   resources 'nyheter', :as => 'posts', :controller => 'posts' do
-    resources :noises, :as => 'kommentarer'
+    resources 'kommentarer', :as => 'noises', :controller => 'noises'
   end
-  resources :noises, :as => 'kommentarer'
-  
+  resources 'kommentarer', :as => 'noises', :controller => 'noises'
   
   match "/sok", :to => 'search#index', :as => 'search'
   
