@@ -6,7 +6,12 @@ class ContactMail < ActiveRecord::BaseWithoutTable
   column :email, :string
   column :message, :text
 
-  validates_presence_of :name, :email, :message
+  attr_writer :subject
+  def subject
+    @subject || "Meddelande via hemsidan"
+  end
+
+  validates_presence_of :name, :email, :subject, :message
   validates_format_of :email,
     :with => /\A[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\Z/i
 

@@ -182,6 +182,7 @@
       contact_mail:
         name: Avsändarens namn
         email: Avsändarens email-adress
+        subject: Ämne
         message: Meddelande
         
       person:
