@@ -23,8 +23,7 @@ module Ior
           end
           
           output += "SUMMARY:#{post.name}\n"
-          output += "DESCRIPTION:#{textilize(post.content).gsub("\n", "\\n").html_safe}\n"
-          #output += "DESCRIPTION:#{post.content_plain.gsub("\n", "\\n")}\n"
+          output += "DESCRIPTION:#{post.content.gsub("\\", "\\\\").gsub("\n", "\\n").gsub(";", "\\;").gsub(",", "\\,")}\n"
           output += "END:VEVENT\n"
         end
         
