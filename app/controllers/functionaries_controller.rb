@@ -6,9 +6,7 @@ class FunctionariesController < ApplicationController
   # GET /functionaries.xml
   def index
     @menu_items=TextNode.find_by_url("/sektionen").menu[:items]
-    @functionaries = Functionary.find(:all, :conditions =>
-        ["active_from <= ? and active_to >= ?", DateTime.now, DateTime.now]
-    )
+    @functionaries = Functionary.active.joins(:chapter_post).order("chapter_posts.name")
 
     respond_to do |format|
       format.html # index.html.erb
