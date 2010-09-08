@@ -1,5 +1,5 @@
 set :stages, %w(staging production)
-#set :default_stage, "staging"
+set :default_stage, "staging"
 require 'capistrano/ext/multistage'
 
 # Not needed on new server?
