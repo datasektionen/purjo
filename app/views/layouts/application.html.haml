@@ -20,24 +20,6 @@
     -#!= '<meta property="og:url" content="http://www.d.kth.se/foo"/>'
     -#!= '<meta property="og:image" content="http://ia.media-imdb.com/rock.jpg"/>'
   %body
-    #fb-root
-    :javascript
-      window.fbAsyncInit = function() {
-        FB.init({
-          appId  : '131161626900092',
-          status : true, // check login status
-          cookie : true, // enable cookies to allow the server to access the session
-          xfbml  : true  // parse XFBML
-        });
-      };
-
-      (function() {
-        var e = document.createElement('script');
-        e.src = document.location.protocol + '//connect.facebook.net/sv_SE/all.js';
-        e.async = true;
-        document.getElementById('fb-root').appendChild(e);
-      }());
-      
     #wrapper
       #main
         .top
