@@ -129,23 +129,8 @@ blockquote {
 
 .events {
   .event {
-    .icon {
-      width: 24px;
-      height: 24px;
-      float: left;
-      margin-top: 0px;
-      margin-right: 5px;
-      margin-bottom: 5px;
-      background-repeat: no-repeat;
-    }
-    
-    .icon.esc {
-      background-image: url(/images/icons/Bookmarks.png);
-    }
-    
-    .icon.inspiration {
-      background-image: url(/images/lightbulb.png);
-    }
+		padding-left: 26px;
+		background: url(/images/icons/Bookmarks.png) no-repeat 0 0;
     
     .description {
       margin-bottom: 0px;
@@ -153,11 +138,12 @@ blockquote {
     
     .time {
       font-style: italic;
-      margin-left: 29px;
-      margin-top: 0px;
-      margin-bottom: 0px;
+      margin: 0px;
     }
   }
+	.event.inspiration {
+		background-image: url(/images/lightbulb.png);
+	}
 }
 
 .justify {
