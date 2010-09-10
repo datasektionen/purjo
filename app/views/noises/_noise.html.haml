@@ -16,7 +16,7 @@
         %h3= noise.person
         - if noise.person.functionaries.present?
           %p
-            = noise.person.functionaries.active.map { |f| link_to f.chapter_post.name, contact_path(f.chapter_post.slug) }.to_sentence
+            != noise.person.functionaries.active.map { |f| link_to f.chapter_post.name, contact_path(f.chapter_post.slug) }.to_sentence
       .clear &nbsp;
 
   .message
