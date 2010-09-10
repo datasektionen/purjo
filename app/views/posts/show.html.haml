@@ -39,7 +39,7 @@
     - if Person.current.anonymous?
       %p 
         Du måste vara 
-        = link_to "inloggad",  new_sessions_path(:return_url => current_url)
+        = link_to "inloggad", new_sessions_path(:return_url => current_url)
         för att kommentera! 
       
     - else

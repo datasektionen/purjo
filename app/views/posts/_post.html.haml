@@ -20,14 +20,14 @@
 
   = textilize(post.content).html_safe
 
-%p.foot
-  - if Person.current.editor?
-    = link_to 'Redigera', edit_post_path(post), :class => "edit"
-    = link_to 'Ta bort', post, :method => :delete, :confirm => 'Är du säker på att du vill ta bort den här nyheten?', :class => "delete"
+  %p.foot
+    - if Person.current.editor?
+      = link_to 'Redigera', edit_post_path(post), :class => "edit"
+      = link_to 'Ta bort', post, :method => :delete, :confirm => 'Är du säker på att du vill ta bort den här nyheten?', :class => "delete"
 
-  - comment_title = post.has_comments? ? post.comment_count.to_s + " kommentar" : "Kommentera"
-  - comment_title << "er" if post.comment_count > 1
-  = link_to comment_title, post, :class => "comments"
+    - comment_title = post.has_comments? ? post.comment_count.to_s + " kommentar" : "Kommentera"
+    - comment_title << "er" if post.comment_count > 1
+    = link_to comment_title, post, :class => "comments"
 
-  %iframe{ :class => "fb-like tiny", :src => "http://www.facebook.com/plugins/like.php?href=#{CGI::escape post_url(post)}&amp;layout=button_count&amp;show_faces=false&amp;width=100&amp;height=20&amp;action=like&amp;colorscheme=light&amp;locale=sv_SE", :scrolling => "no", :frameborder => "0", :allowTransparency => "true" }
+    %iframe{ :class => "fb-like tiny", :src => "http://www.facebook.com/plugins/like.php?href=#{CGI::escape post_url(post)}&amp;layout=button_count&amp;show_faces=false&amp;width=100&amp;height=20&amp;action=like&amp;colorscheme=light&amp;locale=sv_SE", :scrolling => "no", :frameborder => "0", :allowTransparency => "true" }
 
