@@ -24,6 +24,10 @@ if Object.const_defined?(:Refraction)
     if req.path =~ %r{^/mottagningen(/(.*))?$}
       req.found!("/sektionen/mottagningen/#{$2}")
     end
+
+    if req.path =~ %r{^/dkm(/(.*))?$}
+      req.found!("/sektionen/dkm/#{$2}")
+    end
     
     if req.path =~ %r{/sektionen/namnder/naringsliv/ddagen/}
       req.permanent!("/naringsliv/d-dagen")
