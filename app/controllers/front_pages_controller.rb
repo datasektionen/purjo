@@ -22,7 +22,7 @@ class FrontPagesController < ApplicationController
       :group => 'tags.id'
     )
     @tags.sort! { |t1, t2| t2.tag_count <=> t1.tag_count }
-    @tags.reject! {|t| t.tag_count == 0 }
+    @tags = @tags.reject {|t| t.tag_count == 0 }
 
     now = Time.now
     @current_calendar_posts = Post.calendar_posts.between(
