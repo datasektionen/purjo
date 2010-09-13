@@ -202,8 +202,16 @@
       user_settings:
         newsletter: Nyhetsbrevssektion
       post:
+        name: Namn
+        content: Innehåll
         news_post: Nyhet
         calendar_post: Kalender
+        starts_at: Startar
+        ends_at: Slutar
+        all_day: Hela dagen
+        sticky: Sticky
+      noise:
+        message: Meddelande
 
     # Translate model attribute names. Used in Model.human_attribute_name(attribute).
     #attributes:
@@ -294,8 +302,13 @@
         create: Skicka testutskick
       user_settings:
         create: Spara inställningar
+        update: Spara inställningar
+      post:
+        create: Spara
+        update: Uppdatera
       noise:
         create: Kommentera
+        update: Uppdatera
   search:
     text_node: Sidor
     post: Nyhets- och kalenderinlägg

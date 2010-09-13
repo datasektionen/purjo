@@ -1,6 +1,9 @@
 .comment{ :id => "comment-" + noise.id.to_s }
   %div.meta
-    = link_to 'Redigera', edit_noise_path(noise), :class => "edit"
+    - if noise.editable? or Person.current.editor?
+      = link_to('Redigera', edit_noise_path(noise), :class => "edit")
+      %span.sep!= "&nbsp;|&nbsp;"
+      = link_to 'Ta bort', noise, :method => :delete, :confirm => 'Är du säker på att du vill ta bort den här kommentaren?', :class => "delete"
     = link_to image_tag(noise.person.gravatar_url, :class => "trigger thumb", :alt => "", :title => noise.person), person_path(noise.person)
     = link_to noise.person.try(:name), person_path(noise.person), :class => "author"
 

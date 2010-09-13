@@ -69,7 +69,7 @@
   .comment {
     margin: 5px 0 15px;
     .meta { margin-bottom: 5px; }
-    .edit {
+    .edit, .delete, .sep {
       float: right;
       font-style: normal;
     }
