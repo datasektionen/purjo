@@ -45,7 +45,7 @@
     - else
       %h3 Kommentera
     
-      = simple_form_for([@post, Noise.new]) do |form|
+      = simple_form_for([@post, @noise]) do |form|
         = form.input :message, :label => false
         = form.button :submit
 

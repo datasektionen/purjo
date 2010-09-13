@@ -106,6 +106,7 @@ Rails.application.routes.draw do |map|
 
   map.root :controller => 'front_pages', :action => 'show'
 
-  map.connect "*url", :controller => 'nodes', :action => 'show'
+  map.connect "*url", :controller => 'nodes', :action => 'show',
+    :constraints => { :url => /^\/(?!stylesheets|javascripts)/ }
 
 end

@@ -5,6 +5,7 @@ class PostsController < ApplicationController
   # GET /posts/1
   def show
     @post = Post.find(params[:id])
+    @noise = Noise.new(params[:noise])
   end
 
   # GET /posts/new

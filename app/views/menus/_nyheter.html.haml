@@ -1,16 +1,15 @@
-- cache("front_pages/tag_list") do 
-  %ul
-    %li 
-      %span
-        - if params[:tags]
-          %span= link_to "Alla", root_path
-        - else
-          %strong= link_to "Alla", root_path
-        %span.dim= "(#{Post.count})"
-    - ActsAsTaggableOn::Tag.all.sort { |t1, t2| t2.taggings.count <=> t1.taggings.count }.reject {|t| t.taggings.count == 0 }.each do |tag|
-      %li
-        - if @active_tags and @active_tags.include? tag.to_s
-          %strong= link_to tag, root_path(:tags => tag.name)
-        - else
-          %span= link_to tag, root_path(:tags => tag.name)
-        %span.dim= "(#{tag.taggings.count})"
+%ul
+  %li 
+    %span
+      - if params[:tags]
+        %span= link_to "Alla", root_path
+      - else
+        %strong= link_to "Alla", root_path
+      %span.dim= "(#{Post.count})"
+  - ActsAsTaggableOn::Tag.all.sort { |t1, t2| t2.taggings.count <=> t1.taggings.count }.reject {|t| t.taggings.count == 0 }.each do |tag|
+    %li
+      - if @active_tags and @active_tags.include? tag.to_s
+        %strong= link_to tag, root_path(:tags => tag.name)
+      - else
+        %span= link_to tag, root_path(:tags => tag.name)
+      %span.dim= "(#{tag.taggings.count})"
