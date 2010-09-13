@@ -15,6 +15,15 @@ class FrontPagesController < ApplicationController
 
     @menu_template = "nyheter"
 
+    # tag list and tag count in one query
+    @tags = ActsAsTaggableOn::Tag.find(:all,
+      :select => 'tags.*, count(taggings.id) as tag_count',
+      :joins => 'left outer join taggings on tags.id = taggings.tag_id',
+      :group => 'tags.id'
+    )
+    @tags.sort! { |t1, t2| t2.tag_count <=> t1.tag_count }
+    @tags.reject! {|t| t.tag_count == 0 }
+
     now = Time.now
     @current_calendar_posts = Post.calendar_posts.between(
       now.beginning_of_day,
