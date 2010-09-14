@@ -27,4 +27,5 @@ public/stylesheets/menu_edit.css
 app/views/twitter/twitter.rss
 solr
 config/my_user.yml
+app/views/twitter/twitter.rss
 
