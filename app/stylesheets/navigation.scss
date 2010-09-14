@@ -80,21 +80,21 @@ div.subnav {
   @include unstyled-list;
   margin-top: 80px;
   color: #222;
-  font-family: 'Helvetica', arial, sans-serif;
   font-size: 14px;
   text-align: right;
   line-height: 1.5;
   
-  li.current {
+  .current {
     font-weight: bold;
   }
 
+  #admin_menu ul {
+    margin-bottom: 5px;
+  }
 }
 
 div.info_box {
   @include unstyled-list;
-  
-  font-family: 'Helvetica', arial, sans-serif;
   margin: 0px;
   margin-left:10px;
   text-align:left;

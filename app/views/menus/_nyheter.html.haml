@@ -1,4 +1,4 @@
-- cache("front_pages/tag_list") do 
+- (cache('front_pages/tag_list') if !@active_tags) do
   %ul
     %li 
       %span
@@ -13,4 +13,4 @@
           %strong= link_to tag, root_path(:tags => tag.name)
         - else
           %span= link_to tag, root_path(:tags => tag.name)
-        %span.dim= "(#{tag.taggings.count})"
+        %span.dim= "(#{tag.count})"

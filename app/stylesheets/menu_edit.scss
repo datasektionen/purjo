@@ -1,9 +1,12 @@
 #menu_edit {
 	 #child_list {
 		 width: 500px;
+     li { border-top: 1px solid #bbb; }
 		 form {
+       margin: 0;
 			 display: inline;
 			 float: right;
+       input { font-size: 12px; font-weight: normal; padding: 1px 2px; margin: 0; }
 		 }
 	 }
 
@@ -12,6 +15,7 @@
 		 list-style: none;
 		 
 		 li {
+       cursor: move;
 			 margin-top: 3px;
 			 margin-bottom: 3px;
 			 -moz-border-radius: 5px;
