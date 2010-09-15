@@ -56,21 +56,13 @@ form {
   }
   
   .string label,
-  .string .hint,
   .date label,
-  .date .hint,
   .text label,
-  .text .hint,
   .password label,
-  .password .hint,
   .file label,
-  .file .hint,
   .integer label,
-  .integer .hint,
   .url label,
-  .url .hint,
-  .email label,
-  .email .hint {
+  .email label {
     margin-right: 20px;
     float: left;
     clear: left;
@@ -86,9 +78,8 @@ form {
   .integer .hint,
   .url .hint,
   .email .hint {
-    font-weight: normal;
+    display: block;
     color: #999999;
-    width: 400px;
   }
   
   .string input, .date input, .text input, .password input,
@@ -101,6 +92,8 @@ form {
     padding: 4px 3px;
     width: 400px;
   }
+
+  label.datetime { margin-right: 6px; }
 }
 
 .field_with_errors {
@@ -118,4 +111,6 @@ form.post, form.text_node {
     width: 700px;
     height: 400px;
   }
+  .calendar_data { margin-top: 10px; }
 }
+

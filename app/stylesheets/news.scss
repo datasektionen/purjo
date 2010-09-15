@@ -94,10 +94,9 @@
 }
 
 .tags {
+  overflow: auto;
   .tag {
-    margin-top: 2px;
-    margin-bottom: 2px;
-    margin-right: 5px;
+    margin: 2px 5px 2px 0;
     float: left;
     border-radius: 5px;
     -webkit-border-radius: 5px;
@@ -108,7 +107,6 @@
     color: white;
     background-color: #393939;
     line-height: 15px;
-
     a, a:visited { color: white; }
   }
 }

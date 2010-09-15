@@ -76,4 +76,8 @@ class Post < ActiveRecord::Base
     self.save
   end
 
+  def categories_new
+    ''
+  end
+
 end
