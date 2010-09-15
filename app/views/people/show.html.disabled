@@ -14,6 +14,16 @@
     <%= link_to @person.email, "mailto:#{@person.email}" %>
   </p>
 
+  <p>
+    <% if Person.current.admin? or Person.current.id == @person.id %>
+      <%= link_to 'Inställningar', person_user_settings_path(@person) %> | 
+      <%= link_to 'Redigera', edit_person_path(@person) %>
+    <% end %>
+    <% if Person.current.admin? %>
+      | <%= link_to 'Tillbaka', people_path %>
+    <% end -%>
+  </p>
+
   <table>
     <tr>
       <td><b>Startår:</b></td>
@@ -67,14 +77,6 @@
   <h4>Xfinger</h4>
   <div class="xfinger"><%= image_tag xfinger_path(@person.username_nada), :width=>266, :alt => "Ingen bild" %></div>
 
-<% end -%>
-
-<% if Person.current.admin? or Person.current.id == @person.id %>
-  <%= link_to 'Inställningar', person_user_settings_path(@person) %> | 
-  <%= link_to 'Redigera', edit_person_path(@person) %>
-<% end %>
-<% if Person.current.admin? %>
-  | <%= link_to 'Tillbaka', people_path %>
 <% end -%>
 
 <% if @person.functionaries.size > 0 %>
