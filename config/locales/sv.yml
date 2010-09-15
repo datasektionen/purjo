@@ -212,6 +212,12 @@
         sticky: Sticky
       noise:
         message: Meddelande
+      text_node:
+        name: Namn
+        title: Titel
+        custom_layout: Layout
+        contents: Innehåll
+        additional_content: Kompletterande innehåll
 
     # Translate model attribute names. Used in Model.human_attribute_name(attribute).
     #attributes:
@@ -296,16 +302,13 @@
         newsletter: Nyhetsbrev
   helpers:
     submit:
-      create: "Skapa %{model}"
-      update: "Spara %{model}"
+      create: "Skapa"
+      update: "Uppdatera"
       test_delivery: 
         create: Skicka testutskick
       user_settings:
         create: Spara inställningar
         update: Spara inställningar
-      post:
-        create: Spara
-        update: Uppdatera
       noise:
         create: Kommentera
         update: Uppdatera
