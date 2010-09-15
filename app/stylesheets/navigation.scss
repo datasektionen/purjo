@@ -18,13 +18,13 @@ div.header {
   -moz-box-shadow: 0px 3px 3px #d7d7d7;
 
   input#search {
-    padding: 5px 0px;
-    margin-top: 30px;
+    padding: 5px 3px;
+    margin-top: 25px;
     font-size: 14px;
     width: 200px;
-    -webkit-appearance: textfield;
-    -moz-appearance: textfield;
   }
+  input#search.active { color: black; }
+  input#search.inactive { color: #bbb; }
   
   h1 {
     font-family: 'Yanone Kaffeesatz', arial, serif;
@@ -37,9 +37,7 @@ div.header {
     padding: 8px 0px 28px 0px;
 
     li {
-      font-family: 'Helvetica';
       font-size: 15px;
-      
       list-style-type: none;
       margin-right: 40px;
       float: left;
