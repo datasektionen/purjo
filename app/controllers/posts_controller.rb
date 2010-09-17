@@ -77,7 +77,7 @@ class PostsController < ApplicationController
   def process_category_list
     # Category/tag list generation
     return if !params.include?(:post)
-    categories = params[:post][:categories].join(',')
+    categories = params[:post][:categories].join(',') unless params[:post][:categories].nil?
     params[:post].delete(:categories);
     if !params[:post][:categories_new].empty?
       categories << ',' + params[:post][:categories_new]
