@@ -11,5 +11,7 @@
   = "#{@functionary.active_from} till #{@functionary.active_to}"
 
 = link_to 'Tillbaka till funktionärsposter', functionaries_path
+!= "&nbsp;|&nbsp;"
 = link_to 'Redigera', edit_functionary_path(@functionary)
-= link_to 'Ta bort', functionary_path, :confirm => 'Are you sure?', :method => :delete
+!= "&nbsp;|&nbsp;"
+= link_to 'Ta bort', functionary_path, :confirm => 'Är du säker på att du vill ta bort funktionärsposten?', :method => :delete

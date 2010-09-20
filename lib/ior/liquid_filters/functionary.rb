@@ -15,7 +15,7 @@ module Ior
         
         return "Ingen på posten" if functionaries.empty?
         
-        functionaries.map {|f| f.person.name }.to_sentence
+        functionaries.collect {|f| f.person.try :name }.to_sentence
       end
     end
   end
