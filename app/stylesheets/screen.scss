@@ -220,3 +220,8 @@ div.notification {
   float: right;
   margin-top: 10px;
 }
+
+.pagination {
+  em { font-style: normal; font-weight: bold; }
+  em, a, span { margin-right: 4px; }
+}
