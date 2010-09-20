@@ -4,10 +4,6 @@ class NewsletterSectionsController < InheritedResources::Base
   
   belongs_to :newsletter
 
-  def index
-    redirect_to newsletter_path(@newsletter)
-  end
-
   def update
     update! { newsletter_path(@newsletter) }
   end
