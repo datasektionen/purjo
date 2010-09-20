@@ -5,7 +5,7 @@
     = link_to section.title, edit_newsletter_newsletter_section_path(@newsletter, section)
     = link_to '(Ta bort)', newsletter_newsletter_section_path(@newsletter, section), :method => :delete, :confirm => 'Är du säker på att du vill ta bort den här sektionen?', :class => "delete"
   
-  %p= section.body
+  %p= simple_format(section.body)
 
 %p.actions
   = link_to t('.add_section'), new_newsletter_newsletter_section_path(@newsletter)
