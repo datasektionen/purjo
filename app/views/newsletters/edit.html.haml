@@ -1,4 +1,6 @@
 %h2 Redigera nyhetsbrev
 
+%p= link_to 'Ta bort', @newsletter, :method => :delete, :confirm => 'Är du säker på att du vill ta bort det här nyhetsbrevet?', :class => "delete"
+
 = render :partial => 'form'
 
