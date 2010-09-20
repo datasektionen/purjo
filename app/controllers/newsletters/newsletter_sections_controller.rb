@@ -11,4 +11,8 @@ class NewsletterSectionsController < InheritedResources::Base
   def create
     create! { newsletter_path(@newsletter) }
   end
+
+  def delete
+    delete! { newsletter_path(@newsletter) }
+  end
 end
