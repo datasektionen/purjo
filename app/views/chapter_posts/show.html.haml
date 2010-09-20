@@ -1,3 +1,4 @@
+
 %h2= @chapter_post.name
 %p
   %em= @chapter_post.description
@@ -16,7 +17,7 @@
     %th Person
     %th Från
     %th Till
-  - for functionary in @chapter_post.functionaries
+  - for functionary in @chapter_post.functionaries.order(:active_to.desc)
     %tr
       %td= link_to_if(!functionary.postponed, functionary.person_or_postponed, person_path(functionary.person))
       %td= functionary.active_from
