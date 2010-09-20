@@ -1,5 +1,5 @@
 class NewsletterSectionsController < InheritedResources::Base
-  require_role :admin, :only => [:delete]
+  require_role :admin, :only => [:destroy]
   require_role :editor
   
   belongs_to :newsletter
@@ -12,7 +12,7 @@ class NewsletterSectionsController < InheritedResources::Base
     create! { newsletter_path(@newsletter) }
   end
 
-  def delete
-    delete! { newsletter_path(@newsletter) }
+  def destroy
+    destroy! { newsletter_path(@newsletter) }
   end
 end
