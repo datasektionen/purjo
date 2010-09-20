@@ -11,7 +11,7 @@ module Ior
         headers = ["Måndag", "Tisdag", "Onsdag", "Torsdag", "Fredag", "Lördag", "Söndag"]
         time = Time.utc(@year, @month).beginning_of_week
       
-        output = "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"calendar\">\n"
+        output = "<table cellpadding=\"0\" cellspacing=\"0\" class=\"calendar\">\n"
         
         
         output += "<thead>\n"
@@ -61,7 +61,7 @@ module Ior
                                                 (p.starts_at <= time.beginning_of_day && p.ends_at >= time.end_of_day) ||
                                                 (p.ends_at >= time.beginning_of_day && p.ends_at <= time.end_of_day) }
           posts_this_day.each { |p|
-            output += "<a href=\"/nyheter/#{p.id}\">#{p.to_s}</a><br>\n"
+            output += "<a href=\"/nyheter/#{p.id}\">#{p.to_s}</a>\n"
           }
             
           output += "</td>\n"
