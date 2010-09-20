@@ -15,14 +15,12 @@ Rails.application.routes.draw do |map|
   
   resources :morklaggnings, :as => 'morklaggning'
   
-  resources :newsletters do
-    resources :newsletter_sections
+  resources :nyhetsbrev, :as => 'newsletters', :controller => 'newsletters' do
+    resources :sektion, :as => 'newsletter_sections', :controller => 'newsletter_sections'
     resource :test_delivery
     resource :live_delivery
   end
   match "/newsletters/hook/:secret", :to => 'newsletter_hooks#mailchimp_endpoint', :via => [:post, :get]
-  
-  
   
   resources :personer, :as => 'people', :controller => 'people' do
     resource :installningar, :controller => 'user_settings', :as => 'user_settings'

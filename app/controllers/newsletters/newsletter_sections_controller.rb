@@ -1,4 +1,5 @@
 class NewsletterSectionsController < InheritedResources::Base
+  require_role :admin, :only => [:delete]
   require_role :editor
   
   belongs_to :newsletter
