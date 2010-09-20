@@ -95,7 +95,8 @@ Rails.application.routes.draw do |map|
   map.schema '/schema/proxy.:format', :controller => 'schema', :action => 'proxy'
   map.schema '/schema/:year', :controller => 'schema', :action => 'index', :year => 'D1'
 
-  resources '/sektionen/val', :as => 'nominees', :controller => 'nominees'
+  resources '/sektionen/val', :as => 'nominees', :controller => 'nominees',
+    :constraints => { :id => /\d+/ }
 
   map.resources :election_events
 
@@ -104,7 +105,7 @@ Rails.application.routes.draw do |map|
 
   map.root :controller => 'front_pages', :action => 'show'
 
-  map.connect "*url", :controller => 'nodes', :action => 'show',
+  match "*url", :controller => 'nodes', :action => 'show',
     :constraints => { :url => /^\/(?!stylesheets|javascripts)/ }
 
 end
