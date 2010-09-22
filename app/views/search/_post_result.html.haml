@@ -4,9 +4,9 @@
 
 %p.meta.date
   %span publicerad den 
-  = l post.created_at, :format => "%e %b %Y"
+  = l result.created_at, :format => "%e %b %Y"
   %span klockan 
-  = l post.created_at, :format => "%H:%M"
+  = l result.created_at, :format => "%H:%M"
 
 - if result.calendar_post?
   %p.meta.duration
