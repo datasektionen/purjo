@@ -80,12 +80,17 @@ class ElectionEventsController < ApplicationController
   def destroy
     @election_event = ElectionEvent.find(params[:id])
     @nominees = Nominee.find(:all, :conditions => { :election_event_id => params[:id]})
-    if false #@nominees.empty?          !FUNKAAAAA
-      @election_event.destroy
-      redirect_to(election_events_url)
-    else
-      flash[:notice] = 'Du kan inte ta bort ett valtillfälle med nomineringar.'
-      redirect_to(election_events_url)
-    end    
+    
+    respond_to do |format|
+      if @nominees.empty?
+        flash[:notice] = 'Valtillfället är borttaget.'
+        @election_event.destroy
+        format.html { redirect_to(election_events_path) }
+      else
+        flash[:notice] = 'Du kan inte ta bort ett valtillfälle med nomineringar.'
+        format.html { redirect_to(@election_event) }
+      end
+    end
+
   end
 end
