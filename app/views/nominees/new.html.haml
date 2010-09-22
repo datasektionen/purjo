@@ -2,6 +2,9 @@
 - form_for(@nominee) do |f|
   = render :partial => 'form', :locals => { :f => f }
   %p
-    = f.submit "Create"
+    = f.submit "Skapa"
 
-= link_to 'Back', nominees_path
+%div.notification
+  %p
+    För att lista poster som inte har några kandidater, skapa
+    en nominering där du lämnar användarnamnet tomt.

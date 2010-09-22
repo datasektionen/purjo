@@ -4,6 +4,6 @@
   %p
     = f.submit "Update"
 
-= link_to 'Show', @nominee
-|
-= link_to 'Back', nominees_path
+- side_link 'Visa nominering', @nominee
+- side_link 'Till nomineringar', nominees_path
+- side_link 'Ta bort nominering', @nominee, :confirm => 'Are you sure?', :method => :delete
