@@ -7,8 +7,9 @@
   = render :partial => "twitter/twitter"
 
 #news
-  .notification
-    = include_node("/_ugly_hack_welcome")
+  - @notification = include_node("/_ugly_hack_welcome")
+  - if !@notification.empty?
+    .notification= @notification
   - if !Person.current.anonymous? && !Person.current.has_chosen_settings?
     #first_time_welcome.notification
       = include_node("/first_time_welcome")
@@ -24,7 +25,6 @@
     - else
       Alla nyheter
 
-  
   = render :partial => 'posts/post', :collection => @news_posts
   
   = will_paginate(@news_posts)

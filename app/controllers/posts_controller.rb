@@ -5,6 +5,7 @@ class PostsController < ApplicationController
   # GET /posts/1
   def show
     @post = Post.find(params[:id])
+    @noise = Noise.new(params[:noise])
   end
 
   # GET /posts/new
@@ -25,6 +26,8 @@ class PostsController < ApplicationController
     params[:post][:news_post] ||= "false"
     params[:post][:calendar_post] ||= "false"
     
+    process_category_list
+
     @post = Post.new(params[:post])
     @post.created_by = Person.current
     
@@ -43,6 +46,8 @@ class PostsController < ApplicationController
     params[:post][:calendar_post] ||= "false"
     
     @post = Post.find(params[:id])
+
+    process_category_list
 
     if @post.update_attributes(params[:post])
       flash[:notice] = 'Nyhets-/kalenderinlägget uppdaterat.'
@@ -66,5 +71,19 @@ class PostsController < ApplicationController
       format.html { redirect_to(posts_url) }
       format.xml  { head :ok }
     end
+  end
+
+  private
+  def process_category_list
+    # Category/tag list generation
+    return if !params.include?(:post)
+    categories = ""
+    categories << params[:post][:categories].join(',') unless params[:post][:categories].nil?
+    params[:post].delete(:categories);
+    if !params[:post][:categories_new].empty?
+      categories << ',' + params[:post][:categories_new]
+    end
+    params[:post].delete(:categories_new)
+    params[:post][:category_list] = categories
   end
 end

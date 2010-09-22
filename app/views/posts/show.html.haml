@@ -28,7 +28,7 @@
       = link_to 'Redigera', edit_post_path(post), :class => "edit"
       = link_to 'Ta bort', post, :method => :delete, :confirm => 'Är du säker på att du vill ta bort den här nyheten?', :class => "delete"
 
-    %iframe{ :class => "fb-like", :src => "http://www.facebook.com/plugins/like.php?href=#{CGI::escape post_url(post)}&amp;layout=standard&amp;show_faces=false&amp;width=340&amp;height=25&amp;action=like&amp;colorscheme=light&amp;locale=sv_SE", :scrolling => "no", :frameborder => "0", :allowTransparency => "true" }
+    %iframe{ :class => "fb-like", :src => "http://www.facebook.com/plugins/like.php?href=#{CGI::escape post_url(post)}&amp;layout=standard&amp;show_faces=false&amp;width=340&amp;height=26&amp;action=like&amp;colorscheme=light&amp;locale=sv_SE", :scrolling => "no", :frameborder => "0", :allowTransparency => "true" }
 
   .comments
     - if @post.noises.count > 0
@@ -39,13 +39,13 @@
     - if Person.current.anonymous?
       %p 
         Du måste vara 
-        = link_to "inloggad",  new_sessions_path(:return_url => current_url)
+        = link_to "inloggad", new_sessions_path(:return_url => current_url)
         för att kommentera! 
       
     - else
       %h3 Kommentera
     
-      = simple_form_for([@post, Noise.new]) do |form|
+      = simple_form_for([@post, @noise]) do |form|
         = form.input :message, :label => false
         = form.button :submit
 

@@ -5,6 +5,5 @@
   %strong Date:
   = @election_event.date
 
-= link_to 'Edit', edit_election_event_path(@election_event)
-|
-= link_to 'Back', election_events_path
+- side_link 'Redigera valtillfälle', edit_election_event_path(@election_event)
+- side_link 'Tillbaka till valtillfällen', election_events_path

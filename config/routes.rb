@@ -6,28 +6,24 @@ Rails.application.routes.draw do |map|
     resources :articles
   end
   
-  resources :committees
-  
-  resources :file_nodes
+  resources :namnder, :as => 'committees', :controller => 'committees'
     
   get "/kontakt/:slug" => 'contact#index', :as => 'contact'
   post "/kontakt/:slug" => 'contact#send_mail'
   
-  resources :kth_accounts
+  resources 'kth-konton', :as => 'kth_accounts', :controller => 'kth_accounts'
   
   resources :morklaggnings, :as => 'morklaggning'
   
-  resources :newsletters do
-    resources :newsletter_sections
+  resources :nyhetsbrev, :as => 'newsletters', :controller => 'newsletters' do
+    resources :sektion, :as => 'newsletter_sections', :controller => 'newsletter_sections'
     resource :test_delivery
     resource :live_delivery
   end
   match "/newsletters/hook/:secret", :to => 'newsletter_hooks#mailchimp_endpoint', :via => [:post, :get]
   
-  
-  
-  resources :people do
-    resource :settings, :controller => 'user_settings', :as => 'user_settings'
+  resources :personer, :as => 'people', :controller => 'people' do
+    resource :installningar, :controller => 'user_settings', :as => 'user_settings'
     member do
       get :xfinger
     end
@@ -35,11 +31,10 @@ Rails.application.routes.draw do |map|
 
   map.xfinger_image 'people/xfinger_image/:uid', :controller=>'people',:action=>'xfinger_image'
   
-  resources 'nyheter', :as => 'posts', :controller => 'posts' do
-    resources :noises
+  resources :nyheter, :as => 'posts', :controller => 'posts' do
+    resources :kommentarer, :as => 'noises', :controller => 'noises'
   end
-  resources :noises
-  
+  resources :kommentarer, :as => 'noises', :controller => 'noises'
   
   match "/sok", :to => 'search#index', :as => 'search'
   
@@ -55,6 +50,7 @@ Rails.application.routes.draw do |map|
   match '/sektionen/naringsliv', :controller => 'naringsliv', :action => 'index', :as => 'naringsliv_index'
   resources '/sektionen/naringsliv/jobb', :controller => 'job_ads', :as => 'job_ads', :except => [:show]
   
+  resources :file_nodes
   
   resources :text_nodes do
     resources :children, :controller => 'TextNodeChildren', :path_prefix => 'text_nodes/:node_id'
@@ -69,9 +65,16 @@ Rails.application.routes.draw do |map|
       get :delete
     end
   end
+
+  match '/text_nodes/:text_node_id/menu', :controller => 'TextNodeMenu', :action => 'update', :via => :put
+  match '/text_nodes/:text_node_id/menu', :controller => 'TextNodeMenu', :action => 'add',:via=>:post
+  match '/text_nodes/:text_node_id/menu/delete/:id', :controller => 'TextNodeMenu', :action => 'delete', :via => :delete
+
+  map.delete_text_node_menu '/text_nodes/:text_node_id/menu/delete/:id'
+  map.edit_text_node_menu '/text_nodes/:text_node_id/menu', :controller => 'TextNodeMenu', :action => 'edit'
   
-  match "/protocols/:filename", :to => "protocols#show", :as => 'protocol'
-  match "/protocols", :to => "protocols#index", :as => 'protocols'
+  match "/protokoll/:filename", :to => "protocols#show", :as => 'protocol'
+  match "/protokoll", :to => "protocols#index", :as => 'protocols'
   
   root :to => 'front_pages#show'
   match '/rss', :to => 'front_pages#rss'
@@ -92,7 +95,8 @@ Rails.application.routes.draw do |map|
   map.schema '/schema/proxy.:format', :controller => 'schema', :action => 'proxy'
   map.schema '/schema/:year', :controller => 'schema', :action => 'index', :year => 'D1'
 
-  resources '/sektionen/val', :as => 'nominees', :controller => 'nominees'
+  resources '/sektionen/val', :as => 'nominees', :controller => 'nominees',
+    :constraints => { :id => /\d+/ }
 
   map.resources :election_events
 
@@ -101,6 +105,7 @@ Rails.application.routes.draw do |map|
 
   map.root :controller => 'front_pages', :action => 'show'
 
-  map.connect "*url", :controller => 'nodes', :action => 'show'
+  match "*url", :controller => 'nodes', :action => 'show',
+    :constraints => { :url => /^\/(?!stylesheets|javascripts)/ }
 
 end

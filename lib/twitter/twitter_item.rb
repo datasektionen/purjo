@@ -3,8 +3,10 @@ module Twitter
   class TwitterItem
     attr_reader :pubDate, :text
     def self.get
+      path = Rails.root + 'app/views/twitter/twitter.rss'
       items = []
-      open(Rails.root + 'app/views/twitter/twitter.rss') do |file|
+      return [] unless File.exists?(path)
+      open(path) do |file|
         response = file.read
         result = ::RSS::Parser.parse(response, false)
         result.items.each {|item| items << new(item) }

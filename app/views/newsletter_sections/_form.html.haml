@@ -1,7 +1,7 @@
-%h2= "Ny nyhetsbrevssektion"
-
 = simple_form_for([@newsletter, @newsletter_section]) do |form|
   = form.input :title
   = form.input :body
   
   = form.submit
+  != "&nbsp;|&nbsp;"
+  = link_to "Tillbaka", newsletter_path(@newsletter)

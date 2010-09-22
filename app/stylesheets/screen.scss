@@ -6,6 +6,7 @@
 @import "tables.scss";
 @import "mottagningen.scss";
 @import "naringsliv.scss";
+@import "menu_edit.scss";
 
 * {
   padding: 0;
@@ -28,7 +29,7 @@ html, body { height: 100%; }
 
 body {
   background-image: url("/images/background.png");
-  font-family: helvetica, sans-serif;
+  font-family: Helvetica, Tahoma, sans-serif;
   min-height: 100%;
   line-height: 1.3;
   overflow-y: scroll;
@@ -128,23 +129,8 @@ blockquote {
 
 .events {
   .event {
-    .icon {
-      width: 24px;
-      height: 24px;
-      float: left;
-      margin-top: 0px;
-      margin-right: 5px;
-      margin-bottom: 5px;
-      background-repeat: no-repeat;
-    }
-    
-    .icon.esc {
-      background-image: url(/images/icons/Bookmarks.png);
-    }
-    
-    .icon.inspiration {
-      background-image: url(/images/lightbulb.png);
-    }
+		padding-left: 26px;
+		background: url(/images/icons/Bookmarks.png) no-repeat 0 0;
     
     .description {
       margin-bottom: 0px;
@@ -152,11 +138,12 @@ blockquote {
     
     .time {
       font-style: italic;
-      margin-left: 29px;
-      margin-top: 0px;
-      margin-bottom: 0px;
+      margin: 0px;
     }
   }
+	.event.inspiration {
+		background-image: url(/images/lightbulb.png);
+	}
 }
 
 .justify {
@@ -177,14 +164,14 @@ blockquote {
 
 form.noise {
   #noise_message {
-    height: 70px;
+    height: 80px;
   }
 }
 
 div.error, div.notice, div.success,
 #flash_failure, #flash_success, #flash_notice {
+  margin: 12px 0 10px 190px;
   padding: 0.8em;
-  margin-bottom: 1em;
   border: 1px solid #ddd;
   -moz-border-radius: 8px;
   -webkit-border-radius: 8px;
@@ -229,10 +216,14 @@ div.notification {
   }
 }
 
-input#search.active {
-  color: black;
+.profile.gravatar {
+  float: right;
+  margin-top: 10px;
 }
 
-input#search.inactive {
-  color: #ccc;
+.pagination {
+  em { font-style: normal; font-weight: bold; }
+  em, a, span { margin-right: 4px; }
 }
+
+h3 .delete { margin-left: 20px; font-size: 18px; }

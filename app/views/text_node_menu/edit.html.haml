@@ -1,0 +1,31 @@
+-javascript 'menu_edit'
+%h2
+  Meny för 
+  =@node.name
+
+%div{:id => "menu_edit"}
+  - if !@node.menu_items.empty?
+    %span{:class=>"js_show",:style=>"display: none;"} Dra och släpp för att ordna om i listan
+
+    = form_for :menu_item, @node,:url=>edit_text_node_menu_path(@node), :html => {:method=>:put} do |f|
+      %ul{:id=>"menu_content"}
+        -f.object.menu_items.each do |m|
+          = f.fields_for "#{m.id}",m do |mf|
+            %li
+              = mf.text_field  :title, :style=>"width: 150px"
+              %span{:class=>"menu_edit_url"}
+                Mål:
+                =m.url
+              %span{:class=>"menu_edit_info"} 
+                = link_to "Radera", delete_text_node_menu_path(@node,m.id), :method => :delete,:class=>"js_delete"
+                %span{:class=>"js_hide menu_edit_sort"}
+                  %span Sortering: 
+                  = mf.text_field :sort_order, :class=>"order_input"
+                
+      = f.submit "Spara ändringar"
+  - else
+    Menyn är tom
+  %h2 Alla sidor
+  %div{:id=>"child_list"}
+    = render :partial => 'tree_item', :object=> [@node], :locals=>{:node=>@node}
+

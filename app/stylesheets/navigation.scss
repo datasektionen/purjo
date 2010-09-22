@@ -18,13 +18,13 @@ div.header {
   -moz-box-shadow: 0px 3px 3px #d7d7d7;
 
   input#search {
-    padding: 5px 0px;
-    margin-top: 30px;
+    padding: 5px 3px;
+    margin-top: 25px;
     font-size: 14px;
     width: 200px;
-    -webkit-appearance: textfield;
-    -moz-appearance: textfield;
   }
+  input#search.active { color: black; }
+  input#search.inactive { color: #bbb; }
   
   h1 {
     font-family: 'Yanone Kaffeesatz', arial, serif;
@@ -37,9 +37,7 @@ div.header {
     padding: 8px 0px 28px 0px;
 
     li {
-      font-family: 'Helvetica';
       font-size: 15px;
-      
       list-style-type: none;
       margin-right: 40px;
       float: left;
@@ -80,26 +78,29 @@ div.subnav {
   @include unstyled-list;
   margin-top: 80px;
   color: #222;
-  font-family: 'Helvetica', arial, sans-serif;
   font-size: 14px;
   text-align: right;
   line-height: 1.5;
+  
+  .current {
+    font-weight: bold;
+  }
 
+  #admin_menu ul {
+    margin-bottom: 5px;
+  }
 }
 
 div.info_box {
   @include unstyled-list;
-  
-  font-family: 'Helvetica', arial, sans-serif;
-  margin: 0px;
-  margin-left:10px;
-  text-align:left;
-  background-color:#fff;
-  border-style:solid;
-  border-width:1px;
-  float:right;
-  font-size: 12px;
-  padding: 10px;
+  float: right;
+  margin: 0 0 0 10px;
+  border: 1px solid #000;
+  background: #fafafa;
+  font: normal normal 12px/17px Helvetica, Tahoma, sans-serif;
+  text-align: left;
+
+  .grid_3 { margin: 0 0px 0 10px; }
   
   h4 {
     margin-top: 0px;

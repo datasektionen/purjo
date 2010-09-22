@@ -3,9 +3,9 @@
 %table
   %thead
     %tr
-      %th Subject
-      %th State
-      %th
+      %th Namn
+      %th Status
+      %th 
   %tbody
     - @newsletters.each do |newsletter|
       %tr{:id => "newsletter_#{newsletter.id}"}
@@ -14,14 +14,16 @@
         %td
           - if Person.current.admin?
             - if newsletter.pending? || newsletter.failed?
-              = link_to "Testutskick", new_newsletter_test_delivery_path(newsletter)
+              = link_to "Testutskick", new_newsletter_test_delivery_path(newsletter), :confirm => "Är du säker på att du vill testutskicka nyhetsbrevet?"
             - else
               %span{:class => 'disabled'} Testutskick
-
+            != "&nbsp;|&nbsp;"
             - if newsletter.pending? || newsletter.failed?
-              = link_to "Skicka nyhetsbrev", new_newsletter_live_delivery_path(newsletter)
+              = link_to "Skicka nyhetsbrev", new_newsletter_live_delivery_path(newsletter), :confirm => "Är du säker på att du vill skicka nyhetsbrevet?"
             - else
               %span{:class => 'disabled'} Skicka nyhetsbrev
+            != "&nbsp;|&nbsp;"
+            = link_to "Redigera", edit_newsletter_path(newsletter)
 
 %p
   = will_paginate @newsletters
@@ -32,7 +34,6 @@
     = link_to t('.new'), new_newsletter_path
   
 %p 
-  Observera att informationen på denna sida kan vara ren lögn. Hör av dig till Informationsansvarig
-  om du hittar någonting som inte stämmer.
+  Observera att informationen på denna sida kan vara ren lögn. Hör av dig till Informationsansvarig om du hittar någonting som inte stämmer.
         
   

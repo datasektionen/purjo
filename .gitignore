@@ -23,7 +23,9 @@ public/stylesheets/admin_box.css
 public/stylesheets/functionaries_and_nominees.css
 public/stylesheets/mottagningen.css
 public/stylesheets/naringsliv.css
+public/stylesheets/menu_edit.css
 app/views/twitter/twitter.rss
 solr
 config/my_user.yml
+app/views/twitter/twitter.rss
 

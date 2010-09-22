@@ -65,11 +65,15 @@
   
 
   div.comments, div.respond { margin-top: 30px; }
+	#noise_message {
+		width: 80%;
+		height: 200px;
+	}
 
   .comment {
     margin: 5px 0 15px;
     .meta { margin-bottom: 5px; }
-    .edit {
+    .edit, .delete, .sep {
       float: right;
       font-style: normal;
     }
@@ -80,7 +84,7 @@
     overflow: hidden;
     border: none;
     width: 340px;
-    height: 25px;
+    height: 26px;
   }
   .fb-like.tiny {
     margin: 3px 0 0 20px;
@@ -90,10 +94,9 @@
 }
 
 .tags {
+  overflow: auto;
   .tag {
-    margin-top: 2px;
-    margin-bottom: 2px;
-    margin-right: 5px;
+    margin: 2px 5px 2px 0;
     float: left;
     border-radius: 5px;
     -webkit-border-radius: 5px;
@@ -104,13 +107,12 @@
     color: white;
     background-color: #393939;
     line-height: 15px;
-
     a, a:visited { color: white; }
   }
 }
 
 .foot {
-  height: 24px;
+  height: 26px;
   .comments, .edit {
     float: left;
     padding-left: 26px;

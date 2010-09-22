@@ -1,8 +1,7 @@
-%h1 
-  Ändra kommentar till "#{@noise.post.name}"
+%h2 
+  Ändra kommentar till "#{link_to @noise.post.name, post_path(@noise.post)}"
 
 = simple_form_for(@noise) do |f|
   = f.input :message, :size => "50x5"
   = f.button :submit
-
-= link_to 'Avbryt', @noise.post
+  != "&nbsp;|&nbsp; " + link_to('Avbryt', @noise.post)

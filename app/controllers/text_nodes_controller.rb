@@ -1,9 +1,9 @@
 class TextNodesController < ApplicationController
   require_role 'editor'
   require_role 'admin', :only => [:destroy, :delete]
+
   def edit
     @node = TextNode.find(params[:id])
-    
   end
   
   def update

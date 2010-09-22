@@ -2,26 +2,26 @@
   = form.input :name
   = form.input :content, :cols => 80, :rows => 25 
 
-  = form.input :category_list, :label => "Taggar"
-  
-  %p
-    Tillgängliga taggar: 
-    - ActsAsTaggableOn::Tag.all.each do |tag|
-      %span.tag
+  %h3 Taggar
+  %div.tags
+    - @active_tags =  ActsAsTaggableOn::TagList.from(@post.category_list)
+    - Post.tag_counts_on(:categories).order("name asc").each do |tag|
+      %label.tag{ :for => "tag#{tag.id}" }
+        = check_box_tag 'post[categories][]', tag.name, @active_tags.include?(tag.name), :id => "tag#{tag.id}"
         = tag.name
 
-  %p
-    Om du vill använda fler än en tag, separera taggarna med kommatecken.
+  = form.input 'categories_new', :label => "Lägg till nya taggar", :hint => "Separera flera taggar med kommatecken"
+
+  %h3 Inläggstyp
 
   = form.input :news_post
+  = form.input "sticky"
   
-  = form.input :calendar_post
-  #calendar_post.selection
-    %p Aktivitet startar
+  .calendar_data
+    = form.input :calendar_post
     = form.input :starts_at
     = form.input :ends_at
     = form.input :all_day
-    
-  = form.input "sticky"
   
   = form.submit
+  != "&nbsp;|&nbsp;" + link_to('Tillbaka', '/')

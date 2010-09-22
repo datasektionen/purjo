@@ -11,8 +11,6 @@
   %p
     = f.submit "Update"
 
-= link_to 'Back', election_events_path
-|
-= link_to 'Show', @election_event
-|
-= link_to 'Destroy', @election_event, :confirm => 'Are you sure?', :method => :delete
+- side_link 'Tillbaka till valtillfällen', election_events_path
+- side_link 'Visa valtillfälle', @election_event
+- side_link 'Ta bort valtilfälle', @election_event, :confirm => 'Are you sure?', :method => :deletes

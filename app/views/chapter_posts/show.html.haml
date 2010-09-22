@@ -1,3 +1,4 @@
+
 %h2= @chapter_post.name
 %p
   %em= @chapter_post.description
@@ -18,7 +19,7 @@
     %th Till
     - if Person.current.editor?
       %th
-  - for functionary in @chapter_post.functionaries
+  - for functionary in @chapter_post.functionaries.order(:active_to.desc)
     %tr
       %td= link_to_unless(functionary.postponed, functionary.person_or_postponed, person_path(functionary.person))
       %td= functionary.active_from

@@ -1,0 +1,54 @@
+#menu_edit {
+	 #child_list {
+		 width: 500px;
+     li { border-top: 1px solid #bbb; }
+		 form {
+       margin: 0;
+			 display: inline;
+			 float: right;
+       input { font-size: 12px; font-weight: normal; padding: 1px 2px; margin: 0; }
+		 }
+	 }
+
+	 #menu_content {
+		 width: 500px;
+		 list-style: none;
+		 
+		 li {
+       cursor: move;
+			 margin-top: 3px;
+			 margin-bottom: 3px;
+			 -moz-border-radius: 5px;
+			 background-color: #fff6bf;
+			 border: 1px solid #ffd324;
+			 color: #817134;
+			 padding: 2px 4px;
+			}
+		}
+
+	 .menu_edit_info {
+		 float: right;
+	 }
+
+	 .menu_edit_info span,.menu_edit_url {
+		 font-size: 12px;
+		 color: #a4924a;
+	 }
+
+	 .menu_edit_info span {
+		 margin-right: 5px;
+	 }
+
+	 .menu_edit_url {
+		 margin-left: 20px;
+	 }
+
+	 .order_input {
+		 width: 20px;
+		 text-align: right;
+	 }
+
+	.menu_edit_sort{
+		margin-left: 7px;
+	}
+}

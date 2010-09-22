@@ -1,16 +1,21 @@
 form {
-  label { margin-top: 8px; }
 
-  .boolean {
-    margin-top: 20px;
-    margin-bottom: 20px;
+  input, select { font: normal normal 14px/17px Helvetica, Tahoma, sans-serif; }
+  textarea { font: normal normal 14px/17px monospace; }
+
+  input[type=submit] {
+    margin: 6px 0 0 0;
+    padding: 2px 8px;
+    font-weight: bold;
   }
+
+  label { margin-top: 8px; }
 
   .radio, .check_boxes, .select {
     position: relative;
-    font-size: 1em; 
   }
 
+  label.boolean { margin-right: 10px; }
   
   .radio label,
   .check_boxes label,
@@ -19,7 +24,6 @@ form {
     width: 200px;
     display: block;
     margin-right: 20px;
-    font-size: 16px;
   }
   
   .check_boxes input.check_boxes,
@@ -34,6 +38,8 @@ form {
     font-weight: normal;
     width: auto;
   }
+
+  .boolean .hint { color: #555; font-style: italic; }
   
   .radio .hint,
   .check_boxes .hint,
@@ -50,21 +56,13 @@ form {
   }
   
   .string label,
-  .string .hint,
   .date label,
-  .date .hint,
   .text label,
-  .text .hint,
   .password label,
-  .password .hint,
   .file label,
-  .file .hint,
   .integer label,
-  .integer .hint,
   .url label,
-  .url .hint,
-  .email label,
-  .email .hint {
+  .email label {
     margin-right: 20px;
     float: left;
     clear: left;
@@ -80,22 +78,22 @@ form {
   .integer .hint,
   .url .hint,
   .email .hint {
-    font-weight: normal;
+    display: block;
     color: #999999;
-    width: 400px;
   }
   
   .string input, .date input, .text input, .password input,
   .file input, .integer input, .url input, .email input,
   textarea {
-    font-size: 15px;
     border: 1px solid #999999;
     border-radius: 3px;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
-    padding: 6px 6px;
+    padding: 4px 3px;
     width: 400px;
   }
+
+  label.datetime { margin-right: 6px; }
 }
 
 .field_with_errors {
@@ -113,4 +111,6 @@ form.post, form.text_node {
     width: 700px;
     height: 400px;
   }
+  .calendar_data { margin-top: 10px; }
 }
+

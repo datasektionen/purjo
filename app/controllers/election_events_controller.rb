@@ -79,11 +79,13 @@ class ElectionEventsController < ApplicationController
   # DELETE /election_events/1.xml
   def destroy
     @election_event = ElectionEvent.find(params[:id])
-    @election_event.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(election_events_url) }
-      format.xml  { head :ok }
-    end
+    @nominees = Nominee.find(:all, :conditions => { :election_event_id => params[:id]})
+    if false #@nominees.empty?          !FUNKAAAAA
+      @election_event.destroy
+      redirect_to(election_events_url)
+    else
+      flash[:notice] = 'Du kan inte ta bort ett valtillfälle med nomineringar.'
+      redirect_to(election_events_url)
+    end    
   end
 end

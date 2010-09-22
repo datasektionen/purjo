@@ -16,45 +16,50 @@ p.calendar_error {font-weight: bold;}
 
 /* Month view */
 
-.calendar table {border-collapse: collapse; font-size: 100%;}
+table.calendar {
+  width: 700px;
+}
 
 .calendar th, td {
-  font-family: Verdana, Arial, Helvetica, sans-serif;
-  font-size: 1.1em;
-  width: 9em;
+  font-family: Helvetica, Tahoma, sans-serif;
+  font-size: 14px;
+  width: 100px;
   height: 7em;
   overflow: show;
   border-bottom: 1px solid #dbdbdb;
   border-right: 1px solid #dbdbdb;
   vertical-align: top;
+  padding: 0 4px;
 } /* squares in the calendar */
 
 .calendar th {
   background-color: #e2007f;
-  font-size: 1em;
+  font-size: 14px;
   color: #fff;
-  height: 1.1em !important;
+  height: 16px;
 } /* headline squares (days) */
 
 .calendar td {
   background-color: #ffffff;
 } /* calendar days */
 
+.calendar td a {
+  display: block;
+}
+
 .calendar td p.daynumber {
   font-weight: normal;
-  font-size: 0.9em;
-  margin-bottom: 0.1em;
+  font-size: 13px;
+  margin-bottom: 2px;
 }
 
 .calendar td.today p.daynumber {
   font-weight: bold;
-  font-size: 0.9em;
-  color: #e2007f;
 }
 
 .calendar td.otherMonth {
   background-color: #f2f2f2 !important;
-  color: #d7d7d7;
+  color: #aaa;
 } /* days that do not belong to the month */
 
 .calendar td.week, .calendar th.week  {width: 1.2em;} /* left column */
@@ -94,6 +99,4 @@ p.calendar_error {font-weight: bold;}
   color: #e2007f;
 } /* links on mouse over */
 
-/* Vet ej vad detta är */
-.calendar .calendar_link {font-size: 1.1em; font-weight: bold;}
-
+.calendar p { margin: 4px 0; }
