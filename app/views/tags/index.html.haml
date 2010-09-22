@@ -1,0 +1,17 @@
+%h2 Administrera taggar
+
+- form_for :tags, :url => { :action => 'update_multiple' } do |f|
+  %table.auto
+    %tr
+      %th Id
+      %th Namn
+      %th
+
+    - @tags.each do |tag|
+      = fields_for "tags[]", tag do |tf|
+        %tr
+          %td= tag.id
+          %td.string.short= tf.text_field :name
+          %td= link_to 'Ta bort', tag_path(tag), :confirm => 'Är du säker?', :method => :delete
+
+  = f.submit "Spara"

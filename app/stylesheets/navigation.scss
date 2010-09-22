@@ -4,7 +4,7 @@ div.top {
   padding-top: 3px;
   padding-bottom: 3px;
   color: #e7e7e7;
-  font-family: Helvetica, sans-serif;
+  overflow: auto;
 
   a, strong {
     color: white;
@@ -47,22 +47,9 @@ div.header {
     }
   }
 
-  .shield {
-    img {
-      position: absolute;
-      left: 10px;
-      -webkit-transform: rotate(0deg);
-      -moz-transform: rotate(0deg);
-  	  -webkit-transition: all 0.7s ease-in;
-  	  -moz-transition: all 0.7s ease-in;
-    }
-  }
-
-  a.shield:hover {
-    -webkit-transform: rotate(0deg);
-  	// -moz-transform: rotate(0deg); // får skölden att hoppa skumt(?)
-    -webkit-transition: all 0.3s ease-in;
-    -moz-transition: all 0.3s ease-in;
+  .shield img {
+    position: absolute;
+    left: 10px;
   }
 }
 

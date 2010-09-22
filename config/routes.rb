@@ -13,7 +13,7 @@ Rails.application.routes.draw do |map|
   
   resources 'kth-konton', :as => 'kth_accounts', :controller => 'kth_accounts'
   
-  resources :morklaggnings, :as => 'morklaggning'
+  resources :morklaggning, :as => 'morklaggnings', :controller => 'morklaggnings'
   
   resources :nyhetsbrev, :as => 'newsletters', :controller => 'newsletters' do
     resources :sektion, :as => 'newsletter_sections', :controller => 'newsletter_sections'
@@ -91,17 +91,20 @@ Rails.application.routes.draw do |map|
 
   map.lunch '/lunch/:date', :controller => 'lunch', :action => 'index', :date => nil
 
-
   map.schema '/schema/proxy.:format', :controller => 'schema', :action => 'proxy'
   map.schema '/schema/:year', :controller => 'schema', :action => 'index', :year => 'D1'
 
   resources '/sektionen/valtillfallen', :as => 'election_events', :controller => 'election_events'
   resources '/sektionen/val', :as => 'nominees', :controller => 'nominees'
 
-  map.resources :chapter_posts, :as => "sektionen/funktionarsposter"
-  map.resources :functionaries, :as => "sektionen/funktionarer"
+  resources 'sektionen/funktionarsposter', :as => 'chapter_posts', :controller => 'chapter_posts'
+  resources 'sektionen/funktionarer', :as => 'functionaries', :controller => 'functionaries' 
 
-  map.root :controller => 'front_pages', :action => 'show'
+  resources :taggar, :as => 'tags', :controller => 'tags', :only => [:index, :destroy] do
+    post :update_multiple
+  end
+
+  root :to => 'front_pages#show'
 
   match "*url", :controller => 'nodes', :action => 'show',
     :constraints => { :url => /^\/(?!stylesheets|javascripts)/ }

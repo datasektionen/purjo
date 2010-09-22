@@ -15,6 +15,8 @@
 
   - if complete || @posts || @news_posts
     %h4= link_to "Ny nyhet", new_post_path
+    %ul
+      %li= link_to "Taggar", tags_path 
   
   - unless @post.nil? || @post.new_record?
     %h4= link_to "Redigera nyhet", edit_post_path(@post)
@@ -46,3 +48,8 @@
       %li= link_to "Nytt val", new_election_event_path 
 
   %h4= link_to "Alla noder", text_node_children_path(Node.find_by_url("/"))
+
+  - if complete
+    %h4 Övrigt
+    %ul
+      %li= link_to "Mörkläggning", morklaggnings_path
