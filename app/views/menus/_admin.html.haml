@@ -1,10 +1,10 @@
-%h3 Administration
-#admin_menu
+- complete ||= false; unless complete
+  %h3= link_to "Administration", admin_path
+.admin_menu
     
-  - if !@node.nil? && !@node.new_record?
+  - unless @node.nil? || @node.new_record?
+    %h4= link_to 'Redigera sida', edit_text_node_path(@node)
     %ul
-      %li= link_to 'Redigera sida', edit_text_node_path(@node), :class => 'current'
-      %li= link_to "Historia", text_node_versions_path(@node)
       - if @node.children.empty?
         %li= link_to('Ta bort sida', text_node_path(@node), :method => :delete, :confirm => "Detta kommer ta bort noden #{@node.url}(#{@node.name}). Är du säker på att detta verkligen är det du vill?")
       %li= link_to 'Ny undersida', new_text_node_child_path(@node)
@@ -13,39 +13,36 @@
       %li= link_to 'Ny fil', new_text_node_file_path(@node)
       %li= link_to "Lista filer", text_node_files_path(@node)
 
-  - if @posts or @news_posts
+  - if complete || @posts || @news_posts
+    %h4= link_to "Ny nyhet", new_post_path
+  
+  - unless @post.nil? || @post.new_record?
+    %h4= link_to "Redigera nyhet", edit_post_path(@post)
     %ul
-      %li= link_to 'Ny nyhet-/kalender-post', new_post_path
+      %li= link_to "Ta bort nyhet", post_path(@post), :method => :delete, :confirm => "Är du säker på att du vill ta bort nyheten?"
 
-  %ul
-    %li= link_to "Funktionärer", functionaries_path, :class => ('current' if @functionaries)
-    - if @functionaries
+  - if complete || @functionaries
+    %h4= link_to "Funktionärer", functionaries_path
+    %ul
       %li= link_to 'Nytt funktionärsmandat', new_functionary_path
       %li= link_to 'Ny funktionärspost', new_chapter_post_path
       %li= link_to 'Redigera funktionärsposter', chapter_posts_path
-
     
-  %ul
-    %li= link_to 'Funktionärsposter', chapter_posts_path, :class => ('current' if @chapter_posts)
-    - if @chapter_posts
-      %li= link_to 'Ny funktionärspost', new_chapter_post_path
-
-    
-  %ul
-    %li= link_to 'Nomineringar', nominees_path, :class => ('current' if @nominees)
-    - if @nominees
-      %li= link_to 'Ny nominering', new_nominee_path
-      %li= link_to 'Valtillfällen', election_events_path
-    
-    
-  - if @election_events
+  - if complete || @chapter_posts
+    %h4= link_to 'Funktionärsposter', chapter_posts_path
     %ul
-      %li= link_to 'Nytt val', new_election_event_path
+      %li= link_to 'Ny funktionärspost', new_chapter_post_path
     
-  %ul
-    %li= link_to "Nämnder", committees_path, :class => ('current' if @committees)
-    - if @committees
+  - if complete || @committees
+    %h4= link_to "Nämnder", committees_path
+    %ul
       %li= link_to "Ny nämnd", new_committee_path
+    
+  - if complete || @election_event || @election_events
+    %h4= link_to "Val", election_events_path
+    %ul
+      %li= link_to 'Nomineringar', nominees_path
+      %li= link_to "Ny nominering", new_nominee_path 
+      %li= link_to "Nytt val", new_election_event_path 
 
-  %ul
-    %li= link_to "Alla sidor", text_node_children_path(Node.find_by_url("/"))
+  %h4= link_to "Alla noder", text_node_children_path(Node.find_by_url("/"))

@@ -69,7 +69,7 @@
               = render :partial => "text_nodes/menu", :collection=>@menu_items,:as=>:menu_item
             
             - if Person.current.editor?
-              .admin= render :partial => "front_pages/admin_box"
+              .admin= render 'menus/admin'
 
           .content
             - if flash[:notice]

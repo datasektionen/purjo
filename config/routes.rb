@@ -95,10 +95,8 @@ Rails.application.routes.draw do |map|
   map.schema '/schema/proxy.:format', :controller => 'schema', :action => 'proxy'
   map.schema '/schema/:year', :controller => 'schema', :action => 'index', :year => 'D1'
 
-  resources '/sektionen/val', :as => 'nominees', :controller => 'nominees',
-    :constraints => { :id => /\d+/ }
-
-  map.resources :election_events
+  resources '/sektionen/valtillfallen', :as => 'election_events', :controller => 'election_events'
+  resources '/sektionen/val', :as => 'nominees', :controller => 'nominees'
 
   map.resources :chapter_posts, :as => "sektionen/funktionarsposter"
   map.resources :functionaries, :as => "sektionen/funktionarer"

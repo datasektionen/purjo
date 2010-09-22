@@ -1,17 +1,16 @@
 %h2 Index över val
 %p
-  Närmaste nästkommande val visas under sektionen/val. För nomineringar
-  på ett annat val, klicka på <em>visa</em> här under.
+  Närmaste nästkommande val visas på sektionen/val. För nomineringar
+  till ett annat val, klicka på på valet här under.
 %table.styled-table
   %tr
-    %th Namn (nominerade)
+    %th Namn
     %th Datum
     %th
   - for election_event in @election_events
     %tr
       %td
-        = link_to election_event.name, election_event
-        = link_to('(visa)', :controller => 'nominees', :election_event => election_event.id)
+        = link_to election_event.name, :controller => 'nominees', :election_event => election_event.id
       %td= election_event.date
       %td= link_to 'Redigera val', edit_election_event_path(election_event)
 

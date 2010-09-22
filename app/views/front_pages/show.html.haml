@@ -3,6 +3,13 @@
 
 - content_for :additional_content do 
   %h3.sub &nbsp;
+
+  #news-summary
+    %h2 Nyheter
+    %ul.news-list
+      - @news_posts.each do |post|
+        %li= link_to(truncate(post.name, :length => 30), post)
+
   = render :partial => "front_pages/calendar"
   = render :partial => "twitter/twitter"
 
