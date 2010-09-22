@@ -1,0 +1,60 @@
+- complete ||= false; unless complete
+  %h3= link_to "Administration", admin_path
+.admin_menu
+  - if @view_menus
+    %ul
+      - for link in @view_menus
+        %li= get_side_link link
+    %ul
+      %li &nbsp;
+  - unless @node.nil? || @node.new_record?
+    %h4= link_to 'Redigera sida', edit_text_node_path(@node)
+    %ul
+      - if @node.children.empty?
+        %li= link_to('Ta bort sida', text_node_path(@node), :method => :delete, :confirm => "Detta kommer ta bort noden #{@node.url}(#{@node.name}). Är du säker på att detta verkligen är det du vill?")
+      %li= link_to 'Ny undersida', new_text_node_child_path(@node)
+      %li= link_to "Lista undersidor", text_node_children_path(@node)
+      %li= link_to "Redigera meny", edit_text_node_menu_path(@node)
+      %li= link_to 'Ny fil', new_text_node_file_path(@node)
+      %li= link_to "Lista filer", text_node_files_path(@node)
+
+  - if complete || @posts || @news_posts
+    %h4= link_to "Ny nyhet", new_post_path
+    %ul
+      %li= link_to "Taggar", tags_path 
+  
+  - unless @post.nil? || @post.new_record?
+    %h4= link_to "Redigera nyhet", edit_post_path(@post)
+    %ul
+      %li= link_to "Ta bort nyhet", post_path(@post), :method => :delete, :confirm => "Är du säker på att du vill ta bort nyheten?"
+
+  - if complete || @functionaries
+    %h4= link_to "Funktionärer", functionaries_path
+    %ul
+      %li= link_to 'Nytt funktionärsmandat', new_functionary_path
+      %li= link_to 'Ny funktionärspost', new_chapter_post_path
+      %li= link_to 'Redigera funktionärsposter', chapter_posts_path
+    
+  - if complete || @chapter_posts
+    %h4= link_to 'Funktionärsposter', chapter_posts_path
+    %ul
+      %li= link_to 'Ny funktionärspost', new_chapter_post_path
+    
+  - if complete || @committees
+    %h4= link_to "Nämnder", committees_path
+    %ul
+      %li= link_to "Ny nämnd", new_committee_path
+    
+  - if complete || @election_event || @election_events
+    %h4= link_to "Val", election_events_path
+    %ul
+      %li= link_to 'Nomineringar', nominees_path
+      %li= link_to "Ny nominering", new_nominee_path 
+      %li= link_to "Nytt val", new_election_event_path 
+
+  %h4= link_to "Alla noder", text_node_children_path(Node.find_by_url("/"))
+
+  - if complete
+    %h4 Övrigt
+    %ul
+      %li= link_to "Mörkläggning", morklaggnings_path

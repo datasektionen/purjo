@@ -1,8 +1,6 @@
 class AdminController < ApplicationController
-  
-  require_role :admin
+  require_role :editor
+
   def index
-    
-    
   end
 end

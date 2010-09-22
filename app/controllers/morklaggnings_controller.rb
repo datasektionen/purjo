@@ -1,7 +1,5 @@
 class MorklaggningsController < ApplicationController
-  require_role "admin"
-  # GET /morklaggnings
-  # GET /morklaggnings.xml
+  require_role :admin
 
   layout 'application'
 
@@ -13,12 +11,12 @@ class MorklaggningsController < ApplicationController
     start = Settings.find_by_key("morklaggning_start_date")
     stop = Settings.find_by_key("morklaggning_end_date")
     if start and stop
-      @interval_start = start.value.split('-')
-      @interval_stop = stop.value.split('-')
+      @start = start.value.split('-').map { |i| i.to_i }
+      @stop = stop.value.split('-').map { |i| i.to_i }
     else
       date = DateTime.now
-      @interval_start = [date.year, date.mon, date.mday];
-      @interval_stop = [date.year, date.mon, date.mday];
+      @start = [date.year, date.mon, date.mday];
+      @stop = [date.year, date.mon, date.mday];
     end
 
     respond_to do |format|
@@ -39,7 +37,7 @@ class MorklaggningsController < ApplicationController
 
       respond_to do |format|
         if @morklaggning.save
-          flash[:notice] = 'Ny mörkläggning skapad.'
+          flash[:notice] = "Ny mörkläggning skapad."
           format.html { redirect_to(morklaggnings_url) }
         else
           format.html { render :action => "new" }
@@ -55,20 +53,18 @@ class MorklaggningsController < ApplicationController
       stop.value = stopdate
       stop.save
       respond_to do |format|
-        flash[:notice] = "Intervall satt"
+        flash[:notice] = "Mörkläggningsintervall sparat."
         format.html { redirect_to(morklaggnings_url) }
       end
     end
   end
 
-  # PUT /morklaggnings/1
-  # PUT /morklaggnings/1.xml
   def update
     @morklaggning = Morklaggning.find(params[:id])
 
     respond_to do |format|
       if @morklaggning.update_attributes(params[:morklaggning])
-        flash[:notice] = 'Mörkläggningstabellen uppdaterad.'
+        flash[:notice] = "Mörkläggningstabellen uppdaterad."
         format.html { redirect_to(morklaggnings_url) }
       else
         format.html { render :action => "edit" }
@@ -76,13 +72,11 @@ class MorklaggningsController < ApplicationController
     end
   end
 
-  # DELETE /morklaggnings/1
-  # DELETE /morklaggnings/1.xml
   def destroy
     @morklaggning = Morklaggning.find(params[:id])
     @morklaggning.destroy
         
-    flash[:notice] = 'Mörkläggningen borttagen'
+    flash[:notice] = "Mörkläggningen borttagen."
 
     respond_to do |format|
       format.html { redirect_to(morklaggnings_url) }

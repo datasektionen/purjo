@@ -37,7 +37,6 @@
                 = link_to 'Logga in', new_sessions_path(:return_url => current_url)
               - else
                 = link_to 'Logga ut', sessions_path(:return_url => current_url), :method => :delete
-          .clear &nbsp
 
         .header
           .container_16
@@ -69,7 +68,7 @@
               = render :partial => "text_nodes/menu", :collection=>@menu_items,:as=>:menu_item
             
             - if Person.current.editor?
-              .admin= render :partial => "front_pages/admin_box"
+              .admin= render 'menus/admin'
 
           .content
             - if flash[:notice]

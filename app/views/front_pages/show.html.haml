@@ -3,8 +3,15 @@
 
 - content_for :additional_content do 
   %h3.sub &nbsp;
+
   = render :partial => "front_pages/calendar"
   = render :partial => "twitter/twitter"
+
+-#  #news-summary
+-#    %h2 Nyheter
+-#    %ul.news-list
+-#      - @news_posts.each do |post|
+-#        %li= link_to(truncate(post.name, :length => 30), post)
 
 #news
   - @notification = include_node("/_ugly_hack_welcome")

@@ -4,7 +4,7 @@ div.top {
   padding-top: 3px;
   padding-bottom: 3px;
   color: #e7e7e7;
-  font-family: helvetica, sans-serif;
+  overflow: auto;
 
   a, strong {
     color: white;
@@ -47,22 +47,9 @@ div.header {
     }
   }
 
-  .shield {
-    img {
-      position: absolute;
-      left: 10px;
-      -webkit-transform: rotate(0deg);
-      -moz-transform: rotate(0deg);
-  	  -webkit-transition: all 0.7s ease-in;
-  	  -moz-transition: all 0.7s ease-in;
-    }
-  }
-
-  a.shield:hover {
-    -webkit-transform: rotate(0deg);
-  	// -moz-transform: rotate(0deg); // får skölden att hoppa skumt(?)
-    -webkit-transition: all 0.3s ease-in;
-    -moz-transition: all 0.3s ease-in;
+  .shield img {
+    position: absolute;
+    left: 10px;
   }
 }
 
@@ -81,14 +68,16 @@ div.subnav {
   font-size: 14px;
   text-align: right;
   line-height: 1.5;
-  
-  .current {
-    font-weight: bold;
-  }
 
-  #admin_menu ul {
-    margin-bottom: 5px;
+  h3, ul { margin: 0; }
+  h4 {
+    margin: 4px 0 0;
   }
+}
+
+div.admin {
+  margin-top: 30px;
+  h4, ul { font-size: 13px; }
 }
 
 div.info_box {
@@ -109,10 +98,4 @@ div.info_box {
   dl {
     margin-bottom: 0px;
   }
-}
-
-div.admin {
-  h3 { margin: 20px 0px 0px 0px; }
-  ul { margin: 0; }
-  ul li { font-size: 13px; }
 }
