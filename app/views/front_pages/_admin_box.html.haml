@@ -7,10 +7,6 @@
     %ul
       %li &nbsp;
   %ul
-    - if @posts or @news_posts
-%h3 Administration
-#admin_menu
-    
   - if !@node.nil? && !@node.new_record?
     %ul
       %li= link_to 'Redigera sida', edit_text_node_path(@node), :class => 'current'
