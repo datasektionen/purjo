@@ -3,4 +3,4 @@
   %span.type (Student)
 
 - if result.functionaries.count > 0
-  %p= result.functionaries.map { |f| f.chapter_post.name }.to_sentence
+  %p= result.functionaries.map { |f| link_to f.chapter_post.name, f.chapter_post }.to_sentence

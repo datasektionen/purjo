@@ -225,10 +225,13 @@ div.notification {
   em, a, span { margin-right: 4px; }
 }
 
-.search-results h3 .type {
-  margin-left: 10px;
-  color: #666;
-  font-size: 20px;
+.search-results {
+  h3 .type {
+    margin-left: 10px;
+    font-size: 20px;
+  }
+  h3 { margin: 10px 0 0; }
+  p { margin: 0 0 4px 14px; }
 }
 
 h3 .delete { margin-left: 20px; font-size: 18px; }
