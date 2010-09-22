@@ -3,16 +3,16 @@
   %span.type (Nyhet)
 
 %p.meta.date
-  %span Publicerad den 
+  %span.dim Publicerad den 
   = l result.created_at, :format => "%e %b %Y"
-  %span klockan 
+  %span.dim klockan 
   = l result.created_at, :format => "%H:%M"
 
 - if result.calendar_post?
   %p.meta.duration
-    %span Pågår från 
+    %span.dim Pågår från 
     = l result.starts_at, :format => "%Y-%m-%d %H:%M"
-    %span till 
+    %span.dim till 
     = l result.ends_at, :format => "%Y-%m-%d %H:%M"
   
   
