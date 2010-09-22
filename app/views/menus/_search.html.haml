@@ -2,7 +2,7 @@
   %li
     = link_to "Visa allt", search_path(:q => params[:q])
 
-%h2 Dokumenttyp
+%h2 Resultattyp
 
 %ul
   - @search.facet(:class).rows.each do |row|

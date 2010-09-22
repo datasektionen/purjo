@@ -6,9 +6,9 @@
     = link_to post.created_by, person_path(post.created_by), :class => "author"
 
     %span.date
-      %span.dim den 
+      %span den 
       = l post.created_at, :format => "%e %b %Y"
-      %span.dim klockan 
+      %span klockan 
       = l post.created_at, :format => "%H:%M"
   
     = render :partial => "people/popup", :locals => { :person => post.created_by }

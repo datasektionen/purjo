@@ -1,8 +1,6 @@
 %h3
-  Student:
   = link_to result.name, person_path(result)
+  %span (Student)
 
-  -if result.functionaries.count > 0
-    %p
-      %b Funktionärsposter: 
-      = result.functionaries.map { |f| f.chapter_post.name  }.to_sentence
+- if result.functionaries.count > 0
+  %p= result.functionaries.map { |f| f.chapter_post.name }.to_sentence

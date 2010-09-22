@@ -8,6 +8,7 @@
   %p
     = @hit_count
     sökträffar
+
   - @hits_and_results.each do |hit, result|
     = render :partial => "#{result.class.to_s.underscore}_result", :locals => {:hit => hit, :result => result}
   

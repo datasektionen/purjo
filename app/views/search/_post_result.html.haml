@@ -1,11 +1,18 @@
 %h3
-  Nyhet: 
   = link_to result.name, post_path(result)  
+  %span (Nyhet)
+
+%p.meta.date
+  %span publicerad den 
+  = l post.created_at, :format => "%e %b %Y"
+  %span klockan 
+  = l post.created_at, :format => "%H:%M"
 
 - if result.calendar_post?
-  Tid: 
-  = result.starts_at
-  -
-  = result.ends_at
+  %p.meta.duration
+    %span Pågår från 
+    = l result.starts_at, :format => "%Y-%m-%d %H:%M"
+    %span till 
+    = l result.ends_at, :format => "%Y-%m-%d %H:%M"
   
   
