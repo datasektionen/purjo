@@ -1,7 +1,7 @@
 %h2 
   Nomineringar till 
   = @election_event.name 
-  = "(#{@election_event.date})"
+  = "#{@election_event.date}"
 
 %p
   = include_node("/sektionen/val/text").gsub(/@last_change/, @last_change.to_s)
