@@ -1,13 +1,12 @@
 %h2 
   Nomineringar till 
   = @election_event.name 
-  = "(#{@election_event.date})"
-%h3 Nomineringar
+  = "#{@election_event.date}"
 
 %p
   = include_node("/sektionen/val/text").gsub(/@last_change/, @last_change.to_s)
 - if Person.current.editor?
-  %p= link_to "Redigera texten", "/sektionen/val/text"
+  - side_link "Redigera texten", "/text_nodes/181/edit"
 
 %table.styled-table
   %tr

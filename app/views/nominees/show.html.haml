@@ -1,6 +1,17 @@
-%p
-  %b Person:
-  = @nominee.person
+- if @nominee.person
+  %p
+    %b Person:
+    = @nominee.person
+- else
+  %div.notification
+    %p
+      %b Notera
+      Den här nomineringen finns bara som en "placeholder" så att en funktionärspost
+      som ej har nomineringar syns på nomineringssidan.
+    %p
+      Nomineringen är osynlig och syns inte i listorna.
+    %p
+      Om posten har kandidater kan du ta bort nomineringen.
 %p
   %b Valtillfälle:
   = @nominee.election_event.formated
@@ -11,6 +22,5 @@
   %b Status:
   = @nominee.status_text
 
-= link_to 'Edit', edit_nominee_path(@nominee)
-|
-= link_to 'Back', nominees_path
+- side_link 'Redigera nominering', edit_nominee_path(@nominee)
+- side_link 'Till nomineringar', nominees_path

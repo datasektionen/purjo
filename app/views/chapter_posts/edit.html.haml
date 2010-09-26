@@ -6,6 +6,5 @@
   %p
     = f.submit "Update"
 
-= link_to 'Show', @chapter_post
-|
-= link_to 'Back', chapter_posts_path
+- side_link 'Visa funktionärsposten', @chapter_post
+- side_link 'Till funktionärsposter', chapter_posts_path

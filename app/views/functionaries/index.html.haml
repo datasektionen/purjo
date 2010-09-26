@@ -10,6 +10,8 @@
     %th Person
     %th E-Post
     %th Aktiv fram till
+    - if Person.current.editor?
+      %th
   - for functionary in @functionaries
     - if functionary.postponed
       %tr.dim

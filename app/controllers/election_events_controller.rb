@@ -48,7 +48,7 @@ class ElectionEventsController < ApplicationController
 
     respond_to do |format|
       if @election_event.save
-        flash[:notice] = 'ElectionEvent was successfully created.'
+        flash[:notice] = 'Valtillfälle skapat.'
         format.html { redirect_to(@election_event) }
         format.xml  { render :xml => @election_event, :status => :created, :location => @election_event }
       else
@@ -65,7 +65,7 @@ class ElectionEventsController < ApplicationController
 
     respond_to do |format|
       if @election_event.update_attributes(params[:election_event])
-        flash[:notice] = 'ElectionEvent was successfully updated.'
+        flash[:notice] = 'Valtillfälle uppdaterat.'
         format.html { redirect_to(@election_event) }
         format.xml  { head :ok }
       else
@@ -79,11 +79,18 @@ class ElectionEventsController < ApplicationController
   # DELETE /election_events/1.xml
   def destroy
     @election_event = ElectionEvent.find(params[:id])
-    @election_event.destroy
-
+    @nominees = Nominee.find(:all, :conditions => { :election_event_id => params[:id]})
+    
     respond_to do |format|
-      format.html { redirect_to(election_events_url) }
-      format.xml  { head :ok }
+      if @nominees.empty?
+        flash[:notice] = 'Valtillfället är borttaget.'
+        @election_event.destroy
+        format.html { redirect_to(election_events_path) }
+      else
+        flash[:notice] = 'Du kan inte ta bort ett valtillfälle med nomineringar.'
+        format.html { redirect_to(@election_event) }
+      end
     end
+
   end
 end

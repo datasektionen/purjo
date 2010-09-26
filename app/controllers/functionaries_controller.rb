@@ -70,7 +70,7 @@ class FunctionariesController < ApplicationController
 
     respond_to do |format|
       if @functionary.save
-        flash[:notice] = 'Functionary was successfully created.'
+        flash[:notice] = 'Funktionärsmandatet skapat.'
         format.html { redirect_to(@functionary) }
         format.xml  { render :xml => @functionary, :status => :created, :location => @functionary }
       else
@@ -93,7 +93,7 @@ class FunctionariesController < ApplicationController
 
     respond_to do |format|
       if @functionary.update_attributes(params[:functionary])
-        flash[:notice] = 'Functionary was successfully updated.'
+        flash[:notice] = 'Funktionärsmandatet uppdaterat.'
         format.html { redirect_to(@functionary) }
         format.xml  { head :ok }
       else

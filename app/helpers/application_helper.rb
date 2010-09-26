@@ -37,4 +37,17 @@ module ApplicationHelper
       link_to text, path
     end
   end
+  
+  def side_link(*options)
+    @view_menus = Array.new unless @view_menus
+    @view_menus.push options
+  end
+  
+  def get_side_link(link)
+    if link[2]
+      link_to link[0], link[1], link[2]
+    else
+      link_to link[0], link[1], link[2]
+    end
+  end
 end

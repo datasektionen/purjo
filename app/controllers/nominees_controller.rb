@@ -61,18 +61,27 @@ class NomineesController < ApplicationController
   # GET /nominees/1/edit
   def edit
     @nominee = Nominee.find(params[:id])
-    @nominee.person_id = Person.find(@nominee.person_id).kth_username
+    if @nominee.person_id == -1
+      @nominee.person_id = ''
+    else
+      @nominee.person_id = Person.find(@nominee.person_id).kth_username
+    end
   end
 
   # POST /nominees
   # POST /nominees.xml
   def create
     @nominee = Nominee.new(params[:nominee])
-    @nominee.person_id = Person.find_by_kth_username(params[:nominee][:person_id]).id
+    person = Person.find_by_kth_username(params[:nominee][:person_id])
+    
+    # Hack så vi kan nominera en icke existerande person (tom inmatning)
+    # så vi får skenet att poster utan nominerade kandidater syns under
+    # /sektionen/val
+    @nominee.person_id = person ? person.id : -1
 
     respond_to do |format|
       if @nominee.save
-        flash[:notice] = 'Nominee was successfully created.'
+        flash[:notice] = 'Nominering skapad.'
         format.html { redirect_to(@nominee) }
         format.xml  { render :xml => @nominee, :status => :created, :location => @nominee }
       else
@@ -87,11 +96,13 @@ class NomineesController < ApplicationController
   def update
     @nominee = Nominee.find(params[:id])
 
-    params[:nominee][:person_id] = Person.find_by_kth_username(params[:nominee][:person_id]).id
+    if not params[:nominee][:person_id].empty?
+      params[:nominee][:person_id] = Person.find_by_kth_username(params[:nominee][:person_id]).id
+    end
 
     respond_to do |format|
       if @nominee.update_attributes(params[:nominee])
-        flash[:notice] = 'Nominee was successfully updated.'
+        flash[:notice] = 'Nominering uppdaterad.'
         format.html { redirect_to(@nominee) }
         format.xml  { head :ok }
       else

@@ -1,7 +1,12 @@
 - complete ||= false; unless complete
   %h3= link_to "Administration", admin_path
 .admin_menu
-    
+  - if @view_menus
+    %ul
+      - for link in @view_menus
+        %li= get_side_link link
+    %ul
+      %li &nbsp;
   - unless @node.nil? || @node.new_record?
     %h4= link_to 'Redigera sida', edit_text_node_path(@node)
     %ul

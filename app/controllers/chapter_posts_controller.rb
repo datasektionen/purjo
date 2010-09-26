@@ -52,7 +52,7 @@ class ChapterPostsController < ApplicationController
 
     respond_to do |format|
       if @chapter_post.save
-        flash[:notice] = 'ChapterPost was successfully created.'
+        flash[:notice] = 'Funktionärsposten är skapad.'
         format.html { redirect_to(@chapter_post) }
         format.xml  { render :xml => @chapter_post, :status => :created, :location => @chapter_post }
       else
@@ -69,7 +69,7 @@ class ChapterPostsController < ApplicationController
 
     respond_to do |format|
       if @chapter_post.update_attributes(params[:chapter_post])
-        flash[:notice] = 'ChapterPost was successfully updated.'
+        flash[:notice] = 'Funktionärsposten är uppdaterad.'
         format.html { redirect_to(@chapter_post) }
         format.xml  { head :ok }
       else

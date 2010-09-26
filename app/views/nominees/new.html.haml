@@ -1,6 +1,10 @@
 %h2 Skapa ny nominering
 - simple_form_for(@nominee) do |f|
   = render :partial => 'form', :locals => { :f => f }
-  = f.submit
-  != "&nbsp;|&nbsp;"
-  = link_to 'Tillbaka', nominees_path
+  %p
+    = f.submit "Skapa"
+
+%div.notification
+  %p
+    För att lista poster som inte har några kandidater, skapa
+    en nominering där du lämnar användarnamnet tomt.
