@@ -70,16 +70,15 @@ div.subnav {
   line-height: 1.5;
 
   h3, ul { margin: 0; }
-  h4 {
-    margin: 4px 0 0;
-  }
-
+  ul { margin-bottom: 10px; }
+  h4 { margin: 4px 0 0; } 
   .current { font-weight: bold; }
 }
 
 div.admin {
-  margin-top: 30px;
+  margin-top: 20px;
   h4, ul { font-size: 13px; }
+  ul { margin-bottom: 5px; }
 }
 
 div.info_box {
