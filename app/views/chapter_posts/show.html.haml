@@ -11,8 +11,8 @@
     = link_to @chapter_post.functionary.person.name, person_path(@chapter_post.functionary.person)
   - else
     %em Posten är bordlagd
-%h4 Historik
-%table.styled-table
+%h3 Historik
+%table
   %tr
     %th Person
     %th Från
@@ -25,7 +25,7 @@
       %td= functionary.active_from
       %td= functionary.active_to
       - if Person.current.editor?
-        %td= link_to "Redigera", functionary
+        %td= link_to "Redigera", edit_functionary_path(functionary)
 - if Person.current.editor?
   - side_link 'Till funktionärsposter', chapter_posts_path
   - side_link 'Tillbaka till funktionärer', functionaries_path

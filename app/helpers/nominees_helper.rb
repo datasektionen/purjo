@@ -21,7 +21,7 @@ module NomineesHelper
       end
       
       if Person.current.editor?
-        list[key][0] += " (" + link_to("Redigera", n) + ")<br />"
+        list[key][0] += " (" + link_to("Redigera", edit_nominee_path(n)) + ")<br />"
       else
         list[key][0] += "<br />"
       end
