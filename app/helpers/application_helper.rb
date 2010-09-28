@@ -1,19 +1,4 @@
 module ApplicationHelper
-  def admin_link(text, options)
-    url = options.delete(:url)
-    icon = options.delete(:icon)
-    
-    content_tag(:li) do
-      output = ""
-      if icon
-        output += link_to(image_tag(icon, :class => 'icon'), url, options)
-        output += " "
-      end
-      output += link_to(text, url, options) 
-      output
-    end
-  end
-  
   def javascript(*scripts)
     content_for(:head) do
       javascript_include_tag(*scripts)
@@ -41,13 +26,5 @@ module ApplicationHelper
   def side_link(*options)
     @view_menus = Array.new unless @view_menus
     @view_menus.push options
-  end
-  
-  def get_side_link(link)
-    if link[2]
-      link_to link[0], link[1], link[2]
-    else
-      link_to link[0], link[1], link[2]
-    end
   end
 end
