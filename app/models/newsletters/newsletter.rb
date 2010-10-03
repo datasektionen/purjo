@@ -44,7 +44,7 @@ class Newsletter < ActiveRecord::Base
   def text_content
     sections = newsletter_sections.sorted
 
-    toc = "Innehåll\n" + ("=" * 40)
+    toc = "Innehåll\n" + ("=" * 12)
     sections.map do |section|
       toc << "\n* #{section.title}"
     end
@@ -53,7 +53,7 @@ class Newsletter < ActiveRecord::Base
       sec.title + "\n" + ("=" * sec.title.length) + "\n\n" + sec.body
     }.join("\n\n\n")
 
-    toc + "\n\n\n" + sections_text
+    toc + "\n\n\n" + sections_text + "\n\n"
   end
   
   private
