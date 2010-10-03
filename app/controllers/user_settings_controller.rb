@@ -2,6 +2,12 @@ class UserSettingsController < ApplicationController
   before_filter :load_person
   before_filter :check_access
   
+  def edit_current
+    @person = Person.current
+    @user_settings = @person.user_settings
+    render :action => 'edit'
+  end
+
   def show
     @user_settings = @person.user_settings
     render :action => 'edit'

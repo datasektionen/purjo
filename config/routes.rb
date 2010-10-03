@@ -29,6 +29,8 @@ Rails.application.routes.draw do |map|
     end
   end
 
+  get '/installningar', :to => 'user_settings#edit_current', :as => 'settings'
+
   map.xfinger_image 'people/xfinger_image/:uid', :controller=>'people',:action=>'xfinger_image'
   
   resources :nyheter, :as => 'posts', :controller => 'posts' do
