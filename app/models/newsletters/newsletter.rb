@@ -28,7 +28,7 @@ class Newsletter < ActiveRecord::Base
 
     toc = "<h2 id=\"toc\">Innehåll</h2>\n<ul>\n"
     sections.map do |section|
-      toc << "<li><a href=\"section-#{section.id}\">#{section.title}</a></li>\n"
+      toc << "<li><a href=\"#section-#{section.id}\">#{section.title}</a></li>\n"
     end
     toc << "</ul>\n"
 
