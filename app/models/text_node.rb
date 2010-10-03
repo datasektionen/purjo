@@ -42,6 +42,11 @@ class TextNode < ActiveRecord::Base
   end
   
   def layout
+    # hmm, why inherit from parent?
+    layout = self.custom_layout
+    layout = "text_node_default" if layout.blank?
+    return layout
+
     node = self
     while node.has_parent?
       if !node.custom_layout.blank?
