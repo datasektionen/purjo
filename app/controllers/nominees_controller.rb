@@ -1,14 +1,12 @@
 class NomineesController < ApplicationController
+  require_role :editor, :except => [:index]
 
-  layout 'application'
-  require_role "editor", :except => [:index]
-
-  # GET /nominees
-  # GET /nominees.xml
   def index
     @menu_items=TextNode.find_by_url("/sektionen").menu[:items]
     if params[:election_event]
-      @nominees = Nominee.find(:all, :conditions => { :election_event_id => params[:election_event]})
+      @nominees = Nominee.find(:all, :conditions => {
+          :election_event_id => params[:election_event]
+        })
       @election_event = ElectionEvent.find(params[:election_event])
     else
       @election_event = ElectionEvent.find(:first, :conditions =>
@@ -36,8 +34,6 @@ class NomineesController < ApplicationController
     end
   end
 
-  # GET /nominees/1
-  # GET /nominees/1.xml
   def show
     @nominee = Nominee.find(params[:id])
 
@@ -47,8 +43,6 @@ class NomineesController < ApplicationController
     end
   end
 
-  # GET /nominees/new
-  # GET /nominees/new.xml
   def new
     @nominee = Nominee.new
 
@@ -58,7 +52,6 @@ class NomineesController < ApplicationController
     end
   end
 
-  # GET /nominees/1/edit
   def edit
     @nominee = Nominee.find(params[:id])
     if @nominee.person_id == -1
@@ -68,8 +61,6 @@ class NomineesController < ApplicationController
     end
   end
 
-  # POST /nominees
-  # POST /nominees.xml
   def create
     @nominee = Nominee.new(params[:nominee])
     person = Person.find_by_kth_username(params[:nominee][:person_id])
@@ -91,8 +82,6 @@ class NomineesController < ApplicationController
     end
   end
 
-  # PUT /nominees/1
-  # PUT /nominees/1.xml
   def update
     @nominee = Nominee.find(params[:id])
 
@@ -112,8 +101,6 @@ class NomineesController < ApplicationController
     end
   end
 
-  # DELETE /nominees/1
-  # DELETE /nominees/1.xml
   def destroy
     @nominee = Nominee.find(params[:id])
     @nominee.destroy

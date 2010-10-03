@@ -47,7 +47,6 @@ $(function() {
       hideDelayTimer = setTimeout(function() {
         hideDelayTimer = null;
         
-        
         popup.animate({
           left: 0,
           opacity: 0
@@ -58,6 +57,14 @@ $(function() {
       }, hideDelay);
     });
   })
+
+  $('.toggle').toggle(function() {
+    $(this).addClass('off');
+    $(this).parent().next('.toggled').hide();
+  }, function() {
+    $(this).removeClass('off');
+    $(this).parent().next('.toggled').show();
+  }).filter('.off').click();
 });
 
 $(function() {

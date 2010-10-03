@@ -1,3 +1,7 @@
 %h2 Ny nyhetsbrevssektion
 
 = render :partial => "form"
+
+- side_link "Tillbaka", newsletter_path(@newsletter)
+- side_link "Redigera nyhetsbrev", edit_newsletter_path(@newsletter)
+- side_link "Alla nyhetsbrev", newsletters_path

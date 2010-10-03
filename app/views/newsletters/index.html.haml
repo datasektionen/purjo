@@ -27,13 +27,9 @@
 
 %p
   = will_paginate @newsletters
-
-
-%p.actions
-  - if Person.current.admin?
-    = link_to t('.new'), new_newsletter_path
   
-%p 
-  Observera att informationen på denna sida kan vara ren lögn. Hör av dig till Informationsansvarig om du hittar någonting som inte stämmer.
-        
+%p Observera att informationen på denna sida kan vara ren lögn. Hör av dig till Informationsansvarig om du hittar någonting som inte stämmer.
+
+- if Person.current.admin?
+  - side_link "Nytt nyhetsbrev", new_newsletter_path
   
