@@ -24,17 +24,36 @@ class Newsletter < ActiveRecord::Base
   
   # TODO textile i en modell? Tveksamt va?
   def formatted_content
-    formatted_sections = newsletter_sections.map do |section|
-      out = ""
-      out << "<h2>#{section.title}</h2>\n"
-      textilized = RedCloth.new(section.body)
-      out + textilized.to_html
+    sections = newsletter_sections.sorted
+
+    toc = "<h2 id=\"toc\">Innehåll</h2>\n<ul>\n"
+    sections.map do |section|
+      toc << "<li><a href=\"section-#{section.id}\">#{section.title}</a></li>\n"
     end
-    formatted_sections.join("\n")
+    toc << "</ul>\n"
+
+    formatted_sections = sections.map do |section|
+      out = ""
+      out << "<h2 id=\"section-#{section.id}\">#{section.title}</h2>\n"
+      out + RedCloth.new(section.body).to_html
+    end
+
+    toc + formatted_sections.join("\n\n")
   end
   
   def text_content
-    newsletter_sections.map { |sec| sec.title + "\n" + ("-" * sec.title.length) + "\n\n" + sec.body }.join("\n\n\n")
+    sections = newsletter_sections.sorted
+
+    toc = "Innehåll\n" + ("=" * 40)
+    sections.map do |section|
+      toc << "\n* #{section.title}"
+    end
+
+    sections_text = sections.map { |sec|
+      sec.title + "\n" + ("=" * sec.title.length) + "\n\n" + sec.body
+    }.join("\n\n\n")
+
+    toc + "\n\n\n" + sections_text
   end
   
   private
