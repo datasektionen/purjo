@@ -1,0 +1,14 @@
+- stylesheet "500"
+
+#error_box
+  %h2 Här får du inte vara
+  
+  %span.small (401 Unauthorized)
+  
+  %p Det verkar som att du inte har rättigheter att se denna sida.
+
+  - if Person.current.anonymous?
+    %p Du är inte inloggad, #{link_to 'logga in', new_sessions_path(:return_url => current_url)}?
+  - else
+    %p Om du anser att du borde ha det, <a href="/kontakt/ior">kontakta Ior</a>. Glöm inte att skriva vem du är, vilken sida du försöker visa och varför du borde ha rättigheter.
+  
