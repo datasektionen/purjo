@@ -4,7 +4,7 @@
   %head
     %title= render_title
     = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz"
-    = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Crimson+Text"
+    -#= stylesheet_link_tag "http://fonts.googleapis.com/css?family=Crimson+Text"
     = javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"
     = javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.4/jquery-ui.min.js"
     /[if lt IE 9]
@@ -27,7 +27,8 @@
             .grid_9.prefix_3
               %span 
                 - if Person.current.anonymous?
-                  Du är inte <strong>inloggad</strong>.
+                  Du är inte
+                  %strong inloggad
                 - else 
                   Du är inloggad som
                   %strong

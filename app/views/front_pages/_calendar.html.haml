@@ -5,7 +5,7 @@
     - @current_calendar_posts.each do |calendar_post|
       .event
         %p.description= link_to calendar_post, calendar_post
-        %p.time
+        %p.meta.time
           %span= l(calendar_post.starts_at, :format => "%A %d %b").humanize
           - if !calendar_post.all_day?
             %span.dim klockan
