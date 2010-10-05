@@ -6,4 +6,4 @@
   %p
     != link_to(result.chapter_post.name, chapter_post_path(result.chapter_post)) + ": "
     - if result.chapter_post.functionary.present? && result.chapter_post.functionary.person.present?
-      = link_to result.chapter_post.functionary.person.name person_path(result.chapter_post.functionary.person)
+      = link_to result.chapter_post.functionary.person.name, person_path(result.chapter_post.functionary.person)
