@@ -4,7 +4,6 @@
 
 - if result.chapter_post.present?
   %p
-    Ordförande:
-    = result.chapter_post.name
+    != link_to(result.chapter_post.name chapter_post_path(result.chapter_post)) + ": "
     - if result.chapter_post.functionary.present? && result.chapter_post.functionary.person.present?
-      = result.chapter_post.functionary.person.name
+      = link_to result.chapter_post.functionary.person.name person_path(result.chapter_post.functionary.person)
