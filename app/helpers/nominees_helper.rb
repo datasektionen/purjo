@@ -4,7 +4,7 @@ module NomineesHelper
   def format_nominees(nominees)
     list = Hash.new
 
-    for n in nominees
+    for n in nominees.sort { |a,b| a.status <=> b.status }
       unless list.key? n.chapter_post.name
         list[n.chapter_post.name] = ["","", "", "", ""]
       end
