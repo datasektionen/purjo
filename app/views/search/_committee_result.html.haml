@@ -1,3 +1,10 @@
 %h3
   = result.name
-  %span (Nämnd)
+  %span.type (Nämnd)
+
+- if result.chapter_post.present?
+  %p
+    Ordförande:
+    = result.chapter_post.name
+    - if result.chapter_post.functionary.present? && result.chapter_post.functionary.person.present?
+      = result.chapter_post.functionary.person.name
