@@ -1,12 +1,3 @@
 %h3
   = result.name
   %span (Nämnd)
-
-- if result.chapter_post.present?
-  %p
-    %strong Ordförande:
-    - unless result.chapter_post.nil?
-      = result.chapter_post.name
-      - unless result.chapter_post.functionary.nil? || result.chapter_post.functionary.person.nil?
-        = result.chapter_post.functionary.person.name
-  
