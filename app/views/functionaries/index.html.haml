@@ -20,7 +20,7 @@
     %td= link_to functionary.chapter_post.name, functionary.chapter_post
     %td
       - if functionary.postponed
-        %em Vakantsatt
+        %em Vakant
       - elsif functionary.person
         = link_to functionary.person.name, functionary.person
     %td= link_to functionary.chapter_post.slug, contact_path(:slug => functionary.chapter_post.slug)
