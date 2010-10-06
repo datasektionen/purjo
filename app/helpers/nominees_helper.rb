@@ -28,9 +28,11 @@ module NomineesHelper
       end
 
       if n.chapter_post.functionary
-        list[key][1] = link_to_if n.chapter_post.functionary.person, n.chapter_post.functionary.person.try(:name), n.chapter_post.functionary.person
-      else
-        list[key][1] = "<em>Vakant</em>"
+        if n.chapter_post.functionary.person
+          list[key][1] = link_to n.chapter_post.functionary.person.try(:name), n.chapter_post.functionary.person
+        else
+          list[key][1] = "<em>Vakant</em>"
+        end
       end
       
       list[key][2] = link_to n.chapter_post.name, n.chapter_post
