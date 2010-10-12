@@ -15,7 +15,6 @@ class TextNode < ActiveRecord::Base
   before_destroy :deletable?
 
   validate :unique_url, :on => :create
-  validates_presence_of :contents
   validates_presence_of :name
   
   
