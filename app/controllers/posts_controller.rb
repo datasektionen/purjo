@@ -1,14 +1,16 @@
 class PostsController < ApplicationController
   require_role :editor, :except => [:show, :index]
   require_role :admin, :only => [:destroy]
+
+  def index
+    redirect_to '/'
+  end
   
-  # GET /posts/1
   def show
     @post = Post.find(params[:id])
     @noise = Noise.new(params[:noise])
   end
 
-  # GET /posts/new
   def new
     @post = Post.new
 
@@ -16,12 +18,10 @@ class PostsController < ApplicationController
     @post.ends_at = DateTime.now + 1.hour
   end
 
-  # GET /posts/1/edit
   def edit
     @post = Post.find(params[:id])
   end
 
-  # POST /posts
   def create
     params[:post][:news_post] ||= "false"
     params[:post][:calendar_post] ||= "false"
@@ -40,7 +40,6 @@ class PostsController < ApplicationController
     end
   end
 
-  # PUT /posts/1
   def update
     params[:post][:news_post] ||= "false"
     params[:post][:calendar_post] ||= "false"
@@ -62,7 +61,6 @@ class PostsController < ApplicationController
     end
   end
 
-  # DELETE /posts/1
   def destroy
     @post = Post.find(params[:id])
     @post.destroy

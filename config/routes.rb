@@ -41,6 +41,7 @@ Rails.application.routes.draw do |map|
   match "/sok", :to => 'search#index', :as => 'search'
   
   resource :sessions
+
   resources 'sektionen/sok', :as => 'students', :controller => 'students' do
     member do
       get :xfinger
@@ -54,10 +55,10 @@ Rails.application.routes.draw do |map|
   
   resources :file_nodes
   
-  resources :text_nodes do
-    resources :children, :controller => 'TextNodeChildren', :path_prefix => 'text_nodes/:node_id'
-    resources :files, :controller => 'FileNodeChildren', :path_prefix => 'text_nodes/:node_id'
-    resources :versions, :controller => 'TextNodeVersions' do
+  resources 'textnoder', :as => :text_nodes, :controller => 'text_nodes' do
+    resources :children, :controller => 'TextNodeChildren', :path_prefix => 'textnoder/:node_id'
+    resources :filer, :controller => 'FileNodeChildren', :path_prefix => 'textnoder/:node_id'
+    resources :versioner, :controller => 'TextNodeVersions' do
       member do
         put :revert
       end
@@ -68,12 +69,12 @@ Rails.application.routes.draw do |map|
     end
   end
 
-  match '/text_nodes/:text_node_id/menu', :controller => 'TextNodeMenu', :action => 'update', :via => :put
-  match '/text_nodes/:text_node_id/menu', :controller => 'TextNodeMenu', :action => 'add',:via=>:post
-  match '/text_nodes/:text_node_id/menu/delete/:id', :controller => 'TextNodeMenu', :action => 'delete', :via => :delete
+  match '/textnoder/:text_node_id/meny', :controller => 'TextNodeMenu', :action => 'update', :via => :put
+  match '/textnoder/:text_node_id/meny', :controller => 'TextNodeMenu', :action => 'add',:via=>:post
+  match '/textnoder/:text_node_id/meny/delete/:id', :controller => 'TextNodeMenu', :action => 'delete', :via => :delete
 
-  map.delete_text_node_menu '/text_nodes/:text_node_id/menu/delete/:id'
-  map.edit_text_node_menu '/text_nodes/:text_node_id/menu', :controller => 'TextNodeMenu', :action => 'edit'
+  map.delete_text_node_menu '/textnoder/:text_node_id/meny/delete/:id'
+  map.edit_text_node_menu '/textnoder/:text_node_id/meny', :controller => 'TextNodeMenu', :action => 'edit'
   
   match "/protokoll/:filename", :to => "protocols#show", :as => 'protocol'
   match "/protokoll", :to => "protocols#index", :as => 'protocols'

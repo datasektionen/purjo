@@ -4,6 +4,11 @@ class TextNodesController < ApplicationController
 
   before_filter :layout_options, :only => [:new, :edit, :update]
 
+  def show
+    @node = TextNode.find(params[:id])
+    render "text_nodes/show", :layout => @node.layout
+  end
+
   def edit
     @node = TextNode.find(params[:id])
   end
