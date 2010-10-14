@@ -62,7 +62,10 @@ blockquote {
   -moz-box-shadow: 0px 5px 20px #7b7b7b;
 }
 
-.meta { color: #222; }
+.meta {
+  color: #222;
+  font-style: italic;
+}
 .meta span.dim { color: #777; }
 
 .logo {

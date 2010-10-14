@@ -1,0 +1,34 @@
+%h2 Nyhetsbrev
+
+%table
+  %thead
+    %tr
+      %th Namn
+      %th Status
+      %th 
+  %tbody
+    - @newsletters.each do |newsletter|
+      %tr{:id => "newsletter_#{newsletter.id}"}
+        %td= link_to newsletter.subject, newsletter
+        %td= newsletter.state
+        %td
+          - if Person.current.admin?
+            - if newsletter.pending? || newsletter.failed?
+              = link_to "Testutskick", new_newsletter_test_delivery_path(newsletter), :confirm => "Är du säker på att du vill testutskicka nyhetsbrevet?"
+            - else
+              %span{:class => 'disabled'} Testutskick
+            != "&nbsp;|&nbsp;"
+            - if newsletter.pending? || newsletter.failed?
+              = link_to "Skicka nyhetsbrev", new_newsletter_live_delivery_path(newsletter), :confirm => "Är du säker på att du vill skicka nyhetsbrevet?"
+            - else
+              %span{:class => 'disabled'} Skicka nyhetsbrev
+            != "&nbsp;|&nbsp;"
+            = link_to "Redigera", edit_newsletter_path(newsletter)
+
+%p
+  = will_paginate @newsletters
+
+- if Person.current.admin?
+  - side_link "Nytt nyhetsbrev", new_newsletter_path
+- side_link "Alla nyhetsbrev", newsletters_path 
+  

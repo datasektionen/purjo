@@ -1,7 +1,12 @@
 require 'ior/hominid/common'
 class Newsletter < ActiveRecord::Base
-  scope :sorted, order('created_at desc')
   include Ior::Hominid::Common
+
+  scope :sorted, order('created_at desc')
+  scope :published, lambda {
+    where("newsletters.published IS NOT NULL AND newsletters.published <= ?", DateTime.now)
+  }
+
   validates_presence_of :subject
   
   has_many :newsletter_sections

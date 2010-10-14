@@ -19,6 +19,7 @@ Rails.application.routes.draw do |map|
     resources :sektion, :as => 'newsletter_sections', :controller => 'newsletter_sections'
     resource :test_delivery
     resource :live_delivery
+    get :admin, :on => :collection
   end
   match "/newsletters/hook/:secret", :to => 'newsletter_hooks#mailchimp_endpoint', :via => [:post, :get]
   
@@ -57,8 +58,8 @@ Rails.application.routes.draw do |map|
   
   resources 'textnoder', :as => :text_nodes, :controller => 'text_nodes' do
     resources :children, :controller => 'TextNodeChildren', :path_prefix => 'textnoder/:node_id'
-    resources :filer, :controller => 'FileNodeChildren', :path_prefix => 'textnoder/:node_id'
-    resources :versioner, :controller => 'TextNodeVersions' do
+    resources :filer, :as => :files, :controller => 'FileNodeChildren', :path_prefix => 'textnoder/:node_id'
+    resources :versioner, :as => :versions, :controller => 'TextNodeVersions' do
       member do
         put :revert
       end

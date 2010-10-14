@@ -9,6 +9,8 @@ class LiveDelivery < DeliveryBase
     if update_newsletter(@newsletter)
       if hominid.send(@newsletter.campaign_id)
         @newsletter.sent!
+        @newsletter.sent = DateTime.now
+        @newsletter.save
       else
         @newsletter.fail!
       end

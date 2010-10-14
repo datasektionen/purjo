@@ -1,35 +1,22 @@
 %h2 Nyhetsbrev
 
-%table
+%table.auto
   %thead
     %tr
       %th Namn
-      %th Status
-      %th 
+      %th Publicerat
   %tbody
     - @newsletters.each do |newsletter|
       %tr{:id => "newsletter_#{newsletter.id}"}
         %td= link_to newsletter.subject, newsletter
-        %td= newsletter.state
-        %td
-          - if Person.current.admin?
-            - if newsletter.pending? || newsletter.failed?
-              = link_to "Testutskick", new_newsletter_test_delivery_path(newsletter), :confirm => "Är du säker på att du vill testutskicka nyhetsbrevet?"
-            - else
-              %span{:class => 'disabled'} Testutskick
-            != "&nbsp;|&nbsp;"
-            - if newsletter.pending? || newsletter.failed?
-              = link_to "Skicka nyhetsbrev", new_newsletter_live_delivery_path(newsletter), :confirm => "Är du säker på att du vill skicka nyhetsbrevet?"
-            - else
-              %span{:class => 'disabled'} Skicka nyhetsbrev
-            != "&nbsp;|&nbsp;"
-            = link_to "Redigera", edit_newsletter_path(newsletter)
+        - if newsletter.state == :sent
+          %td= l newsletter.published, :format => "%e %b %Y"
+        - else
+          %td Utkast
 
 %p
   = will_paginate @newsletters
-  
-%p Observera att informationen på denna sida kan vara ren lögn. Hör av dig till Informationsansvarig om du hittar någonting som inte stämmer.
 
 - if Person.current.admin?
-  - side_link "Nytt nyhetsbrev", new_newsletter_path
+  - side_link "Administrera nyhetsbrev", admin_newsletters_path
   

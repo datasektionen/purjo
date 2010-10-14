@@ -1,17 +1,30 @@
 %h2 Nyhetsbrev: #{@newsletter.subject}
+%p.meta
+  %span.date
+    - if @newsletter.state == :sent
+      Publicerat
+      %span.dim den 
+      = l @newsletter.published, :format => "%e %b %Y"
+    - else
+      Utkast
+      %span.dim skapat den 
+      = l @newsletter.created_at, :format => "%e %b %Y"
 
 .newsletter_sections.toggleable
 - @newsletter.newsletter_sections.sorted.each do |section|
   %h3
     %span.toggle.off= section.title
-    = link_to "(Redigera)", edit_newsletter_newsletter_section_path(@newsletter, section), :class => "edit"
+    - if Person.current.editor?
+      = link_to "(Redigera)", edit_newsletter_newsletter_section_path(@newsletter, section), :class => "edit"
     - if Person.current.admin?
       = link_to '(Ta bort)', newsletter_newsletter_section_path(@newsletter, section), :method => :delete, :confirm => 'Är du säker på att du vill ta bort den här sektionen?', :class => "delete"
   
   .section.toggled{ :id => "newsletter-section-#{section.id}"}
     != RedCloth.new(section.body).to_html
 
-- side_link "Ny sektion", new_newsletter_newsletter_section_path(@newsletter)
-- if Person.current.admin?
-  - side_link "Redigera nyhetsbrev", edit_newsletter_path(@newsletter)
-- side_link "Alla nyhetsbrev", newsletters_path
+- if Person.current.editor?
+  - side_link "Ny sektion", new_newsletter_newsletter_section_path(@newsletter)
+  - if Person.current.admin?
+    - side_link "Redigera nyhetsbrev", edit_newsletter_path(@newsletter)
+    - side_link "Administrera nyhetsbrev", admin_newsletters_path
+  - side_link "Alla nyhetsbrev", newsletters_path
