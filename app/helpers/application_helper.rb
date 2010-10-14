@@ -23,8 +23,13 @@ module ApplicationHelper
     end
   end
   
-  def side_link(*options)
-    @view_menus = Array.new unless @view_menus
-    @view_menus.push options
+  def nav_link(*options)
+    @nav_menus = Array.new unless @nav_menus
+    @nav_menus.push options
+  end
+
+  def admin_link(*options)
+    @admin_menus = Array.new unless @admin_menus
+    @admin_menus.push options
   end
 end

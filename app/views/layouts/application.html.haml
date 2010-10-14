@@ -67,6 +67,11 @@
 
             - if @menu_items
               = render :partial => "text_nodes/menu", :collection=>@menu_items,:as=>:menu_item
+
+            - if @nav_menus
+              %ul
+                - @nav_menus.each do |link|
+                  %li= link_to link[0], link[1], link[2]
             
             - if Person.current.editor?
               .admin= render 'menus/admin'

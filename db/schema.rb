@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100830204540) do
+ActiveRecord::Schema.define(:version => 20101014193323) do
 
   create_table "articles", :force => true do |t|
     t.integer  "blog_id"
@@ -208,6 +208,7 @@ ActiveRecord::Schema.define(:version => 20100830204540) do
     t.datetime "updated_at"
     t.string   "campaign_id"
     t.string   "state"
+    t.datetime "published"
   end
 
   create_table "noises", :force => true do |t|

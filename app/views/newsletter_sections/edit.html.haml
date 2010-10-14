@@ -3,7 +3,7 @@
 = render :partial => "form"
 
 - if Person.current.admin?
-  - side_link "Ta bort", newsletter_newsletter_section_path(@newsletter, @newsletter_section), :method => :delete, :confirm => 'Är du säker på att du vill ta bort den här sektionen?', :class => "delete"
-- side_link "Tillbaka", newsletter_path(@newsletter)
-- side_link "Redigera nyhetsbrev", edit_newsletter_path(@newsletter)
-- side_link "Alla nyhetsbrev", newsletters_path
+  - admin_link "Ta bort", newsletter_newsletter_section_path(@newsletter, @newsletter_section), :method => :delete, :confirm => 'Är du säker på att du vill ta bort den här sektionen?', :class => "delete"
+- admin_link "Tillbaka", newsletter_path(@newsletter)
+- admin_link "Redigera nyhetsbrev", edit_newsletter_path(@newsletter)
+- admin_link "Alla nyhetsbrev", newsletters_path

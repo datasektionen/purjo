@@ -2,9 +2,9 @@
   %h3= link_to "Administration", admin_path
 
 .admin_menu
-  - if @view_menus
+  - if @admin_menus
     %ul
-      - for link in @view_menus
+      - @admin_menus.each do |link|
         %li= link_to link[0], link[1], link[2]
 
   - unless @node.nil? || @node.new_record?

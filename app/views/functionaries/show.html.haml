@@ -10,6 +10,6 @@
   %b Period:
   = "#{@functionary.active_from} till #{@functionary.active_to}"
 
-- side_link 'Tillbaka till funktionärsposter', functionaries_path
-- side_link 'Redigera', edit_functionary_path(@functionary)
-- side_link 'Ta bort', functionary_path, :confirm => 'Are you sure?', :method => :delete
+- admin_link 'Tillbaka till funktionärsposter', functionaries_path
+- admin_link 'Redigera', edit_functionary_path(@functionary)
+- admin_link 'Ta bort', functionary_path, :confirm => 'Are you sure?', :method => :delete

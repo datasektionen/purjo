@@ -29,6 +29,7 @@
   = will_paginate @newsletters
 
 - if Person.current.admin?
-  - side_link "Nytt nyhetsbrev", new_newsletter_path
-- side_link "Alla nyhetsbrev", newsletters_path 
+  - admin_link "Nytt nyhetsbrev", new_newsletter_path
+
+- nav_link "Alla nyhetsbrev", newsletters_path
   

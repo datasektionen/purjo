@@ -23,8 +23,9 @@
     != RedCloth.new(section.body).to_html
 
 - if Person.current.editor?
-  - side_link "Ny sektion", new_newsletter_newsletter_section_path(@newsletter)
+  - admin_link "Ny sektion", new_newsletter_newsletter_section_path(@newsletter)
   - if Person.current.admin?
-    - side_link "Redigera nyhetsbrev", edit_newsletter_path(@newsletter)
-    - side_link "Administrera nyhetsbrev", admin_newsletters_path
-  - side_link "Alla nyhetsbrev", newsletters_path
+    - admin_link "Redigera nyhetsbrev", edit_newsletter_path(@newsletter)
+    - admin_link "Administrera nyhetsbrev", admin_newsletters_path
+
+- nav_link "Alla nyhetsbrev", newsletters_path
