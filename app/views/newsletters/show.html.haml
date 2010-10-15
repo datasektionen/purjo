@@ -1,7 +1,7 @@
 %h2 Nyhetsbrev: #{@newsletter.subject}
 %p.meta
   %span.date
-    - if @newsletter.state == :sent
+    - if @newsletter.published
       Publicerat
       %span.dim den 
       = l @newsletter.published, :format => "%e %b %Y"

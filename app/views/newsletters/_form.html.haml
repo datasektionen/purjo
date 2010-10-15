@@ -1,3 +1,13 @@
 = simple_form_for(@newsletter) do |form|
   = form.input :subject
+
+  .datetime.optional
+    .blank
+      = form.radio_button :published_present, false
+      = form.label :published_present_false, "Utkast"
+    .present
+      = form.radio_button :published_present, true
+      = form.label :published_present_true, "Publicerat"
+      = form.datetime_select :published
+
   = form.submit

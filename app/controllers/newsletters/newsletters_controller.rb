@@ -7,7 +7,7 @@ class NewslettersController < InheritedResources::Base
   end
 
   def admin
-    @newsletters = collection
+    @newsletters = Newsletter.all.paginate(:page => params[:page])
   end
 
   def show

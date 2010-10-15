@@ -2,7 +2,7 @@ require 'ior/hominid/common'
 class Newsletter < ActiveRecord::Base
   include Ior::Hominid::Common
 
-  scope :sorted, order('created_at desc')
+  scope :sorted, order('newsletters.published desc')
   scope :published, lambda {
     where("newsletters.published IS NOT NULL AND newsletters.published <= ?", DateTime.now)
   }
@@ -26,6 +26,10 @@ class Newsletter < ActiveRecord::Base
       transition :pending => :failed
     end
   end
+
+  attr_writer :published_present
+  def published_present; @published_present || published.present?; end
+  before_validation :check_published
   
   # TODO textile i en modell? Tveksamt va?
   def formatted_content
@@ -75,5 +79,9 @@ class Newsletter < ActiveRecord::Base
     new_campaign_id = hominid.create_campaign(options)
     
     self.campaign_id = new_campaign_id
+  end
+
+  def check_published
+    self.published = nil unless published_present == 'true'
   end
 end
