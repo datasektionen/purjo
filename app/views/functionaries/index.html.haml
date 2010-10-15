@@ -27,3 +27,4 @@
     %td= "<acronym title=\"#{functionary.active_from} till #{functionary.active_to}\">#{functionary.active_to}</acronym>".html_safe
     - if Person.current.editor?
       %td= link_to 'Redigera', edit_functionary_path(functionary)
+

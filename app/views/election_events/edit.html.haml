@@ -1,16 +1,6 @@
-%h2 Redigerar ett valtillfälle
-- form_for(@election_event) do |f|
-  %p
-    = f.label :name
-    <br />
-    = f.text_field :name
-  %p
-    = f.label :date
-    <br />
-    = f.date_select :date
-  %p
-    = f.submit "Update"
+%h2 Redigera valtillfälle
 
-- admin_link 'Tillbaka till valtillfällen', election_events_path
-- admin_link 'Visa valtillfälle', @election_event
-- admin_link 'Ta bort valtilfälle', @election_event, :confirm => 'Are you sure?', :method => :delete
+= render :partial => 'form'
+
+- admin_link 'Ta bort valtilfälle', @election_event, :confirm => 'Är du säker på att du vill ta bort valtillfället?', :method => :delete
+- admin_link 'Alla valtillfällen', election_events_path

@@ -64,8 +64,7 @@ form {
   .url label,
   .email label {
     margin-right: 20px;
-    float: left;
-    clear: left;
+    display: block;
     font-weight: bold;
     width: 200px;
   }
@@ -96,7 +95,7 @@ form {
     width: 200px;
   }
 
-  label.datetime { margin-right: 6px; }
+  label.datetime, label.date { margin-right: 6px; }
 }
 
 .field_with_errors {

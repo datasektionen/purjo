@@ -3,10 +3,13 @@
 %table
   %tr
     %th Namn
+    %th E-post
     %th
     
   - @committees.each do |committee|
     %tr
       %td= committee.name
+      %td= committee.slug
       %td
         = link_to "Redigera", edit_committee_path(committee)
+

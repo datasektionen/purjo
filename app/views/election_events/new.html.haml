@@ -1,14 +1,5 @@
-%h2 New election_event
-- form_for(@election_event) do |f|
-  %p
-    = f.label :name
-    <br />
-    = f.text_field :name
-  %p
-    = f.label :date
-    <br />
-    = f.date_select :date
-  %p
-    = f.submit "Create"
+%h2 Skapa nytt valtillfälle
 
-- admin_link 'Back', election_events_path
+= render :partial => 'form'
+
+- admin_link 'Alla valtillfällen', election_events_path

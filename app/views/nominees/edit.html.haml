@@ -1,9 +1,6 @@
 %h2 Redigera en nominering
-- form_for(@nominee) do |f|
-  = render :partial => 'form', :locals => { :f => f }
-  %p
-    = f.submit "Update"
 
-- admin_link 'Visa nominering', @nominee
-- admin_link 'Till nomineringar', nominees_path
-- admin_link 'Ta bort nominering', @nominee, :confirm => 'Are you sure?', :method => :delete
+= render :partial => 'form'
+
+- admin_link 'Ta bort nominering', @nominee, :confirm => 'Är du säker på att du vill ta bort nämnden?', :method => :delete
+- admin_link 'Alla nomineringar', nominees_path

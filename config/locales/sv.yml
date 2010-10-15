@@ -181,10 +181,9 @@
     attributes:
       contact_mail:
         name: Avsändarens namn
-        email: Avsändarens email-adress
+        email: Avsändarens epost-adress
         subject: Ämne
         message: Meddelande
-        
       person:
         startyear: Startår
         address: Adress
@@ -221,6 +220,16 @@
       morklaggning:
         username: Användarnamn
         drifvarname: Drifvarnamn
+      committee:
+        name: Namn
+        description: Beskrivning
+        slug: Slug
+        chapter_post: Funktionärspost
+      election_event:
+        name: Namn
+        date: Datum
+      nominee:
+        person_id: Person (användarnamn)
 
     # Translate model attribute names. Used in Model.human_attribute_name(attribute).
     #attributes:

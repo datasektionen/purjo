@@ -1,3 +1,6 @@
 %h2 Redigera nämnd
 
 = render :partial => 'form'
+
+- admin_link 'Ta bort nämnd', @comittee, :confirm => 'Är du säker på att du vill ta bort nämnden?', :method => :delete
+- admin_link 'Alla nämnder', committees_path
