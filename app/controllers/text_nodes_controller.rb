@@ -2,8 +2,6 @@ class TextNodesController < ApplicationController
   require_role 'editor'
   require_role 'admin', :only => [:destroy, :delete]
 
-  before_filter :layout_options, :only => [:new, :edit, :update]
-
   def show
     @node = TextNode.find(params[:id])
     render "text_nodes/show", :layout => @node.layout
@@ -35,15 +33,5 @@ class TextNodesController < ApplicationController
   
   def delete
     @node = TextNode.find(params[:id])
-  end
-
-  protected
-
-  def layout_options
-    @layouts = [
-      ["Standard (högerkolumn med kompletterande innehåll)", ''],
-      ["Fullbredd (enkelkolumn)",'full'],
-      ["Gör-det-själv (ingen grid-kod alls)", 'diy']
-    ]
   end
 end

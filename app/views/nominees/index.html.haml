@@ -3,8 +3,7 @@
   = @election_event.name 
   = "#{@election_event.date}"
 
-%p
-  = include_node("/sektionen/val/text").gsub(/@last_change/, @last_change.to_s)
+= include_node("/sektionen/val/text").gsub(/@last_change/, @last_change.to_s)
 - if Person.current.editor?
   - admin_link "Redigera texten", "/text_nodes/181/edit"
 

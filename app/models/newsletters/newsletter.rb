@@ -2,7 +2,7 @@ require 'ior/hominid/common'
 class Newsletter < ActiveRecord::Base
   include Ior::Hominid::Common
 
-  scope :sorted, order('newsletters.published desc')
+  scope :sorted, order("newsletters.published desc")
   scope :published, lambda {
     where("newsletters.published IS NOT NULL AND newsletters.published <= ?", DateTime.now)
   }
