@@ -1,5 +1,5 @@
 class PeopleController < ApplicationController
-  require_role "admin", :except => [:show, :edit, :update]
+  require_role "admin", :except => [:show, :edit, :update, :xfinger_image]
 
   def index
     @people = Person.all(:include => :roles).paginate(:page => params[:page])
