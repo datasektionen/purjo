@@ -23,7 +23,6 @@
   %p.foot
     - if Person.current.editor?
       = link_to 'Redigera', edit_post_path(post), :class => "edit"
-      = link_to 'Ta bort', post, :method => :delete, :confirm => 'Är du säker på att du vill ta bort den här nyheten?', :class => "delete"
 
     - comment_title = post.has_comments? ? post.comment_count.to_s + " kommentar" : "Kommentera"
     - comment_title << "er" if post.comment_count > 1
