@@ -17,6 +17,7 @@ class TextNode < ActiveRecord::Base
   validate :unique_url, :on => :create
   validates_presence_of :name
   
+  default_scope where(:deleted => false)
   
   def formatted_additional_contents(controller)
     format_text(additional_content, controller)
@@ -138,6 +139,12 @@ class TextNode < ActiveRecord::Base
     self.children.each do |child|
       child.update_child_url(myurl)
     end
+  end
+
+  def destroy
+    self.deleted = true
+    self.deleted_at = Time.now
+    self.save
   end
   
 end
