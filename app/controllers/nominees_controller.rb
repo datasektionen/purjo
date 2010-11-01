@@ -4,7 +4,7 @@ class NomineesController < ApplicationController
   def index
     @menu_items=TextNode.find_by_url("/sektionen").menu[:items]
     if params[:election_event]
-      @nominees = Nominee.find(:all, :conditions => {
+      @nominees = Nominee.find(:all, :order => "IF(status=0,1.5,status)", :conditions => {
           :election_event_id => params[:election_event]
         })
       @election_event = ElectionEvent.find(params[:election_event])
@@ -19,8 +19,8 @@ class NomineesController < ApplicationController
         return
       end
       
-      @nominees = Nominee.find(:all, :conditions => {
-          :election_event_id => @election_event.id
+      @nominees = Nominee.find(:all, :order => "IF(status=0,1.5,status)", :conditions => {
+          :election_event_id => @election_event.id,
         })
       @last_change = Nominee.find(:first, :conditions => {
           :election_event_id => @election_event.id
