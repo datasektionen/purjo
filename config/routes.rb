@@ -92,8 +92,11 @@ Rails.application.routes.draw do |map|
 
   # URL-mappning
 
-  map.calendar '/kalender/:year/:month', :controller => 'calendars', :action => 'show', :month => nil, :year => nil
-  map.calendar_ics '/kalender.ics', :controller => 'calendars', :action => 'show', :format => 'ics'
+  get '/kalender(/:year/:month)' => 'calendars#show', :as => :calendar,
+    :month => nil, :year => nil,
+    :constraints => { :month => /\d+/, :year => /\d+/ }
+  get '/kalender.ics' => 'calendars#show', :as => :calendar_ics, :format => 'ics'
+  resources '/kalender', :as => 'events', :controller => 'events', :except => :index
 
   map.lunch '/lunch/:date', :controller => 'lunch', :action => 'index', :date => nil
 

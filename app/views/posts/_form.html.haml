@@ -1,6 +1,6 @@
-= simple_form_for(@post) do |form|
-  = form.input :name
-  = form.input :content, :cols => 80, :rows => 25 
+= simple_form_for(@post) do |f|
+  = f.input :name
+  = f.input :content, :cols => 80, :rows => 25 
 
   %h3 Taggar
   %div.tags
@@ -10,18 +10,7 @@
         = check_box_tag 'post[categories][]', tag.name, @active_tags.include?(tag.name), :id => "tag#{tag.id}"
         = tag.name
 
-  = form.input 'categories_new', :label => "Lägg till nya taggar", :hint => "Separera flera taggar med kommatecken"
+  = f.input 'categories_new', :label => "Lägg till nya taggar", :hint => "Separera flera taggar med kommatecken"
 
-  %h3 Inläggstyp
-
-  = form.input :news_post
-  = form.input "sticky"
-  
-  .calendar_data
-    = form.input :calendar_post
-    = form.input :starts_at
-    = form.input :ends_at
-    = form.input :all_day
-  
-  = form.submit
+  = f.submit
   != "&nbsp;|&nbsp;" + link_to('Tillbaka', '/')

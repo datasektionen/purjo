@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101014193323) do
+ActiveRecord::Schema.define(:version => 20101104200804) do
 
   create_table "articles", :force => true do |t|
     t.integer  "blog_id"
@@ -103,6 +103,17 @@ ActiveRecord::Schema.define(:version => 20101014193323) do
   create_table "election_events", :force => true do |t|
     t.string   "name"
     t.date     "date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "events", :force => true do |t|
+    t.string   "name"
+    t.text     "content"
+    t.datetime "starts_at"
+    t.datetime "ends_at"
+    t.boolean  "all_day",       :default => false
+    t.integer  "created_by_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -258,15 +269,11 @@ ActiveRecord::Schema.define(:version => 20101014193323) do
   create_table "posts", :force => true do |t|
     t.string   "name"
     t.text     "content"
-    t.boolean  "news_post",     :default => false
-    t.boolean  "calendar_post", :default => false
-    t.datetime "starts_at"
-    t.datetime "ends_at"
-    t.boolean  "all_day"
     t.integer  "created_by_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "sticky"
+    t.datetime "published_at"
   end
 
   create_table "roles", :force => true do |t|

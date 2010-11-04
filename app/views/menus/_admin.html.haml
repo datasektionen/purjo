@@ -18,7 +18,7 @@
       %li= link_to 'Ny fil', new_text_node_file_path(@node)
       %li= link_to "Lista filer", text_node_files_path(@node)
 
-  - if complete || @posts || @news_posts
+  - if complete || @posts
     %h4= link_to "Ny nyhet", new_post_path
     %ul
       %li= link_to "Taggar", tags_path 
@@ -27,6 +27,12 @@
     %h4= link_to "Redigera nyhet", edit_post_path(@post)
     %ul
       %li= link_to "Ta bort nyhet", post_path(@post), :method => :delete, :confirm => "Är du säker på att du vill ta bort nyheten?"
+
+  - if complete || @events
+    %h4= link_to "Kalender", calendar_path
+    %ul
+      %li= link_to "Ny kalenderpost", new_event_path
+
 
   - if complete || @functionaries
     %h4= link_to "Funktionärer", functionaries_path

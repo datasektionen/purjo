@@ -203,12 +203,13 @@
       post:
         name: Namn
         content: Innehåll
-        news_post: Nyhet
-        calendar_post: Kalender
+        sticky: Sticky
+      event:
+        name: Namn
+        content: Innehåll
         starts_at: Startar
         ends_at: Slutar
-        all_day: Hela dagen
-        sticky: Sticky
+        all_day: Pågår hela dagen
       noise:
         message: Meddelande
       text_node:

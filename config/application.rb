@@ -16,6 +16,8 @@ module Purjo2
     
     config.i18n.default_locale = :sv
 
+    config.time_zone = 'Stockholm'
+
     # Configure generators values. Many other options are available, be sure to check the documentation.
     # config.generators do |g|
     #   g.orm             :active_record

@@ -108,11 +108,13 @@ form {
   }
 }
 
-form.post, form.text_node, form.newsletter_section {
+form.post, form.text_node, form.newsletter_section, form.event {
   textarea {
     width: 700px;
     height: 400px;
   }
-  .calendar_data { margin-top: 10px; }
 }
+form.event textarea { height: 200px; }
+
+fieldset { border: 0; }
 

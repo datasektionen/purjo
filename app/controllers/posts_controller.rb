@@ -1,6 +1,5 @@
 class PostsController < ApplicationController
   require_role :editor, :except => [:show, :index]
-  require_role :admin, :only => [:destroy]
 
   def index
     redirect_to '/'
@@ -13,9 +12,6 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-
-    @post.starts_at = DateTime.now
-    @post.ends_at = DateTime.now + 1.hour
   end
 
   def edit
@@ -23,16 +19,13 @@ class PostsController < ApplicationController
   end
 
   def create
-    params[:post][:news_post] ||= "false"
-    params[:post][:calendar_post] ||= "false"
-    
     process_category_list
 
     @post = Post.new(params[:post])
     @post.created_by = Person.current
     
     if @post.save
-      flash[:notice] = 'Nyhets-/kalenderinlägget skapat!'
+      flash[:notice] = 'Nyhet skapad!'
 
       redirect_to(@post)
     else
@@ -41,15 +34,12 @@ class PostsController < ApplicationController
   end
 
   def update
-    params[:post][:news_post] ||= "false"
-    params[:post][:calendar_post] ||= "false"
-    
     @post = Post.find(params[:id])
 
     process_category_list
 
     if @post.update_attributes(params[:post])
-      flash[:notice] = 'Nyhets-/kalenderinlägget uppdaterat.'
+      flash[:notice] = 'Nyhet uppdaterad.'
     
       if @post.calendar_post
         redirect_to calendar_path
@@ -63,6 +53,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
+    raise AccessDenied unless Person.current.admin? || (Person.current.editor? && @post.created_by == Person.current)
     @post.destroy
     
     respond_to do |format|

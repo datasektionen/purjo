@@ -18,8 +18,30 @@ class Event < ActiveRecord::Base
   scope :newer_than, lambda { |time| where(['starts_at > ?', Time.now - time]) }
   
   belongs_to :created_by, :class_name => 'Person'
-  validates_presence_of :starts_at, :ends_at
+
+  validates_presence_of :name, :starts_at, :ends_at
   validate :start_date_before_end_date
+  
+  def to_s
+    self.name
+  end
+
+  def duration
+    if starts_at.day != ends_at.day &&
+       starts_at.month != ends_at.month &&
+       starts_at.year != ends_at.year
+      return "Pågår mellan " + I18n.l(starts_at, :format => "%e %b %Y klockan %H:%M") + " och " + 
+        I18n.l(ends_at, :format => "%e %b %Y klockan %H:%M")
+    else
+      str = I18n.l(starts_at, :format => "%A").capitalize + "en den " +
+        I18n.l(ends_at, :format => "%e %b %Y")
+      unless all_day
+        str << " mellan klockan " + starts_at.strftime("%H:%M") + " och " + 
+          ends_at.strftime("%H:%M")
+      end
+      return str
+    end
+  end
 
   private
   

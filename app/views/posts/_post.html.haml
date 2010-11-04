@@ -18,7 +18,7 @@
       .tag= link_to category.name, root_path(:tags => category.name)
     .clear &nbsp;
 
-  = textilize(post.content).html_safe
+  .content.justify= textilize(post.content).html_safe
 
   %p.foot
     - if Person.current.editor?

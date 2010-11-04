@@ -1,4 +1,4 @@
-= stylesheet_link_tag 'calendar'
+- stylesheet 'calendar'
 
 %h2 
   Kalender
@@ -19,5 +19,5 @@
   %li
     = next_month_link(@month, @year)
 
-- html = Ior::Calendar::HtmlRenderer.new(@posts, @year, @month)
+- html = Ior::Calendar::HtmlRenderer.new(@events, @year, @month)
 != html.render
