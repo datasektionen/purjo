@@ -1,5 +1,5 @@
 
-.news-item[post]
+.news.post[post]
   %h2= link_to post, post
   %div.meta
     = link_to image_tag(post.created_by.gravatar_url, :class => "trigger thumb", :alt => "", :title => post.created_by), person_path(post.created_by)
@@ -24,9 +24,11 @@
     - if Person.current.editor?
       = link_to 'Redigera', edit_post_path(post), :class => "edit"
 
-    - comment_title = post.has_comments? ? post.comment_count.to_s + " kommentar" : "Kommentera"
-    - comment_title << "er" if post.comment_count > 1
-    = link_to comment_title, post, :class => "comments"
+    - if @fb_like
+      %iframe{ :class => "fb-like", :src => "http://www.facebook.com/plugins/like.php?href=#{CGI::escape post_url(post)}&amp;layout=standard&amp;show_faces=false&amp;width=340&amp;height=32&amp;action=like&amp;colorscheme=light&amp;locale=sv_SE", :scrolling => "no", :frameborder => "0", :allowTransparency => "true" }
+    - else
+      - comment_title = post.has_comments? ? post.comment_count.to_s + " kommentar" : "Kommentera"
+      - comment_title << "er" if post.comment_count > 1
+      = link_to comment_title, post, :class => "comments"
 
-    %iframe{ :class => "fb-like tiny", :src => "http://www.facebook.com/plugins/like.php?href=#{CGI::escape post_url(post)}&amp;layout=button_count&amp;show_faces=false&amp;width=100&amp;height=20&amp;action=like&amp;colorscheme=light&amp;locale=sv_SE", :scrolling => "no", :frameborder => "0", :allowTransparency => "true" }
-
+      %iframe{ :class => "fb-like tiny", :src => "http://www.facebook.com/plugins/like.php?href=#{CGI::escape post_url(post)}&amp;layout=button_count&amp;show_faces=false&amp;width=100&amp;height=20&amp;action=like&amp;colorscheme=light&amp;locale=sv_SE", :scrolling => "no", :frameborder => "0", :allowTransparency => "true" }

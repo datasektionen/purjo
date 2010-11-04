@@ -1,50 +1,25 @@
 - stylesheet "nyheter"
-- post = @post
-- title post.name
+- title @post.name
 
-.news-item
-  %h2= link_to post, post
-  %div.meta
-    = link_to image_tag(post.created_by.gravatar_url, :class => "trigger thumb", :alt => "", :title => post.created_by), person_path(post.created_by)
-    = link_to post.created_by, person_path(post.created_by), :class => "author"
+- @fb_like = true
+= render :partial => 'post', :locals => { :post => @post }
 
-    %span.date
-      %span.dim den 
-      = l post.created_at, :format => "%e %b %Y"
-      %span.dim klockan 
-      = l post.created_at, :format => "%H:%M"
-  
-    = render :partial => "people/popup", :locals => { :person => post.created_by }
+.comments
+  - if @post.noises.count > 0
+    %h3 Kommentarer
+    = render :partial => 'noises/noise', :collection => @post.noises
 
-  .tags
-    - post.categories.each do |category|
-      .tag= link_to category.name, root_path(:tags => category.name)
-    .clear &nbsp;
-  
-  = textilize(post.content).html_safe
-  
-  %p.foot
-    - if Person.current.editor?
-      = link_to 'Redigera', edit_post_path(post), :class => "edit"
-
-    %iframe{ :class => "fb-like", :src => "http://www.facebook.com/plugins/like.php?href=#{CGI::escape post_url(post)}&amp;layout=standard&amp;show_faces=false&amp;width=340&amp;height=32&amp;action=like&amp;colorscheme=light&amp;locale=sv_SE", :scrolling => "no", :frameborder => "0", :allowTransparency => "true" }
-
-  .comments
-    - if @post.noises.count > 0
-      %h3 Kommentarer
-      = render :partial => 'noises/noise', :collection => @post.noises
-
-  .respond
-    - if Person.current.anonymous?
-      %p 
-        Du måste vara 
-        = link_to "inloggad", new_sessions_path(:return_url => current_url)
-        för att kommentera! 
-      
-    - else
-      %h3 Kommentera
+.respond
+  - if Person.current.anonymous?
+    %p 
+      Du måste vara 
+      = link_to "inloggad", new_sessions_path(:return_url => current_url)
+      för att kommentera! 
     
-      = simple_form_for([@post, @noise]) do |form|
-        = form.input :message, :label => false
-        = form.button :submit
+  - else
+    %h3 Kommentera
+  
+    = simple_form_for([@post, @noise]) do |form|
+      = form.input :message, :label => false
+      = form.button :submit
 
