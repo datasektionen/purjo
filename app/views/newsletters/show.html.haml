@@ -11,7 +11,7 @@
       = l @newsletter.created_at, :format => "%e %b %Y"
 
 .newsletter_sections.toggleable
-- @newsletter.newsletter_sections.sorted.each do |section|
+- @newsletter.newsletter_sections.each do |section|
   %h3
     %span.toggle.off= section.title
     - if Person.current.editor?

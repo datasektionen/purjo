@@ -5,11 +5,11 @@ class NewslettersController < InheritedResources::Base
   before_filter :menu_items
 
   def index
-    @newsletters = Newsletter.published.sorted.paginate(:page => params[:page])
+    @newsletters = Newsletter.published.paginate(:page => params[:page])
   end
 
   def admin
-    @newsletters = Newsletter.all.paginate(:page => params[:page])
+    @newsletters = Newsletter.paginate(:page => params[:page])
   end
 
   def show
@@ -31,7 +31,7 @@ class NewslettersController < InheritedResources::Base
   
   private
   def collection
-    @newsletters ||= end_of_association_chain.sorted.paginate(:page => params[:page])
+    @newsletters ||= end_of_association_chain.paginate(:page => params[:page])
   end
   
 end

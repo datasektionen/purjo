@@ -2,10 +2,9 @@ require 'ior/hominid/common'
 class Newsletter < ActiveRecord::Base
   include Ior::Hominid::Common
 
-  scope :sorted, order("newsletters.published desc")
-  scope :published, lambda {
-    where("newsletters.published IS NOT NULL AND newsletters.published <= ?", DateTime.now)
-  }
+  default_scope :order => "newsletters.created_at desc"
+  scope :published, :order => "newsletters.published desc",
+    :conditions => ["newsletters.published IS NOT NULL AND newsletters.published <= ?", Time.zone.now]
 
   validates_presence_of :subject
   
@@ -33,7 +32,7 @@ class Newsletter < ActiveRecord::Base
   
   # TODO textile i en modell? Tveksamt va?
   def formatted_content
-    sections = newsletter_sections.sorted
+    sections = newsletter_sections
 
     toc = "<h2 id=\"toc\">Innehåll</h2>\n<ul>\n"
     sections.map do |section|
@@ -51,7 +50,7 @@ class Newsletter < ActiveRecord::Base
   end
   
   def text_content
-    sections = newsletter_sections.sorted
+    sections = newsletter_sections
 
     toc = "Innehåll\n" + ("=" * 12)
     sections.map do |section|

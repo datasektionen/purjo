@@ -5,7 +5,7 @@
     - else
       = link_to "Alla", root_path, :class => 'current'
     %span.dim= "(#{Post.count})"
-  - Post.news_posts.tag_counts_on(:categories).order("count desc").each do |tag|
+  - Post.tag_counts_on(:categories).order("count desc").each do |tag|
     %li
       - if @active_tags and @active_tags.include? tag.to_s
         = link_to tag, root_path(:tags => tag.name), :class => 'current'

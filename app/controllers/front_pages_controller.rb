@@ -4,10 +4,10 @@ class FrontPagesController < ApplicationController
   cache_sweeper :calendar_sweeper, :only => [:show]
   
   def show
-    @news_posts = Post.news_posts
+    @news_posts = Post.published
     
     if params[:tags]
-      @news_posts = @news_posts.tagged_with(params[:tags])
+      @news_posts = Post.tagged_with(params[:tags])
       @active_tags = ActsAsTaggableOn::TagList.from(params[:tags])
     end
     
@@ -16,7 +16,7 @@ class FrontPagesController < ApplicationController
     @menu_template = "nyheter"
 
     now = Time.now
-    @current_calendar_posts = Post.calendar_posts.between(
+    @current_calendar_posts = Event.between(
       now.beginning_of_day,
       now + Rails.application.settings[:show_n_days_in_calendar].days
     ).order(:starts_at.asc).limit(5)
@@ -27,7 +27,7 @@ class FrontPagesController < ApplicationController
   end
   
   def rss
-    @news_posts = Post.news_posts
+    @news_posts = Post.all
     
     if params[:tags]
       @news_posts = @news_posts.tagged_with(params[:tags])

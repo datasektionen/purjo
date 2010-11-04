@@ -1,7 +1,7 @@
 class NewsletterSection < ActiveRecord::Base
   belongs_to :newsletter
 
-  scope :sorted, order(:newsletter_id.desc, :order.asc, :created_at.asc)
+  default_scope :order => "newsletter_sections.newsletter_id desc, newsletter_sections.order asc, newsletter_sections.created_at asc"
   
   validates_presence_of :title, :body
 end

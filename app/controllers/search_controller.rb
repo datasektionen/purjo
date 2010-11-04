@@ -1,6 +1,6 @@
 class SearchController < ApplicationController
   
-  SEARCH_ENABLED_MODELS = [TextNode, Post, Person, Committee]
+  SEARCH_ENABLED_MODELS = [TextNode, Post, Event, Person, Committee]
   def index
     @menu_template = "search"
     
