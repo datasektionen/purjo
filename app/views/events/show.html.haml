@@ -1,0 +1,7 @@
+- stylesheet "nyheter"
+- title @event.name
+
+= render :partial => 'event', :locals => { :event => @event }
+
+- admin_link "Redigera kalenderpost", edit_event_path(@event)
+- admin_link "Ta bort", event_path(@event), :method => :delete, :confirm => "Är du säker på att du vill ta bort kalenderposten?"

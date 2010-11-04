@@ -1,0 +1,6 @@
+%h2 Redigera kalenderpost
+
+= render 'form'
+
+- admin_link "Ta bort", event_path(@event), :method => :delete, :confirm => "Är du säker på att du vill ta bort kalenderposten?"
+- admin_link "Tillbaka", calendar_path

@@ -18,8 +18,8 @@ module Ior
             output += "DTSTART:#{(post.starts_at + 1.hour).utc.strftime("%Y%m%d")}\n"
             output += "DTEND:#{(post.ends_at + 1.day - 1.hour).utc.strftime("%Y%m%d")}\n"
           else
-            output += "DTSTART:#{post.starts_at.utc.strftime("%Y%m%dT%H%M%SZ")}\n"
-            output += "DTEND:#{post.ends_at.utc.strftime("%Y%m%dT%H%M%SZ")}\n"
+            output += "DTSTART:#{post.starts_at.strftime("%Y%m%dT%H%M%S")}\n"
+            output += "DTEND:#{post.ends_at.strftime("%Y%m%dT%H%M%S")}\n"
           end
           
           output += "SUMMARY:#{post.name}\n"

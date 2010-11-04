@@ -324,6 +324,8 @@ ActiveRecord::Schema.define(:version => 20101104200804) do
     t.string   "custom_layout"
     t.string   "title"
     t.text     "additional_content", :null => false
+    t.datetime "deleted_at"
+    t.boolean  "deleted", :default => false
   end
 
   create_table "travel_years", :force => true do |t|
