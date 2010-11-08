@@ -1,7 +1,10 @@
 class ImportEventsFromPosts < ActiveRecord::Migration
+  class Post < ActiveRecord::Base
+  end
+
   def self.up
-    raise "Post is missing the required attributes!" unless Post.last.respond_to?(:starts_at)
-    Post.calendar_posts.each do |p|
+    #raise "Post is missing the required attributes!" unless Post.respond_to?(:calendar_posts)
+    Post.where(:calendar_post => true).each do |p|
       e = Event.new({
         :name => p.name,
         :content => p.content,
