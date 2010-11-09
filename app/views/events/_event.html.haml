@@ -1,26 +1,6 @@
 .event.post[event]
   %h2= link_to event, event
   .meta
-    %span.date.duration
-      - sa = event.starts_at; ea = event.ends_at
-      - if sa.day!=ea.day && sa.month!=ea.month && sa.year!=ea.year # more than one day
-        %span.dim Pågår mellan
-        = l event.starts_at, :format => "%e %b %Y"
-        %span.dim klockan
-        = l event.starts_at, :format => "%H:%M"
-        %span.dim och
-        = l event.ends_at, :format => "%e %b %Y"
-        %span.dim klockan
-        = l event.ends_at, :format => "%H:%M"
-
-      - else # one day only
-        = l(event.starts_at, :format => "%A").capitalize + "en"
-        %span.dim den
-        = l event.starts_at, :format => "%e %b %Y"
-        - unless event.all_day
-          %span.dim mellan klockan 
-          = l event.starts_at, :format => "%H:%M"
-          %span.dim och
-          = l event.ends_at, :format => "%H:%M"
+    %span.date.duration!= event.duration_html
 
   .content.justify= textilize(event.content).html_safe

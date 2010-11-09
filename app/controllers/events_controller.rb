@@ -3,7 +3,7 @@ class EventsController < InheritedResources::Base
 
   def new
     @event = Event.new
-    now = DateTime.now
+    now = DateTime.now.utc
     @event.starts_at = DateTime.new(now.year, now.month, now.day, now.hour, 0, 0)
     @event.ends_at = @event.starts_at + 1.hour
   end

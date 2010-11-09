@@ -24,6 +24,10 @@ class FrontPagesController < ApplicationController
     unless Person.current.anonymous?  
       @user_settings = Person.current.build_user_settings
     end
+
+    @tags = Rails.cache.fetch('tag_list') do
+      Post.tag_counts_on(:categories).order("count desc")
+    end
   end
   
   def rss

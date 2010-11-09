@@ -4,15 +4,7 @@
 
 %p.meta.date
   %span.dim Publicerad den 
-  = l result.created_at, :format => "%e %b %Y"
+  = l result.published_at, :format => "%e %b %Y"
   %span.dim klockan 
-  = l result.created_at, :format => "%H:%M"
-
-- if result.calendar_post?
-  %p.meta.duration
-    %span.dim Pågår från 
-    = l result.starts_at, :format => "%Y-%m-%d %H:%M"
-    %span.dim till 
-    = l result.ends_at, :format => "%Y-%m-%d %H:%M"
-  
+  = l result.published_at, :format => "%H:%M"
   

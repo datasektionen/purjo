@@ -42,19 +42,8 @@ class TextNode < ActiveRecord::Base
   end
   
   def layout
-    # hmm, why inherit from parent?
-    layout = self.custom_layout
-    layout = "text_node_default" if layout.blank?
-    return layout
-
-    node = self
-    while node.has_parent?
-      if !node.custom_layout.blank?
-        return node.custom_layout
-      end
-      node = node.parent
-    end
-    return "text_node_default"
+    return "text_node_default" if custom_layout.blank?
+    custom_layout
   end
   
   def deletable?
@@ -62,7 +51,7 @@ class TextNode < ActiveRecord::Base
   end
 
   def has_parent?
-    !self.parent.nil?
+    parent.present?
   end
   
   #Returns the menu items for this node and all of it's parents

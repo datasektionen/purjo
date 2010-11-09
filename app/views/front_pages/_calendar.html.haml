@@ -5,13 +5,12 @@
     .event
       %p.description= link_to calendar_post, calendar_post
       %p.meta.time
-        %span= l(calendar_post.starts_at, :format => "%A %d %b").humanize
+        = l(calendar_post.starts_at, :format => "%A").capitalize + "en"
+        %span.dim den
+        = l calendar_post.starts_at, :format => "%e %b"
         - if !calendar_post.all_day?
-          %span.dim klockan
-          %span= l calendar_post.starts_at, :format => "%H:%M"
-      .clear
+          %span.dim kl.
+          = l calendar_post.starts_at, :format => "%H:%M"
 
-  %p
-    == Se alla event i #{link_to "kalendern", calendar_path}.
+  %p== Se alla event i #{link_to "kalendern", calendar_path}.
 
-  .clear

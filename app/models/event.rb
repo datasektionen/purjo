@@ -29,17 +29,24 @@ class Event < ActiveRecord::Base
   def duration
     if starts_at.day != ends_at.day &&
        starts_at.month != ends_at.month &&
-       starts_at.year != ends_at.year
-      return "Pågår mellan " + I18n.l(starts_at, :format => "%e %b %Y klockan %H:%M") + " och " + 
-        I18n.l(ends_at, :format => "%e %b %Y klockan %H:%M")
-    else
-      str = I18n.l(starts_at, :format => "%A").capitalize + "en den " +
-        I18n.l(ends_at, :format => "%e %b %Y")
+       starts_at.year != ends_at.year # more than one day
+      str = I18n.l(starts_at, :format => "Pågår mellan %e %b %Y klockan %H:%M och ")
+      str << I18n.l(ends_at, :format => "%e %b %Y klockan %H:%M")
+    else # one day only
+      str = I18n.l(starts_at, :format => "%A").capitalize + "en "
+      str << I18n.l(starts_at, :format => "den %e %b %Y")
       unless all_day
-        str << " mellan klockan " + starts_at.strftime("%H:%M") + " och " + 
-          ends_at.strftime("%H:%M")
+        str << I18n.l(starts_at, :format => " mellan klockan %H:%M ")
+        str << I18n.l(ends_at, :format => "och %H:%M")
       end
-      return str
+    end
+
+    return str
+  end
+
+  def duration_html
+    return self.duration.gsub(/(Pågår mellan|mellan klockan|klockan|och|den)/i) do |text|
+      '<span class="dim">' + text + '</span>'
     end
   end
 

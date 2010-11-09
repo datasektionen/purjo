@@ -43,7 +43,8 @@ Rails.application.routes.draw do |map|
   
   match "/sok", :to => 'search#index', :as => 'search'
   
-  resource :sessions
+  resource :session, :as => 'sessions', :controller => 'sessions'
+  match "/session/logga-ut", :to => 'sessions#destroy', :as => 'logout'
 
   resources 'sektionen/sok', :as => 'students', :controller => 'students' do
     member do
@@ -115,7 +116,5 @@ Rails.application.routes.draw do |map|
 
   root :to => 'front_pages#show'
 
-  match "*url", :controller => 'nodes', :action => 'show',
-    :constraints => { :url => /^\/(?!stylesheets|javascripts)/ }
-
+  match "*url" => 'nodes#show'
 end

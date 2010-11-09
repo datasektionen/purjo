@@ -58,7 +58,7 @@
       %li= link_to "Ny nominering", new_nominee_path 
       %li= link_to "Nytt val", new_election_event_path 
 
-  %h4= link_to "Alla noder", text_node_children_path(Node.find_by_url("/"))
+  %h4= link_to "Alla noder", text_node_children_path(1)
 
   - if complete
     %h4 Övrigt

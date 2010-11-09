@@ -4,7 +4,6 @@
   %head
     %title= render_title
     = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz"
-    -#= stylesheet_link_tag "http://fonts.googleapis.com/css?family=Crimson+Text"
     = javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"
     = javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.4/jquery-ui.min.js"
     /[if lt IE 9]
@@ -39,7 +38,7 @@
               - if Person.current.anonymous?
                 = link_to 'Logga in', new_sessions_path(:return_url => current_url)
               - else
-                = link_to 'Logga ut', sessions_path(:return_url => current_url), :method => :delete
+                = link_to 'Logga ut', logout_path(:return_url => current_url)
 
         .header
           .container_16
