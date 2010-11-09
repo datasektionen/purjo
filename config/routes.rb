@@ -36,6 +36,7 @@ Rails.application.routes.draw do |map|
 
   map.xfinger_image 'personer/:uid/xfinger', :controller=>'people',:action=>'xfinger_image'
   
+  match '/nyheter/utkast/', :to => 'front_pages#show', :as => 'drafts', :drafts => true
   resources :nyheter, :as => 'posts', :controller => 'posts' do
     resources :kommentarer, :as => 'noises', :controller => 'noises'
   end
@@ -82,9 +83,6 @@ Rails.application.routes.draw do |map|
   
   match "/protokoll/:filename", :to => "protocols#show", :as => 'protocol'
   match "/protokoll", :to => "protocols#index", :as => 'protocols'
-  
-  root :to => 'front_pages#show'
-  match '/rss', :to => 'front_pages#rss'
 
   # Studs-relaterat
   map.resources :travel_years
@@ -115,6 +113,7 @@ Rails.application.routes.draw do |map|
   end
 
   root :to => 'front_pages#show'
+  match '/rss', :to => 'front_pages#rss'
 
   match "*url" => 'nodes#show'
 end

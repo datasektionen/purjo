@@ -1,7 +1,8 @@
 class Post < ActiveRecord::Base
-  default_scope :order => "posts.created_at desc"
   scope :published, :order => "posts.published_at desc",
-    :conditions => ["posts.published_at IS NOT NULL AND posts.published_at <= ?", Time.zone.now]
+    :conditions => ["posts.published_at IS NOT NULL AND posts.published_at <= ?", Time.now]
+  scope :drafts, :conditions => ["posts.published_at IS NULL OR posts.published_at > ?", Time.now]
+  default_scope published.order('posts.created_at desc')
 
   acts_as_taggable_on :categories
   

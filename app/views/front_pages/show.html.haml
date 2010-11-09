@@ -6,17 +6,11 @@
   = render :partial => "front_pages/calendar"
   = render :partial => "twitter/twitter"
 
--#  #news-summary
--#    %h2 Nyheter
--#    %ul.news-list
--#      - @news_posts.each do |post|
--#        %li= link_to(truncate(post.name, :length => 30), post)
-
 #news
   - @notification = include_node("/_ugly_hack_welcome")
-  - if !@notification.empty?
+  - unless @notification.empty?
     .notification= @notification
-  - if !Person.current.anonymous? && !Person.current.has_chosen_settings?
+  - unless Person.current.anonymous? || Person.current.has_chosen_settings?
     #first_time_welcome.notification
       = include_node("/first_time_welcome")
       
@@ -25,7 +19,9 @@
         = f.submit :value => 'Spara inställningar'
 
   %h3.sub
-    - if params[:tags]
+    - if params[:drafts]
+      Utkast
+    - elsif params[:tags]
       Nyheter taggade:
       %strong= params[:tags]
     - else

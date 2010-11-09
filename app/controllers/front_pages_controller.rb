@@ -4,7 +4,7 @@ class FrontPagesController < ApplicationController
   cache_sweeper :calendar_sweeper, :only => [:show]
   
   def show
-    @news_posts = Post.published
+    @news_posts = (params[:drafts] ? Post.drafts : Post.published)
     
     if params[:tags]
       @news_posts = Post.tagged_with(params[:tags])
