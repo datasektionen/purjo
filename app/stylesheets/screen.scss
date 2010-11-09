@@ -113,42 +113,29 @@ blockquote {
   a:hover { text-decoration: underline; }
   
   dl {
-    dt {
-      font-weight: bold;
-    }
-    
-    dd {
-      margin-left: 20px;
-    }
+    dt { font-weight: bold; }
+    dd { margin-left: 20px; }
   }
   
-  .more_info {
-    float: right;
-  }
+  .more_info { float: right; }
 }
 
 .events {
   .event {
-		padding-left: 26px;
-		background: url(/images/icons/Bookmarks.png) no-repeat 0 0;
+		padding-left: 22px;
+		background: url(/images/icons/Bookmarks.png) no-repeat -3px 1px;
     
-    .description {
-      margin-bottom: 0px;
-    }
+    .description { margin-bottom: 0px; }
     
     .time {
       font-style: italic;
       margin: 0px;
     }
   }
-	.event.inspiration {
-		background-image: url(/images/lightbulb.png);
-	}
+	.event.inspiration { background-image: url(/images/lightbulb.png); }
 }
 
-.justify {
-  text-align: justify;
-}
+.justify { text-align: justify; }
 
 .twitter h2 {
 	background: url(/images/twitter_dark.png) no-repeat right center;
@@ -162,11 +149,7 @@ blockquote {
 	}
 }
 
-form.noise {
-  #noise_message {
-    height: 80px;
-  }
-}
+form.noise #noise_message { height: 80px; }
 
 div.error, div.notice, div.success,
 #flash_failure, #flash_success, #flash_notice {
@@ -206,9 +189,7 @@ div.notification {
   border-color: #C6D880;
   padding-top: 0px;
   margin-top: 12px;
-  a {
-    color: #529214;
-  }
+  a { color: #529214; }
   
   div.input, input.boolean {
     margin-top: 12px;
