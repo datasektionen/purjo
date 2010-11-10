@@ -28,6 +28,8 @@ class FrontPagesController < ApplicationController
     @tags = Rails.cache.fetch('tag_list') do
       Post.tag_counts_on(:categories).order("count desc")
     end
+    # apparentely the cache process freezes the object... this ugly hack circumvents that
+    @tags = @tags.dup if @tags.frozen?
   end
   
   def rss
