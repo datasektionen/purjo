@@ -1,7 +1,6 @@
 
 %h2= @chapter_post.name
-%p
-  %em= @chapter_post.description
+.meta= textilize(@chapter_post.description).html_safe
 %p
   %b E-post:
   = link_to(@chapter_post.slug + "@d.kth.se", contact_path(:slug => @chapter_post.slug))
@@ -26,8 +25,9 @@
       %td= functionary.active_to
       - if Person.current.editor?
         %td= link_to "Redigera", edit_functionary_path(functionary)
+
 - if Person.current.editor?
-  - admin_link 'Till funktionärsposter', chapter_posts_path
-  - admin_link 'Tillbaka till funktionärer', functionaries_path
+  - admin_link 'Funktionärsposter', chapter_posts_path
+  - admin_link 'Funktionärer', functionaries_path
   - admin_link 'Redigera funktionärsposten', edit_chapter_post_path(@chapter_post)
   - admin_link 'Ta bort funktionärsposten', @chapter_post, :confirm => 'Är du säker?', :method => :delete

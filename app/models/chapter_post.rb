@@ -3,6 +3,9 @@ class ChapterPost < ActiveRecord::Base
   has_many :functionaries
   has_one :committee
 
+  validates_presence_of :name, :slug
+  validates_uniqueness_of :slug
+
   # Någon som känner behovet att eliminera sql:en, varsegod. Föresatt att den
   # gör samma sak och är lika effektiv.
   def find_chapter_posts_by_kth_username username
@@ -42,4 +45,7 @@ class ChapterPost < ActiveRecord::Base
     functionaries.active.first
   end
 
+  def to_param
+    slug
+  end
 end

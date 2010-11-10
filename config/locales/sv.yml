@@ -231,6 +231,16 @@
         date: Datum
       nominee:
         person_id: Person (användarnamn)
+      chapter_post:
+        name: Namn
+        description: Beskrivning
+        slug: Slug
+      functionary:
+        person_id: Person (användarnamn)
+        chapter_post: Funktionärspost
+        active_from: Stiger på
+        active_to: Stiger av
+        postponed: Vakansatt
 
     # Translate model attribute names. Used in Model.human_attribute_name(attribute).
     #attributes:

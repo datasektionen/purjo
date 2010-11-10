@@ -37,10 +37,7 @@ class PeopleController < ApplicationController
       @person.msn = params[:person][:msn]
       @person.xmpp = params[:person][:xmpp]
       @person.save
-      logger.info "\nOK!\n"
     end
-
-    logger.info "Address = " + params[:person][:address].to_s + "\n"
 
     redirect_to @person
   end

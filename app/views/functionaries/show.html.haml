@@ -3,13 +3,13 @@
     = @functionary.person.try(:name)
     = "(#{@functionary.person.try(:kth_username)})"
   - else
-    Vakantsatt,
-  = @functionary.chapter_post.name
+    Vakantsatt
+%h3= @functionary.chapter_post.name
 
 %p
   %b Period:
   = "#{@functionary.active_from} till #{@functionary.active_to}"
 
-- admin_link 'Tillbaka till funktionärsposter', functionaries_path
 - admin_link 'Redigera', edit_functionary_path(@functionary)
 - admin_link 'Ta bort', functionary_path, :confirm => 'Are you sure?', :method => :delete
+- admin_link 'Funktionärsposter', functionaries_path

@@ -1,10 +1,8 @@
 %h2
   Redigera
   = @chapter_post.name
-- form_for(@chapter_post) do |f|
-  = render :partial => 'form', :locals => { :f => f }
-  %p
-    = f.submit "Update"
 
-- admin_link 'Visa funktionärsposten', @chapter_post
-- admin_link 'Till funktionärsposter', chapter_posts_path
+= render 'form'
+
+- admin_link 'Tillbaka', @chapter_post
+- admin_link 'Funktionärsposter', chapter_posts_path

@@ -1,7 +1,6 @@
 %h2 Redigera funktionärsmandat
-- form_for(@functionary) do |f|
-  = render :partial => 'form', :locals => { :f => f }
-  %p
-    = f.submit "Spara"
 
+= render 'form'
+
+- admin_link 'Tillbaka', @functionary
 - admin_link 'Ta bort mandat', functionary_path, :confirm => 'Är du säker?', :method => :delete
