@@ -1,5 +1,5 @@
-= simple_form_for(@newsletter) do |form|
-  = form.input :subject
+= simple_form_for(@newsletter) do |f|
+  = f.input :subject
 
   %h3 Publicering
   .datetime.optional.is-draft
@@ -11,4 +11,4 @@
       = f.label :draft_false, "Publicerat"
       = f.datetime_select :published_at
 
-  = form.submit
+  = f.submit
