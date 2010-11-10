@@ -33,10 +33,11 @@ class FrontPagesController < ApplicationController
   end
   
   def rss
-    @posts = Post.all
+    @posts = Post.published
     
     if params[:tags]
       @posts = @posts.tagged_with(params[:tags])
+      @active_tags = ActsAsTaggableOn::TagList.from(params[:tags])
     end
     
     @posts = @posts.limit(20)
