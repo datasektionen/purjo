@@ -22,6 +22,12 @@ class Event < ActiveRecord::Base
   validates_presence_of :name, :starts_at, :ends_at
   validate :start_date_before_end_date
   
+  searchable do
+    text :content
+    text :name, :default_boost => 2
+    time :starts_at
+  end
+  
   def to_s
     self.name
   end

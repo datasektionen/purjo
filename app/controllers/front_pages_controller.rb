@@ -11,7 +11,8 @@ class FrontPagesController < ApplicationController
       @active_tags = ActsAsTaggableOn::TagList.from(params[:tags])
     end
     
-    @posts = @posts.paginate(:page => params[:page], :per_page => 5)
+    page = params[:page].to_i; page = 1 if page < 1
+    @posts = @posts.paginate(:page => page, :per_page => 5)
 
     @menu_template = "nyheter"
 
