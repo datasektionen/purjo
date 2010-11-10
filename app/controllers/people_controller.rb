@@ -77,7 +77,7 @@ class PeopleController < ApplicationController
   end
 
   def xfinger_image
-    raise Ior::Security::AccessDenied if Person.current.anonymous?
+    return access_denied if Person.current.anonymous?
     uid = params[:uid]
     xfinger_dir = "tmp/xfinger"
     file_name = "#{xfinger_dir}/#{uid}"

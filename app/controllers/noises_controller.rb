@@ -1,6 +1,10 @@
 class NoisesController < ApplicationController
   def edit
     @noise = Noise.find(params[:id])
+    unless @noise.editable?
+	    flash[:notice] = 'Du får endast redigera dina egna kommentarer'
+      redirect_to post_url(@noise.post_id)
+    end
   end
 
   def create

@@ -18,7 +18,7 @@ class EventsController < InheritedResources::Base
 
   def destroy
     @event = Event.find(params[:id])
-    raise AccessDenied unless Person.current.admin? || (Person.current.editor? && @event.created_by == Person.current)
+    return access_denied unless @event.editable?
     destroy! { calendar_path }
   end
 

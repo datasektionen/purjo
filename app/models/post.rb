@@ -57,6 +57,10 @@ class Post < ActiveRecord::Base
     noises.size
   end
 
+  def editable?
+    Person.current.admin? || (Person.current.editor? && created_by == Person.current)
+  end
+
   private
 
   def set_perma_name

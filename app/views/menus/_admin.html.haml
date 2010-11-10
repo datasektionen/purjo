@@ -24,11 +24,6 @@
       %li= link_to "Utkast", drafts_path 
       - if Person.current.admin?
         %li= link_to "Taggar", tags_path 
-  
-  - unless @post.nil? || @post.new_record?
-    %h4= link_to "Redigera nyhet", edit_post_path(@post)
-    %ul
-      %li= link_to "Ta bort nyhet", post_path(@post), :method => :delete, :confirm => "Är du säker på att du vill ta bort nyheten?"
 
   - if complete || @events
     %h4= link_to "Ny kalenderpost", new_event_path

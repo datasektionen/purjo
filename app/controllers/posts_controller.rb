@@ -50,8 +50,9 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    raise AccessDenied unless Person.current.admin? || (Person.current.editor? && @post.created_by == Person.current)
+    return access_denied unless @post.editable?
     @post.destroy
+    flash[:notice] = 'Nyhet borttagen.'
     
     respond_to do |format|
       format.html { redirect_to(root_path) }

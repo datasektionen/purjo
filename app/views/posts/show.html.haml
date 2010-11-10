@@ -22,3 +22,6 @@
       = form.input :message, :label => false
       = form.button :submit
 
+- admin_link "Redigera nyhet", edit_post_path(@post)
+- if @post.editable?
+  - admin_link "Ta bort", post_path(@post), :method => :delete, :confirm => "Är du säker på att du vill ta bort nyheten?"
