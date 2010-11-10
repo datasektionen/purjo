@@ -27,8 +27,6 @@
     - else
       Alla nyheter
 
-  = render :partial => 'posts/post', :collection => @news_posts
+  = render :partial => 'posts/post', :collection => @posts
   
-  = will_paginate(@news_posts)
-
-
+  = will_paginate(@posts)

@@ -1,7 +1,7 @@
 .events
   %h2 Agenda
   %p Här är datasektionens agenda för den närmaste tiden.
-  - @current_calendar_posts.each do |calendar_post|
+  - @events.each do |calendar_post|
     .event
       %p.description= link_to calendar_post, calendar_post
       %p.meta.time

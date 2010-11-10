@@ -2,5 +2,7 @@
 
 = render :partial => 'event', :locals => { :event => @event }
 
+- nav_link "Kalender", calendar_path
+
 - admin_link "Redigera kalenderpost", edit_event_path(@event)
 - admin_link "Ta bort", event_path(@event), :method => :delete, :confirm => "Är du säker på att du vill ta bort kalenderposten?"

@@ -11,8 +11,8 @@
     - @newsletters.each do |newsletter|
       %tr{:id => "newsletter_#{newsletter.id}"}
         %td= link_to newsletter.subject, newsletter
-        - if newsletter.published
-          %td= l newsletter.published, :format => "%e %b %Y"
+        - if newsletter.published_at
+          %td= l newsletter.published_at, :format => "%e %b %Y"
         - else
           %td Utkast
 

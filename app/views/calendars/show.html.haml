@@ -10,14 +10,13 @@
   = link_to image_tag('calendar.png', :class => 'icon'), calendar_ics_path
   = link_to "här", calendar_ics_path
 
-%ul.horizontal
-  %li
-    = previous_month_link(@month, @year)
-  %li
-    = get_month_name(@month)
-    = @year
-  %li
-    = next_month_link(@month, @year)
+%h3.current
+  = get_month_name(@month)
+  = @year
 
 - html = Ior::Calendar::HtmlRenderer.new(@events, @year, @month)
 != html.render
+
+- nav_link "Kalender", calendar_path
+- nav_link previous_month_link(@month, @year)
+- nav_link next_month_link(@month, @year)

@@ -12,5 +12,15 @@
 
   = f.input 'categories_new', :label => "Lägg till nya taggar", :hint => "Separera flera taggar med kommatecken"
 
+  %h3 Publicering
+  .datetime.optional.is-draft
+    .draft
+      = f.radio_button :draft, true
+      = f.label :draft_true, "Utkast", :class => (@post.draft ? 'selected' : '')
+    .published
+      = f.radio_button :draft, false
+      = f.label :draft_false, "Publicerad", :class => (@post.draft ? '' : 'selected')
+      = f.datetime_select :published_at
+
   = f.submit
   != "&nbsp;|&nbsp;" + link_to('Tillbaka', '/')

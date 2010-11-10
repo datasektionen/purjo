@@ -1,5 +1,5 @@
 class TagsController < ApplicationController
-  require_role :editor
+  require_role :admin
 
   def index
     @tags = ActsAsTaggableOn::Tag.all

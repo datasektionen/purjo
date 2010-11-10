@@ -1,8 +1,8 @@
 class Post < ActiveRecord::Base
+  default_scope :order => 'COALESCE(posts.published_at, posts.created_at) desc'
   scope :published, :order => "posts.published_at desc",
     :conditions => ["posts.published_at IS NOT NULL AND posts.published_at <= ?", Time.now]
   scope :drafts, :conditions => ["posts.published_at IS NULL OR posts.published_at > ?", Time.now]
-  default_scope published.order('posts.created_at desc')
 
   acts_as_taggable_on :categories
   
@@ -17,7 +17,9 @@ class Post < ActiveRecord::Base
     string :tags, :multiple => true, :using => :categories
   end
 
-  # after_create :set_perma_name
+  attr_writer :draft
+  def draft; @draft || published_at.blank?; end
+  before_validation :clear_published_at_if_draft
   
   def to_s
     self.name
@@ -49,4 +51,7 @@ class Post < ActiveRecord::Base
     ''
   end
 
+  def clear_published_at_if_draft
+    self.published_at = nil if draft == 'true'
+  end
 end

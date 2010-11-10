@@ -3,8 +3,8 @@ class Newsletter < ActiveRecord::Base
   include Ior::Hominid::Common
 
   default_scope :order => "newsletters.created_at desc"
-  scope :published, :order => "newsletters.published desc",
-    :conditions => ["newsletters.published IS NOT NULL AND newsletters.published <= ?", Time.zone.now]
+  scope :published, :order => "newsletters.published_at desc",
+    :conditions => ["newsletters.published_at IS NOT NULL AND newsletters.published_at <= ?", Time.zone.now]
 
   validates_presence_of :subject
   
@@ -26,9 +26,9 @@ class Newsletter < ActiveRecord::Base
     end
   end
 
-  attr_writer :published_present
-  def published_present; @published_present || published.present?; end
-  before_validation :check_published
+  attr_writer :draft
+  def draft; @draft || published_at.blank?; end
+  before_validation :clear_published_at_if_draft
   
   # TODO textile i en modell? Tveksamt va?
   def formatted_content
@@ -80,7 +80,7 @@ class Newsletter < ActiveRecord::Base
     self.campaign_id = new_campaign_id
   end
 
-  def check_published
-    self.published = nil unless published_present == 'true'
+  def clear_published_at_if_draft
+    self.published_at = nil if draft == 'true'
   end
 end

@@ -113,8 +113,14 @@ form.post, form.text_node, form.newsletter_section, form.event {
     width: 700px;
     height: 400px;
   }
+	.tags { width: 700px; }
 }
 form.event textarea { height: 200px; }
 
 fieldset { border: 0; }
 
+form .is-draft {
+	margin: 8px 0;
+	.selected { font-weight: bold; }
+	label { margin-right: 5px; }
+}

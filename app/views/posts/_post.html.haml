@@ -13,6 +13,10 @@
         = l post.published_at, :format => "%H:%M"
       - else
         (utkast)
+        %span.dim skapad
+        = l post.created_at, :format => "%e %b %Y"
+        %span.dim klockan 
+        = l post.created_at, :format => "%H:%M"
   
     = render :partial => "people/popup", :locals => { :person => post.created_by }
   
