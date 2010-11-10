@@ -24,6 +24,29 @@ class Post < ActiveRecord::Base
   def to_s
     self.name
   end
+
+  # body (stripped of section markup)
+  def body
+    content.gsub(/\s*---\s*/, "\n\n")
+  end
+
+  # content sections
+  def sections
+    sections = content.split(/\s*---\s*/)
+    return content.split(/(\r?\n){2,}/, 2) if sections.length < 2
+    sections
+  end
+
+  # excerpt (first section optionally followed by read more link if there is more)
+  def excerpt(more_link = false)
+    s = sections
+    return "" if s.length < 1
+    if s.length > 1 && more_link
+      s.first << ' <a href="/nyheter/' + id.to_s +
+        '" class="read-more">Läs&nbsp;resten&nbsp;&raquo;</a>'
+    end
+    s.first
+  end
   
   def has_comments?
     !noises.empty?

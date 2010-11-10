@@ -25,13 +25,14 @@
       .tag= link_to category.name, root_path(:tags => category.name)
     .clear &nbsp;
 
-  .content.justify= textilize(post.content).html_safe
+  .content.justify
+    = textilize( @single_post ? post.body : post.excerpt(true) ).html_safe
 
   %p.foot
     - if Person.current.editor?
       = link_to 'Redigera', edit_post_path(post), :class => "edit"
 
-    - if @fb_like
+    - if @single_post
       %iframe{ :class => "fb-like", :src => "http://www.facebook.com/plugins/like.php?href=#{CGI::escape post_url(post)}&amp;layout=standard&amp;show_faces=false&amp;width=340&amp;height=32&amp;action=like&amp;colorscheme=light&amp;locale=sv_SE", :scrolling => "no", :frameborder => "0", :allowTransparency => "true" }
     - else
       - comment_title = post.has_comments? ? post.comment_count.to_s + " kommentar" : "Kommentera"

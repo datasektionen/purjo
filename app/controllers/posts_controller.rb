@@ -42,11 +42,7 @@ class PostsController < ApplicationController
     if @post.update_attributes(params[:post])
       flash[:notice] = 'Nyhet uppdaterad.'
     
-      if @post.calendar_post
-        redirect_to calendar_path
-      else
-        redirect_to root_path
-      end
+      redirect_to(@post)
     else
       render :action => "edit"
     end
@@ -58,7 +54,7 @@ class PostsController < ApplicationController
     @post.destroy
     
     respond_to do |format|
-      format.html { redirect_to(posts_url) }
+      format.html { redirect_to(root_path) }
       format.xml  { head :ok }
     end
   end
