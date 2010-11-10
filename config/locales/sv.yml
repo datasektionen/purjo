@@ -328,5 +328,6 @@
   search:
     text_node: Sidor
     post: Nyheter
+    event: Kalenderposter
     person: Studenter
     committee: Nämnder
