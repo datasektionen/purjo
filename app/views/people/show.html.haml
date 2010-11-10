@@ -52,8 +52,22 @@
       %td.strong Gtalk / XMPP:
       %td= @person.try :xmpp
 
-  %h3 Plan
-  %pre.plan= @person.plan
+  - unless @person.plan.blank?
+    %h3 Plan
+    %pre.plan= @person.plan
 
   %h3 Xfinger
   = image_tag xfinger_path(@person.username_nada), :width => 266, :alt => "Ingen bild", :class => "xfinger"
+
+  - if @person.functionaries.sorted.size > 0
+    %h3 Förtroendeuppdrag
+    %table
+      %tr
+        %th Post
+        %th Från
+        %th Till
+      - @person.functionaries.sorted.each do |func|
+        %tr
+          %td= link_to func.chapter_post.name, func.chapter_post
+          %td= func.active_from
+          %td= func.active_to
