@@ -27,7 +27,7 @@ class FrontPagesController < ApplicationController
     end
 
     @tags = Rails.cache.fetch('tag_list') do
-      Post.tag_counts_on(:categories).order("count desc")
+      Post.published.tag_counts_on(:categories).order("count desc")
     end
     # apparentely the cache process freezes the object... this ugly hack circumvents that
     @tags = @tags.dup if @tags.frozen?
