@@ -223,3 +223,11 @@ h3 .delete, h3 .edit { margin-left: 25px; font-size: 18px; }
   background-position: 0 12px;
 }
 .toggle.off { background-position: 0 -28px; }
+
+.subnav .toggle {
+	background-position: 147px 8px;
+	padding: 0 18px 0 0;
+	color: #666;
+}
+.subnav .toggle:hover { color: #e2007f; }
+.subnav .toggle.off { background-position: 147px -33px; }

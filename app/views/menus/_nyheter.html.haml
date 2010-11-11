@@ -1,11 +1,12 @@
-%ul
+%ul#tag_list
   %li 
     - if params[:tags]
       = link_to "Alla", root_path
     - else
       = link_to "Alla", root_path, :class => 'current'
     %span.dim= "(#{Post.count})"
-  - @tags.each do |tag| 
+  - i = 0 # tag number
+  - @tags.each do |tag|; i+=1
     %li
       - if @active_tags and @active_tags.include? tag.to_s
         = link_to tag, root_path(:tags => tag.name), :class => 'current'
