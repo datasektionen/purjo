@@ -1,33 +1,33 @@
 module Ior
   module Calendar
     class IcsRenderer
-      def initialize(posts)
-        @posts = posts
+      def initialize(events)
+        @events = events
       end
       
       def render
-        output = "BEGIN:VCALENDAR\n"
-        output += "VERSION:2.0\n"
-        output += "X-WR-CALNAME:Kongl. Datasektionen\n"
-        output += "PRODID:-//hacksw/handcal//NONSGML v1.0//EN\n"
+        output = "BEGIN:VCALENDAR\r\n"
+        output += "VERSION:2.0\r\n"
+        output += "X-WR-CALNAME:Kongl. Datasektionen\r\n"
+        output += "PRODID:-//hacksw/handcal//NONSGML v1.0//EN\r\n"
         
-        @posts.each do |post|
-          output += "BEGIN:VEVENT\n"
+        @events.each do |event|
+          output += "BEGIN:VEVENT\r\n"
           
-          if post.all_day
-            output += "DTSTART:#{(post.starts_at + 1.hour).utc.strftime("%Y%m%d")}\n"
-            output += "DTEND:#{(post.ends_at + 1.day - 1.hour).utc.strftime("%Y%m%d")}\n"
+          if event.all_day
+            output += "DTSTART:#{(event.starts_at).strftime("%Y%m%d")}T000000\r\n"
+            output += "DTEND:#{(event.ends_at).strftime("%Y%m%d")}T235959\r\n"
           else
-            output += "DTSTART:#{post.starts_at.strftime("%Y%m%dT%H%M%S")}\n"
-            output += "DTEND:#{post.ends_at.strftime("%Y%m%dT%H%M%S")}\n"
+            output += "DTSTART:#{event.starts_at.strftime("%Y%m%dT%H%M%S")}\r\n"
+            output += "DTEND:#{event.ends_at.strftime("%Y%m%dT%H%M%S")}\r\n"
           end
           
-          output += "SUMMARY:#{post.name}\n"
-          output += "DESCRIPTION:#{post.content.gsub("\\", "\\\\").gsub("\n", "\\n").gsub(";", "\\;").gsub(",", "\\,")}\n"
-          output += "END:VEVENT\n"
+          output += "SUMMARY:#{event.name}\r\n"
+          output += "DESCRIPTION:#{event.content.gsub("\\", "\\\\").gsub("\n", "\\r\\n").gsub(";", "\\;").gsub(",", "\\,")}\r\n"
+          output += "END:VEVENT\r\n"
         end
         
-        output += "END:VCALENDAR\n"
+        output += "END:VCALENDAR\r\n"
         output
       end
     end

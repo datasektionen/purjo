@@ -15,8 +15,8 @@ class CalendarsController < ApplicationController
       end
       
       format.ics do
-        posts = Event.newer_than(60.days)
-        renderer = Ior::Calendar::IcsRenderer.new(posts)
+        events = Event.newer_than(60.days)
+        renderer = Ior::Calendar::IcsRenderer.new(events)
         render :text => renderer.render
       end
     end
