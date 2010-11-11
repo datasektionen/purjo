@@ -67,6 +67,19 @@ $(function() {
   }).filter('.off').click();
 });
 
+
+$(function() {
+  var tags = $('#tag_list').children();
+  if (tags.size() < 16) return;
+  $('<li class="toggle">Fler taggar</li>').toggle(function() {
+    $(this).addClass('off');
+    tags.filter(':gt(14)').hide();
+  }, function() {
+    $(this).removeClass('off');
+    tags.filter(':gt(14)').show();
+  }).insertAfter(tags.filter(':eq(14)')).click();
+});
+
 $(function() {
   // Safaris has this functionality, so let's not overwrite it
   if (!$.browser.webkit) {
