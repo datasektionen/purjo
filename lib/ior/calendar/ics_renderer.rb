@@ -6,6 +6,7 @@ module Ior
       end
       
       def render
+        puts "Well, fuck you very much!"
         output = "BEGIN:VCALENDAR\r\n"
         output += "VERSION:2.0\r\n"
         output += "X-WR-CALNAME:Kongl. Datasektionen\r\n"
@@ -23,12 +24,29 @@ module Ior
           end
           
           output += "SUMMARY:#{event.name}\r\n"
-          output += "DESCRIPTION:#{event.content.gsub("\\", "\\\\").gsub("\n", "\\r\\n").gsub(";", "\\;").gsub(",", "\\,")}\r\n"
+          output += "DESCRIPTION:"
+          output += fix_linebreaks(event.content.gsub("\\", "\\\\").gsub(";", "\\;").gsub(",", "\\,"))
+          #{event.content.gsub("\\", "\\\\").gsub(";", "\\;").gsub(",", "\\,")}\r\n"
           output += "END:VEVENT\r\n"
         end
         
         output += "END:VCALENDAR\r\n"
         output
+      end
+      
+      def fix_linebreaks(content)
+        puts content
+        result = ""
+        counter = 0
+        content.each_line { |line|
+          puts line
+          l = line.strip
+          result += " " unless counter == 0
+          result += l
+          result += "\r\n"
+          counter+= 1
+        }
+        return result
       end
     end
   end
