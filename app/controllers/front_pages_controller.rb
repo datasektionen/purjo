@@ -1,8 +1,6 @@
 require 'twitter/twitter_item'
 
 class FrontPagesController < ApplicationController
-  cache_sweeper :calendar_sweeper, :only => [:show]
-  
   def show
     @posts = (params[:drafts] ? Post.drafts : Post.published)
     
