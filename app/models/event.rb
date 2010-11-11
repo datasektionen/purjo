@@ -1,13 +1,11 @@
 class Event < ActiveRecord::Base
   scope :for_month, lambda { |month, year|
     date = DateTime.civil(year, month)
-    
     {:conditions => [ 'NOT (ends_at < :start_date OR starts_at > :end_date)', {:start_date => date, :end_date => date.end_of_month}]}
   }
   
   scope :for_day, lambda {|day, month, year|
     date = DateTime.civil(year, month, day)
-    
     {:conditions => [ 'NOT (ends_at < :start_date OR starts_at > :end_date)', {:start_date => date.beginning_of_day, :end_date => date.end_of_day}]}
   }
   
