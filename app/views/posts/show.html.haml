@@ -25,3 +25,4 @@
 - admin_link "Redigera nyhet", edit_post_path(@post)
 - if @post.editable?
   - admin_link "Ta bort", post_path(@post), :method => :delete, :confirm => "Är du säker på att du vill ta bort nyheten?"
+- admin_link "Skapa kalenderpost", new_event_path(:post => @post.id)
