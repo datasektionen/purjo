@@ -10,6 +10,7 @@ module Ior
         output += "VERSION:2.0\r\n"
         output += "X-WR-CALNAME:Kongl. Datasektionen\r\n"
         output += "PRODID:-//hacksw/handcal//NONSGML v1.0//EN\r\n"
+        output += "TZID:Europe/Stockholm\r\n"
         
         @events.each do |event|
           output += "BEGIN:VEVENT\r\n"
