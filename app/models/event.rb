@@ -31,8 +31,8 @@ class Event < ActiveRecord::Base
   end
 
   def duration
-    if starts_at.day != ends_at.day &&
-       starts_at.month != ends_at.month &&
+    if starts_at.day != ends_at.day ||
+       starts_at.month != ends_at.month ||
        starts_at.year != ends_at.year # more than one day
       str = I18n.l(starts_at, :format => "Pågår mellan %e %b %Y klockan %H:%M och ")
       str << I18n.l(ends_at, :format => "%e %b %Y klockan %H:%M")
