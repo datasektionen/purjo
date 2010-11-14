@@ -2,65 +2,6 @@
   margin-bottom: 30px;
     
   h2 a { color: #222; }
-  
-  .meta {
-    position: relative;
-    margin: 6px 0;
-    font-size: 14px;
-    line-height: 26px;
-    height: 28px;
-    
-    img.thumb {
-      float: left;
-      margin-right: 7px;
-      width: 28px;
-      height: 28px;
-    }
-
-    .popup {
-      display: none;
-      position: absolute;
-      width: 317px;
-      height: 90px;
-      background-image: url('/images/box-arrow.png');
-    }  
-
-    .popup-inner {
-      float: right;
-      font: helvetica, arial, sans-serif;
-      height: 80px;
-      width: 300px;
-      padding: 5px;
-      background-color: #242424;
-      border-radius: 5px;
-      -webkit-border-radius: 5px;
-      -moz-border-radius: 5px;
-      
-      h3, p {
-        float: left;
-        color: white;
-        margin-left: 10px;
-        font-family: helvetica, sans-serif;
-        font-style: normal;
-        width: 200px;
-      }
-    
-      h3 {
-        margin-top: 13px;
-        font-size: 16px;
-      }
-      
-      p {
-        font-size: 13px;
-        line-height: 15px;
-      }
-      
-      img {
-        float: left;
-      }
-    }
-  }
-  
 
   div.comments, div.respond { margin-top: 30px; }
 	#noise_message {
@@ -89,6 +30,64 @@
     width: 100px;
     height: 20px;
   }
+}
+
+.meta {
+	position: relative;
+	margin: 6px 0;
+	font-size: 14px;
+	line-height: 26px;
+	height: 28px;
+	
+	img.thumb {
+		float: left;
+		margin-right: 7px;
+		width: 28px;
+		height: 28px;
+	}
+
+	.popup {
+		display: none;
+		position: absolute;
+		width: 317px;
+		height: 90px;
+		background-image: url('/images/box-arrow.png');
+	}  
+
+	.popup-inner {
+		float: right;
+		font: helvetica, arial, sans-serif;
+		height: 80px;
+		width: 300px;
+		padding: 5px;
+		background-color: #242424;
+		border-radius: 5px;
+		-webkit-border-radius: 5px;
+		-moz-border-radius: 5px;
+		
+		h3, p {
+			float: left;
+			color: white;
+			margin-left: 10px;
+			font-family: helvetica, sans-serif;
+			font-style: normal;
+			width: 200px;
+		}
+	
+		h3 {
+			margin-top: 13px;
+			font-size: 16px;
+		}
+		
+		p {
+			font-size: 13px;
+			line-height: 15px;
+		}
+		
+		img {
+			float: left;
+		}
+	}
 }
 
 .tags {
