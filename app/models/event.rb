@@ -34,8 +34,11 @@ class Event < ActiveRecord::Base
     if starts_at.day != ends_at.day ||
        starts_at.month != ends_at.month ||
        starts_at.year != ends_at.year # more than one day
-      str = I18n.l(starts_at, :format => "Pågår mellan %e %b %Y klockan %H:%M och ")
-      str << I18n.l(ends_at, :format => "%e %b %Y klockan %H:%M")
+      str = I18n.l(starts_at, :format => "Pågår mellan %e %b %Y")
+      str << I18n.l(starts_at, :format => " klockan %H:%M") unless all_day
+      str << " och "
+      str << I18n.l(ends_at, :format => "%e %b %Y")
+      str << I18n.l(ends_at, :format => " klockan %H:%M") unless all_day
     else # one day only
       str = I18n.l(starts_at, :format => "%A").capitalize + "en "
       str << I18n.l(starts_at, :format => "den %e %b %Y")
