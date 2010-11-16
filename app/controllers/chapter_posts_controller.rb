@@ -18,6 +18,7 @@ class ChapterPostsController < ApplicationController
   def show
     @menu_template = "sektionen"
     @chapter_post = ChapterPost.find_by_slug(params[:id])
+    @chapter_post = ChapterPost.find(params[:id]) if @chapter_post.nil?
   end
 
   def new
