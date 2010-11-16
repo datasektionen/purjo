@@ -30,15 +30,17 @@
     width: 100px;
     height: 20px;
   }
+
+	.meta {
+		position: relative;
+		margin: 6px 0;
+		font-size: 14px;
+		line-height: 26px;
+		height: 28px;
+	}
 }
 
 .meta {
-	position: relative;
-	margin: 6px 0;
-	font-size: 14px;
-	line-height: 26px;
-	height: 28px;
-	
 	img.thumb {
 		float: left;
 		margin-right: 7px;
