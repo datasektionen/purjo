@@ -1,4 +1,3 @@
 %h3
-  = link_to( result.title.nil? ? result.name : result.title, result.url)
-  = debug result
+  = link_to( result.title.nil? || result.title.blank? ? result.name : result.title, result.url)
   %span.type (Sida)
