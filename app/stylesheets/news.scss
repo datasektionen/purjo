@@ -3,21 +3,6 @@
     
   h2 a { color: #222; }
 
-  div.comments, div.respond { margin-top: 30px; }
-	#noise_message {
-		width: 80%;
-		height: 200px;
-	}
-
-  .comment {
-    margin: 5px 0 15px;
-    .meta { margin-bottom: 5px; }
-    .edit, .delete, .sep {
-      float: right;
-      font-style: normal;
-    }
-  }
-
   .fb-like {
     margin-top: 1px;
     overflow: hidden;
@@ -37,6 +22,21 @@
 		font-size: 14px;
 		line-height: 26px;
 		height: 28px;
+	}
+}
+
+div.comments, div.respond { margin-top: 30px; }
+#noise_message {
+	width: 80%;
+	height: 200px;
+}
+
+.comment {
+	margin: 5px 0 15px;
+	.meta { margin-bottom: 5px; }
+	.edit, .delete, .sep {
+		float: right;
+		font-style: normal;
 	}
 }
 
