@@ -15,14 +15,6 @@
     width: 100px;
     height: 20px;
   }
-
-	.meta {
-		position: relative;
-		margin: 6px 0;
-		font-size: 14px;
-		line-height: 26px;
-		height: 28px;
-	}
 }
 
 div.comments, div.respond { margin-top: 30px; }
@@ -38,6 +30,14 @@ div.comments, div.respond { margin-top: 30px; }
 		float: right;
 		font-style: normal;
 	}
+}
+
+.comment .meta, .post .meta {
+	position: relative;
+	margin: 6px 0;
+	font-size: 14px;
+	line-height: 26px;
+	height: 28px;
 }
 
 .meta {
