@@ -1,6 +1,6 @@
 = simple_form_for(@post) do |f|
   = f.input :name
-  - if @written_by_options
+  - unless @written_by_options.empty?
     = f.association :written_by, :collection => @written_by_options, :include_blank => "-- Författaren --"
   = f.input :content, :cols => 80, :rows => 25 
 
