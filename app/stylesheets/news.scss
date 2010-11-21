@@ -17,29 +17,6 @@
   }
 }
 
-div.comments, div.respond { margin-top: 30px; }
-#noise_message {
-	width: 80%;
-	height: 200px;
-}
-
-.comment {
-	margin: 5px 0 15px;
-	.meta { margin-bottom: 5px; }
-	.edit, .delete, .sep {
-		float: right;
-		font-style: normal;
-	}
-}
-
-.comment .meta, .post .meta {
-	position: relative;
-	margin: 6px 0;
-	font-size: 14px;
-	line-height: 26px;
-	height: 28px;
-}
-
 .meta {
 	img.thumb {
 		float: left;
@@ -77,11 +54,12 @@ div.comments, div.respond { margin-top: 30px; }
 		}
 	
 		h3 {
-			margin-top: 13px;
+			margin-top: 12px;
 			font-size: 16px;
 		}
 		
 		p {
+			margin-top: 0;
 			font-size: 13px;
 			line-height: 15px;
 		}
@@ -93,6 +71,7 @@ div.comments, div.respond { margin-top: 30px; }
 }
 
 .tags {
+	margin-top: 4px;
   overflow: auto;
   .tag {
     margin: 2px 5px 2px 0;
@@ -124,3 +103,24 @@ div.comments, div.respond { margin-top: 30px; }
   }
 }
 
+div.comments, div.respond { margin-top: 30px; }
+#noise_message {
+	width: 80%;
+	height: 200px;
+}
+
+.comment {
+	margin: 5px 0 15px;
+	.meta { margin: 4px 0; }
+	.edit, .delete, .sep {
+		float: right;
+		font-style: normal;
+	}
+}
+
+.comment .meta, .post .meta {
+	position: relative;
+	font-size: 14px;
+	line-height: 26px;
+	height: 28px;
+}

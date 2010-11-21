@@ -2,8 +2,9 @@
 .news.post[post]
   %h2= link_to post, post
   %div.meta
-    = link_to image_tag(post.created_by.gravatar_url, :class => "trigger thumb", :alt => "", :title => post.created_by), person_path(post.created_by)
-    = link_to post.created_by, person_path(post.created_by), :class => "author"
+    - if post.author.is_a? Person
+      = link_to image_tag(post.author.gravatar_url, :class => "trigger thumb", :alt => "", :title => post.author), person_path(post.author)
+    = link_to post.author, post.author, :class => "author"
 
     %span.date
       - if post.published_at.present?
@@ -40,3 +41,11 @@
       = link_to comment_title, post, :class => "comments"
 
       %iframe{ :class => "fb-like tiny", :src => "http://www.facebook.com/plugins/like.php?href=#{CGI::escape post_url(post)}&amp;layout=button_count&amp;show_faces=false&amp;width=100&amp;height=20&amp;action=like&amp;colorscheme=light&amp;locale=sv_SE", :scrolling => "no", :frameborder => "0", :allowTransparency => "true" }
+
+  - if @single_post && post.written_by.present?
+    %div.meta
+      = link_to image_tag(post.created_by.gravatar_url, :class => "trigger thumb", :alt => "", :title => post.created_by), person_path(post.created_by)
+      %span.dim Publicerad av 
+      = link_to post.created_by, person_path(post.created_by), :class => "author created_by"
+  
+      = render :partial => "people/popup", :locals => { :person => post.created_by }

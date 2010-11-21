@@ -44,6 +44,10 @@ class ChapterPost < ActiveRecord::Base
   def functionary
     functionaries.active.first
   end
+  
+  def to_s
+    self.name
+  end
 
   def to_param
     slug

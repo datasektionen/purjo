@@ -204,6 +204,7 @@
         name: Namn
         content: Innehåll
         sticky: Sticky
+        written_by: Avsändare
       event:
         name: Namn
         content: Innehåll

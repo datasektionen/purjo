@@ -1,16 +1,22 @@
 $(function() {
   $('div.meta').each(function() {
+    var trigger = $('.trigger', this);
+    var popup = $('.popup', this).css('opacity', 0);
+
+    if (trigger.length < 1 || popup.length < 1)
+      return;
+
     var distance = 20;
-    var time = 250;
+    var time = 200;
     var hideDelay = 500;
     
     var hideDelayTimer = null;
     
     var beingShown = false;
     var shown = false;
-    
-    var trigger = $('.trigger', this);
-    var popup = $('.popup', this).css('opacity', 0);
+
+    var para = popup.find('p:first')
+    para.css('margin-top', (50 - para.height()) / 4);
 
     $([trigger.get(0), popup.get(0)]).mouseover(function () {
       if (hideDelayTimer) {
@@ -42,7 +48,6 @@ $(function() {
       if (hideDelayTimer) {
         clearTimeout(hideDelayTimer);
       }
-      
       
       hideDelayTimer = setTimeout(function() {
         hideDelayTimer = null;

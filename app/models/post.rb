@@ -10,6 +10,7 @@ class Post < ActiveRecord::Base
   acts_as_taggable_on :categories
   
   belongs_to :created_by, :class_name => 'Person'
+  belongs_to :written_by, :class_name => 'ChapterPost'
   has_many :noises
 
   validates_presence_of :name
@@ -27,6 +28,10 @@ class Post < ActiveRecord::Base
   
   def to_s
     self.name
+  end
+
+  def author
+    written_by || created_by
   end
 
   # body (stripped of section markup)

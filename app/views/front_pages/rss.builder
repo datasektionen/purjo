@@ -12,7 +12,7 @@ xml.rss :version => "2.0" do
         
         xml.author post.created_by
         # Tue, 10 Jun 2003 04:00:00 GMT
-        xml.pubDate post.created_at.utc.strftime("%a, %d %b %Y %H:%M:%S GMT")
+        xml.pubDate post.published_at.utc.strftime("%a, %d %b %Y %H:%M:%S GMT")
         xml.link post_url(post)
         xml.guid post_url(post)
       end

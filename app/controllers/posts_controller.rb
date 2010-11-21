@@ -1,6 +1,9 @@
 class PostsController < ApplicationController
   require_role :editor, :except => [:show, :index]
 
+  before_filter :process_category_list, :only => [:create, :update]
+  before_filter :generate_written_by_options, :only => [:new, :edit, :create, :update]
+
   def index
     redirect_to '/'
   end
@@ -17,11 +20,10 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    include_current_written_by
   end
 
   def create
-    process_category_list
-
     @post = Post.new(params[:post])
     @post.created_by = Person.current
     
@@ -37,13 +39,12 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
 
-    process_category_list
-
     if @post.update_attributes(params[:post])
       flash[:notice] = 'Nyhet uppdaterad.'
     
       redirect_to(@post)
     else
+      include_current_written_by
       render :action => "edit"
     end
   end
@@ -61,6 +62,23 @@ class PostsController < ApplicationController
   end
 
   private
+
+  def generate_written_by_options
+    if Person.current.admin?
+      @written_by_options = ChapterPost.all
+    else
+      @written_by_options = Person.current.functionaries.active.collect { |f|
+        f.chapter_post
+      }
+    end
+  end
+  
+  def include_current_written_by
+    if @post && @post.written_by.present?
+      @written_by_options.insert(0, @post.written_by).uniq! 
+    end
+  end
+
   def process_category_list
     # Category/tag list generation
     return if !params.include?(:post)
