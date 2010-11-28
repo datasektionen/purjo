@@ -1,10 +1,10 @@
 class SearchController < ApplicationController
-  
-  SEARCH_ENABLED_MODELS = [TextNode, Post, Event, Person, Committee]
   def index
     @menu_template = "search"
     
-    classes = SEARCH_ENABLED_MODELS
+    classes = [TextNode, Post, Event, Committee]
+    unless Person.current.anonymous?
+      classes << Person
 
     @search = Sunspot.search(*classes) do
       keywords params[:q]
