@@ -3,8 +3,7 @@ class SearchController < ApplicationController
     @menu_template = "search"
     
     classes = [TextNode, Post, Event, Committee]
-    unless Person.current.anonymous?
-      classes << Person
+    classes << Person unless Person.current.anonymous?
 
     @search = Sunspot.search(*classes) do
       keywords params[:q]
