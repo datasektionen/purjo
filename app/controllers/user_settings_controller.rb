@@ -33,7 +33,7 @@ class UserSettingsController < ApplicationController
   
   def check_access
     if !(Person.current.admin? || Person.current == @person)
-      raise IOR::Security::AccessDenied
+      return access_denied
     end
   end
 end
