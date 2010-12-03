@@ -9,8 +9,6 @@ class SearchController < ApplicationController
       keywords params[:q]
       facet :class
       facet :tags
-
-      order_by(:created_at, :desc)
       
       paginate :page => params[:page]
       

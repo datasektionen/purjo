@@ -19,7 +19,8 @@ class Post < ActiveRecord::Base
     text :content
     text :name, :default_boost => 2
     string :tags, :multiple => true, :using => :categories
-    time :published_at
+    time :published_at, :trie => true
+    time :created_at, :trie => true
   end
 
   attr_writer :draft
