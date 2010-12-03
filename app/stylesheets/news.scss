@@ -53,10 +53,8 @@
 			width: 200px;
 		}
 	
-		h3 {
-			margin-top: 12px;
-			font-size: 16px;
-		}
+		h3 { margin-top: 12px; font-size: 16px; }
+		h3 a { color: #fff; }
 		
 		p {
 			margin-top: 0;
@@ -64,9 +62,7 @@
 			line-height: 15px;
 		}
 		
-		img {
-			float: left;
-		}
+		img { float: left; }
 	}
 }
 
