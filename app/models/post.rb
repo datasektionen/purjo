@@ -16,8 +16,6 @@ class Post < ActiveRecord::Base
   validates_presence_of :name
   
   searchable do
-    with(:published_at).less_than(Time.now)
-    order_by(:published_at, :desc)
     text :content
     text :name, :default_boost => 2
     string :tags, :multiple => true, :using => :categories
