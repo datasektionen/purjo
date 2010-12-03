@@ -1,10 +1,11 @@
-%h3
-  = link_to result.name, post_path(result)  
-  %span.type (Nyhet)
+- unless result.publish_at.nil?
+  %h3
+    = link_to result.name, post_path(result)  
+    %span.type (Nyhet)
 
-%p.meta.date
-  %span.dim Publicerad den 
-  = l result.published_at, :format => "%e %b %Y"
-  %span.dim klockan 
-  = l result.published_at, :format => "%H:%M"
+  %p.meta.date
+    %span.dim Publicerad den 
+    = l result.published_at, :format => "%e %b %Y"
+    %span.dim klockan 
+    = l result.published_at, :format => "%H:%M"
   
