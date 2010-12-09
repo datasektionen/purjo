@@ -16,7 +16,9 @@ $(function() {
     var shown = false;
 
     var para = popup.find('p:first')
+    popup.css('display', 'block');
     para.css('margin-top', 20-para.height()/2);
+    popup.css('display', 'none');
 
     $([trigger.get(0), popup.get(0)]).mouseover(function () {
       if (hideDelayTimer) {
