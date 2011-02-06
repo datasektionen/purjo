@@ -18,6 +18,8 @@ module Purjo2
 
     config.time_zone = 'Stockholm'
 
+    config.autoload_paths += %W(#{config.root}/lib)
+
     # Configure generators values. Many other options are available, be sure to check the documentation.
     # config.generators do |g|
     #   g.orm             :active_record
