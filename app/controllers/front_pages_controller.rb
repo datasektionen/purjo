@@ -34,7 +34,6 @@ class FrontPagesController < ApplicationController
     if request.format != Mime::HTML
       raise ActionController::RoutingError, "Invalid output format (#{params[:format].inspect}) requested."
     end
-
   end
   
   def rss

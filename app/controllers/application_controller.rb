@@ -29,11 +29,11 @@ class ApplicationController < ActionController::Base
 
   protected
   def not_found
-    render :file => 'errors/file_not_found', :layout => true
+    render :file => 'errors/file_not_found.html', :layout => true
   end
   
   def access_denied
-    render :file => 'errors/access_denied', :layout => true
+    render :file => 'errors/access_denied.html', :layout => true
   end
   
   def local_request?
