@@ -29,6 +29,12 @@ class FrontPagesController < ApplicationController
     end
     # apparentely the cache process freezes the object... this ugly hack circumvents that
     @tags = @tags.dup if @tags.frozen?
+
+    # fix for exception raising when odd formats are requeted
+    if request.format != Mime::HTML
+      raise ActionController::RoutingError, "Invalid output format (#{params[:format].inspect}) requested."
+    end
+
   end
   
   def rss
