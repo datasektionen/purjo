@@ -39,7 +39,7 @@ end
 
 group :development do
   gem 'ruby-debug'
-#  gem 'sqlite3-ruby'
+  gem 'sqlite3-ruby'
 end
 
 group :test do

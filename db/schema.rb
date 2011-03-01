@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101104200804) do
+ActiveRecord::Schema.define(:version => 20101121210541) do
 
   create_table "articles", :force => true do |t|
     t.integer  "blog_id"
@@ -219,7 +219,7 @@ ActiveRecord::Schema.define(:version => 20101104200804) do
     t.datetime "updated_at"
     t.string   "campaign_id"
     t.string   "state"
-    t.datetime "published"
+    t.datetime "published_at"
   end
 
   create_table "noises", :force => true do |t|
@@ -274,6 +274,7 @@ ActiveRecord::Schema.define(:version => 20101104200804) do
     t.datetime "updated_at"
     t.boolean  "sticky"
     t.datetime "published_at"
+    t.integer  "written_by_id"
   end
 
   create_table "roles", :force => true do |t|
@@ -323,9 +324,9 @@ ActiveRecord::Schema.define(:version => 20101104200804) do
     t.integer  "version"
     t.string   "custom_layout"
     t.string   "title"
-    t.text     "additional_content", :null => false
+    t.text     "additional_content",                    :null => false
     t.datetime "deleted_at"
-    t.boolean  "deleted", :default => false
+    t.boolean  "deleted",            :default => false
   end
 
   create_table "travel_years", :force => true do |t|
