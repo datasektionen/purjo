@@ -10,6 +10,9 @@
       = javascript_include_tag 'http://html5shiv.googlecode.com/svn/trunk/html5.js'
     = javascript_include_tag "application.js", "rails.js", "hyphenate.js", "kundo.js"
     = stylesheet_link_tag "screen"
+    = stylesheet_link_tag "ths_topbar"
+    /[if IE 9]
+      = stylesheet_link_tag "ths_topbar_ie"
     = yield(:head)
     
     = csrf_meta_tag
@@ -31,6 +34,7 @@
     
     = auto_discovery_link_tag(:rss, "/nyheter.rss")
   %body
+    = render :partial => 'layouts/ths_topbar'
     #wrapper
       #main
         .top
