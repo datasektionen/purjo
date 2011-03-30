@@ -1,27 +1,20 @@
-#wpcombar
-  %div
-    %div.quicklinks
-      %ul.thelinks
-        - menuitems = YAML::load(File.open(File.join(Rails.root, 'config', 'ths_topbar.yml')))
-        - menuitems.each do |item|
-          - if item[:subitems]
-            %li.menupop
-              =link_to content_tag(:span, item[:text]), '#', :onclick=>"return false;"
-              %ul.xoxo.blogroll
-                - item[:subitems].each do |subitem|
-                  %li.menupop
-                    =link_to subitem[:text], subitem[:href]
+- cache 'ths-bar' do
+  #ths-bar
+    #ths-wrap
+      = link_to 'THS', 'http://www.ths.kth.se/',
+        :title => 'Tekniska Högskolans Studentkår',
+        :id => 'ths-title'
+      %ul.links
+        - items = YAML::load(File.open(File.join(Rails.root, 'config', 'ths_topbar.yml')))
+        - items.each do |item|
+          - if !item[:subitems]
+            %li.top= link_to item[:text], item[:href]
           - else
-            %li
-              =link_to item[:text], item[:href]
+            %li.top.menu
+              = link_to item[:text], '#', :onclick => 'return false;', :class => 'drop'
+              %ul.submenu
+                - item[:subitems].each do |subitem|
+                  %li= link_to subitem[:text], subitem[:href]
 
-      #english
-        =link_to image_tag('http://www.ths.kth.se/wp-content/themes/THS/images/english.png', :alt=>'English'), 'http://www.ths.kth.se/?page_id=254', :title => 'In English'
-
-      #kugghjul
-        =link_to image_tag('http://www.ths.kth.se/wp-content/themes/THS/images/gearwheel.png', :alt => 'kugghjul'), 'http://www.ths.kth.se/?page_id=418', :title => 'THS i din hemsida'
-
-      =form_tag('http://www.ths.kth.se', :method => :get, :id=>'adminbarsearch') do
-        =text_field_tag('s', 'Sök', :maxlength => 150, :class=>'adminbar-input', :onblur=>"this.value=(this.value=='') ? 'Sök' : this.value;", :onfocus=>"this.value=(this.value=='Sök') ? '' : this.value;")
-        =content_tag(:button, content_tag(:span, 'Sök'), :class=>'adminbar-button')
-
+      = link_to 'http://www.ths.kth.se/?page_id=254', :title => 'THS information in English', :id => 'ths-english' do
+        THS
