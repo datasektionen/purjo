@@ -1,0 +1,12 @@
+- person = Person.current
+%p.login
+  - if person.anonymous?
+    Du är ej inloggad.
+    = link_to 'logga in', new_sessions_path(:return_url => current_url), :class => 'do'
+  - else 
+    = link_to person, :title => "Inloggad som #{person.name}", :class => 'person' do
+      %span= person.kth_username
+      = image_tag(person.gravatar_url, :class => 'thumb', :alt => '', :title => person)
+    = link_to 'logga ut', logout_path(:return_url => current_url), :class => 'do'
+
+

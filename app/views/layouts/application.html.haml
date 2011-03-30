@@ -50,13 +50,7 @@
                 = top_navigation_link("Kontakt", "/kontakt", /^\/kontakt/)
             
             .actions.grid_4
-              %p.login
-                - if Person.current.anonymous?
-                  Du är ej inloggad.
-                  = link_to 'logga in', new_sessions_path(:return_url => current_url), :class => 'do'
-                - else 
-                  %strong= link_to Person.current.kth_username, Person.current, :title => "Inloggad som #{Person.current.name}"
-                  = link_to 'logga ut', logout_path(:return_url => current_url), :class => 'do'
+              = render :partial => 'layouts/loginout'
 
               = form_tag(search_path, :method => :get) do
                 %input{:type => "search", :placeholder => "Sök", :name => 'q', :value => params[:q], :id => 'search'}

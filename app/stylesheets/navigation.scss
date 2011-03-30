@@ -10,16 +10,24 @@ div.header {
   }
 
   .login {
-    margin: 15px 0 10px 0;
-    font-size: 15px;
-    line-height: 24px;
+    margin: 13px 0 8px 0;
+    font-size: 13px;
+    line-height: 28px;
+
+    img { margin-left: 4px; height: 28px; vertical-align: bottom; }
+    .person {
+      color: #e2007f;
+      font-size: 15px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .person:hover span { text-decoration: underline; }
 
     a.do {
       margin-left: 8px;
       padding: 3px 6px;
       color: #fff;
       background: #666;
-      font-size: 13px;
       font-weight: bold;
       border-radius: 5px;
       -moz-border-radius: 5px;
