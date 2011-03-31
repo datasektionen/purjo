@@ -1,9 +1,11 @@
 - cache 'ths-bar' do
   #ths-bar
     #ths-wrap
-      = link_to 'THS', 'http://www.ths.kth.se/',
-        :title => 'Tekniska Högskolans Studentkår',
-        :id => 'ths-title'
+      #ths-title<>
+        = link_to 'THS', 'http://www.ths.kth.se/', :id => 'ths-logo',
+          :title => 'Tekniska Högskolans Studentkår'
+        = link_to 'Datasektionen', '/', :id => 'ths-section'
+
       %ul.links
         - items = YAML::load(File.open(File.join(Rails.root, 'config', 'ths_topbar.yml')))
         - items.each do |item|

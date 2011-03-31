@@ -10,17 +10,24 @@
   border-bottom: 2px solid #ddd;
   color: #ddd;
   background: #666 url("/images/ths-bar.gif") repeat-x;
-  font: normal normal 12px Arial, Helvetica, sans-serif;
   height: 28px;
-}
 
-#ths-bar a {
-  color: #ddd;
-  text-decoration: none;
   text-shadow: #555 0px -1px 0px;
   font: normal normal 13px Arial, Helvetica, sans-serif;
   font-weight: normal;
   line-height: 28px;
+}
+
+#ths-bar a {
+  display: block;
+  padding: 0 10px;
+  color: #ddd;
+  text-decoration: none;
+}
+
+#ths-bar a:hover, #ths-bar .menu:hover {
+  text-shadow: #333 0px -1px 0px;
+  background-color: #555;
 }
 
 #ths-bar ul {
@@ -30,21 +37,11 @@
   text-align: left;
 }
 
-#ths-bar li.top {
+#ths-bar li.top, #ths-logo {
   float: left;
   border-right: 1px solid #555;
 }
 #ths-bar li.top:first-child { border-left: 1px solid #555; }
-
-#ths-bar li a {
-  display: block;
-  padding: 0 10px;
-}
-
-#ths-bar ul a:hover, #ths-bar .menu:hover {
-  text-shadow: #333 0px -1px 0px;
-  background: #555;
-}
 
 /* }}} */
 /* {{{ Drop down menus */
@@ -93,19 +90,18 @@ html>body #ths-bar .menu ul {
 /* }}} */
 /* {{{ Other elements */
 
-a#ths-title {
+#ths-title {
   float: left;
   margin-right: 30px;
-  padding: 0 6px;
-  font-weight: bold;
 }
+#ths-title a { float: left; }
+#ths-title #ths-logo { font-weight: bold; }
 
 a#ths-english { 
   float: right;
-  padding-right: 23px;
+  padding: 0 23px 0 0;
   background: transparent url("/images/ths-bar.gif") no-repeat right -84px;
 }
-
-#ths-title:hover, #ths-english:hover { text-decoration: underline; }
+a#ths-english:hover { background-color: transparent; text-decoration: underline; }
 
 /* }}} */
