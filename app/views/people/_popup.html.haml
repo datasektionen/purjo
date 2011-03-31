@@ -1,8 +1,9 @@
-- cache(person) do
-  .popup
-    .popup-inner
-      = image_tag(person.gravatar_url)
-      %h3= link_to person, person
-      - if person.functionaries.present?
-        %p!= person.functionaries.active.map { |f| link_to f.chapter_post.name, contact_path(f.chapter_post.slug) }.to_sentence
-    .clear &nbsp;
+- if person
+  - cache(person) do
+    .popup
+      .popup-inner
+        = image_tag(person.gravatar_url)
+        %h3= link_to person, person
+        - if person.functionaries.present?
+          %p!= person.functionaries.active.map { |f| link_to f.chapter_post.name, contact_path(f.chapter_post.slug) }.to_sentence
+      .clear &nbsp;

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101121210541) do
+ActiveRecord::Schema.define(:version => 20110331151722) do
 
   create_table "articles", :force => true do |t|
     t.integer  "blog_id"
@@ -261,6 +261,7 @@ ActiveRecord::Schema.define(:version => 20101121210541) do
     t.string   "chapter"
     t.string   "gender"
     t.string   "homedir"
+    t.boolean  "deleted",             :default => false, :null => false
   end
 
   add_index "people", ["kth_ugid"], :name => "index_people_on_kth_ugid", :unique => true

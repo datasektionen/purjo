@@ -1,5 +1,5 @@
 class PeopleController < ApplicationController
-  require_role "admin", :except => [:show, :edit, :update, :xfinger_image]
+  require_role "admin", :except => [:show, :xfinger_image]
 
   def index
     @people = Person.all(:include => :roles).paginate(:page => params[:page])
@@ -7,11 +7,16 @@ class PeopleController < ApplicationController
 
   def show
     @person = Person.find_by_kth_username(params[:id])
+    if !@person && Person.current.admin?
+      @person = Person.unscoped.find_by_kth_username(params[:id])
+    end
+
     raise ActiveRecord::RecordNotFound if @person.nil?
   end
   
   def edit
-    @person = Person.find_by_kth_username(params[:id])
+    # Allow editing of deleted users
+    @person = Person.unscoped.find_by_kth_username(params[:id])
   end
 
   def update
@@ -21,7 +26,7 @@ class PeopleController < ApplicationController
     params[:person] = params[:person].each_value { |item| item = nil unless item }
     params[:person][:role_ids] = [] unless params[:person][:role_ids] 
     
-    @person = Person.find_by_kth_username(params[:id])
+    @person = Person.unscoped.find_by_kth_username(params[:id])
 
     if Person.current.admin? 
       #Admin updates everything, including roles
@@ -43,8 +48,10 @@ class PeopleController < ApplicationController
   end
 
   def destroy
-    @person = Person.find(params[:id])
-    @person.destroy
+    # Soft delete
+    @person = Person.unscoped.find(params[:id])
+    @person.deleted = true
+    @person.save
 
     redirect_to(people_url)
   end

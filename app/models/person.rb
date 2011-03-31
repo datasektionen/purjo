@@ -18,8 +18,12 @@ class Person < ActiveRecord::Base
   validates_presence_of :first_name, :last_name, :email, :kth_username
   
   serialize :serialized_features
+
+  default_scope where(:deleted => false)
   
   searchable do
+    without :deleted, true
+
     text :name 
     text :kth_username
     text :chapter_posts_text, :stored => true do

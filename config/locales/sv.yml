@@ -185,6 +185,8 @@
         subject: Ämne
         message: Meddelande
       person:
+        roles: Roller
+        deleted: Borttagen (gömd)
         startyear: Startår
         address: Adress
         phone: Telefon
