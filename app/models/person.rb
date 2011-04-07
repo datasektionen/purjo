@@ -22,8 +22,6 @@ class Person < ActiveRecord::Base
   default_scope where(:deleted => false)
   
   searchable do
-    without :deleted, true
-
     text :name 
     text :kth_username
     text :chapter_posts_text, :stored => true do
