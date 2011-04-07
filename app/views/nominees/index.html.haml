@@ -1,24 +1,28 @@
 %h2 
-  Nomineringar till 
-  = @election_event.name 
-  = "#{@election_event.date}"
+  Nomineringar till...
+
+%ul
+  - @election_events.each do |event|
+    %li #{event.name} (#{event.date})
 
 = include_node("/sektionen/val/text").gsub(/@last_change/, @last_change.to_s)
 - if Person.current.editor?
+  -# FIXME: Nedanstående länk är jättekonstig... man kan inte länka till en hårdkodad textnod sådär, det kommer inte funka på folks lokala versioner.
   - admin_link "Redigera texten", "/text_nodes/181/edit"
 
-%table.wide
-  %tr
-    %th Post
-    %th Tidigare innehavare
-    %th Nominerade
-  - if @nominees.size > 0
-    - for nominee in format_nominees(@nominees)
-      %tr
-        %td= nominee[1][2]
-        %td= nominee[1][1]
-        %td= nominee[1][0].html_safe
-  - else
+- @election_events.each do |event|
+  %table.wide
     %tr
-      %td{:colspan=>4}
-        %em Ingen är nominerad till det här valet.
+      %th Post
+      %th Tidigare innehavare
+      %th Nominerade
+    - if event.nominees.size > 0
+      - for nominee in format_nominees(event.nominees)
+        %tr
+          %td= nominee[1][2]
+          %td= nominee[1][1]
+          %td= nominee[1][0].html_safe
+    - else
+      %tr
+        %td{:colspan=>4}
+          %em Ingen är nominerad till det här valet.

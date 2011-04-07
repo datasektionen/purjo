@@ -3,6 +3,10 @@ class NomineesController < ApplicationController
 
   def index
     @menu_items=TextNode.find_by_url("/sektionen").menu[:items]
+
+    @election_events = ElectionEvent.active.all(:include => :nominees)
+
+
     if params[:election_event]
       @nominees = Nominee.find(:all, :order => "IF(status=0,1.5,status)", :conditions => {
           :election_event_id => params[:election_event]
