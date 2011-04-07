@@ -1,0 +1,22 @@
+- cache 'ths-bar' do
+  #ths-bar
+    #ths-wrap
+      #ths-title<>
+        = link_to 'THS', 'http://www.ths.kth.se/', :id => 'ths-logo',
+          :title => 'Tekniska Högskolans Studentkår'
+        = link_to 'Datasektionen', '/', :id => 'ths-section'
+
+      %ul.links
+        - items = YAML::load(File.open(File.join(Rails.root, 'config', 'ths_topbar.yml')))
+        - items.each do |item|
+          - if !item[:subitems]
+            %li.top= link_to item[:text], item[:href]
+          - else
+            %li.top.menu
+              = link_to item[:text], '#', :onclick => 'return false;', :class => 'drop'
+              %ul.submenu
+                - item[:subitems].each do |subitem|
+                  %li= link_to subitem[:text], subitem[:href]
+
+      = link_to 'http://www.ths.kth.se/?page_id=254', :title => 'THS information in English', :id => 'ths-english' do
+        English

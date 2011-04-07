@@ -215,14 +215,14 @@ div.notification {
 
 h3 .delete, h3 .edit { margin-left: 25px; font-size: 18px; }
 
-.toggle {
+.body .toggle {
   cursor: pointer;
   padding-left: 14px;
   background-image: url("/images/toggle.gif");
   background-repeat: no-repeat;
   background-position: 0 12px;
 }
-.toggle.off { background-position: 0 -28px; }
+.body .toggle.off { background-position: 0 -28px; }
 
 .subnav .toggle {
 	background-position: 147px 8px;

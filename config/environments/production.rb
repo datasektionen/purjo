@@ -41,5 +41,7 @@ Purjo2::Application.configure do
   # config.threadsafe!
   
   config.cache_store = :mem_cache_store
-  
+
+  config.action_mailer.delivery_method = :sendmail
+  config.action_mailer.sendmail_settings = {:arguments => '-i' }
 end

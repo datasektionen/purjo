@@ -24,8 +24,9 @@ public/stylesheets/functionaries_and_nominees.css
 public/stylesheets/mottagningen.css
 public/stylesheets/naringsliv.css
 public/stylesheets/menu_edit.css
+public/stylesheets/ths_bar.css
 app/views/twitter/twitter.rss
 solr
 config/my_user.yml
 app/views/twitter/twitter.rss
-
+mail-2.2.14

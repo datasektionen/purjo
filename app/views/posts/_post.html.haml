@@ -4,7 +4,8 @@
   %div.meta
     - if post.author.is_a? Person
       = link_to image_tag(post.author.gravatar_url, :class => "trigger thumb", :alt => "", :title => post.author), person_path(post.author)
-    = link_to post.author, post.author, :class => "author"
+    - if post.author
+      = link_to post.author, post.author, :class => "author"
 
     %span.date
       - if post.published_at.present?

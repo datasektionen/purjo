@@ -14,8 +14,10 @@ class NodesController < ApplicationController
       end
 
     elsif @node.is_a? FileNode
+      raise ActiveRecord::RecordNotFound unless File.exists?(@node.resource.path)
       send_data(File.read(@node.resource.path), :disposition => "inline", :type => @node.resource.content_type)
 
     end
+
   end
 end

@@ -179,6 +179,9 @@ GEM
       json_pure
       rubyzip
     simple_form (1.2.2)
+    sqlite3 (1.3.3)
+    sqlite3-ruby (1.3.3)
+      sqlite3 (>= 1.3.3)
     steak (0.4.0.beta.1)
       rspec (>= 2.0.0.beta.9)
     sunspot (1.1.0)
@@ -234,6 +237,7 @@ DEPENDENCIES
   rspec-rails (>= 2.0.0.beta.11)
   ruby-debug
   simple_form
+  sqlite3-ruby
   state_machine!
   steak (>= 0.4.0.a5)
   sunspot_rails

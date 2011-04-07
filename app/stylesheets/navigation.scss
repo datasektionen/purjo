@@ -1,27 +1,48 @@
-div.top {
-  background-color: #242424;
-  font-size: 12px;
-  padding-top: 3px;
-  padding-bottom: 3px;
-  color: #e7e7e7;
-  overflow: auto;
-
-  a, strong {
-    color: white;
-  }
-}
-
 div.header {
   position: relative;
   background-color: #fff;
   -webkit-box-shadow: 0px 3px 3px #d7d7d7;
   -moz-box-shadow: 0px 3px 3px #d7d7d7;
 
+  .actions {
+    margin-top: 10px;
+    text-align: right;
+  }
+
+  .login {
+    margin: 13px 0 8px 0;
+    font-size: 13px;
+    line-height: 28px;
+
+    img { margin-left: 4px; height: 28px; vertical-align: bottom; }
+    .person {
+      color: #e2007f;
+      font-size: 15px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .person:hover span { text-decoration: underline; }
+
+    a.do {
+      margin-left: 8px;
+      padding: 3px 6px;
+      color: #fff;
+      background: #666;
+      font-weight: bold;
+      border-radius: 5px;
+      -moz-border-radius: 5px;
+    }
+    a.do:hover {
+      background: #777;
+      text-decoration: none;
+    }
+  }
+
   input#search {
     padding: 5px 3px;
-    margin-top: 25px;
     font-size: 14px;
     width: 200px;
+    text-align: left;
   }
   input#search.active { color: black; }
   input#search.inactive { color: #bbb; }

@@ -20,6 +20,9 @@
       != "&nbsp;|&nbsp;"
       = link_to 'Redigera', edit_person_path(@person)
 
+  - if @person.deleted
+    %p.deleted Denna person är markerad som borttagen.
+
   %table.credentials
     %tr
       %td.strong Startår:

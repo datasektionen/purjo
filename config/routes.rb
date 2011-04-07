@@ -58,7 +58,7 @@ Rails.application.routes.draw do |map|
   match '/sektionen/naringsliv', :controller => 'naringsliv', :action => 'index', :as => 'naringsliv_index'
   resources '/sektionen/naringsliv/jobb', :controller => 'job_ads', :as => 'job_ads', :except => [:show]
   
-  resources :file_nodes
+  resources 'filnoder', :as => :file_nodes, :controller => 'file_nodes'
   
   resources 'textnoder', :as => :text_nodes, :controller => 'text_nodes' do
     resources :children, :controller => 'TextNodeChildren', :path_prefix => 'textnoder/:node_id'

@@ -2,7 +2,7 @@
   Redigerar #{@person} (#{@person.kth_username})
 
 %p
-  Här kan du regigera personlig info. Informationen kommer vara visningsbar för alla inloggade teknologer, och nick kommer vara sökbart på sök teknolog.
+  Här kan du redigera personlig info. Informationen kommer vara visningsbar för alla inloggade teknologer, och nick kommer vara sökbart på sök teknolog.
 
 = simple_form_for @person do |form|
   - if Person.current.admin?
@@ -16,6 +16,9 @@
     = form.input :homepage
     = form.input :msn
     = form.input :xmpp
+
+  - if Person.current.admin?
+    = form.input :deleted
   
   .clear
   = form.submit "Spara"
