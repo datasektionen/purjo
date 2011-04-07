@@ -1,9 +1,5 @@
 %h2 
-  Nomineringar till...
-
-%ul
-  - @election_events.each do |event|
-    %li #{event.name} (#{event.date})
+  Aktuella val
 
 = include_node("/sektionen/val/text").gsub(/@last_change/, @last_change.to_s)
 - if Person.current.editor?
@@ -11,6 +7,7 @@
   - admin_link "Redigera texten", "/text_nodes/181/edit"
 
 - @election_events.each do |event|
+  %h4 #{event.name} #{event.date}
   %table.wide
     %tr
       %th Post
