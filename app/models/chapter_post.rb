@@ -6,6 +6,8 @@ class ChapterPost < ActiveRecord::Base
   validates_presence_of :name, :slug
   validates_uniqueness_of :slug
 
+  scope :ordered, order("name")
+
   # Någon som känner behovet att eliminera sql:en, varsegod. Föresatt att den
   # gör samma sak och är lika effektiv.
   def find_chapter_posts_by_kth_username username
