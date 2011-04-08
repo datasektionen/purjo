@@ -43,4 +43,24 @@ module NomineesHelper
     list
   end
 
+  def functionary_person_link(nominee)
+    if nominee.chapter_post.functionary
+      link_to n.chapter_post.functionary.person
+    else
+      "Vakant"
+    end
+  end
+
+  def nominee_person_link(nominee)
+    link_string = case nominee.status
+    when 1
+      "<strong>#{nominee.person}</strong>"
+    when 2
+      "<del>#{nominee.person}</del>"
+    else
+      nominee.person
+    end
+
+    link_to link_string, nominee.person
+  end
 end
