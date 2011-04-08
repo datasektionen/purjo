@@ -1,7 +1,7 @@
 module NomineesHelper
   # Outputta en länk till innehavaren av en nuvarande funktionärspost 
   def functionary_person_link(chapter_post)
-    if chapter_post.functionary
+    if chapter_post.functionary.try(:person)
       link_to chapter_post.functionary.person
     else
       "Vakant"
