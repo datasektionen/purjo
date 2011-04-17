@@ -2,6 +2,9 @@ class Nominee < ActiveRecord::Base
   belongs_to :person
   belongs_to :chapter_post
   belongs_to :election_event
+  
+  scope :ordered, order("IF(status=0,1.5,status)")
+  scope :for, lambda {|chapter_post| where(:chapter_post_id => chapter_post.id)}
 
   validates_presence_of :person_id
 

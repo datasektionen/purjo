@@ -3,30 +3,8 @@ class NomineesController < ApplicationController
 
   def index
     @menu_items=TextNode.find_by_url("/sektionen").menu[:items]
-    if params[:election_event]
-      @nominees = Nominee.find(:all, :order => "IF(status=0,1.5,status)", :conditions => {
-          :election_event_id => params[:election_event]
-        })
-      @election_event = ElectionEvent.find(params[:election_event])
-    else
-      @election_event = ElectionEvent.find(:first, :conditions =>
-          ["date >= ?", DateTime.now - 1.day],
-        :order => "date asc")
 
-      if @election_event.nil?
-        @nominees = true; # Fulhack så att tillhörande meny syns
-        render :action => "empty"
-        return
-      end
-      
-      @nominees = Nominee.find(:all, :order => "IF(status=0,1.5,status)", :conditions => {
-          :election_event_id => @election_event.id,
-        })
-      @last_change = Nominee.find(:first, :conditions => {
-          :election_event_id => @election_event.id
-        }, :order => "updated_at desc"
-        ).try(:updated_at)
-    end
+    @election_events = ElectionEvent.active.all(:include => :nominees)
 
     respond_to do |format|
       format.html # index.html.erb
