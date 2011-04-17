@@ -7,15 +7,14 @@
 = simple_form_for @person do |form|
   - if Person.current.admin?
     = form.association :roles, :as => :check_boxes
-  - if Person.current.admin? or Person.current.id == @person.id
-    = form.input :startyear
-    = form.input :address
-    = form.input :phone
-    = form.input :nickname
-    = form.input :personalemail
-    = form.input :homepage
-    = form.input :msn
-    = form.input :xmpp
+  = form.input :startyear
+  = form.input :address
+  = form.input :phone
+  = form.input :nickname
+  = form.input :personalemail
+  = form.input :homepage
+  = form.input :msn
+  = form.input :xmpp
 
   - if Person.current.admin?
     = form.input :deleted

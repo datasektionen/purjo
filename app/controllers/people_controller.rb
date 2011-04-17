@@ -1,5 +1,5 @@
 class PeopleController < ApplicationController
-  require_role "admin", :except => [:show, :xfinger_image]
+  require_role "admin", :except => [:show, :xfinger_image, :edit, :update]
 
   def index
     @people = Person.all(:include => :roles).paginate(:page => params[:page])
@@ -17,6 +17,7 @@ class PeopleController < ApplicationController
   def edit
     # Allow editing of deleted users
     @person = Person.unscoped.find_by_kth_username(params[:id])
+    return access_denied unless Person.current.admin? || Person.current.id == @person.id
   end
 
   def update
@@ -27,6 +28,7 @@ class PeopleController < ApplicationController
     params[:person][:role_ids] = [] unless params[:person][:role_ids] 
     
     @person = Person.unscoped.find_by_kth_username(params[:id])
+    return access_denied unless Person.current.admin? || Person.current.id == @person.id
 
     if Person.current.admin? 
       #Admin updates everything, including roles
