@@ -16,8 +16,12 @@
     - if event.nominees.size > 0
       - for chapter_post in event.chapter_posts.ordered
         %tr
-          %td= link_to chapter_post
-          %td= functionary_person_link chapter_post
+          %td= link_to chapter_post, chapter_post
+          %td
+            - if chapter_post.functionary && chapter_post.functionary.person
+              = link_to chapter_post.functionary.person, chapter_post.functionary.person
+            - else
+              Vakant
           %td
             %ul
               - event.nominees.for(chapter_post).ordered.each do |nominee|
