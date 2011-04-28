@@ -5,7 +5,7 @@ class FrontPagesController < ApplicationController
     @posts = (params[:drafts] ? Post.drafts : Post.published)
     
     if params[:tags]
-      @posts = @posts.tagged_with(params[:tags])
+      @posts = @posts.tagged_with(params[:tags].gsub('%', ''))
       @active_tags = ActsAsTaggableOn::TagList.from(params[:tags])
     end
     
