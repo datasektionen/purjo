@@ -1,6 +1,0 @@
-%h3
-  = link_to result.name, person_path(result)
-  %span.type (Student)
-
-- if result.functionaries.count > 0
-  %p.meta.functionary!= result.functionaries.active.map { |f| link_to f.chapter_post.name, f.chapter_post }.to_sentence.gsub(/\boch\b/, '<span class="dim">och</span>')

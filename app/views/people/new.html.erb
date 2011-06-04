@@ -1,9 +1,0 @@
-<h1>Skapa person</h1>
-
-<% ior_form_for(@person) do |f| %>
-  <%= f.error_messages %>
-  <%= render :partial => 'fields.html.erb', :locals => { :f=>f } %>
-  <%= f.submit "Skapa" %>
-<% end %>
-
-<%= link_to 'Back', people_path %>

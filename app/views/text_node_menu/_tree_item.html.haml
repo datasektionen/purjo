@@ -1,9 +1,0 @@
-%ul
-  %li[tree_item]
-    = link_to tree_item.name, tree_item.url
-    = form_tag edit_text_node_menu_path(node),:method=>:post do
-      = hidden_field_tag 'url', tree_item.url
-      = hidden_field_tag 'title', tree_item.name
-      = submit_tag "Lägg till i menyn"
-
-    = render :partial => 'tree_item', :collection => tree_item.children, :locals=>{:node=>node}

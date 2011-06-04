@@ -6,7 +6,7 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env) if defined?(Bundler)
 
-module Purjo2
+module Studs
   class Application < Rails::Application
     attr_accessor :settings
     
@@ -32,13 +32,6 @@ module Purjo2
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
-    
-    paths.app.models << "app/models/newsletters"
-    
-    paths.app.controllers << "app/controllers/newsletters"
   end
 end
-
-require 'ior/liquid_filters'
-require 'rss/2.0'
 
