@@ -1,19 +1,20 @@
-Rails.application.routes.draw do |map|
-  
-  match "/admin", :to => 'admin#index'
+Rails.application.routes.draw do
   
   resources :blogs do
     resources :articles
   end
+
+  match "travel_years/:year/internt/*url", :to => 'studs_nodes#show'
   
-  # Studs-relaterat
-  map.resources :travel_years
-  map.resources :cvs, :path_prefix => 'sektionen/studs/:year', :collection => {:logout => :get, :login => :any}
-  map.connect "sektionen/studs/:year/internt/*url", :controller => 'studs_nodes', :action => 'show'
-
+  resources :travel_years do
+    resources :cvs
+    collection do
+      get :logout
+      get :login
+      post :login
+    end
+  end
+  
   # URL-mappning
-
-  root :to => 'front_pages#show'
-
-  match "*url" => 'nodes#show'
+  root :to => 'travel_years#index'
 end
