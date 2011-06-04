@@ -13,4 +13,4 @@ rescue LoadError
   STDERR.puts "Run `rake gems:install` to install delayed_job"
 end
 
-Purjo2::Application.load_tasks
+Studs::Application.load_tasks
