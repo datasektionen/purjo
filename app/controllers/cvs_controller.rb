@@ -143,7 +143,7 @@ class CvsController < ApplicationController
   end
   
   def render_with_correct_layout(options = nil, extra_options = {}, &block)
-    layout = @year.layout
+    layout = @year.try(:layout)
     
     options ||= {}
     
