@@ -103,3 +103,8 @@ hr {
 	top: 80px;
 	right: 100%;
 }
+
+#ths-bar, #kundo_button_container {
+  display: none;
+}
+
