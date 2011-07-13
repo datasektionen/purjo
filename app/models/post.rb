@@ -1,11 +1,7 @@
 class Post < ActiveRecord::Base
-  default_scope :order => 'COALESCE(posts.published_at, posts.created_at) desc'
-  scope :published, lambda {
-    where("posts.published_at IS NOT NULL AND posts.published_at <= ?", Time.now)
-  }
-  scope :drafts, lambda {
-    where("posts.published_at IS NULL OR posts.published_at > ?", Time.now)
-  }
+  default_scope order('COALESCE(published_at, created_at) desc')
+  scope :published, where("published_at IS NOT NULL AND published_at <= ?", Time.now)
+  scope :drafts, where("published_at IS NULL OR published_at > ?", Time.now)
 
   acts_as_taggable_on :categories
   
