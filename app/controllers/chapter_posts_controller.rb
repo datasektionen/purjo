@@ -5,13 +5,9 @@ class ChapterPostsController < ApplicationController
 
   def index
     if params[:user]
-      @chapter_posts = ChapterPost.new
-      @chapter_posts = @chapter_posts.find_chapter_posts_by_kth_username(params[:user])
-      if !@chapter_posts.is_a?(Array)
-        render :text => h([ @chapter_posts ].inspect)
-      end
+      @chapter_posts = ChapterPost.find_by_kth_username(params[:user]).group("name").order("updated_at")
     else
-      @chapter_posts = ChapterPost.find(:all, :order => "name")
+      @chapter_posts = ChapterPost.order("name")
     end
   end
 

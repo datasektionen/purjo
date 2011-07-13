@@ -8,21 +8,9 @@ class ChapterPost < ActiveRecord::Base
 
   scope :ordered, order("name")
 
-  # Någon som känner behovet att eliminera sql:en, varsegod. Föresatt att den
-  # gör samma sak och är lika effektiv.
-  def find_chapter_posts_by_kth_username username
-    @chapter_posts = ChapterPost.find_by_sql(
-      "select chapter_posts.id, chapter_posts.name, chapter_posts.slug,
-              chapter_posts.description, people.kth_username,
-              chapter_posts.updated_at
-       from chapter_posts
-       join functionaries on chapter_post_id = chapter_posts.id
-       join people on person_id = people.id
-       where kth_username = '#{username}'
-       group by name
-       order by updated_at"
-      )
-  end
+  scope :find_by_kth_username, lambda { |username|
+    joins(:functionaries => :person).where("people.kth_username" => username)
+  }
 
   # Använd ej, använd functionary
   def current_functionary chapter_post
