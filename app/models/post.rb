@@ -1,5 +1,5 @@
 class Post < ActiveRecord::Base
-  default_scope order('COALESCE(published_at, created_at) desc')
+  default_scope where(:deleted => false).order('COALESCE(published_at, created_at) desc')
   scope :published, where("published_at IS NOT NULL AND published_at <= ?", Time.now)
   scope :drafts, where("published_at IS NULL OR published_at > ?", Time.now)
 
@@ -22,6 +22,10 @@ class Post < ActiveRecord::Base
   attr_writer :draft
   def draft; @draft || published_at.blank?; end
   before_validation :clear_published_at_if_draft
+
+  def destroy
+    update_attribute(:deleted, true)
+  end
   
   def to_s
     self.name
