@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.0.rc'
+gem 'rails', '~> 3.0.0'
 
 gem "will_paginate", "~> 3.0.pre2"
 gem 'liquid'
@@ -9,11 +9,12 @@ gem 'icalendar'
 gem 'RedCloth'
 
 gem 'haml'
+gem 'sass'
 gem 'simple_form'
 gem 'paperclip'
 gem 'inherited_resources'
 gem 'hominid'
-gem 'delayed_job', :git => 'git://github.com/collectiveidea/delayed_job.git'
+gem 'delayed_job'
 gem 'state_machine', :git => "http://github.com/pluginaweek/state_machine.git"
 gem 'meta_where'
 gem 'exceptional'
@@ -31,7 +32,8 @@ gem 'whenever'
 
 gem 'rest-client'
 
-gem 'sunspot_rails', :require => 'sunspot/rails'
+gem 'sunspot'
+gem 'sunspot_rails'
 
 group :production do
    gem 'mysql'
