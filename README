@@ -6,8 +6,12 @@ Hur får man igång purjo?
 3.5. RVM är rätt trevligt. (http://rvm.beginrescueend.com/)
 4. Kör `bundle install` för att installera alla gems som behövs för att köra purjo
 5. Sätt upp en databas och fyll i config/database.yml appropriately (se config/database.yml.dist)
+5.5 Fixa config/configuration.yml (se config/configuration.yml.dist)
 6. Kör `rake db:schema:load` för att bygga upp databasstrukturen.
 7. Fyll i config/my_user.yml med dina uppgifter. Dessa är till för att du ska kunna få en fungerande användare lokalt utan att behöva sätta upp en SSH-tunnel till KTH:s nät för att kunna importera användare. Exempel finns i config/my_user.yml.example
 8. Kör `rake db:setup` för att populera databasen med dina uppgifter och så.
 9. Kör `./script/rails server` för att starta applikationen.
 
+Värt att notera:
+
+Om du vill få solr-stuff att funka lokalt behöver du starta solr (rake sunspot:solr:start) och bygga om indexet emellanåt (rake sunspot:reindex). Dessutom behöver du ställa in use_solr till true i config/configuration.yml, annars funkar ingenting när det kommer till sökningen.

@@ -51,7 +51,7 @@ namespace :deploy do
 
   desc "Symlink public/system"
   task :symlink_system do
-    run "ln -sf #{shared_path}/public/system #{release_path}/public/system"
+    run "ln -sf #{shared_path}/public/system #{release_path}/public/"
   end
 
   desc "Symlink tmp"
