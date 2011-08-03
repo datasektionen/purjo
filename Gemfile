@@ -6,7 +6,7 @@ gem "will_paginate", "~> 3.0.pre2"
 gem 'liquid'
 gem "acts-as-taggable-on"
 gem 'icalendar'
-gem 'RedCloth'
+gem 'RedCloth', '4.2.3'
 
 gem 'haml'
 gem 'sass'
