@@ -6,9 +6,11 @@ require 'capistrano/ext/multistage'
 #default_environment["PATH"] = "/opt/ruby-enterprise/current/bin/:$PATH"
 
 set :application, "purjo"
-set :repository, "git@turtle-soup.ben-and-jerrys.stacken.kth.se:purjo.git"
+set :repository, "git@github.com:datasektionen/purjo.git"
 set :scm, "git"
-#set :local_repository, "https://www.d.kth.se/svn/ior/purjo/trunk" # Not needed?
+
+set :deploy_via, :copy
+set :compression, :gzip
 set :deploy_to, "/var/rails/#{application}" # Will be updated for each stage with stage specific path.
 set :user, "capistrano"
 set :use_sudo, false
