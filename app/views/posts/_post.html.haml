@@ -35,13 +35,13 @@
       = link_to 'Redigera', edit_post_path(post), :class => "edit"
 
     - if @single_post
-      %iframe{ :class => "fb-like", :src => "http://www.facebook.com/plugins/like.php?href=#{CGI::escape post_url(post)}&amp;layout=standard&amp;show_faces=false&amp;width=340&amp;height=32&amp;action=like&amp;colorscheme=light&amp;locale=sv_SE", :scrolling => "no", :frameborder => "0", :allowTransparency => "true" }
+      %iframe{ :class => "fb-like", :src => "http://www.facebook.com/plugins/like.php?href=#{CGI::escape post_url(post)}&layout=standard&show_faces=false&width=340&height=32&action=like&colorscheme=light&font=tahoma&locale=sv_SE", :scrolling => "no", :frameborder => "0", :allowTransparency => "true" }
     - else
       - comment_title = post.has_comments? ? post.comment_count.to_s + " kommentar" : "Kommentera"
       - comment_title << "er" if post.comment_count > 1
       = link_to comment_title, post, :class => "comments"
 
-      %iframe{ :class => "fb-like tiny", :src => "http://www.facebook.com/plugins/like.php?href=#{CGI::escape post_url(post)}&amp;send=false&amp;layout=button_count&amp;show_faces=false&amp;width=100&amp;height=20&amp;action=like&amp;colorscheme=light&amp;font=tahoma&amp;locale=sv_SE", :scrolling => "no", :frameborder => "0", :allowTransparency => "true" }
+      %iframe{ :class => "fb-like tiny", :src => "http://www.facebook.com/plugins/like.php?href=#{CGI::escape post_url(post)}&send=false&layout=button_count&show_faces=false&width=100&height=20&action=like&colorscheme=light&font=tahoma&locale=sv_SE", :scrolling => "no", :frameborder => "0", :allowTransparency => "true" }
 
   - if @single_post && post.written_by.present?
     %div.meta
