@@ -19,9 +19,9 @@
         = l post.created_at, :format => "%e %b %Y"
         %span.dim klockan 
         = l post.created_at, :format => "%H:%M"
-  
+
     = render :partial => "people/popup", :locals => { :person => post.created_by }
-  
+
   .tags
     - post.categories.each do |category|
       .tag= link_to category.name, root_path(:tags => category.name)
@@ -41,7 +41,7 @@
       - comment_title << "er" if post.comment_count > 1
       = link_to comment_title, post, :class => "comments"
 
-      %iframe{ :class => "fb-like tiny", :src => "http://www.facebook.com/plugins/like.php?href=#{CGI::escape post_url(post)}&amp;layout=button_count&amp;show_faces=false&amp;width=100&amp;height=20&amp;action=like&amp;colorscheme=light&amp;locale=sv_SE", :scrolling => "no", :frameborder => "0", :allowTransparency => "true" }
+      %iframe{ :class => "fb-like tiny", :src => "http://www.facebook.com/plugins/like.php?href=#{CGI::escape post_url(post)}&amp;send=false&amp;layout=button_count&amp;show_faces=false&amp;width=100&amp;height=20&amp;action=like&amp;colorscheme=light&amp;font=tahoma&amp;locale=sv_SE", :scrolling => "no", :frameborder => "0", :allowTransparency => "true" }
 
   - if @single_post && post.written_by.present?
     %div.meta
