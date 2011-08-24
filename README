@@ -1,6 +1,6 @@
 Hur får man igång purjo?
 
-1. Ladda ner koden (git clone git@git.d.ths.kth.se:purjo.git)
+1. Ladda ner koden (git clone git@github.com:datasektionen/purjo.git)
 2. Installera någon bra ruby-version (1.8.7 exempelvis)
 3. Installera bundler (sudo gem install bundler)
 3.5. RVM är rätt trevligt. (http://rvm.beginrescueend.com/)
