@@ -27,5 +27,5 @@
     Menyn är tom
   %h2 Alla sidor
   %div{:id=>"child_list"}
-    = render :partial => 'tree_item', :object=> [@node], :locals=>{:node=>@node}
+    = render :partial => 'tree_item', :object=> @node, :locals=>{:node=>@node}
 
