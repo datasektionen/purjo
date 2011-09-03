@@ -183,7 +183,7 @@ Then /^the "([^"]*)" checkbox(?: within (.*))? should not be checked$/ do |label
     end
   end
 end
- 
+
 Then /^(?:|I )should be on (.+)$/ do |page_name|
   current_path = URI.parse(current_url).path
   if current_path.respond_to? :should
@@ -204,6 +204,12 @@ Then /^(?:|I )should have the following query string:$/ do |expected_pairs|
   else
     assert_equal expected_params, actual_params
   end
+end
+
+Then /^(?:|I )should get a (\d{3}) response when I visit "(.*)"$/ do |code, url|
+  lambda {
+    visit path_to(url)
+  }.should raise_error
 end
 
 Then /^show me the page$/ do
