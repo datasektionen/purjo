@@ -80,6 +80,12 @@ class TextNode < ActiveRecord::Base
     return !MenuItem::create({:parent_id=>self.id,:url=>url,:title=>title,:sort_order=>sort_order}).nil?
   end
 
+  def destroy
+    self.deleted = true
+    self.deleted_at = Time.now
+    self.save
+  end
+
   protected
   
   def unique_url
@@ -129,12 +135,5 @@ class TextNode < ActiveRecord::Base
       child.update_child_url(myurl)
     end
   end
-
-  def destroy
-    self.deleted = true
-    self.deleted_at = Time.now
-    self.save
-  end
-  
 end
 

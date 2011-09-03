@@ -22,15 +22,15 @@ class TextNodesController < ApplicationController
       render :action => 'edit'
     end
   end
-  
+
   def destroy
     @node = TextNode.find(params[:id])
     parent = @node.parent
-    
+    flash[:notice] = "Nod \"#{@node.url}\" borttagen"
     @node.destroy
     redirect_to(parent.url)
   end
-  
+
   def delete
     @node = TextNode.find(params[:id])
   end
