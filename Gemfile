@@ -53,4 +53,6 @@ group :test do
   gem 'capybara'
   gem 'timecop'
   gem 'webmock'
+  gem 'cucumber'
+  gem 'cucumber-rails'
 end
