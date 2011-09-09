@@ -8,6 +8,11 @@ class Nominee < ActiveRecord::Base
 
   validates_presence_of :person_id
 
+  attr_accessor :username
+  def username
+    person.nil? ? "" : person.kth_username
+  end
+
   def status_text
     return "Tackat ja" if status == 1
     return "Tackat nej" if status == 2

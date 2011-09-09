@@ -32,16 +32,11 @@ class NomineesController < ApplicationController
 
   def edit
     @nominee = Nominee.find(params[:id])
-    if @nominee.person_id == -1
-      @nominee.person_id = ''
-    else
-      @nominee.person_id = Person.find(@nominee.person_id).kth_username
-    end
   end
 
   def create
     @nominee = Nominee.new(params[:nominee])
-    person = Person.find_by_kth_username(params[:nominee][:person_id])
+    person = Person.find_by_kth_username(params[:nominee].delete(:username))
     
     # Hack så vi kan nominera en icke existerande person (tom inmatning)
     # så vi får skenet att poster utan nominerade kandidater syns under
@@ -62,10 +57,7 @@ class NomineesController < ApplicationController
 
   def update
     @nominee = Nominee.find(params[:id])
-
-    if not params[:nominee][:person_id].empty?
-      params[:nominee][:person_id] = Person.find_by_kth_username(params[:nominee][:person_id]).id
-    end
+    @nominee.person = Person.find_by_kth_username(params[:nominee].delete(:username))
 
     respond_to do |format|
       if @nominee.update_attributes(params[:nominee])

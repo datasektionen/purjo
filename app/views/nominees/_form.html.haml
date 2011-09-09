@@ -1,5 +1,5 @@
 = simple_form_for(@nominee) do |form|
-  = form.input :person_id
+  = form.input :username, :input_html => { :value => @nominee.username }
 
   .input.select.required
     = form.label :election_event_id, "Valtillfälle"
