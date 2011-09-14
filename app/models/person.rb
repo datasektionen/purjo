@@ -2,6 +2,7 @@ require 'ior/kth/users_groups/catalog_service'
 
 class Person < ActiveRecord::Base
   has_one :kth_account, :dependent => :destroy
+  has_one :morklaggning
   
   has_many :memberships
   has_many :roles, :through => :memberships
@@ -19,7 +20,7 @@ class Person < ActiveRecord::Base
   
   serialize :serialized_features
 
-  default_scope where(:deleted => false)
+  default_scope where(:deleted => false, :morklaggning => nil)
   
   searchable do
     text :name 
