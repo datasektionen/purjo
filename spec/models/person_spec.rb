@@ -17,6 +17,15 @@ describe Person do
       people.should include(person)
       people.should_not include(deleted_person)
     end
+
+    it "does not include hidden people" do
+      person = Factory(:person, :kth_ugid => "u1a", :kth_username => "visible")
+      hidden_person = Factory(:person, :kth_ugid => "u1b", :kth_username => "hidden")
+      hidden_person.create_morklaggning(:drifvarname => "derp")
+      people = Person.all
+      people.should include(person)
+      people.should_not include(hidden_person)
+    end
   end
   
   context "user settings" do
