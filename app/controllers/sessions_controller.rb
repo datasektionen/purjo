@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
       ugid = service.validate_ticket(params[:ticket])
       
       if ugid
-        person = Person.find_or_import(ugid)
+        person = Person.unscoped.find_or_import(ugid)
 
         if not person.kth_account
           person.kth_account = KthAccount.create(:ugid => ugid)
