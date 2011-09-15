@@ -37,15 +37,14 @@ Factory.define(:protocol_file, :parent => :file_node) do |f|
 end
 
 Factory.define(:person) do |f|
-  
+  f.kth_ugid 'u1something'
+  f.kth_username 'sumtin'
+  f.first_name "Some"
+  f.last_name "Thing"
+  f.email "sumtin@example.com"
 end
 
 Factory.define(:admin_user, :parent => :person) do |f|
-  f.kth_ugid 'u1something'
-  f.kth_username 'admin'
-  f.first_name "Admin"
-  f.last_name "Bofh"
-  f.email "bofh@example.com"
   f.after_create do |p|
     p.roles << (Role.find_by_name("admin") || Factory(:admin_role))
     p.save!

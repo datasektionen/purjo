@@ -8,6 +8,16 @@ describe Person do
       :email => 'ture@example.com'
     }
   end
+
+  context "default scope" do
+    it "does not include (soft) deleted people" do
+      person = Factory(:person, :kth_ugid => "u1a", :kth_username => "visible")
+      deleted_person = Factory(:person, :kth_ugid => "u1b", :kth_username => "deleted", :deleted => true)
+      people = Person.all
+      people.should include(person)
+      people.should_not include(deleted_person)
+    end
+  end
   
   context "user settings" do
     before do
