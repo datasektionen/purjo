@@ -1,5 +1,3 @@
-require 'twitter/twitter_item'
-
 class FrontPagesController < ApplicationController
   def show
     @posts = (params[:drafts] ? Post.drafts : Post.published)

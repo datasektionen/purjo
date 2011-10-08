@@ -137,18 +137,6 @@ blockquote {
 
 .justify { text-align: justify; }
 
-.twitter h2 {
-	background: url(/images/twitter_dark.png) no-repeat right center;
-}
-.tweet {
-	.text { margin-bottom: 0; }
-	.author { font-weight: bold; }
-	.meta {
-		margin-top: 0;
-		font-style: italic;
-	}
-}
-
 form.noise #noise_message { height: 80px; }
 
 div.error, div.notice, div.success,
