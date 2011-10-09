@@ -5,8 +5,12 @@
     = f.input :all_day
   
   %fieldset
-    = f.input :starts_at
-    = f.input :ends_at
+    = f.input :starts_at, :as => :string
+    = f.input :ends_at, :as => :string
+
+    :javascript
+      $('#event_starts_at').AnyTime_picker({firstDOW: 1});
+      $('#event_ends_at').AnyTime_picker({firstDOW: 1});
 
   = f.input :content
   
