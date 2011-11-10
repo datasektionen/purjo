@@ -20,7 +20,7 @@ class Person < ActiveRecord::Base
   
   serialize :serialized_features
 
-  default_scope includes(:morklaggning).where(:deleted => false, 'morklaggnings.person_id' => nil)
+  default_scope includes(:morklaggning).where('people.deleted' => false, 'morklaggnings.person_id' => nil)
   
   searchable do
     text :name 
