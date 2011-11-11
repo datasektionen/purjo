@@ -15,7 +15,7 @@ gem 'paperclip'
 gem 'inherited_resources'
 gem 'hominid'
 gem 'delayed_job'
-gem 'state_machine', :git => "http://github.com/pluginaweek/state_machine.git"
+gem 'state_machine', :git => "git://github.com/pluginaweek/state_machine.git"
 gem 'meta_where'
 gem 'exceptional'
 gem 'json_pure'
@@ -37,6 +37,7 @@ gem 'sunspot_rails'
 
 group :production do
    gem 'mysql'
+   gem 'unicorn'
 end
 
 group :development do
