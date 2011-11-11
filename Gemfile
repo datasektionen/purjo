@@ -26,6 +26,7 @@ gem 'memcache-client'
 
 gem 'capistrano'
 gem 'capistrano-ext'
+gem 'capistrano_colors'
 
 gem 'refraction'
 gem 'whenever'
