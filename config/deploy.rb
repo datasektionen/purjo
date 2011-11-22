@@ -65,7 +65,7 @@ namespace :deploy do
 
   desc "Copy the config files"
   task :update_config do
-    run "cp -Rf #{shared_path}/config/* #{release_path}/config/"
+    run "cd #{shared_path}/config && for file in *; do diff $file #{release_path}/config/$file || cp -Rf $file #{release_path}/config/; done"
     run "ln -sf #{release_path}/config/environments/development.rb #{release_path}/config/environments/migration.rb"
   end
 
@@ -86,7 +86,7 @@ namespace :deploy do
   desc "Restart the app (kill the unicorns)"
   task :restart, :except => { :no_release => true } do
     # we just kill the unicorns, monit will spawn new ones eventually
-    run "kill `cat #{shared_path}/pids/unicorn.pid` || /bin/true"
+    run "kill -USR2 `cat #{shared_path}/pids/unicorn.pid` || /bin/true"
   end
 
   namespace :rollback do
