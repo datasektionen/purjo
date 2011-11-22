@@ -1,6 +1,34 @@
 .twitter
   %h2 Twitter
-  %script{:src => "http://widgets.twimg.com/j/2/widget.js"}
-  %script
-    new TWTR.Widget({version: 2, type: 'search', search: '#kthd', interval: 30000, width: 220, height: 300, theme: { shell: { background: 'transparent', color: '#000000' }, tweets: { background: 'transparent', color: '#444444', links: '#e20080'} }, features: { scrollbar: false, loop: true, live: true, hashtags: true, timestamp: true, avatars: true, toptweets: false, behavior: 'default' }  }).render().start();
+  = javascript_include_tag "http://widgets.twimg.com/j/2/widget.js"
+  :javascript
+    new TWTR.Widget({
+      version: 2, 
+      type: 'search', 
+      search: '#kthd OR @dsekt_info OR @drektoratet OR from:dsekt_info OR from:drektoratet', 
+      interval: 30000, 
+      width: 220, 
+      height: 300, 
+      theme: { 
+        shell: { 
+          background: 'transparent', 
+          color: '#000000' 
+        }, 
+        tweets: { 
+          background: 'transparent', 
+          color: '#444444', 
+          links: '#e20080'
+        } 
+      }, 
+      features: { 
+        scrollbar: false, 
+        loop: false, 
+        live: true, 
+        hashtags: true, 
+        timestamp: true, 
+        avatars: true, 
+        toptweets: false, 
+        behavior: 'default' 
+      }
+    }).render().start();
 
