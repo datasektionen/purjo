@@ -69,6 +69,11 @@ namespace :deploy do
     run "ln -sf #{release_path}/config/environments/development.rb #{release_path}/config/environments/migration.rb"
   end
 
+  desc "Run migrations"
+  task :migrate, :except => {:no_release => true} do
+    run "cd #{current_path} && RAILS_ENV=#{rails_env} /usr/local/bin/ree_bundle exec rake db:migrate"
+  end
+
   desc "Update the database (overridden to avoid symlink)"
   task :migrations do
     transaction do
