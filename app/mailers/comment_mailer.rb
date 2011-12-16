@@ -6,7 +6,7 @@ class CommentMailer < ActionMailer::Base
     @author = comment.person
     @comment = comment
     mail(
-      :to => @recipient,
+      :to => recipient,
       :subject => "ny kommentar på #{@post.name}"
     )
   end

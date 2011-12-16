@@ -5,7 +5,7 @@ class NoiseObserver < ActiveModel::Observer
     recipients = post.commenters + [post.author] - [noise.person]
 
     recipients.each do |recipient|
-      CommentMailer.notify(recipient, noise)
+      CommentMailer.notify(recipient, noise).deliver
     end
   end
 end
