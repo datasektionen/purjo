@@ -7,13 +7,10 @@ class Cv < ActiveRecord::Base
   
   belongs_to :travel_year
 
-  named_scope :all, {   
-    :order => 'name' 
-  }
+  scope :all, order(:name)
+  scope :done, where(:done => true).order(:name)
   
-  named_scope :done, :conditions => {:done => true}, :order => :name
-  
-  named_scope :search, lambda { |term| 
+  scope :search, lambda { |term| 
     term = "%#{term}%"
     columns = [:name, :orientation, :personal, :employment, :education, :other_commitments, :it_skills, :other]
     
@@ -28,6 +25,6 @@ class Cv < ActiveRecord::Base
   LANGUAGES = [["Swedish", "sv"], ["English", "en"]]
 
   LANGUAGES.each do |language, abbr|
-    named_scope language.downcase.to_sym, :conditions => { :language => abbr }
+    scope language.downcase.to_sym, :conditions => { :language => abbr }
   end
 end
