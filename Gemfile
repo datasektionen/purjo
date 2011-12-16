@@ -50,8 +50,7 @@ end
 group :test do
   gem 'launchy'
   gem 'steak', '>= 0.4.0.a5'
-  gem 'rspec', '>= 2.0.0.beta.11'
-  gem "rspec-rails", ">= 2.0.0.beta.11"
+  gem "rspec-rails"
   gem 'factory_girl_rails'
   gem 'capybara'
   gem 'timecop'
