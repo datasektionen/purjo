@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110724185531) do
+ActiveRecord::Schema.define(:version => 20111216195254) do
 
   create_table "articles", :force => true do |t|
     t.integer  "blog_id"
@@ -257,11 +257,12 @@ ActiveRecord::Schema.define(:version => 20110724185531) do
     t.string   "msn"
     t.string   "xmpp"
     t.text     "serialized_features"
-    t.boolean  "has_chosen_settings", :default => false, :null => false
+    t.boolean  "has_chosen_settings",   :default => false, :null => false
     t.string   "chapter"
     t.string   "gender"
     t.string   "homedir"
-    t.boolean  "deleted",             :default => false, :null => false
+    t.boolean  "deleted",               :default => false, :null => false
+    t.boolean  "subscribe_to_comments", :default => true,  :null => false
   end
 
   add_index "people", ["kth_ugid"], :name => "index_people_on_kth_ugid", :unique => true

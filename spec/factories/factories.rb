@@ -127,6 +127,6 @@ Factory.define(:noise) do |f|
   f.message "foo bar baz"
   f.after_create do |post|
     post.post = Factory(:post)
-    post.person = Person.find_by_kth_username("editor") || Factory(:editor)
+    post.person = Person.find_by_kth_username("turetek") || Factory(:ture_teknolog)
   end
 end

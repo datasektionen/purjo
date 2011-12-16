@@ -66,6 +66,10 @@ class Post < ActiveRecord::Base
     noises.size
   end
 
+  def commenters
+    noises.includes(:person).map(&:person)
+  end
+
   def editable?
     Person.current.admin? || (Person.current.editor? && created_by == Person.current)
   end

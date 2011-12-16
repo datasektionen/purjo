@@ -20,6 +20,8 @@ module Purjo2
 
     config.autoload_paths += %W(#{config.root}/lib)
 
+    config.active_record.observers = :noise_observer
+
     # Configure generators values. Many other options are available, be sure to check the documentation.
     # config.generators do |g|
     #   g.orm             :active_record
