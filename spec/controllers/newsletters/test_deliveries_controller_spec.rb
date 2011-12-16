@@ -49,7 +49,7 @@ describe TestDeliveriesController do
       TestDelivery.stub(:new).and_return(@test_delivery)
     end
   
-    [Hominid::CommunicationError, Hominid::APIError].each do |error_class|
+    [Hominid::APIError].each do |error_class|
       it "renders template for #{error_class.to_s}" do
         @test_delivery.stub(:perform).and_raise(error_class.new(XMLRPC::FaultException.new(300, "Foo")))
         post :create, :test_delivery => {:email => 'kaka@example.com'}, :newsletter_id => @newsletter.id

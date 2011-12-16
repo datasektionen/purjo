@@ -2,8 +2,8 @@ require File.dirname(__FILE__) + "/../spec_helper"
 require "steak"
 require 'capybara/rails'
 
-Rspec.configure do |config|
-  config.include Capybara
+RSpec.configure do |config|
+  config.include Capybara::DSL
 end
 
 # Put your acceptance spec helpers inside /spec/acceptance/support

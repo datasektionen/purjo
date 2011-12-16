@@ -114,3 +114,19 @@ end
 Factory.define(:newsletter_march_2010, :parent => :newsletter) do |f|
   f.subject "Mars 2010"
 end
+
+Factory.define(:post) do |f|
+  f.name "post"
+  f.content "lorem ipsum dolor"
+  f.after_create do |post|
+    post.created_by = Person.find_by_kth_username("admin") || Factory(:admin_user)
+  end
+end
+
+Factory.define(:noise) do |f|
+  f.message "foo bar baz"
+  f.after_create do |post|
+    post.post = Factory(:post)
+    post.person = Person.find_by_kth_username("editor") || Factory(:editor)
+  end
+end
