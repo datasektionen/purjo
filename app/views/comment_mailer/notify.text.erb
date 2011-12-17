@@ -4,5 +4,5 @@
 
 ==================================================
 Detta mail är skickat från datasektionen.se
-Länk till nyhetspost: <%= post_url(@post) %>
+Länk till nyhetspost: <%= post_url(@post,:host => Purjo2::Application.settings['default_url_options']['host']) %>
 
