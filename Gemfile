@@ -40,6 +40,7 @@ gem 'sunspot_rails'
 group :production do
    gem 'mysql'
    gem 'unicorn'
+   gem 'newrelic_rpm'
 end
 
 group :development do
