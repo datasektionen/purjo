@@ -114,10 +114,10 @@ form {
 
 form.post, form.text_node, form.newsletter_section, form.event {
   textarea {
-    width: 700px;
-    height: 400px;
+    width: 100%;
+    height: 300px;
   }
-	.tags { width: 700px; }
+	.tags { width: 100%; }
 }
 form.event textarea { height: 200px; }
 

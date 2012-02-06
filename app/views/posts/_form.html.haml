@@ -2,7 +2,8 @@
   = f.input :name
   - unless @written_by_options.empty?
     = f.association :written_by, :collection => @written_by_options, :include_blank => "-- Författaren --"
-  = f.input :content, :cols => 80, :rows => 25 
+  = f.input :content, :cols => 80, :rows => 20
+  %p Din nyhet kommer formateras enligt markeringsspråket Textile, en kort sammanfattning finns #{link_to "här", "http://en.wikipedia.org/wiki/Textile_(markup_language)"}.
 
   %h3 Taggar
   %div.tags
