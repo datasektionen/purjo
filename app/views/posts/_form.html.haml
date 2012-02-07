@@ -1,9 +1,25 @@
+= javascript_include_tag 'textile'
+= javascript_include_tag 'preview'
+:javascript
+  $(document).ready(function(){
+    $("#preview").hide();
+    Preview.watchTextilize('post_name', 'textile_title');
+    Preview.watchTextilize('post_content', 'textile_preview');
+  });
+
+%p Din nyhet kommer formateras enligt markeringsspråket Textile, en kort sammanfattning finns #{link_to "här", "http://en.wikipedia.org/wiki/Textile_(markup_language)"}. 
+
+#preview.news.post
+  %p #{link_to_function "Klicka här för att fortsätta redigera", "Preview.togglePreview('form.post', '#preview')"}.
+  %h2#textile_title 
+  %div#textile_preview.content.justify
+
 = simple_form_for(@post) do |f|
+  %p #{link_to_function "Klicka här för förhandsvisning", "Preview.togglePreview('form.post', '#preview')"}.
   = f.input :name
   - unless @written_by_options.empty?
     = f.association :written_by, :collection => @written_by_options, :include_blank => "-- Författaren --"
   = f.input :content, :cols => 80, :rows => 20
-  %p Din nyhet kommer formateras enligt markeringsspråket Textile, en kort sammanfattning finns #{link_to "här", "http://en.wikipedia.org/wiki/Textile_(markup_language)"}.
 
   %h3 Taggar
   %div.tags
