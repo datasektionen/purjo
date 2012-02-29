@@ -18,12 +18,12 @@ gem 'hominid'
 gem 'delayed_job'
 gem 'state_machine', :git => "git://github.com/pluginaweek/state_machine.git"
 gem 'meta_where'
-gem 'exceptional'
 gem 'json_pure'
 gem 'liquid'
 gem 'mongrel'
 gem 'net-ldap'
 gem 'memcache-client'
+gem 'airbrake'
 
 gem 'capistrano'
 gem 'capistrano-ext'

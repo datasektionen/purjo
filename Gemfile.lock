@@ -38,6 +38,9 @@ GEM
     activesupport (3.0.9)
     acts-as-taggable-on (2.0.6)
     addressable (2.2.6)
+    airbrake (3.0.9)
+      activesupport
+      builder
     arel (2.0.10)
     builder (2.1.2)
     capistrano (2.8.0)
@@ -81,8 +84,6 @@ GEM
     erubis (2.6.6)
       abstract (>= 1.0.0)
     escape (0.0.4)
-    exceptional (2.0.32)
-      rack
     factory_girl (2.0.2)
     factory_girl_rails (1.1.0)
       factory_girl (~> 2.0.0)
@@ -241,6 +242,7 @@ PLATFORMS
 DEPENDENCIES
   RedCloth (= 4.2.3)
   acts-as-taggable-on
+  airbrake
   capistrano
   capistrano-ext
   capistrano_colors
@@ -249,7 +251,6 @@ DEPENDENCIES
   cucumber-rails
   database_cleaner
   delayed_job
-  exceptional
   factory_girl_rails
   haml
   hominid
