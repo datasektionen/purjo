@@ -4,7 +4,8 @@ class Morklaggning < ActiveRecord::Base
   validate :person_id, :presence => true
 
   def username
-    self.person.try :kth_username
+    person = Person.unscoped.find(person_id)
+    person.try :kth_username
   end
 
   # TODO: Revisit, refactor, fix!
