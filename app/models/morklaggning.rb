@@ -3,9 +3,14 @@ class Morklaggning < ActiveRecord::Base
 
   validate :person_id, :presence => true
 
+  # TODO: Ugly hack, refactor.
   def username
-    person = Person.unscoped.find(person_id)
-    person.try :kth_username
+    if self.person_id
+      person = Person.unscoped.find(person_id)
+      person.try :kth_username
+    else
+      ""
+    end
   end
 
   # TODO: Revisit, refactor, fix!
