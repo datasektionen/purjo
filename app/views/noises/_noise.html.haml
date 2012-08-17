@@ -7,7 +7,7 @@
     - if noise.person
       = link_to image_tag(noise.person.try(:gravatar_url), :class => "trigger thumb", :alt => "", :title => noise.person), person_path(noise.person)
     - else 
-      = image_tag(nil, :class => 'thumb', :alt => "", :title => "")
+      = image_tag("", :class => 'thumb', :alt => "", :title => "")
     = link_to noise.person.try(:name), person_path(noise.person), :class => "author"
 
     %span.date
