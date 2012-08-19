@@ -5,10 +5,11 @@
       %span.sep!= "&nbsp;|&nbsp;"
       = link_to 'Ta bort', noise, :method => :delete, :confirm => 'Är du säker på att du vill ta bort den här kommentaren?', :class => "delete"
     - if noise.person
-      = link_to image_tag(noise.person.try(:gravatar_url), :class => "trigger thumb", :alt => "", :title => noise.person), person_path(noise.person)
+      = gravatar_image post.created_by
+      -# = link_to image_tag(noise.person.try(:gravatar_url), :class => "trigger thumb", :alt => "", :title => noise.person), person_path(noise.person)
       = link_to noise.person.try(:name), person_path(noise.person), :class => "author"
-    - else 
-      = image_tag("", :class => 'thumb', :alt => "", :title => "")
+    -# - else 
+    -#   = image_tag("", :class => 'thumb', :alt => "", :title => "")
 
     %span.date
       %span.dim den

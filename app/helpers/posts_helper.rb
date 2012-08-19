@@ -21,4 +21,11 @@ module PostsHelper
     end
   end
   
+  def gravatar_image(person)
+    if person
+      link_to image_tag(person.try(:gravatar_url), :class => "trigger thumb", :alt => "", :title => person), person_path(person)
+    else
+      image_tag("", :class => "thumb", :alt => "", :title => "")
+    end
+  end
 end
