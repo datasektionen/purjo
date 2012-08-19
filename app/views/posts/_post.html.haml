@@ -45,7 +45,6 @@
 
   - if @single_post && post.written_by.present?
     %div.meta
-      -# = link_to image_tag(post.created_by.gravatar_url, :class => "trigger thumb", :alt => "", :title => post.created_by), person_path(post.created_by)
       = gravatar_image post.created_by
       %span.dim Publicerad av 
       = link_to post.created_by, person_path(post.created_by), :class => "author created_by"
