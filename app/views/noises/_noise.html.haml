@@ -5,7 +5,7 @@
       %span.sep!= "&nbsp;|&nbsp;"
       = link_to 'Ta bort', noise, :method => :delete, :confirm => 'Är du säker på att du vill ta bort den här kommentaren?', :class => "delete"
     - if noise.person
-      = gravatar_image post.created_by
+      = gravatar_image noise.person
       = link_to noise.person.try(:name), person_path(noise.person), :class => "author"
 
     %span.date
