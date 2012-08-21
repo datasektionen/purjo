@@ -60,7 +60,7 @@
     %pre.plan= @person.plan
 
   %h3 Xfinger
-  = image_tag xfinger_path(@person.username_nada), :width => 266, :alt => "Ingen bild", :class => "xfinger"
+  = xfinger_image(@person.username_nada)
 
 - if @person.functionaries.sorted.size > 0
   %h3 Förtroendeuppdrag
