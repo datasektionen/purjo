@@ -27,15 +27,10 @@ Rails.application.routes.draw do |map|
   
   resources :personer, :as => 'people', :controller => 'people' do
     resource :installningar, :controller => 'user_settings', :as => 'user_settings'
-    member do
-      get :xfinger
-    end
   end
 
   get '/installningar', :to => 'user_settings#edit_current', :as => 'settings'
 
-  map.xfinger_image 'personer/:uid/xfinger', :controller=>'people',:action=>'xfinger_image'
-  
   match '/nyheter/utkast/', :to => 'front_pages#show', :as => 'drafts', :drafts => true
   resources :nyheter, :as => 'posts', :controller => 'posts' do
     resources :kommentarer, :as => 'noises', :controller => 'noises'
@@ -47,12 +42,6 @@ Rails.application.routes.draw do |map|
   resource :session, :as => 'sessions', :controller => 'sessions'
   match "/session/logga-ut", :to => 'sessions#destroy', :as => 'logout'
 
-  resources 'sektionen/sok', :as => 'students', :controller => 'students' do
-    member do
-      get :xfinger
-    end
-  end
-  
   resources 'sektionen/funktionarer', :as => "functionaries", :controller => 'functionaries'
   resources 'sektionen/val', :as => "nominees", :controller => 'nominees'
   match '/sektionen/naringsliv', :controller => 'naringsliv', :action => 'index', :as => 'naringsliv_index'

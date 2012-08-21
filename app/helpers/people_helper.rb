@@ -1,7 +1,6 @@
 module PeopleHelper
-
-  def xfinger_path(person)
-    url_for(:controller => "people", :action => "xfinger_image", :uid => person, :only_path => false)
+  def xfinger_image(person)
+    image_tag("http://www.csc.kth.se/hacks/new/xfinger/image.php?user=#{person.kth_username}", :alt => "xfinger-bild för #{person.to_s}", :title => "xfinger", :width => 266, :class => "xfinger")
   end
 end
 
