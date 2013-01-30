@@ -15,11 +15,11 @@ module ApplicationHelper
     "http://" + request.raw_host_with_port + request.fullpath
   end
   
-  def top_navigation_link(text, path, regex)
+  def top_navigation_link(text, path, regex, options = {})
     css_class = (request.fullpath =~ regex) ? 'active' : ''
     
     content_tag(:li, :class => css_class) do
-      link_to text, path
+      link_to text, path, options[:link_options]
     end
   end
   
