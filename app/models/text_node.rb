@@ -5,7 +5,7 @@ class TextNode < ActiveRecord::Base
     text :contents
     text :title, :boost => 2
   end
-  #acts_as_versioned
+
   acts_as_tree
   
   has_many :file_nodes, :foreign_key => 'parent_id'
