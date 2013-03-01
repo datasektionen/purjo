@@ -293,13 +293,6 @@ ActiveRecord::Schema.define(:version => 20111216195254) do
     t.datetime "updated_at"
   end
 
-  create_table "system_permissions", :force => true do |t|
-    t.integer  "group_id"
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
@@ -324,7 +317,6 @@ ActiveRecord::Schema.define(:version => 20111216195254) do
     t.text     "contents"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "version"
     t.string   "custom_layout"
     t.string   "title"
     t.text     "additional_content",                    :null => false
