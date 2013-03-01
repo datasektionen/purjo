@@ -1,5 +1,5 @@
 = simple_form_for(@functionary) do |f|
-  = f.input :person_id
+  = f.input :person_id, as: :string
   = f.association :chapter_post, :include_blank => false
   = f.input :active_from
   = f.input :active_to
