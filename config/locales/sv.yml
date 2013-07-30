@@ -290,27 +290,6 @@
     select:
       # default value for :prompt => true in FormOptionsHelper
       prompt: "Välj"
-  studs:
-    cv:
-      phone: "Telefonnummer"
-      birth_year: "Födelseår"
-      study_start: "Studiestart"
-      planned_exam: "Planerad examen"
-      personal: "Personlig text"
-      ambitions: "Ambitioner"
-      employment: "Tidigare anställningar"
-      education: "Utbildning"
-      other_commitments: "Andra erfarenheter"
-      language_skills: "Språkkunskaper"
-      it_skills: "IT-kunskaper"
-      other: "Övrigt"
-      back: "Tillbaka"
-      logout: "Logga ut"
-      flash:
-        logout: "Du har nu loggats ut ur CV-databasen, välkommen åter!"
-        welcome: "Välkommen till Studs CV-databas!"
-        unknown_user_or_pass: "Ogiltigt användarnamn eller lösenord"
-        no_access: "Du har inte tillgång till Studs"
   newsletters:
     index:
       new: Nytt nyhetsbrev

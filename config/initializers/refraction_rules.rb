@@ -40,8 +40,6 @@ if Object.const_defined?(:Refraction)
     when %r{^/ddagen(/(.*))?$}
       # RewriteRule ^/ddagen(/(.*))?$ /sektionen/namnder/naringsliv/ddagen/$2 [R,L]
       req.found!("/sektionen/namnder/naringsliv/ddagen/#{$2}")
-    when %r{^/(sektionen/)?studs/?$} 
-      req.found!("/sektionen/studs/2010/")
     #when %r{^/sektionen/namnder/mottagningen/(janifattar|ansokan)(/(.*))?$}
     #  # RewriteRule ^/sektionen/namnder/mottagningen/(janifattar|ansokan)(/(.*))?$ /ston/apps/new [R,L]
     #  req.found!("/ston/apps/new")

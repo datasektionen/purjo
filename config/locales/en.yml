@@ -26,24 +26,3 @@ en:
           
       am: 'am'
       pm: 'pm'
-  studs:
-    cv:
-      phone: "Phone"
-      birth_year: "Birth year"
-      study_start: "Studies started at"
-      planned_exam: "Exam planned to"
-      personal: "Personal"
-      ambitions: "Ambitions"
-      employment: "Employment"
-      education: "Education"
-      other_commitments: "Other commitments"
-      language_skills: "Language knowledge"
-      it_skills: "IT knowledge"
-      other: "Other"
-      back: "Back"
-      logout: "Sign out"
-      flash:
-        logout: "You are now logged out!"
-        welcome: "Welcome to the Studs Resume Database!"
-        unknown_user_or_pass: "Unknown user/password combination"
-        no_access: "You don't have access to Studs"
