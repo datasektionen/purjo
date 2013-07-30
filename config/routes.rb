@@ -86,9 +86,6 @@ Rails.application.routes.draw do |map|
   get '/kalender.ics' => 'calendars#show', :as => :calendar_ics, :format => 'ics'
   resources '/kalender', :as => 'events', :controller => 'events', :except => :index
 
-  map.schema '/schema/proxy.:format', :controller => 'schema', :action => 'proxy'
-  map.schema '/schema/:year', :controller => 'schema', :action => 'index', :year => 'D1'
-
   resources '/sektionen/valtillfallen', :as => 'election_events', :controller => 'election_events'
   resources '/sektionen/val', :as => 'nominees', :controller => 'nominees'
 
