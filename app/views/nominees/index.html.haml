@@ -1,10 +1,10 @@
-%h2 
+%h2
   Aktuella val
 
-= include_node("/sektionen/val/text")
+= include_node('/sektionen/val')
 - if Person.current.editor?
   -# FIXME: Nedanstående länk är jättekonstig... man kan inte länka till en hårdkodad textnod sådär, det kommer inte funka på folks lokala versioner.
-  - admin_link "Redigera texten", "/textnoder/181/edit"
+  - admin_link 'Redigera texten', '/textnoder/27/edit'
 
 - @election_events.each do |event|
   %h4 #{event.name} #{event.date}
