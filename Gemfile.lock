@@ -5,7 +5,7 @@ GIT
     state_machine (1.0.3)
 
 GEM
-  remote: http://rubygems.org/
+  remote: https://rubygems.org/
   specs:
     RedCloth (4.2.3)
     aaronh-chronic (0.3.9)
