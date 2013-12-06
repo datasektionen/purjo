@@ -1,5 +1,5 @@
 = simple_form_for(@functionary) do |f|
-  = f.input :person_id, :as => :string
+  = f.input :person_id, :as => :string, :input_html => { :maxlength => 8 }
   = f.association :chapter_post, :include_blank => false
   = f.input :active_from
   = f.input :active_to
@@ -7,24 +7,3 @@
     = f.input :postponed
 
   = f.submit
-
--#
-  %p
-    = f.label 'Användarnamn'
-    <br />
-    = text_field :functionary, :person_id
-  %p
-    = f.label 'Post'
-    <br />
-    = collection_select(:functionary, :chapter_post_id, ChapterPost.all, :id, :name)
-  %p
-    = f.label 'Stiger på'
-    <br />
-    = f.date_select :active_from
-  %p
-    = f.label 'Stiger av'
-    <br />
-    = f.date_select :active_to
-  %p
-    = f.label 'Posten är vakantsatt'
-    = f.check_box :postponed
