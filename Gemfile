@@ -53,10 +53,12 @@ group :test do
   gem 'steak', '>= 0.4.0.a5'
   gem "rspec-rails"
   gem 'factory_girl_rails'
-  gem 'capybara'
+  gem 'capybara', '< 2.0.0'
   gem 'timecop'
   gem 'webmock'
   gem 'cucumber'
-  gem 'cucumber-rails'
+  gem 'cucumber-rails', '~> 1.0.2'
   gem 'database_cleaner'
+  gem 'nokogiri', '1.5.5'
+  gem 'rubyzip', '< 1.0.0'
 end
