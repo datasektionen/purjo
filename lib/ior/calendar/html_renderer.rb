@@ -6,14 +6,14 @@ module Ior
         @month = month
         @year = year
       end
-      
+
       def render
         headers = ["Måndag", "Tisdag", "Onsdag", "Torsdag", "Fredag", "Lördag", "Söndag"]
-        time = Time.utc(@year, @month).beginning_of_week
-      
+        time = Date.new(@year, @month).beginning_of_week
+
         output = "<table cellpadding=\"0\" cellspacing=\"0\" class=\"calendar\">\n"
-        
-        
+
+
         output += "<thead>\n"
         output += "<tr class=\"dayName\">\n"
         output += "<th class=\"week\">V.</th>\n"
@@ -22,15 +22,15 @@ module Ior
         }
         output += "</tr>\n"
         output += "</thead>\n"
-        
-        
-        
+
+
+
         output += "<tbody>\n"
-        
+
         #Avoid the following code if the month starts on a monday
         if time.month != @month
-          output += "<tr>\n"    
-          output += "<td class=\"week\">#{time.strftime("%W")}</td>\n"
+          output += "<tr>\n"
+          output += "<td class=\"week\">#{time.cweek}</td>\n"
 
           while time.month != @month
             output += "<td class=\"otherMonth\">"
@@ -44,7 +44,7 @@ module Ior
         while time.month == @month
           if time.wday == 1 #Monday, start a new row
             output += "<tr>\n"
-            output += "<td class=\"week\">#{time.strftime("%W")}</td>\n"
+            output += "<td class=\"week\">#{time.cweek}</td>\n"
           end
 
           output += "<td class=\"day"
@@ -64,17 +64,17 @@ module Ior
           posts_this_day.each do |p|
             output += '<p class="event"><a href="/kalender/'+p.id.to_s+'" title="'+p.duration+'">'+p.to_s+'</a></p>'
           end
-            
+
           output += "</td>\n"
-            
+
           if time.wday == 0 #Sunday, end of the row
             output += "</tr>\n"
           end
-            
+
           time = time.tomorrow
         end
-        
-        
+
+
         #If the month ended on a sunday, the </tr> tag has already been inserted, so we
         #don't want another copy of it
         if time.wday != 1
