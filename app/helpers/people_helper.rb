@@ -1,6 +1,10 @@
 module PeopleHelper
-  def xfinger_image(person)
-    image_tag("http://www.csc.kth.se/hacks/new/xfinger/image.php?user=#{person.kth_username}", :alt => "xfinger-bild för #{person.to_s}", :title => "xfinger", :width => 266, :class => "xfinger")
+  def xfinger_image(person, size = "256x256")
+    url = "http://dumnaglar.datasektionen.se/"
+    image_tag("#{url}/#{person.kth_username}/#{size}",
+              :alt => "xfinger-bild för #{person.to_s}",
+              :title => "xfinger",
+              :class => "xfinger")
   end
 end
 
