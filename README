@@ -15,3 +15,9 @@ Hur får man igång purjo?
 Värt att notera:
 
 Om du vill få solr-stuff att funka lokalt behöver du starta solr (rake sunspot:solr:start) och bygga om indexet emellanåt (rake sunspot:reindex). Dessutom behöver du ställa in use_solr till true i config/configuration.yml, annars funkar ingenting när det kommer till sökningen.
+
+Värt att notera för produktionmiljö:
+
+Se till att config/configuration.yml har en produktionskonfiguration som matchar
+produktionsmiljön. Se också till att Solr har ett vettigt schema (typiskt det
+som Sunspot tillhandahåller).
