@@ -11,6 +11,6 @@
 
   .input.select.required
     = form.label :status, "Status"
-    = form.select :status, {"Ej svarat" => 0, "Tackat ja" => 1, "Tackat nej" => 2}
+    = form.select :status, {"Ej svarat" => 0, "Tackat ja" => 1, "Tackat nej" => 2}, :selected => 0
 
   = form.button :submit
