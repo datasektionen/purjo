@@ -7,7 +7,7 @@
 
   .input.select.required
     = form.label :chapter_post_id, "Post"
-    = form.collection_select :chapter_post_id, ChapterPost.all, :id, :name
+    = form.collection_select :chapter_post_id, ChapterPost.order(:name.asc).all, :id, :name
 
   .input.select.required
     = form.label :status, "Status"
