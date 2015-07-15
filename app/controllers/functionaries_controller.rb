@@ -1,3 +1,4 @@
+# encoding: utf-8
 class FunctionariesController < ApplicationController
   layout 'application'
   require_role "editor", :except => [:show, :index]

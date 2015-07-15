@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Event < ActiveRecord::Base
   scope :for_month, lambda { |month, year|
     date = DateTime.civil(year, month)

@@ -1,3 +1,4 @@
+# encoding: utf-8
 module PeopleHelper
   def xfinger_image(person, size = "256x256")
     url = "http://dumnaglar.datasektionen.se/"

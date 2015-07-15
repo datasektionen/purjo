@@ -1,3 +1,4 @@
+# encoding: utf-8
 class TextNodeMenuController < ApplicationController
   require_role 'editor'
   

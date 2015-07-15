@@ -1,3 +1,4 @@
+# encoding: utf-8
 class MorklaggningsController < ApplicationController
   require_role :admin
 

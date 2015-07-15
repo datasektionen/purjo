@@ -1,3 +1,4 @@
+# encoding: utf-8
 namespace :ior do
   namespace :cms do
     task :create_root => [:environment] do

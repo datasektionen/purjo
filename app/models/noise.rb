@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Noise < ActiveRecord::Base
 	belongs_to :post
 	belongs_to :person

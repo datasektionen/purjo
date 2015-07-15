@@ -1,3 +1,4 @@
+# encoding: utf-8
 class FileNode < ActiveRecord::Base
   has_attached_file :resource, :path => ':rails_root/public/file_nodes/:parent_id_partition/:filename'
   

@@ -1,3 +1,4 @@
+# encoding: utf-8
 module ActsAsTaggableOn::Taggable
   module Core
     module InstanceMethods

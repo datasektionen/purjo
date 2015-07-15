@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Student < ActiveRecord::Base
   
   # So this is a hack to work around the fact that Person and Student isn't the same thing.

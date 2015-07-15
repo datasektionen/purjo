@@ -1,3 +1,4 @@
+# encoding: utf-8
 urkel = Cv.find(19)
 
 [["Patrik McKiernan", "patrikmc@kth.se", "D-05", "070-4964282", "1983"],

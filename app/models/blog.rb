@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Blog < ActiveRecord::Base
   before_validation :set_perma_name
   validates_uniqueness_of :perma_name, :message => "must be unique. Choose another perma name."

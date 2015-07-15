@@ -1,3 +1,4 @@
+# encoding: utf-8
 module Ior
   module LiquidFilters
     # Inkluderar en annan nod i denna nod
