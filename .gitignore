@@ -31,3 +31,4 @@ config/my_user.yml
 app/views/twitter/twitter.rss
 mail-2.2.14
 config/sunspot.yml
+*.map
