@@ -1,5 +1,5 @@
-# encoding: utf-8
 #!/usr/bin/env ruby
+# encoding: utf-8
 require 'ftools'
 require 'rubygems'
 require 'activerecord'
@@ -19,7 +19,7 @@ require './app/models/student.rb'
 class Logger2 < Logger
   def info(param)
     super(Time.now.to_s + ": " + param)
- end
+  end
 end
 
 # Skapa en logger
