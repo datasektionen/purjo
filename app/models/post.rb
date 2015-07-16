@@ -72,7 +72,7 @@ class Post < ActiveRecord::Base
   end
 
   def editable?
-    Person.current.admin? || (Person.current.editor? && created_by == Person.current)
+    Person.current.admin? || (Person.current.has_role?(:editor) && created_by == Person.current)
   end
 
   private

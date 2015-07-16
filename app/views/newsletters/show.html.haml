@@ -14,7 +14,7 @@
 - @newsletter.newsletter_sections.each do |section|
   %h3
     %span.toggle.off= section.title
-    - if Person.current.editor?
+    - if Person.current.has_role?(:editor)
       = link_to "(Redigera)", edit_newsletter_newsletter_section_path(@newsletter, section), :class => "edit"
     - if Person.current.admin?
       = link_to '(Ta bort)', newsletter_newsletter_section_path(@newsletter, section), :method => :delete, :confirm => 'Är du säker på att du vill ta bort den här sektionen?', :class => "delete"
@@ -22,7 +22,7 @@
   .section.toggled{ :id => "newsletter-section-#{section.id}"}
     != RedCloth.new(section.body).to_html
 
-- if Person.current.editor?
+- if Person.current.has_role?(:editor)
   - admin_link "Ny sektion", new_newsletter_newsletter_section_path(@newsletter)
   - if Person.current.admin?
     - admin_link "Redigera nyhetsbrev", edit_newsletter_path(@newsletter)

@@ -37,10 +37,6 @@ class AnonymousPerson
     true
   end
 
-  def editor?
-    false
-  end
-
   def has_feature?(feature)
     false
   end

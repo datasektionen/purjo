@@ -1,6 +1,6 @@
 class NewslettersController < InheritedResources::Base
   require_role :admin, :for_all_except => [:index, :show, :admin]
-  require_role :editor, :only => :admin
+  require_role :has_role?(:editor), :only => :admin
 
   before_filter :menu_items
 
@@ -13,7 +13,7 @@ class NewslettersController < InheritedResources::Base
   end
 
   def show
-    if Person.current.editor?
+    if Person.current.has_role?(:editor)
       @newsletter = Newsletter.find(params[:id])
     else
       @newsletter = Newsletter.published.find(params[:id])

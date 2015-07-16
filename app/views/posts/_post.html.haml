@@ -31,7 +31,7 @@
     = textilize( @single_post ? post.body : post.excerpt(true) ).html_safe
 
   %p.foot
-    - if Person.current.editor?
+    - if Person.current.has_role?(:editor)
       = link_to 'Redigera', edit_post_path(post), :class => "edit"
 
     - if @single_post
