@@ -6,7 +6,8 @@
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 
-root_page = TextNode.create!(:name => 'root', :url => '/', :contents => "I is root", :additional_content => "")
+root_page = TextNode.create!(name: 'root', url: '/', title: "root", contents: "I is root", additional_content: "")
+TextNode.create(name: "Sektionen", url: "/sektionen", title: "Sektionen", contents: "")
 
 person_info_file = Rails.root + "config/my_user.yml"
 raise "Skapa en config/my_user.yml (exempel finns i katalogen)" unless File.exists?(person_info_file)
