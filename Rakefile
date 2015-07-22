@@ -5,10 +5,12 @@ require File.expand_path('../config/application', __FILE__)
 
 require 'rake'
 
-begin
-  require 'delayed/tasks'
-rescue LoadError
-  STDERR.puts "Run `rake gems:install` to install delayed_job"
-end
-
+#begin
+#  require 'delayed/tasks'
+#rescue LoadError
+#  STDERR.puts "Run `rake gems:install` to install delayed_job"
+#end
+#
 Purjo2::Application.load_tasks
+
+task default: [:spec, :cucumber]
