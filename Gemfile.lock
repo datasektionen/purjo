@@ -37,8 +37,7 @@ GEM
       activemodel (= 3.0.20)
       activesupport (= 3.0.20)
     activesupport (3.0.20)
-    acts-as-taggable-on (3.3.0)
-      activerecord (>= 3, < 5)
+    acts-as-taggable-on (2.0.6)
     addressable (2.3.8)
     airbrake (4.3.0)
       builder
@@ -247,7 +246,7 @@ PLATFORMS
 DEPENDENCIES
   RedCloth (~> 4.2.3)
   activerecord-mysql2-adapter
-  acts-as-taggable-on
+  acts-as-taggable-on (~> 2.0.6)
   airbrake
   capistrano
   capistrano-ext

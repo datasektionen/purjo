@@ -6,7 +6,7 @@ gem 'rails', '~> 3.0.0'
 
 gem "will_paginate", "~> 3.0.pre2"
 gem 'liquid'
-gem "acts-as-taggable-on"
+gem "acts-as-taggable-on", "~> 2.0.6"
 gem 'icalendar'
 gem 'RedCloth', '~> 4.2.3'
 
