@@ -38,7 +38,7 @@ gem 'sunspot_rails'
 
 group :production do
    gem 'mysql'
-   gem 'unicorn'
+   gem 'puma'
    gem 'newrelic_rpm'
 end
 
