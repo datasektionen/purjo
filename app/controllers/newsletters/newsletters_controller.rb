@@ -1,6 +1,6 @@
 class NewslettersController < InheritedResources::Base
   require_role :admin, :for_all_except => [:index, :show, :admin]
-  require_role :has_role?(:editor), :only => :admin
+  require_role :editor, :only => :admin
 
   before_filter :menu_items
 
