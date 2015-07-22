@@ -13,4 +13,4 @@ require 'rake'
 #
 Purjo2::Application.load_tasks
 
-task default: [:spec, :cucumber]
+task default: []
