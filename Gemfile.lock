@@ -31,6 +31,8 @@ GEM
       activesupport (= 3.0.20)
       arel (~> 2.0.10)
       tzinfo (~> 0.3.23)
+    activerecord-mysql2-adapter (0.0.3)
+      mysql2
     activeresource (3.0.20)
       activemodel (= 3.0.20)
       activesupport (= 3.0.20)
@@ -128,6 +130,7 @@ GEM
     multi_json (1.11.2)
     multi_test (0.1.2)
     mysql (2.9.1)
+    mysql2 (0.3.18)
     net-ldap (0.11)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
@@ -243,6 +246,7 @@ PLATFORMS
 
 DEPENDENCIES
   RedCloth (~> 4.2.3)
+  activerecord-mysql2-adapter
   acts-as-taggable-on
   airbrake
   capistrano

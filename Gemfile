@@ -38,6 +38,7 @@ gem 'sunspot_rails'
 
 group :production do
    gem 'mysql'
+   gem 'activerecord-mysql2-adapter'
    gem 'puma'
    gem 'newrelic_rpm'
 end
