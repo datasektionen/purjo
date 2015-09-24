@@ -7,4 +7,5 @@
     = link_to person, :title => "Inloggad som #{person.kth_username}", :class => 'person' do
       %span= person.name
       = image_tag(person.gravatar_url, :class => 'thumb', :alt => '', :title => person)
+    %br
     = link_to 'logga ut', logout_path(:return_url => current_url), :class => 'do'
