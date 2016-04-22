@@ -59,8 +59,8 @@
     %h3 Plan
     %pre.plan= @person.plan
 
-  %h3 Xfinger
-  = xfinger_image(@person)
+  %h3 Zfinger
+  = zfinger_image(@person, 256)
 
 - if @person.functionaries.sorted.size > 0
   %h3 Förtroendeuppdrag
