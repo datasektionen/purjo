@@ -71,6 +71,7 @@
       %th Till
     - @person.functionaries.sorted.each do |func|
       %tr
-        %td= link_to func.chapter_post.name, func.chapter_post
-        %td= func.active_from
-        %td= func.active_to
+        - if func.chapter_post.name.present?
+          %td= link_to func.chapter_post.name, func.chapter_post
+          %td= func.active_from
+          %td= func.active_to
