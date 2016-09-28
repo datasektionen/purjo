@@ -1,3 +1,4 @@
+# encoding: utf-8
 class ChapterPost < ActiveRecord::Base
 
   has_many :functionaries

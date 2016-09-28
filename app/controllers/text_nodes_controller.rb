@@ -1,3 +1,4 @@
+# encoding: utf-8
 class TextNodesController < ApplicationController
   require_role 'editor'
   require_role 'admin', :only => [:destroy, :delete]

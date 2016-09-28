@@ -74,7 +74,7 @@
                 - @nav_menus.each do |link|
                   %li= link_to link[0], link[1], link[2]
             
-            - if Person.current.editor?
+            - if Person.current.has_role?(:editor)
               .admin= render 'menus/admin'
 
           .content

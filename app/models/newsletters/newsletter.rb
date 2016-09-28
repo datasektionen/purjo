@@ -1,3 +1,4 @@
+# encoding: utf-8
 require 'ior/hominid/common'
 class Newsletter < ActiveRecord::Base
   include Ior::Hominid::Common

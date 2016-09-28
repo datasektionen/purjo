@@ -1,3 +1,4 @@
+# encoding: utf-8
 module Ior
   module Calendar
     class HtmlRenderer

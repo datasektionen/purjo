@@ -14,7 +14,7 @@
     = link_to "NADA hemsida", "http://www.nada.kth.se/~#{@person.kth_username}"
     != "&nbsp;|&nbsp;"
     = link_to @person.email, "mailto:#{@person.email}"
-    - if Person.current.admin? or Person.current.id == @person.id
+    - if Person.current.has_role?(:admin) or Person.current.id == @person.id
       != "&nbsp;|&nbsp;"
       = link_to 'Inställningar', person_user_settings_path(@person)
       != "&nbsp;|&nbsp;"
@@ -38,13 +38,13 @@
       %td= @person.try :nickname
     %tr
       %td.strong Personlig epost:
-      - mailto = @person.try(:personalemail); unless mailto.nil?
+      - if mailto = @person.try(:personalemail)
         %td= link_to mailto, "mailto:#{mailto}"
       - else
         %td
     %tr
       %td.strong Personlig hemsida:
-      - url = @person.try(:homepage); unless url.nil?
+      - if url = @person.try(:homepage)
         %td= link_to url, url 
       - else
         %td

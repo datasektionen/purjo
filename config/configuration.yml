@@ -1,0 +1,23 @@
+development:
+  ldap_host: localhost
+  show_n_days_in_calendar: 60
+  newsletter_template_id: 177701
+  # 1f3c1d4b9d = Ior test
+  # dddc6d330e = Datasektionen
+  newsletter_list_id: 1f3c1d4b9d
+  newsletter_api_key: 0819cc17a58747e1b35bba0a7b10e0eb-us1
+  newsletter_from_email: info@d.kth.se
+  newsletter_from_name: Datasektionen
+  newsletter_to_email: Datasektionen
+  newsletter_hominid_class_name: 'Hominid::Base'
+  protocol_path: /Users/spatrik/Downloads
+  mailchimp_hook_secret: '64d53d30c74c43e0f4bacf378fae31616897fc1b12d6a79082'
+  solr_url: http://localhost:8080/solr
+  use_solr: false
+
+test:
+  ldap_host: localhost
+
+production:
+  ldap_host: 130.237.32.174
+  show_n_days_in_calendar: 60

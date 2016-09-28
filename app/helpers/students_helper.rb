@@ -1,3 +1,4 @@
+# encoding: utf-8
 module StudentsHelper
 
   # Byter ut sektiontexten mot en lite mer färggran version

@@ -1,3 +1,4 @@
+# encoding: utf-8
 class NomineesController < ApplicationController
   require_role :editor, :except => [:index]
 

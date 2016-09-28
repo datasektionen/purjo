@@ -13,7 +13,7 @@ class NewslettersController < InheritedResources::Base
   end
 
   def show
-    if Person.current.editor?
+    if Person.current.has_role?(:editor)
       @newsletter = Newsletter.find(params[:id])
     else
       @newsletter = Newsletter.published.find(params[:id])

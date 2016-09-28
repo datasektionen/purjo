@@ -1,3 +1,4 @@
+# encoding: utf-8
 module Ior
   module LiquidFilters
     # Liquid-tag för att ladda in alla events till en variabel

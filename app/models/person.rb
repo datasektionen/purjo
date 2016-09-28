@@ -1,3 +1,4 @@
+# encoding: utf-8
 require 'ior/kth/users_groups/catalog_service'
 
 class Person < ActiveRecord::Base

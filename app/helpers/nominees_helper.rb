@@ -1,3 +1,4 @@
+# encoding: utf-8
 module NomineesHelper
   # Outputta en länk till innehavaren av en nuvarande funktionärspost 
   def functionary_person_link(chapter_post)

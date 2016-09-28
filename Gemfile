@@ -1,13 +1,14 @@
 source 'https://rubygems.org'
 
-gem 'rake', '0.8.7'
+ruby '1.9.3'
+gem 'rake'
 gem 'rails', '~> 3.0.0'
 
 gem "will_paginate", "~> 3.0.pre2"
 gem 'liquid'
-gem "acts-as-taggable-on"
+gem "acts-as-taggable-on", "~> 2.0.6"
 gem 'icalendar'
-gem 'RedCloth', '4.2.3'
+gem 'RedCloth', '~> 4.2.3'
 
 gem 'haml'
 gem 'sass'
@@ -19,8 +20,6 @@ gem 'delayed_job'
 gem 'state_machine', :git => "git://github.com/pluginaweek/state_machine.git"
 gem 'meta_where'
 gem 'json_pure'
-gem 'liquid'
-gem 'mongrel'
 gem 'net-ldap'
 gem 'memcache-client'
 gem 'airbrake'
@@ -39,12 +38,12 @@ gem 'sunspot_rails'
 
 group :production do
    gem 'mysql'
-   gem 'unicorn'
+   gem 'activerecord-mysql2-adapter'
+   gem 'puma'
    gem 'newrelic_rpm'
 end
 
 group :development do
-  gem 'ruby-debug'
   gem 'sqlite3-ruby'
 end
 

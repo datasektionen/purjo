@@ -1,3 +1,4 @@
+# encoding: utf-8
 module TitleHelper
   def title(title)
     @title = title

@@ -1,3 +1,4 @@
+# encoding: utf-8
 module PeopleHelper
   def zfinger_image(person, width = "256")
     url = "https://zfinger.datasektionen.se"

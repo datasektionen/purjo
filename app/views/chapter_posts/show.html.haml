@@ -16,17 +16,17 @@
     %th Person
     %th Från
     %th Till
-    - if Person.current.editor?
+    - if Person.current.has_role?(:editor)
       %th
   - for functionary in @chapter_post.functionaries.order(:active_to.desc)
     %tr
       %td= link_to_unless(functionary.postponed, functionary.person_or_postponed, person_path(functionary.person))
       %td= functionary.active_from
       %td= functionary.active_to
-      - if Person.current.editor?
+      - if Person.current.has_role?(:editor)
         %td= link_to "Redigera", edit_functionary_path(functionary)
 
-- if Person.current.editor?
+- if Person.current.has_role?(:editor)
   - admin_link 'Funktionärsposter', chapter_posts_path
   - admin_link 'Funktionärer', functionaries_path
   - admin_link 'Redigera funktionärsposten', edit_chapter_post_path(@chapter_post)

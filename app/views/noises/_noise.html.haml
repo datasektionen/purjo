@@ -1,6 +1,6 @@
 .comment{ :id => "comment-" + noise.id.to_s }
   %div.meta
-    - if noise.editable? or Person.current.editor?
+    - if noise.editable? or Person.current.has_role?(:editor)
       = link_to('Redigera', edit_noise_path(noise), :class => "edit")
       %span.sep!= "&nbsp;|&nbsp;"
       = link_to 'Ta bort', noise, :method => :delete, :confirm => 'Är du säker på att du vill ta bort den här kommentaren?', :class => "delete"

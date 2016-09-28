@@ -10,7 +10,7 @@
     %th Person
     %th E-Post
     %th Aktiv fram till
-    - if Person.current.editor?
+    - if Person.current.has_role?(:editor)
       %th
   - for functionary in @functionaries
     - if functionary.postponed
@@ -25,6 +25,6 @@
         = link_to functionary.person.name, functionary.person
     %td= link_to functionary.chapter_post.slug, contact_path(:slug => functionary.chapter_post.slug)
     %td= "<acronym title=\"#{functionary.active_from} till #{functionary.active_to}\">#{functionary.active_to}</acronym>".html_safe
-    - if Person.current.editor?
+    - if Person.current.has_role?(:editor)
       %td= link_to 'Redigera', edit_functionary_path(functionary)
 

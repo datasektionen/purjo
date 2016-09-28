@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Post < ActiveRecord::Base
   default_scope where(:deleted => false).order('COALESCE(posts.published_at, posts.created_at) desc')
   scope :published, lambda { where("published_at IS NOT NULL AND published_at <= ?", Time.now) }
@@ -71,7 +72,7 @@ class Post < ActiveRecord::Base
   end
 
   def editable?
-    Person.current.admin? || (Person.current.editor? && created_by == Person.current)
+    Person.current.admin? || (Person.current.has_role?(:editor) && created_by == Person.current)
   end
 
   private

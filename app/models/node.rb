@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Node
   def self.find_by_url(url)
     node = TextNode.find_by_url(url)
