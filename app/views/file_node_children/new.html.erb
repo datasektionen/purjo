@@ -1,6 +1,6 @@
 <h2>Ny fil</h2>
 
 <%= simple_form_for @node, :url => text_node_files_path(@parent), :html => {:multipart => true} do |form| %>
-  <%= form.input :resource, :as => :file, :label => 'Fil' %>
+  <%= form.input :resource, :as => :file, :label => 'Fil', :input_html => {:multiple => true} %>
   <%= form.submit %>
 <% end -%>
